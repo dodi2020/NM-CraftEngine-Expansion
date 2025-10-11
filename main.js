@@ -32,6 +32,7 @@ module.exports.init = async () => {
             }
           
           },
+
           data: {
             "item-name": item.name,
             lore: item.modules?.lore,
@@ -54,11 +55,14 @@ module.exports.init = async () => {
       canExport: (item) => true,
       
       finalize: (allTransformedItems) => {
-        const finalOutput = {
-          items: {}
+        // Wrap all items under "items" key
+        return {
+          items: allTransformedItems
         };
-
-        return finalOutput;
+      },
+      
+      beforeExport: (item, transformed) => {
+        return transformed;
       },
     },
   });
