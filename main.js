@@ -60,19 +60,14 @@ module.exports.init = async () => {
 
         return finalOutput;
       },
-      
-      beforeExport: (item, transformed) => {
-        api.console.log(`Exporting ${item.name}`);
-        return transformed;
-      },
     },
   });
 
-  api.console.log('✅ CraftEngine format registered (Simple API)');
+  api.console.log('✅ CraftEngine format registered.');
 };
 
 module.exports.metadata = {
   id: 'craftengine_expansion',
   version: '0.0.1-Alpha',
-  author: 'TamashiiMon',
+  author: 'TamashiiMon, DeonixxStudio',
 };
