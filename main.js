@@ -7,41 +7,14 @@ module.exports.init = async () => {
   // - item.modules (flat object of all module values)
   // - item.textures, item.models (arrays)
 
+  const itemTransformer = api.require("./transformers/item.js");
+
   nm.registerExportFormat({
     id: 'CraftEngine',
     name: 'CraftEngine Format',
     
     // Simple transform function - receives normalized item, returns your format
-    transform: (item) => {
-      const ItemKey = `${item.namespace}:${item.id}`;
-      
-      return {
-
-        [ItemKey]: {
-
-          material: (item.modules?.baseMaterial || `PAPER`).toLowerCase(),
-          settings: {
-            //I need a lot of custom modules later.
-            //https://xiao-momi.github.io/craft-engine-wiki/configuration/item/settings
-            unbreakable: item.modules?.unbreakable,
-            enchanenchantable: item.modules?.disableEnchanting === true ? false : true,
-
-            food: {
-              nutrition: item.modules?.nutrition,
-              saturation: item.modules?.saturation,
-            }
-          
-          },
-
-          data: {
-            "item-name": item.name,
-            lore: item.modules?.lore,
-          },
-
-
-      },
-      };
-    },
+    transform: (item) => itemTransformer.transform(item),
     
     // Simplified file structure
     files: {
@@ -61,9 +34,6 @@ module.exports.init = async () => {
         };
       },
       
-      beforeExport: (item, transformed) => {
-        return transformed;
-      },
     },
   });
 
