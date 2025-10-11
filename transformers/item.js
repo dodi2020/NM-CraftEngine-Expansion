@@ -1,6 +1,7 @@
 module.exports.transform = (item) => {
 
     const ItemKey = `${item.namespace}:${item.id}`;
+    const assetsPath = `${context.namespace}:item/${context.folder}/${item.id}`
       
     return {
 
@@ -27,6 +28,16 @@ module.exports.transform = (item) => {
         }
       },
 
+      model: {
+        type: 'minecraft:model',
+        path: assetsPath,
+        generation: {
+            parent: 'item/handheld',
+            textures: {
+                "laylayer0": assetsPath,
+            }
+        }
+      },
       settings: {
         //I need a lot of custom modules later.
         //https://xiao-momi.github.io/craft-engine-wiki/configuration/item/settings

@@ -21,6 +21,28 @@ module.exports.init = async () => {
       perNamespace: true,
       output: 'resources/{projectId}/configuration/{folder}/{namespace}.yml',
       assets: 'resources/{projectId}/resourcepack/assets/{namespace}/{asset}',
+
+      assets: (context) => {
+        const { item, assetType, assetName, projectId, namespace, folder } = context;
+        
+        // Example: Organize blocks and items differently
+        if (item.type === 'item') {
+          if (assetType === 'model') {
+            return `resources/${projectId}/assets/${namespace}/models/item/${folder}/${assetName}`;
+          } else if (assetType === 'texture') {
+            return `resources/${projectId}/assets/${namespace}/texture/item/${folder}/${assetName}`;
+          }
+        }
+
+        if (item.type === 'block') {
+          if (assetType === 'model') {
+            return `resources/${projectId}/assets/${namespace}/models/block/${folder}/${assetName}`;
+          } else if (assetType === 'texture') {
+            return `resources/${projectId}/assets/${namespace}/texture/block/${folder}/${assetName}`;
+          }
+        }
+        
+      }
     },
     
     // Optional: Custom export logic
