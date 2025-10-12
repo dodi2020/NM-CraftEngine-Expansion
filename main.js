@@ -8,6 +8,9 @@ module.exports.init = async () => {
   // - item.textures, item.models (arrays)
 
   const itemTransformer = api.require("./transformers/item.js");
+  const itemModules = api.require("./modules/item.js")
+
+  itemModules.regiter(nm);
 
   nm.registerExportFormat({
     id: 'CraftEngine',
