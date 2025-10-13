@@ -7,6 +7,7 @@ The **NexoMaker-CraftEngine-Expansion** is designed to allow the creation of cus
 ## ⚠️ **Alpha Stage Warning** ⚠️
 
 **Please note that this project is currently in an early Alpha stage.**
+**The Expansion dont work at this state!!!!**
 
 This means:
 1.  **It is not yet complete or fully functional.** Features may be missing, broken, or change without notice.
