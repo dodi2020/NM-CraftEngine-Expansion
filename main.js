@@ -35,24 +35,24 @@ module.exports.init = async () => {
 
         if (item.type === 'item') {
           if (assetType === 'model') {
-            return 'resources/${projectId}/resourcepack/assets/${projectId}/models/item/${folder}/${assetName}';
+            return `resources/${projectId}/resourcepack/assets/${projectId}/models/item/${folder}/${assetName}`;
           } else if (assetType === 'texture') {
-            return 'resources/${projectId}/resourcepack/assets/${projectId}/texture/item/${folder}/${assetName}';
+            return `resources/${projectId}/resourcepack/assets/${projectId}/texture/item/${folder}/${assetName}`;
           }
         }
 
         if (item.type === 'block') {
           if (assetType === 'model') {
-            return 'resources/${projectId}/resourcepack/assets/${projectId}/models/block/${folder}/${assetName}';
+            return `resources/${projectId}/resourcepack/assets/${projectId}/models/block/${folder}/${assetName}`;
           } else if (assetType === 'texture') {
-            return 'resources/${projectId}/resourcepack/assets/${projectId}/texture/block/${folder}/${assetName}';
+            return `resources/${projectId}/resourcepack/assets/${projectId}/texture/block/${folder}/${assetName}`;
           }
         }
 
         if (item.type === "entity") {
           return null;
         }
-        return 'resources/${projectId}/resourcepack/assets/${projectId}/${assetType}/${assetName}';
+        return `resources/${projectId}/resourcepack/assets/${projectId}/${assetType}/${assetName}`;
 
       }
     },
