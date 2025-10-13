@@ -1,4 +1,4 @@
-module.exports.transform = (item) => {
+module.exports.transform = (item, context) => {
 
     const ItemKey = `${item.namespace}:${item.id}`;
     const assetsPath = `${context.namespace}:item/${context.folder}/${item.id}`
