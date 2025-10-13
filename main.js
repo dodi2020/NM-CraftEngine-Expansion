@@ -1,11 +1,6 @@
 module.exports.init = async () => {
   const nm = api.nexomaker;
 
-  // SIMPLIFIED API - No more normalization needed!
-  // The system auto-normalizes items for you, giving you:
-  // - item.id, item.name, item.type, item.namespace
-  // - item.modules (flat object of all module values)
-  // - item.textures, item.models (arrays)
 
   const itemTransformer = api.require("./transformers/item.js");
   
@@ -18,7 +13,6 @@ module.exports.init = async () => {
     id: 'CraftEngine',
     name: 'CraftEngine Format',
     
-    // Simple transform function - receives normalized item, returns your format
     transform: (item, context) => {
       if (item.type === 'entity') {
         return null;
@@ -31,8 +25,7 @@ module.exports.init = async () => {
       }
       return itemTransformer.transform(item, context);
     },
-        
-    // Simplified file structure
+
     files: {
       perNamespace: true,
       output: 'resources/{projectId}/configuration/{folder}/{namespace}.yml',
@@ -40,7 +33,6 @@ module.exports.init = async () => {
       assets: (context) => {
         const { item, assetType, assetName, projectId, namespace, folder } = context;
 
-        // Example: Organize blocks and items differently
         if (item.type === 'item') {
           if (assetType === 'model') {
             return 'resources/${projectId}/resourcepack/assets/${projectId}/models/item/${folder}/${assetName}';
@@ -58,19 +50,17 @@ module.exports.init = async () => {
         }
 
         if (item.type === "entity") {
-          return null;  // Entities don't have assets in this example
+          return null;
         }
         return 'resources/${projectId}/resourcepack/assets/${projectId}/${assetType}/${assetName}';
 
       }
     },
     
-    // Optional: Custom export logic
     hooks: {
       canExport: (item) => true,
       
       finalize: (allTransformedItems) => {
-        // Wrap all items under "items" key
         return {
           items: allTransformedItems
         };
