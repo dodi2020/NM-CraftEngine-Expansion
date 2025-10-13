@@ -7,46 +7,62 @@ module.exports.init = async () => {
   // - item.modules (flat object of all module values)
   // - item.textures, item.models (arrays)
 
+  const itemTransformer = api.require("./transformers/item.js");
+  
+  // TODO: Add all needed modules for CraftEngine.
+  // const itemModules = api.require("./modules/item.js")
+
+  // itemModules.regiter(nm);
+
   nm.registerExportFormat({
     id: 'CraftEngine',
     name: 'CraftEngine Format',
     
     // Simple transform function - receives normalized item, returns your format
-    transform: (item) => {
-      const ItemKey = `${item.namespace}:${item.id}`;
-      
-      return {
-
-        [ItemKey]: {
-
-          material: (item.modules?.baseMaterial || `PAPER`).toLowerCase(),
-          settings: {
-            //I need a lot of custom modules later.
-            //https://xiao-momi.github.io/craft-engine-wiki/configuration/item/settings
-            unbreakable: item.modules?.unbreakable,
-            enchanenchantable: item.modules?.disableEnchanting === true ? false : true,
-
-            food: {
-              nutrition: item.modules?.nutrition,
-              saturation: item.modules?.saturation,
-            }
-          
-          },
-          data: {
-            "item-name": item.name,
-            lore: item.modules?.lore,
-          },
-
-
-      },
-      };
+    transform: (item, context) => {
+      if (item.type === 'entity') {
+        return null;
+      }
+      if (item.type === 'block') {
+        return null;
+      }
+      if (item.type === 'furniture') {
+        return null;
+      }
+      return itemTransformer.transform(item, context);
     },
-    
+        
     // Simplified file structure
     files: {
       perNamespace: true,
       output: 'resources/{projectId}/configuration/{folder}/{namespace}.yml',
-      assets: 'resources/{projectId}/resourcepack/assets/{namespace}/{asset}',
+
+      assets: (context) => {
+        const { item, assetType, assetName, projectId, namespace, folder } = context;
+
+        // Example: Organize blocks and items differently
+        if (item.type === 'item') {
+          if (assetType === 'model') {
+            return 'resources/${projectId}/resourcepack/assets/${projectId}/models/item/${folder}/${assetName}';
+          } else if (assetType === 'texture') {
+            return 'resources/${projectId}/resourcepack/assets/${projectId}/texture/item/${folder}/${assetName}';
+          }
+        }
+
+        if (item.type === 'block') {
+          if (assetType === 'model') {
+            return 'resources/${projectId}/resourcepack/assets/${projectId}/models/block/${folder}/${assetName}';
+          } else if (assetType === 'texture') {
+            return 'resources/${projectId}/resourcepack/assets/${projectId}/texture/block/${folder}/${assetName}';
+          }
+        }
+
+        if (item.type === "entity") {
+          return null;  // Entities don't have assets in this example
+        }
+        return 'resources/${projectId}/resourcepack/assets/${projectId}/${assetType}/${assetName}';
+
+      }
     },
     
     // Optional: Custom export logic
@@ -54,25 +70,20 @@ module.exports.init = async () => {
       canExport: (item) => true,
       
       finalize: (allTransformedItems) => {
-        const finalOutput = {
-          items: {}
+        // Wrap all items under "items" key
+        return {
+          items: allTransformedItems
         };
-
-        return finalOutput;
       },
       
-      beforeExport: (item, transformed) => {
-        api.console.log(`Exporting ${item.name}`);
-        return transformed;
-      },
     },
   });
 
-  api.console.log('✅ CraftEngine format registered (Simple API)');
+  api.console.log('✅ CraftEngine format registered.');
 };
 
 module.exports.metadata = {
   id: 'craftengine_expansion',
   version: '0.0.1-Alpha',
-  author: 'TamashiiMon',
+  author: 'TamashiiMon, DeonixxStudio',
 };
