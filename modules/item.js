@@ -1,5 +1,5 @@
 module.exports.regiter = (nm) => {
-  const icon = nm.loadAsset(__dirname + "../assets/fuel.png");
+  const icon = nm.loadAsset(__dirname + "../assets/images/fuel.png");
 
   nm.postEditorModule({
     name: "fuel-time",

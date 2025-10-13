@@ -14,16 +14,10 @@ module.exports.init = async () => {
     name: 'CraftEngine Format',
     
     transform: (item, context) => {
-      if (item.type === 'entity') {
-        return null;
+      if (item.type === 'item') {
+        return itemTransformer.transform(item, context);
       }
-      if (item.type === 'block') {
-        return null;
-      }
-      if (item.type === 'furniture') {
-        return null;
-      }
-      return itemTransformer.transform(item, context);
+      return null;
     },
 
     files: {
@@ -48,11 +42,7 @@ module.exports.init = async () => {
             return `resources/${projectId}/resourcepack/assets/${projectId}/texture/block/${folder}/${assetName}`;
           }
         }
-
-        if (item.type === "entity") {
-          return null;
-        }
-        return `resources/${projectId}/resourcepack/assets/${projectId}/${assetType}/${assetName}`;
+        return null;
 
       }
     },
