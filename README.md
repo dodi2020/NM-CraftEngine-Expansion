@@ -18,9 +18,9 @@ We appreciate your patience as we work toward a stable release!
 
 ## Current Development Version
 
-The most up-to-date version of the source code is actively being developed and can be found in the **`develop`** branch of this repository.
+The most up-to-date version of the source code is actively being developed and can be found in the **`devalop`** branch of this repository.
 
-If you are looking to test the latest features or see recent changes, please check out and clone the `develop` branch.
+If you are looking to test the latest features or see recent changes, please check out and clone the `devalop` branch.
 
 ---
 
@@ -31,6 +31,6 @@ We warmly welcome anyone interested in contributing to this expansion!
 If you want to help, feel free to:
 * **Fork** the repository.
 * Make your desired changes.
-* Submit **Pull Requests** to the **`develop`** branch.
+* Submit **Pull Requests** to the **`devalop`** branch.
 
 Your input is essential to making this expansion a great tool for the community.
