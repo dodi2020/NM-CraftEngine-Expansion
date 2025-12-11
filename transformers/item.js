@@ -2,13 +2,10 @@ module.exports.transform = (item, context) => {
 
     const ItemKey = `${item.namespace}:${item.id}`;
     const assetsPath = `${context.namespace}:item/${context.folder}/${item.id}`
-      
-    return {
 
-    [ItemKey]: {
+    const transformet = {
 
       material: (item.modules?.baseMaterial || `PAPER`).toLowerCase(),
-
 
       data: {
         "item-name": item.name,
@@ -45,6 +42,7 @@ module.exports.transform = (item, context) => {
           
       },
 
-    },
-  };
+    }
+      
+    return { [ItemKey]: transformet };
 }
