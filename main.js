@@ -1,8 +1,8 @@
 module.exports.init = async () => {
   const nm = api.nexomaker;
-  const itemTransformer = api.require("./transformers/item.js");
+  const itemTransformer = require("./transformers/item.js");
   require('./registers/RegisterCreators.js')(nm);
-  require('./registers/RegisterEditors.js')(nm);
+  require('./registers/RegisterEditorModules.js')(nm, api);
   require('./registers/RegisterExportFormats.js')(nm, itemTransformer);
 
   api.nexomaker.postCreatorTypeCompatibilities({
@@ -10,7 +10,6 @@ module.exports.init = async () => {
     block: ['craftengine'],
     furniture: ['craftengine'],
     weapon: ['craftengine'],
-
     armor: ['craftengine'],
     food: ['craftengine'],
   });
