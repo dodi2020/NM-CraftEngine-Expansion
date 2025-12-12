@@ -38,15 +38,15 @@ module.exports.transform = (item, context) => {
         generation: {
             parent: 'item/handheld',
             textures: {
-                "laylayer0": assetsPath,
+                "layer0": assetsPath,
             }
         }
       },
       settings: {
         "fuel-time": item.modules?.craftengine_fuel_time,
-        renameable: item.modules?.craftengine_renameable,
-        dyeable: item.modules?.craftengine_dyeable,
-        enchantable: item.modules?.craftengine_enchantable,
+        "renameable": item.modules?.craftengine_renameable,
+        "dyeable": item.modules?.craftengine_dyeable,
+        "enchantable": item.modules?.craftengine_enchantable,
         "compost-probability": item.modules?.craftengine_compost_probability,
         "dye-color": item.modules?.craftengine_dye_color,
         "glow-color": item.modules?.craftengine_glow_color,
