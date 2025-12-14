@@ -1,524 +1,872 @@
-module.exports = async (nm) => {
-  let MODULE_DEFINITIONS = {
-    "attack_range": {
-      compatibility: ["item", "weapon"],
-      description: "Defines the attack range.",
-      type: "number",
-      default: 0
-    },
-    "attribute_modifiers": {
-      compatibility: ["item", "weapon", "tool", "armor"],
-      description: "Defines attribute modifiers.",
-      type: "text",
-      default: "",
-      minecraftComponent: {
-        id: "minecraft:attribute_modifiers",
-        type: "json" // Assuming it takes JSON input for modifiers
-      }
-    },
-    "banner_patterns": {
-      compatibility: ["item", "block"],
-      description: "Defines banner patterns.",
-      type: "text",
-      default: ""
-    },
-    "base_color": {
-      compatibility: ["item", "block", "armor"],
-      description: "Defines the base color.",
-      type: "text",
-      default: ""
-    },
-    "bees": {
-      compatibility: ["item", "block"],
-      description: "Defines bee-related properties for blocks.",
-      type: "number",
-      default: 0
-    },
-    "block_entity_data": {
-      compatibility: ["item", "block", "furniture"],
-      description: "Defines block entity data.",
-      type: "text",
-      default: ""
-    },
-    "block_state": {
-      compatibility: ["item", "block", "furniture"],
-      description: "Defines the block state.",
-      type: "text",
-      default: ""
-    },
-    "blocks_attacks": {
-      compatibility: ["item", "weapon", "tool", "armor"],
-      description: "Indicates if the item blocks attacks.",
-      type: "checkbox",
-      default: false
-    },
-    "break_sound": {
-      compatibility: ["item", "block", "furniture", "weapon", "tool"],
-      description: "Defines the sound when broken.",
-      type: "text",
-      default: ""
-    },
-    "bucket_entity_data": {
-      compatibility: ["item"],
-      description: "Defines bucket entity data.",
-      type: "text",
-      default: ""
-    },
-    "bundle_contents": {
-      compatibility: ["item"],
-      description: "Defines contents for bundles.",
-      type: "text",
-      default: ""
-    },
-    "can_break": {
-      compatibility: ["item", "tool", "block", "furniture", "weapon"],
-      description: "Defines what the item can break.",
-      type: "text",
-      default: ""
-    },
-    "can_place_on": {
-      compatibility: ["item", "block", "furniture"],
-      description: "Defines where the item can be placed.",
-      type: "text",
-      default: ""
-    },
-    "charged_projectiles": {
-      compatibility: ["item", "weapon"],
-      description: "Defines charged projectile properties.",
-      type: "checkbox",
-      default: false
-    },
-    "consumable": {
-      compatibility: ["item", "food"],
-      description: "Defines consumable properties.",
-      type: "checkbox",
-      default: false
-    },
-    "container": {
-      compatibility: ["item", "block", "furniture"],
-      description: "Defines container properties.",
-      type: "checkbox",
-      default: false
-    },
-    "container_loot": {
-      compatibility: ["item", "block", "furniture"],
-      description: "Defines container loot.",
-      type: "text",
-      default: ""
-    },
-    "custom_data": {
-      compatibility: ["item", "weapon", "tool", "block", "furniture", "food", "armor"],
-      description: "Custom data tag for the item.",
-      type: "text",
-      default: ""
-    },
-    "custom_model_data": {
-      compatibility: ["item", "weapon", "tool", "block", "furniture", "food", "armor"],
-      description: "The custom model data for the item's texture.",
-      type: "number",
-      default: 0,
-      minecraftComponent: {
-        id: "minecraft:custom_model_data",
-        type: "number"
-      }
-    },
-    "custom_name": {
-      compatibility: ["item", "weapon", "tool", "block", "furniture", "food", "armor"],
-      description: "Custom name for the item.",
-      type: "text",
-      default: ""
-    },
-    "damage": {
-      compatibility: ["item", "weapon", "tool"],
-      description: "Sets the attack damage of the weapon or tool.",
-      type: "number",
-      default: 0,
-      minecraftComponent: {
-        id: "minecraft:attack_damage",
-        type: "number"
-      }
-    },
-    "damage_resistant": {
-      compatibility: ["item", "armor"],
-      description: "Defines damage resistance.",
-      type: "checkbox",
-      default: false
-    },
-    "damage_type": {
-      compatibility: ["item", "weapon", "tool"],
-      description: "Defines damage type.",
-      type: "text",
-      default: ""
-    },
-    "death_protection": {
-      compatibility: ["item", "armor"],
-      description: "Defines death protection.",
-      type: "checkbox",
-      default: false
-    },
-    "debug_stick_state": {
-      compatibility: ["item"],
-      description: "Defines debug stick state.",
-      type: "text",
-      default: ""
-    },
-    "dyed_color": {
-      compatibility: ["item", "armor"],
-      description: "Defines dyed color.",
-      type: "text",
-      default: ""
-    },
-    "enchantable": {
-      compatibility: ["item", "weapon", "tool", "armor"],
-      description: "Whether the item can be enchanted.",
-      type: "checkbox",
-      default: false
-    },
-    "enchantment_glint_override": {
-      compatibility: ["item", "weapon", "tool", "armor"],
-      description: "Overrides enchantment glint.",
-      type: "checkbox",
-      default: false,
-      minecraftComponent: {
-        id: "minecraft:enchantment_glint_override",
-        type: "boolean"
-      }
-    },
-    "enchantments": {
-      compatibility: ["item", "weapon", "tool", "armor"],
-      description: "Defines enchantments.",
-      type: "text",
-      default: ""
-    },
-    "entity_data": {
-      compatibility: ["item"],
-      description: "Defines entity data.",
-      type: "text",
-      default: ""
-    },
-    "equippable": {
-      compatibility: ["item", "weapon", "tool", "armor"],
-      description: "Defines equippable properties.",
-      type: "checkbox",
-      default: false
-    },
-    "firework_explosion": {
-      compatibility: ["item"],
-      description: "Defines firework explosion properties.",
-      type: "text",
-      default: ""
-    },
-    "fireworks": {
-      compatibility: ["item"],
-      description: "Defines firework properties.",
-      type: "text",
-      default: ""
-    },
-    "food": {
-      compatibility: ["item", "food"],
-      description: "Defines food properties.",
-      type: "text",
-      default: ""
-    },
-    "glider": {
-      compatibility: ["item"],
-      description: "Defines glider properties.",
-      type: "checkbox",
-      default: false
-    },
-    "instrument": {
-      compatibility: ["item"],
-      description: "Defines instrument properties.",
-      type: "text",
-      default: ""
-    },
-    "intangible_projectile": {
-      compatibility: ["item", "weapon"],
-      description: "Defines intangible projectile properties.",
-      type: "checkbox",
-      default: false
-    },
-    "item_model": {
-      compatibility: ["item", "weapon", "tool", "block", "furniture", "food", "armor"],
-      description: "The item's model.",
-      type: "text",
-      default: ""
-    },
-    "item_name": {
-      compatibility: ["item", "weapon", "tool", "block", "furniture", "food", "armor"],
-      description: "The displayed name of the item.",
-      type: "text",
-      default: "",
-      minecraftComponent: {
-        id: "minecraft:item_name",
-        type: "string"
-      }
-    },
-    "jukebox_playable": {
-      compatibility: ["item"],
-      description: "Defines jukebox playable properties.",
-      type: "checkbox",
-      default: false
-    },
-    "kinetic_weapon": {
-      compatibility: ["item", "weapon"],
-      description: "Defines kinetic weapon properties.",
-      type: "checkbox",
-      default: false
-    },
-    "lock": {
-      compatibility: ["item", "block", "container", "weapon", "tool", "armor", "furniture"],
-      description: "Defines lock properties.",
-      type: "text",
-      default: ""
-    },
-    "lodestone_tracker": {
-      compatibility: ["item"],
-      description: "Defines lodestone tracker properties.",
-      type: "checkbox",
-      default: false
-    },
-    "lore": {
-      compatibility: ["item", "weapon", "tool", "block", "furniture", "food", "armor"],
-      description: "Lore text for the item.",
-      type: "text",
-      default: "",
-      minecraftComponent: {
-        id: "minecraft:lore",
-        type: "array_of_strings_from_pipe_separated_text" // Custom type to indicate transformation
-      }
-    },
-    "map_color": {
-      compatibility: ["item", "block"],
-      description: "Defines map color.",
-      type: "text",
-      default: ""
-    },
-    "map_decorations": {
-      compatibility: ["item"],
-      description: "Defines map decorations.",
-      type: "text",
-      default: ""
-    },
-    "map_id": {
-      compatibility: ["item"],
-      description: "Defines map ID.",
-      type: "number",
-      default: 0
-    },
-    "max_damage": {
-      compatibility: ["item", "weapon", "tool", "armor"],
-      description: "Defines maximum damage/durability.",
-      type: "number",
-      default: 0
-    },
-    "max_stack_size": {
-      compatibility: ["item", "weapon", "tool", "block", "furniture", "food", "armor"],
-      description: "The maximum stack size for this item.",
-      type: "number",
-      default: 0,
-      minecraftComponent: {
-        id: "minecraft:max_stack_size",
-        type: "number"
-      }
-    },
-    "minimum_attack_charge": {
-      compatibility: ["item", "weapon"],
-      description: "Defines minimum attack charge.",
-      type: "number",
-      default: 0
-    },
-    "note_block_sound": {
-      compatibility: ["item", "block"],
-      description: "Defines note block sound.",
-      type: "text",
-      default: ""
-    },
-    "ominous_bottle_amplifier": {
-      compatibility: ["item"],
-      description: "Defines ominous bottle amplifier.",
-      type: "number",
-      default: 0
-    },
-    "piercing_weapon": {
-      compatibility: ["item", "weapon"],
-      description: "Defines piercing weapon properties.",
-      type: "checkbox",
-      default: false
-    },
-    "pot_decorations": {
-      compatibility: ["item", "block"],
-      description: "Defines pot decorations.",
-      type: "text",
-      default: ""
-    },
-    "potion_contents": {
-      compatibility: ["item"],
-      description: "Defines potion contents.",
-      type: "text",
-      default: ""
-    },
-    "potion_duration_scale": {
-      compatibility: ["item"],
-      description: "Scales potion duration.",
-      type: "number",
-      default: 0
-    },
-    "profile": {
-      compatibility: ["item"],
-      description: "Defines profile properties.",
-      type: "text",
-      default: ""
-    },
-    "provides_banner_patterns": {
-      compatibility: ["item", "block"],
-      description: "Provides banner patterns.",
-      type: "checkbox",
-      default: false
-    },
-    "provides_trim_material": {
-      compatibility: ["item", "block"],
-      description: "Provides trim material.",
-      type: "checkbox",
-      default: false
-    },
-    "rarity": {
-      compatibility: ["item", "weapon", "tool", "block", "furniture", "food", "armor"],
-      description: "Rarity of the item.",
-      type: "text",
-      default: ""
-    },
-    "recipes": {
-      compatibility: ["item", "block", "tool", "weapon", "food", "armor", "furniture"],
-      description: "Defines recipes associated with the item.",
-      type: "text",
-      default: ""
-    },
-    "repair_cost": {
-      compatibility: ["item", "weapon", "tool", "armor"],
-      description: "Defines repair cost.",
-      type: "number",
-      default: 0
-    },
-    "repairable": {
-      compatibility: ["item", "weapon", "tool", "armor"],
-      description: "Defines repairable properties.",
-      type: "checkbox",
-      default: false
-    },
-    "stored_enchantments": {
-      compatibility: ["item"],
-      description: "Defines stored enchantments.",
-      type: "text",
-      default: ""
-    },
-    "suspicious_stew_effects": {
-      compatibility: ["item", "food"],
-      description: "Defines suspicious stew effects.",
-      type: "text",
-      default: ""
-    },
-    "swing_animation": {
-      compatibility: ["item", "weapon", "tool"],
-      description: "Defines swing animation properties.",
-      type: "text",
-      default: ""
-    },
-    "tool": {
-      compatibility: ["item", "tool"],
-      description: "Indicates the item is a tool.",
-      type: "checkbox",
-      default: false
-    },
-    "tooltip_display": {
-      compatibility: ["item", "weapon", "tool", "block", "furniture", "food", "armor"],
-      description: "Display options for the tooltip.",
-      type: "text",
-      default: ""
-    },
-    "tooltip_style": {
-      compatibility: ["item", "weapon", "tool", "block", "furniture", "food", "armor"],
-      description: "Styling options for the tooltip.",
-      type: "text",
-      default: ""
-    },
-    "trim": {
-      compatibility: ["item", "armor"],
-      description: "Defines trim properties for armor.",
-      type: "text",
-      default: ""
-    },
-    "unbreakable": {
-      compatibility: ["item", "weapon", "tool", "block", "furniture", "food", "armor"],
-      description: "Makes the item unbreakable.",
-      type: "checkbox",
-      default: false,
-      minecraftComponent: {
-        id: "minecraft:unbreakable",
-        type: "boolean"
-      }
-    },
-    "use_cooldown": {
-      compatibility: ["item", "weapon", "tool", "food"],
-      description: "Defines use cooldown.",
-      type: "number",
-      default: 0
-    },
-    "use_effects": {
-      compatibility: ["item", "weapon", "tool", "food"],
-      description: "Defines use effects.",
-      type: "text",
-      default: ""
-    },
-    "use_remainder": {
-      compatibility: ["item", "food"],
-      description: "Defines use remainder.",
-      type: "text",
-      default: ""
-    },
-    "weapon": {
-      compatibility: ["item", "weapon"],
-      description: "Indicates the item is a weapon.",
-      type: "checkbox",
-      default: false
-    },
-    "writable_book_content": {
-      compatibility: ["item"],
-      description: "Defines writable book content.",
-      type: "text",
-      default: ""
-    },
-    "written_book_content": {
-      compatibility: ["item"],
-      description: "Defines written book content.",
-      type: "text",
-      default: ""
-    },
-  };
-
-  const staticYamlModules = require('./../config/attribute_modules_data.js');
-
-  // Merge with existing definitions, static YAML definitions take precedence
-  MODULE_DEFINITIONS = { ...MODULE_DEFINITIONS, ...staticYamlModules };
-  nm.api.console.log("Statically loaded attribute modules from JavaScript file.");
-
-  const sortedModuleKeys = Object.keys(MODULE_DEFINITIONS).sort();
-
-  sortedModuleKeys.forEach(key => {
-    const moduleDef = MODULE_DEFINITIONS[key];
-    const displayName = moduleDef.display || key.split('_').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
-
-    nm.postEditorModule({
-      name: `craftengine_${key}`,
-      display: displayName,
-      plugins: ["craftengine"],
-      compatibility: moduleDef.compatibility,
-      description: moduleDef.description || `Properties for ${displayName}.`,
-      type: moduleDef.type,
-      default: moduleDef.default,
-      component: "DefaultComponent", // Placeholder component name
-    });
+module.exports = async (nm, api) => {
+  // Data Components - Simple Value Components
+  api.nexomaker.postEditorModule({
+    name: "craftengine_attackRange",
+    display: "Attack Range",
+    plugins: ["craftengine"],
+    compatibility: ["weapon", "tool", "item"],
+    description: "Sets the attack range for this item (minecraft:attack_range component)",
+    type: "number",
+    default: null,
   });
 
-  return MODULE_DEFINITIONS;
+  api.nexomaker.postEditorModule({
+    name: "craftengine_itemName",
+    display: "Item Name",
+    plugins: ["craftengine"],
+    compatibility: ["item", "tool", "weapon", "armor", "food", "block", "furniture"],
+    description: "Custom display name for the item",
+    type: "text",
+    default: "",
+  });
+
+  api.nexomaker.postEditorModule({
+    name: "craftengine_customName",
+    display: "Custom Name",
+    plugins: ["craftengine"],
+    compatibility: ["item", "tool", "weapon", "armor", "food", "block", "furniture"],
+    description: "Alternative custom name for the item",
+    type: "text",
+    default: "",
+  });
+
+  api.nexomaker.postEditorModule({
+    name: "craftengine_lore",
+    display: "Lore",
+    plugins: ["craftengine"],
+    compatibility: ["item", "tool", "weapon", "armor", "food", "block", "furniture"],
+    description: "Item lore (use | to separate lines)",
+    type: "text",
+    default: "",
+  });
+
+  api.nexomaker.postEditorModule({
+    name: "craftengine_overwritableLore",
+    display: "Overwritable Lore",
+    plugins: ["craftengine"],
+    compatibility: ["item", "tool", "weapon", "armor", "food", "block", "furniture"],
+    description: "Allow lore to be overwritten",
+    type: "checkbox",
+    default: false,
+  });
+
+  api.nexomaker.postEditorModule({
+    name: "craftengine_overwritableItemName",
+    display: "Overwritable Item Name",
+    plugins: ["craftengine"],
+    compatibility: ["item", "tool", "weapon", "armor", "food", "block", "furniture"],
+    description: "Allow item name to be overwritten",
+    type: "checkbox",
+    default: false,
+  });
+
+  api.nexomaker.postEditorModule({
+    name: "craftengine_enchantment",
+    display: "Enchantment",
+    plugins: ["craftengine"],
+    compatibility: ["item", "tool", "weapon", "armor"],
+    description: "Enchantment data for the item",
+    type: "text",
+    default: "",
+  });
+
+  api.nexomaker.postEditorModule({
+    name: "craftengine_dyedColor",
+    display: "Dyed Color",
+    plugins: ["craftengine"],
+    compatibility: ["armor", "item"],
+    description: "RGB color for dyed items",
+    type: "text",
+    default: "",
+  });
+
+  api.nexomaker.postEditorModule({
+    name: "craftengine_blockState",
+    display: "Block State",
+    plugins: ["craftengine"],
+    compatibility: ["block"],
+    description: "Block state properties",
+    type: "text",
+    default: "",
+  });
+
+  api.nexomaker.postEditorModule({
+    name: "craftengine_attributeModifiers",
+    display: "Attribute Modifiers",
+    plugins: ["craftengine"],
+    compatibility: ["item", "tool", "weapon", "armor"],
+    description: "Attribute modifiers for the item (YAML list format). Use the Attribute Builder tool (sidebar icon) for a visual editor, or paste YAML directly here.",
+    type: "text",
+    default: "",
+    hint: "Click the strength icon in the sidebar to open the Attribute Builder tool",
+  });
+
+  api.nexomaker.postEditorModule({
+    name: "craftengine_food",
+    display: "Food Component",
+    plugins: ["craftengine"],
+    compatibility: ["food", "item"],
+    description: "Food component data",
+    type: "text",
+    default: "",
+  });
+
+  api.nexomaker.postEditorModule({
+    name: "craftengine_jukeboxPlayable",
+    display: "Jukebox Playable",
+    plugins: ["craftengine"],
+    compatibility: ["item"],
+    description: "Configure item as jukebox playable",
+    type: "text",
+    default: "",
+  });
+
+  api.nexomaker.postEditorModule({
+    name: "craftengine_itemModel",
+    display: "Item Model",
+    plugins: ["craftengine"],
+    compatibility: ["item", "tool", "weapon", "armor", "food", "block"],
+    description: "Custom item model configuration",
+    type: "text",
+    default: "",
+  });
+
+  api.nexomaker.postEditorModule({
+    name: "craftengine_tooltipStyle",
+    display: "Tooltip Style",
+    plugins: ["craftengine"],
+    compatibility: ["item", "tool", "weapon", "armor", "food"],
+    description: "Custom tooltip styling",
+    type: "text",
+    default: "",
+  });
+
+  api.nexomaker.postEditorModule({
+    name: "craftengine_trim",
+    display: "Armor Trim",
+    plugins: ["craftengine"],
+    compatibility: ["armor"],
+    description: "Armor trim configuration",
+    type: "text",
+    default: "",
+  });
+
+  // Settings - Item Settings
+  api.nexomaker.postEditorModule({
+    name: "craftengine_fuelTime",
+    display: "Fuel Time",
+    plugins: ["craftengine"],
+    compatibility: ["item"],
+    description: "Burn time as fuel in ticks",
+    type: "number",
+    default: null,
+  });
+
+
+  api.nexomaker.postEditorModule({
+    name: "craftengine_repairable",
+    display: "Repairable",
+    plugins: ["craftengine"],
+    compatibility: ["tool", "weapon", "armor", "item"],
+    description: "Repair configuration",
+    type: "text",
+    default: "",
+  });
+
+  api.nexomaker.postEditorModule({
+    name: "craftengine_anvilRepairItem",
+    display: "Anvil Repair Item",
+    plugins: ["craftengine"],
+    compatibility: ["tool", "weapon", "armor", "item"],
+    description: "Item used for anvil repair",
+    type: "minecraftid",
+    default: "",
+  });
+
+  api.nexomaker.postEditorModule({
+    name: "craftengine_renameable",
+    display: "Renameable",
+    plugins: ["craftengine"],
+    compatibility: ["item", "tool", "weapon", "armor"],
+    description: "Allow item renaming",
+    type: "checkbox",
+    default: true,
+  });
+
+  api.nexomaker.postEditorModule({
+    name: "craftengine_projectile",
+    display: "Projectile",
+    plugins: ["craftengine"],
+    compatibility: ["weapon", "item"],
+    description: "Projectile configuration",
+    type: "text",
+    default: "",
+  });
+
+  api.nexomaker.postEditorModule({
+    name: "craftengine_dyeable",
+    display: "Dyeable",
+    plugins: ["craftengine"],
+    compatibility: ["armor", "item"],
+    description: "Allow item dyeing",
+    type: "checkbox",
+    default: false,
+  });
+
+  api.nexomaker.postEditorModule({
+    name: "craftengine_consumeReplacement",
+    display: "Consume Replacement",
+    plugins: ["craftengine"],
+    compatibility: ["food", "item"],
+    description: "Item given after consumption",
+    type: "minecraftid",
+    default: "",
+  });
+
+  api.nexomaker.postEditorModule({
+    name: "craftengine_craftRemainder",
+    display: "Craft Remainder",
+    plugins: ["craftengine"],
+    compatibility: ["item"],
+    description: "Item left after crafting",
+    type: "minecraftid",
+    default: "",
+  });
+
+  api.nexomaker.postEditorModule({
+    name: "craftengine_invulnerable",
+    display: "Invulnerable",
+    plugins: ["craftengine"],
+    compatibility: ["item", "tool", "weapon", "armor"],
+    description: "Make item invulnerable to damage",
+    type: "checkbox",
+    default: false,
+  });
+
+  api.nexomaker.postEditorModule({
+    name: "craftengine_compostProbability",
+    display: "Compost Probability",
+    plugins: ["craftengine"],
+    compatibility: ["item", "food"],
+    description: "Probability of composting success (0.0-1.0)",
+    type: "number",
+    default: null,
+  });
+
+  api.nexomaker.postEditorModule({
+    name: "craftengine_respectRepairableComponent",
+    display: "Respect Repairable Component",
+    plugins: ["craftengine"],
+    compatibility: ["tool", "weapon", "armor"],
+    description: "Respect repairable component settings",
+    type: "checkbox",
+    default: true,
+  });
+
+  api.nexomaker.postEditorModule({
+    name: "craftengine_dyeColor",
+    display: "Dye Color",
+    plugins: ["craftengine"],
+    compatibility: ["item"],
+    description: "Color when used as dye",
+    type: "text",
+    default: "",
+  });
+
+  api.nexomaker.postEditorModule({
+    name: "craftengine_fireworkColor",
+    display: "Firework Color",
+    plugins: ["craftengine"],
+    compatibility: ["item"],
+    description: "Firework color configuration",
+    type: "text",
+    default: "",
+  });
+
+  api.nexomaker.postEditorModule({
+    name: "craftengine_ingredientSubstitute",
+    display: "Ingredient Substitute",
+    plugins: ["craftengine"],
+    compatibility: ["item"],
+    description: "Substitute ingredient for recipes",
+    type: "text",
+    default: "",
+  });
+
+  api.nexomaker.postEditorModule({
+    name: "craftengine_hatHeight",
+    display: "Hat Height",
+    plugins: ["craftengine"],
+    compatibility: ["armor", "item"],
+    description: "Height offset when worn as hat",
+    type: "number",
+    default: null,
+  });
+
+  api.nexomaker.postEditorModule({
+    name: "craftengine_keepOnDeathChance",
+    display: "Keep On Death Chance",
+    plugins: ["craftengine"],
+    compatibility: ["item", "tool", "weapon", "armor"],
+    description: "Chance to keep item on death (0.0-1.0)",
+    type: "number",
+    default: null,
+  });
+
+  api.nexomaker.postEditorModule({
+    name: "craftengine_destroyOnDeathChance",
+    display: "Destroy On Death Chance",
+    plugins: ["craftengine"],
+    compatibility: ["item", "tool", "weapon", "armor"],
+    description: "Chance to destroy item on death (0.0-1.0)",
+    type: "number",
+    default: null,
+  });
+
+  api.nexomaker.postEditorModule({
+    name: "craftengine_dropDisplay",
+    display: "Drop Display",
+    plugins: ["craftengine"],
+    compatibility: ["item", "tool", "weapon", "armor"],
+    description: "Display configuration for dropped items",
+    type: "text",
+    default: "",
+  });
+
+  api.nexomaker.postEditorModule({
+    name: "craftengine_glowColor",
+    display: "Glow Color",
+    plugins: ["craftengine"],
+    compatibility: ["item", "tool", "weapon", "armor"],
+    description: "Glow color for item",
+    type: "text",
+    default: "",
+  });
+
+  // Settings - Block Settings
+  api.nexomaker.postEditorModule({
+    name: "craftengine_hardness",
+    display: "Hardness",
+    plugins: ["craftengine"],
+    compatibility: ["block"],
+    description: "Block hardness value",
+    type: "number",
+    default: null,
+  });
+
+  api.nexomaker.postEditorModule({
+    name: "craftengine_resistance",
+    display: "Resistance",
+    plugins: ["craftengine"],
+    compatibility: ["block"],
+    description: "Explosion resistance value",
+    type: "number",
+    default: null,
+  });
+
+  api.nexomaker.postEditorModule({
+    name: "craftengine_isRandomlyTicking",
+    display: "Randomly Ticking",
+    plugins: ["craftengine"],
+    compatibility: ["block"],
+    description: "Enable random tick updates",
+    type: "checkbox",
+    default: false,
+  });
+
+  api.nexomaker.postEditorModule({
+    name: "craftengine_pushReaction",
+    display: "Push Reaction",
+    plugins: ["craftengine"],
+    compatibility: ["block"],
+    description: "Piston push reaction (normal, destroy, block, ignore, push_only)",
+    type: "dropdown",
+    default: "",
+  });
+
+  api.nexomaker.postEditorModule({
+    name: "craftengine_mapColor",
+    display: "Map Color",
+    plugins: ["craftengine"],
+    compatibility: ["block"],
+    description: "Color displayed on maps",
+    type: "text",
+    default: "",
+  });
+
+  api.nexomaker.postEditorModule({
+    name: "craftengine_burnable",
+    display: "Burnable",
+    plugins: ["craftengine"],
+    compatibility: ["block"],
+    description: "Block can catch fire",
+    type: "checkbox",
+    default: false,
+  });
+
+  api.nexomaker.postEditorModule({
+    name: "craftengine_fireSpreadChance",
+    display: "Fire Spread Chance",
+    plugins: ["craftengine"],
+    compatibility: ["block"],
+    description: "Fire spread rate (0-300)",
+    type: "number",
+    default: null,
+  });
+
+  api.nexomaker.postEditorModule({
+    name: "craftengine_burnChance",
+    display: "Burn Chance",
+    plugins: ["craftengine"],
+    compatibility: ["block"],
+    description: "Fire burn rate (0-100)",
+    type: "number",
+    default: null,
+  });
+
+  api.nexomaker.postEditorModule({
+    name: "craftengine_item",
+    display: "Item",
+    plugins: ["craftengine"],
+    compatibility: ["block"],
+    description: "Item configuration for block",
+    type: "text",
+    default: "",
+  });
+
+  api.nexomaker.postEditorModule({
+    name: "craftengine_replaceable",
+    display: "Replaceable",
+    plugins: ["craftengine"],
+    compatibility: ["block"],
+    description: "Block can be replaced",
+    type: "checkbox",
+    default: false,
+  });
+
+  api.nexomaker.postEditorModule({
+    name: "craftengine_isRedstoneConductor",
+    display: "Redstone Conductor",
+    plugins: ["craftengine"],
+    compatibility: ["block"],
+    description: "Block conducts redstone",
+    type: "checkbox",
+    default: false,
+  });
+
+  api.nexomaker.postEditorModule({
+    name: "craftengine_isSuffocating",
+    display: "Suffocating",
+    plugins: ["craftengine"],
+    compatibility: ["block"],
+    description: "Block causes suffocation damage",
+    type: "checkbox",
+    default: false,
+  });
+
+  api.nexomaker.postEditorModule({
+    name: "craftengine_isViewBlocking",
+    display: "View Blocking",
+    plugins: ["craftengine"],
+    compatibility: ["block"],
+    description: "Block prevents view through",
+    type: "checkbox",
+    default: false,
+  });
+
+  api.nexomaker.postEditorModule({
+    name: "craftengine_sounds",
+    display: "Sounds",
+    plugins: ["craftengine"],
+    compatibility: ["block"],
+    description: "Block sound configuration",
+    type: "text",
+    default: "",
+  });
+
+  api.nexomaker.postEditorModule({
+    name: "craftengine_requireCorrectTools",
+    display: "Require Correct Tools",
+    plugins: ["craftengine"],
+    compatibility: ["block"],
+    description: "Require correct tool to mine",
+    type: "checkbox",
+    default: false,
+  });
+
+  api.nexomaker.postEditorModule({
+    name: "craftengine_respectToolComponent",
+    display: "Respect Tool Component",
+    plugins: ["craftengine"],
+    compatibility: ["block"],
+    description: "Respect tool component settings",
+    type: "checkbox",
+    default: true,
+  });
+
+  api.nexomaker.postEditorModule({
+    name: "craftengine_correctTools",
+    display: "Correct Tools",
+    plugins: ["craftengine"],
+    compatibility: ["block"],
+    description: "List of correct tools for mining",
+    type: "minecraftidlist",
+    default: "",
+  });
+
+  api.nexomaker.postEditorModule({
+    name: "craftengine_incorrectToolDigSpeed",
+    display: "Incorrect Tool Dig Speed",
+    plugins: ["craftengine"],
+    compatibility: ["block"],
+    description: "Dig speed with incorrect tool",
+    type: "number",
+    default: null,
+  });
+
+  api.nexomaker.postEditorModule({
+    name: "craftengine_tags",
+    display: "Tags",
+    plugins: ["craftengine"],
+    compatibility: ["block", "item"],
+    description: "Block/item tags",
+    type: "text",
+    default: "",
+  });
+
+  api.nexomaker.postEditorModule({
+    name: "craftengine_clientBoundTags",
+    display: "Client Bound Tags",
+    plugins: ["craftengine"],
+    compatibility: ["block"],
+    description: "Client-side tags",
+    type: "text",
+    default: "",
+  });
+
+  api.nexomaker.postEditorModule({
+    name: "craftengine_instrument",
+    display: "Instrument",
+    plugins: ["craftengine"],
+    compatibility: ["block"],
+    description: "Instrument configuration for note blocks",
+    type: "minecraftid",
+    default: "",
+  });
+
+  api.nexomaker.postEditorModule({
+    name: "craftengine_fluidState",
+    display: "Fluid State",
+    plugins: ["craftengine"],
+    compatibility: ["block"],
+    description: "Fluid state configuration",
+    type: "text",
+    default: "",
+  });
+
+  api.nexomaker.postEditorModule({
+    name: "craftengine_supportShape",
+    display: "Support Shape",
+    plugins: ["craftengine"],
+    compatibility: ["block"],
+    description: "Shape used for support calculations",
+    type: "text",
+    default: "",
+  });
+
+  api.nexomaker.postEditorModule({
+    name: "craftengine_friction",
+    display: "Friction",
+    plugins: ["craftengine"],
+    compatibility: ["block"],
+    description: "Block friction value (slipperiness)",
+    type: "number",
+    default: null,
+  });
+
+  api.nexomaker.postEditorModule({
+    name: "craftengine_jumpFactor",
+    display: "Jump Factor",
+    plugins: ["craftengine"],
+    compatibility: ["block"],
+    description: "Jump height multiplier",
+    type: "number",
+    default: null,
+  });
+
+  api.nexomaker.postEditorModule({
+    name: "craftengine_speedFactor",
+    display: "Speed Factor",
+    plugins: ["craftengine"],
+    compatibility: ["block"],
+    description: "Movement speed multiplier",
+    type: "number",
+    default: null,
+  });
+
+  api.nexomaker.postEditorModule({
+    name: "craftengine_luminance",
+    display: "Luminance",
+    plugins: ["craftengine"],
+    compatibility: ["block"],
+    description: "Light level emitted (0-15)",
+    type: "number",
+    default: null,
+  });
+
+  api.nexomaker.postEditorModule({
+    name: "craftengine_canOcclude",
+    display: "Can Occlude",
+    plugins: ["craftengine"],
+    compatibility: ["block"],
+    description: "Block can occlude neighboring blocks",
+    type: "checkbox",
+    default: false,
+  });
+
+  api.nexomaker.postEditorModule({
+    name: "craftengine_blockLight",
+    display: "Block Light",
+    plugins: ["craftengine"],
+    compatibility: ["block"],
+    description: "Block light level",
+    type: "number",
+    default: null,
+  });
+
+  api.nexomaker.postEditorModule({
+    name: "craftengine_propagateSkylight",
+    display: "Propagate Skylight",
+    plugins: ["craftengine"],
+    compatibility: ["block"],
+    description: "Block propagates skylight",
+    type: "checkbox",
+    default: false,
+  });
+
+  // Armor-specific modules
+  api.nexomaker.postEditorModule({
+    name: "craftengine_defense",
+    display: "Defense",
+    plugins: ["craftengine"],
+    compatibility: ["armor"],
+    description: "Armor defense value (minecraft:generic.armor)",
+    type: "number",
+    default: null,
+  });
+
+  api.nexomaker.postEditorModule({
+    name: "craftengine_toughness",
+    display: "Toughness",
+    plugins: ["craftengine"],
+    compatibility: ["armor"],
+    description: "Armor toughness value (minecraft:generic.armor_toughness)",
+    type: "number",
+    default: null,
+  });
+
+  api.nexomaker.postEditorModule({
+    name: "craftengine_fireResistant",
+    display: "Fire Resistant",
+    plugins: ["craftengine"],
+    compatibility: ["item", "tool", "weapon", "armor"],
+    description: "Item is resistant to fire and lava",
+    type: "checkbox",
+    default: false,
+  });
+
+  // ========================================
+  // NEW MISSING MODULES FROM CRAFTENGINE WIKI
+  // ========================================
+
+  // Item Data - Advanced Components
+  api.nexomaker.postEditorModule({
+    name: "craftengine_pdc",
+    display: "Persistent Data Container (PDC)",
+    plugins: ["craftengine"],
+    compatibility: ["item", "tool", "weapon", "armor", "food", "block", "furniture"],
+    description: "Custom plugin data using Persistent Data Container (YAML format)",
+    type: "text",
+    default: "",
+  });
+
+  api.nexomaker.postEditorModule({
+    name: "craftengine_externalPlugin",
+    display: "External Plugin",
+    plugins: ["craftengine"],
+    compatibility: ["item", "tool", "weapon", "armor", "food"],
+    description: "External plugin name for item compatibility (e.g., 'neigeitems')",
+    type: "text",
+    default: "",
+  });
+
+  api.nexomaker.postEditorModule({
+    name: "craftengine_externalId",
+    display: "External Item ID",
+    plugins: ["craftengine"],
+    compatibility: ["item", "tool", "weapon", "armor", "food"],
+    description: "External plugin item ID (e.g., 'namespace:path' or 'TYPE:ID' for MMOItems)",
+    type: "text",
+    default: "",
+  });
+
+  api.nexomaker.postEditorModule({
+    name: "craftengine_removeComponents",
+    display: "Remove Components (1.20.5+)",
+    plugins: ["craftengine"],
+    compatibility: ["item", "tool", "weapon", "armor", "food"],
+    description: "List of component IDs to remove (e.g., 'minecraft:equippable')",
+    type: "text",
+    default: "",
+  });
+
+  api.nexomaker.postEditorModule({
+    name: "craftengine_customComponents",
+    display: "Custom Components (1.20.5+)",
+    plugins: ["craftengine"],
+    compatibility: ["item", "tool", "weapon", "armor", "food", "block"],
+    description: "Custom Minecraft components in YAML format (advanced users)",
+    type: "text",
+    default: "",
+  });
+
+  api.nexomaker.postEditorModule({
+    name: "craftengine_nbt",
+    display: "NBT Data (1.20-1.20.4 Legacy)",
+    plugins: ["craftengine"],
+    compatibility: ["item", "tool", "weapon", "armor", "food"],
+    description: "Legacy NBT data for Minecraft 1.20-1.20.4 (YAML format)",
+    type: "text",
+    default: "",
+  });
+
+  api.nexomaker.postEditorModule({
+    name: "craftengine_clientBoundMaterial",
+    display: "Client Bound Material (Premium)",
+    plugins: ["craftengine"],
+    compatibility: ["item", "block"],
+    description: "Client-side only material override (requires Premium edition)",
+    type: "minecraftid",
+    default: "",
+  });
+
+  // Item Settings - Client Bound
+  api.nexomaker.postEditorModule({
+    name: "craftengine_clientBoundDataComponents",
+    display: "Client Bound Data Components (Premium)",
+    plugins: ["craftengine"],
+    compatibility: ["item", "tool", "weapon", "armor", "food", "block"],
+    description: "Client-side only data components in YAML format (requires Premium)",
+    type: "text",
+    default: "",
+  });
+
+  // Furniture Settings - Item Reference
+  api.nexomaker.postEditorModule({
+    name: "craftengine_furnitureItem",
+    display: "Furniture Item Reference",
+    plugins: ["craftengine"],
+    compatibility: ["furniture"],
+    description: "Item ID for this furniture (for creative mode middle-click on 1.21.4+)",
+    type: "minecraftid",
+    default: "",
+  });
+
+  api.nexomaker.postEditorModule({
+    name: "craftengine_furnitureSoundBreak",
+    display: "Furniture Break Sound",
+    plugins: ["craftengine"],
+    compatibility: ["furniture"],
+    description: "Sound when breaking furniture (e.g., 'minecraft:block.bamboo_wood.break')",
+    type: "text",
+    default: "",
+  });
+
+  api.nexomaker.postEditorModule({
+    name: "craftengine_furnitureSoundPlace",
+    display: "Furniture Place Sound",
+    plugins: ["craftengine"],
+    compatibility: ["furniture"],
+    description: "Sound when placing furniture (e.g., 'minecraft:block.bamboo_wood.place')",
+    type: "text",
+    default: "",
+  });
+
+  // Enable basic built-in modules for CraftEngine format (for learning)
+  // Uncomment more modules as needed
+  api.console.log("?? [CraftEngine] Applying basic module overrides...");
+  const overrideResult = nm.postEditorModuleOverrides({
+    // Essential weapon/tool modules
+    'damage': { plugins: ['nexo', 'itemsadder', 'craftengine'] },
+    'durability': { plugins: ['nexo', 'itemsadder', 'craftengine'] },
+    
+    // Essential item modules  
+    'customModelData': { plugins: ['nexo', 'itemsadder', 'craftengine'] },
+    'baseMaterial': { plugins: ['nexo', 'itemsadder', 'craftengine'] },
+    'lore': { plugins: ['nexo', 'itemsadder', 'craftengine'] },
+    
+    // Item modules
+    'displayTransform': { plugins: ['nexo', 'itemsadder', 'craftengine'] },
+    'blockInteractionRange': { plugins: ['nexo', 'itemsadder', 'craftengine'] },
+    'blockBreakSpeed': { plugins: ['nexo', 'itemsadder', 'craftengine'] },
+    'useCooldown': { plugins: ['nexo', 'itemsadder', 'craftengine'] },
+    'enchantable': { plugins: ['nexo', 'itemsadder', 'craftengine'] },
+    'exclude-from-inventory': { plugins: ['nexo', 'itemsadder', 'craftengine'], description: 'Prevents the item from appearing in the plugin GUI.' },
+    'repairable': { plugins: ['nexo', 'itemsadder', 'craftengine'] },
+    'hideTooltip': { plugins: ['nexo', 'itemsadder', 'craftengine'] },
+    'recipe': { plugins: ['nexo', 'itemsadder', 'craftengine'] },
+    'disableEnchanting': { plugins: ['nexo', 'itemsadder', 'craftengine'] },
+    'enchantmentGlintOverride': { plugins: ['nexo', 'itemsadder', 'craftengine'] },
+    'equippable': { plugins: ['nexo', 'itemsadder', 'craftengine'] },
+    'gravity': { plugins: ['nexo', 'itemsadder', 'craftengine'] },
+    'jumpStrength': { plugins: ['nexo', 'itemsadder', 'craftengine'] },
+    'knockbackResistance': { plugins: ['nexo', 'itemsadder', 'craftengine'] },
+    'luck': { plugins: ['nexo', 'itemsadder', 'craftengine'] },
+    'max-health': { plugins: ['nexo', 'itemsadder', 'craftengine'] },
+    'maxAbsorption': { plugins: ['nexo', 'itemsadder', 'craftengine'] },
+    'maxStackSize': { plugins: ['nexo', 'itemsadder', 'craftengine'] },
+    'movementEfficiency': { plugins: ['nexo', 'itemsadder', 'craftengine'] },
+    'unbreakable': { plugins: ['nexo', 'itemsadder', 'craftengine'] },
+    'nutrition': { plugins: ['nexo', 'itemsadder', 'craftengine'] },
+    'saturation': { plugins: ['nexo', 'itemsadder', 'craftengine'] },
+    'consumable': { plugins: ['nexo', 'itemsadder', 'craftengine'] },
+  
+    // Block modules
+    'block-hardness': { plugins: ['nexo', 'itemsadder', 'craftengine'] },
+    'block-explosion-resistance': { plugins: ['nexo', 'itemsadder', 'craftengine'] },
+    'block-mining-tool': { plugins: ['nexo', 'itemsadder', 'craftengine'] },
+    'block-mining-level': { plugins: ['nexo', 'itemsadder', 'craftengine'] },
+    'block-drops': { plugins: ['nexo', 'itemsadder', 'craftengine'] },
+    'block-silk-touch-drops': { plugins: ['nexo', 'itemsadder', 'craftengine'] },
+    'block-flammable': { plugins: ['nexo', 'itemsadder', 'craftengine'] },
+    'block-gravity': { plugins: ['nexo', 'itemsadder', 'craftengine'] },
+    'block-light-emission': { plugins: ['nexo', 'itemsadder', 'craftengine'] },
+    'block-placement-rules': { plugins: ['nexo', 'itemsadder', 'craftengine'] },
+    'block-sounds': { plugins: ['nexo', 'itemsadder', 'craftengine'] },
+    'block-transparent': { plugins: ['nexo', 'itemsadder', 'craftengine'] },
+    'block-waterloggable': { plugins: ['nexo', 'itemsadder', 'craftengine'] },
+    // Furniture modules
+    'furniture-display-transform': { plugins: ['nexo', 'itemsadder', 'craftengine'] },
+    'furniture-block_light': { plugins: ['nexo', 'itemsadder', 'craftengine'] },
+    'furniture-block_sounds-break_sound': { plugins: ['nexo', 'itemsadder', 'craftengine'] },
+    'furniture-block_sounds-place_sound': { plugins: ['nexo', 'itemsadder', 'craftengine'] },
+    'furniture-block_sounds-fall_sound': { plugins: ['nexo', 'itemsadder', 'craftengine'] },
+    'furniture-block_sounds-hit_sound': { plugins: ['nexo', 'itemsadder', 'craftengine'] },
+    'furniture-block_sounds-step_sound': { plugins: ['nexo', 'itemsadder', 'craftengine'] },
+    'furniture-drop-silktouch': { plugins: ['nexo', 'itemsadder', 'craftengine'] },
+    'furniture-hitbox-barrier': { plugins: ['nexo', 'itemsadder', 'craftengine'] },
+    'furniture-hitbox-interactions': { plugins: ['nexo', 'itemsadder', 'craftengine'] },
+    'furniture-hitbox-shulkers': { plugins: ['nexo', 'itemsadder', 'craftengine'] },
+    'furniture-limited_placing-floor': { plugins: ['nexo', 'itemsadder', 'craftengine'] },
+    'furniture-limited_placing-roof': { plugins: ['nexo', 'itemsadder', 'craftengine'] },
+    'furniture-limited_placing-wall': { plugins: ['nexo', 'itemsadder', 'craftengine'] },
+    'furniture-limited_placing-type': { plugins: ['nexo', 'itemsadder', 'craftengine'] },
+    'furniture-loot': { plugins: ['nexo', 'itemsadder', 'craftengine'] },
+    'furniture-restricted-rotation': { plugins: ['nexo', 'itemsadder', 'craftengine'] },
+    'furniture-rotatable': { plugins: ['nexo', 'itemsadder', 'craftengine'] },
+    'furniture-sky_light': { plugins: ['nexo', 'itemsadder', 'craftengine'] },
+    'furniture-tracking-rotation': { plugins: ['nexo', 'itemsadder', 'craftengine'] },
+
+  });
+  api.console.log("? [CraftEngine] Module overrides applied:", overrideResult);
 };
