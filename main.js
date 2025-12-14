@@ -1,5 +1,6 @@
 ﻿module.exports.init = async () => {
   const nm = api.nexomaker;
+<<<<<<< HEAD
   const itemTransformer = require("./transformers/transformer.js");
 
   // Register compatibility for built-in creators
@@ -37,9 +38,21 @@
 
   api.console.log('✓ CraftEngine expansion loaded.');
 }
+=======
+  const itemTransformer = require("./transformers/item.js");
+  
+  // Register compatibility for built-in creators
+  require('./registers/RegisterCreators.js')(nm);
+
+  // Register export formats
+  require('./registers/RegisterExportFormats.js')(nm, itemTransformer);
+
+  api.console.log(' CraftEngine expansion loaded.');
+};
+>>>>>>> 63ce9621209cb61262383f9443d1024bdf884edd
 
 module.exports.metadata = {
   id: 'craftengine_expansion',
-  version: '0.0.1-Alpha',
-  author: 'TamashiiMon, DeonixxStudio',
+  version: '0.0.2-Alpha',
+  author: 'TamashiiMon, DeonixxStudio, dodi2020',
 };
