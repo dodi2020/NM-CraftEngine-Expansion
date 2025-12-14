@@ -40,6 +40,6 @@
 
 module.exports.metadata = {
   id: 'craftengine_expansion',
-  version: '0.0.1-Alpha',
-  author: 'TamashiiMon, DeonixxStudio',
+  version: '0.0.5-Alpha',
+  author: 'dodi2020, TamashiiMon, DeonixxStudio',
 };
