@@ -1,69 +1,45 @@
-module.exports.init = async () => {
+﻿module.exports.init = async () => {
   const nm = api.nexomaker;
+  const itemTransformer = require("./transformers/transformer.js");
+
+  // Register compatibility for built-in creators
+  require('./registers/RegisterCreators.js')(nm);
+
+  // Register editor modules
+  require('./registers/RegisterEditorModules.js')(nm, api);
+
+  // Register export formats
+  require('./registers/RegisterExportFormats.js')(nm, itemTransformer);
+
+  // Register Attribute Modifier Builder as a background module (overlay)
+  nm.registerBackgroundModule(
+    'craftengine-attribute-builder',
+    __dirname + '/pages/AttributeModifierBuilder.jsx',
+    { zIndex: 2000 }
+  );
 
 
-  const itemTransformer = api.require("./transformers/item.js");
-  
-  // TODO: Add all needed modules for CraftEngine.
-  // const itemModules = api.require("./modules/item.js")
 
-  // itemModules.regiter(nm);
+  nm.regRoute('attributeBuilderVisible', __dirname + '/pages/AttributeModifierBuilder.jsx');
 
-  nm.registerExportFormat({
-    id: 'CraftEngine',
-    name: 'CraftEngine Format',
-    
-    transform: (item, context) => {
-      if (item.type === 'item') {
-        return itemTransformer.transform(item, context);
-      }
-      return null;
-    },
 
-    files: {
-      perNamespace: true,
-      output: 'resources/{projectId}/configuration/{folder}/{namespace}.yml',
 
-      assets: (context) => {
-        const { item, assetType, assetName, projectId, namespace, folder } = context;
+  // Add sidebar icon to toggle the builder
+  nm.postSidebarIcon({
+    id: 'craftengine-attribute-builder-btn',
+    key: 'craftengine_attribute_builder_key',
+    icon: 'assets/icons8-strength.png', // Attribute/strength icon
+    tooltip: 'Attribute Modifier Builder',
+    route: '/pages',
+    page: 'attributeBuilderVisible',
+});
 
-        if (item.type === 'item') {
-          if (assetType === 'model') {
-            return `resources/${projectId}/resourcepack/assets/${projectId}/models/item/${folder}/${assetName}`;
-          } else if (assetType === 'texture') {
-            return `resources/${projectId}/resourcepack/assets/${projectId}/texture/item/${folder}/${assetName}`;
-          }
-        }
 
-        if (item.type === 'block') {
-          if (assetType === 'model') {
-            return `resources/${projectId}/resourcepack/assets/${projectId}/models/block/${folder}/${assetName}`;
-          } else if (assetType === 'texture') {
-            return `resources/${projectId}/resourcepack/assets/${projectId}/texture/block/${folder}/${assetName}`;
-          }
-        }
-        return null;
-
-      }
-    },
-    
-    hooks: {
-      canExport: (item) => true,
-      
-      finalize: (allTransformedItems) => {
-        return {
-          items: allTransformedItems
-        };
-      },
-      
-    },
-  });
-
-  api.console.log('✅ CraftEngine format registered.');
-};
+  api.console.log('✓ CraftEngine expansion loaded.');
+}
 
 module.exports.metadata = {
   id: 'craftengine_expansion',
-  version: '0.0.1-Alpha',
-  author: 'TamashiiMon, DeonixxStudio',
+  version: '0.0.5-Alpha',
+  author: 'dodi2020, TamashiiMon, DeonixxStudio',
 };
