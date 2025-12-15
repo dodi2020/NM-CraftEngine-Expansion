@@ -1,4 +1,4 @@
-﻿module.exports = (nm) => {
+module.exports = (nm) => {
   // Enable built-in creators for CraftEngine projects
   nm.postCreatorTypeCompatibilities({
     'create_weapon': ['craftengine'],

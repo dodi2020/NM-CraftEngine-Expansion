@@ -1,4 +1,4 @@
-﻿module.exports.init = async () => {
+module.exports.init = async () => {
   const nm = api.nexomaker;
   const itemTransformer = require("./transformers/transformer.js");
 
