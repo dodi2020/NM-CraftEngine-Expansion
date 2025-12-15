@@ -31,14 +31,14 @@
   padding: 20px;
   background: var(--col-input-default);
   border: 1px solid var(--col-ouliner-default);
-  borderRadius: var(--radius-md);
+  border-radius: var(--radius-md);
 }
 
 .modifier-item {
   padding: 12px;
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid var(--col-ouliner-default);
-  borderRadius: var(--radius-sm);
+  border-radius: var(--radius-sm);
   margin-bottom: 8px;
   display: flex;
   justify-content: space-between;
@@ -59,7 +59,7 @@
   padding: 12px;
   background: rgba(0, 0, 0, 0.2);
   border: 1px solid var(--col-ouliner-default);
-  borderRadius: var(--radius-sm);
+  border-radius: var(--radius-sm);
   font-size: 13px;
   font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
   overflow-x: auto;
