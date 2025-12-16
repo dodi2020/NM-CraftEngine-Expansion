@@ -1,579 +1,682 @@
-///**
-// * Attribute Modifier Builder
-// * A visual tool for building CraftEngine attribute modifier YAML
-// */
-//
-module.exports = ({ useState, useEffect, useGlobalState, api }) => {
-  // Visibility control
-  const [isVisible, setIsVisible] = useGlobalState('attributeBuilderVisible', false);
-
-  // State for attribute modifiers list
-  const [modifiers, setModifiers] = useState([]);
-  const [selectedIndex, setSelectedIndex] = useState(null);
-
-  // State for current modifier being edited
-  const [currentModifier, setCurrentModifier] = useState({
-    type: 'attack_damage',
-    amount: 1.0,
-    operation: 'add_value',
-    slot: 'mainhand',
-    id: '',
-    displayType: 'default',
-    displayValue: ''
-  });
-
-  // Available attribute types
-  const attributeTypes = [
-    'attack_damage', 'attack_knockback', 'attack_speed',
-    'armor', 'armor_toughness', 'knockback_resistance',
-    'max_health', 'movement_speed', 'flying_speed',
-    'luck', 'step_height', 'scale', 'gravity',
-    'jump_strength', 'burning_time', 'explosion_knockback_resistance',
-    'movement_efficiency', 'oxygen_bonus', 'water_movement_efficiency'
+module.exports = ({ useState, useEffect }) => {
+  // Available Minecraft attributes
+  const ATTRIBUTES = [
+    'attack_damage',
+    'attack_knockback',
+    'attack_speed',
+    'armor',
+    'armor_toughness',
+    'knockback_resistance',
+    'max_health',
+    'movement_speed',
+    'flying_speed',
+    'luck',
+    'step_height',
+    'scale',
+    'gravity',
+    'jump_strength',
+    'burning_time',
+    'explosion_knockback_resistance',
+    'movement_efficiency',
+    'oxygen_bonus',
+    'water_movement_efficiency'
   ];
 
-  // Available operations
-  const operations = [
-    { value: 'add_value', label: 'Add Value' },
-    { value: 'add_multiplied_base', label: 'Add Multiplied Base' },
-    { value: 'add_multiplied_total', label: 'Add Multiplied Total' }
+  // Equipment slots
+  const SLOTS = [
+    'mainhand',
+    'offhand',
+    'head',
+    'chest',
+    'legs',
+    'feet',
+    'body'
   ];
 
-  // Available slots
-  const slots = [
-    'any', 'hand', 'armor', 'mainhand', 'offhand',
-    'head', 'chest', 'legs', 'feet', 'body'
+  // Operations
+  const OPERATIONS = [
+    { value: 'add_value', label: 'Add Value', symbol: '+' },
+    { value: 'add_multiplied_base', label: 'Add Multiplied Base', symbol: '+%' },
+    { value: 'add_multiplied_total', label: 'Add Multiplied Total', symbol: 'x%' }
   ];
 
-  // Add new modifier to list
-  const addModifier = () => {
-    const newModifier = { ...currentModifier };
-    if (selectedIndex !== null) {
-      const updated = [...modifiers];
-      updated[selectedIndex] = newModifier;
-      setModifiers(updated);
-      setSelectedIndex(null);
+  // Load saved data from localStorage
+  const loadSavedData = () => {
+    try {
+      const saved = localStorage.getItem('attributeModifierBuilder');
+      if (saved) {
+        return JSON.parse(saved);
+      }
+    } catch (err) {
+      console.error('Failed to load saved data:', err);
+    }
+    return null;
+  };
+
+  const savedData = loadSavedData();
+
+  // State for modifiers list
+  const [modifiers, setModifiers] = useState(savedData?.modifiers || []);
+
+  // State for current modifier being built
+  const [currentAttribute, setCurrentAttribute] = useState(savedData?.currentAttribute || 'attack_damage');
+  const [currentSlots, setCurrentSlots] = useState(savedData?.currentSlots || ['mainhand']);
+  const [currentOperation, setCurrentOperation] = useState(savedData?.currentOperation || 'add_value');
+  const [currentAmount, setCurrentAmount] = useState(savedData?.currentAmount || '1.0');
+
+  // State for output format
+  const [outputFormat, setOutputFormat] = useState(savedData?.outputFormat || 'craftengine');
+  const [copySuccess, setCopySuccess] = useState('');
+
+  // Save to localStorage whenever state changes
+  useEffect(() => {
+    try {
+      const dataToSave = {
+        modifiers,
+        currentAttribute,
+        currentSlots,
+        currentOperation,
+        currentAmount,
+        outputFormat
+      };
+      localStorage.setItem('attributeModifierBuilder', JSON.stringify(dataToSave));
+    } catch (err) {
+      console.error('Failed to save data:', err);
+    }
+  }, [modifiers, currentAttribute, currentSlots, currentOperation, currentAmount, outputFormat]);
+
+  // Toggle slot selection
+  const toggleSlot = (slot) => {
+    if (currentSlots.includes(slot)) {
+      setCurrentSlots(currentSlots.filter(s => s !== slot));
     } else {
-      setModifiers([...modifiers, newModifier]);
-    }
-    resetForm();
-  };
-
-  // Edit existing modifier
-  const editModifier = (index) => {
-    setCurrentModifier(modifiers[index]);
-    setSelectedIndex(index);
-  };
-
-  // Remove modifier
-  const removeModifier = (index) => {
-    setModifiers(modifiers.filter((_, i) => i !== index));
-    if (selectedIndex === index) {
-      resetForm();
-      setSelectedIndex(null);
+      setCurrentSlots([...currentSlots, slot]);
     }
   };
 
-  // Reset form
-  const resetForm = () => {
-    setCurrentModifier({
-      type: 'attack_damage',
-      amount: 1.0,
-      operation: 'add_value',
-      slot: 'mainhand',
-      id: '',
-      displayType: 'default',
-      displayValue: ''
-    });
+  // Add modifier to list
+  const addModifier = () => {
+    if (currentSlots.length === 0) {
+      alert('Please select at least one slot');
+      return;
+    }
+
+    const newModifiers = currentSlots.map(slot => ({
+      id: Date.now() + Math.random(), // Unique ID for each
+      attribute: currentAttribute,
+      slot: slot,
+      operation: currentOperation,
+      amount: parseFloat(currentAmount) || 0
+    }));
+
+    setModifiers([...modifiers, ...newModifiers]);
+
+    // Reset form
+    setCurrentAmount('1.0');
+    setCopySuccess('');
   };
 
-  // Generate YAML output
-  const generateYAML = () => {
-    if (modifiers.length === 0) return '';
-
-    return modifiers.map(mod => {
-      let yaml = `- type: ${mod.type}\n`;
-      yaml += `  amount: ${mod.amount}\n`;
-      yaml += `  operation: ${mod.operation}`;
-
-      if (mod.id && mod.id.trim() !== '') {
-        yaml += `\n  id: ${mod.id}`;
-      }
-
-      yaml += `\n  slot: ${mod.slot}`;
-
-      if (mod.displayType !== 'default' && mod.displayValue && mod.displayValue.trim() !== '') {
-        yaml += `\n  display:\n    type: ${mod.displayType}\n    value: ${mod.displayValue}`;
-      }
-
-      return yaml;
-    }).join('\n');
+  // Remove modifier from list
+  const removeModifier = (id) => {
+    setModifiers(modifiers.filter(m => m.id !== id));
+    setCopySuccess('');
   };
 
-  // Copy YAML to clipboard
-  const copyToClipboard = () => {
-    const yaml = generateYAML();
-    if (yaml) {
-      navigator.clipboard.writeText(yaml).then(() => {
-        api.notification.success('Copied to clipboard!');
+  // Clear all modifiers
+  const clearAll = () => {
+    setModifiers([]);
+    setCopySuccess('');
+  };
+
+  // Clear everything (reset to defaults)
+  const clearEverything = () => {
+    if (confirm('Are you sure you want to clear everything? This will reset all modifiers and settings.')) {
+      setModifiers([]);
+      setCurrentAttribute('attack_damage');
+      setCurrentSlots(['mainhand']);
+      setCurrentOperation('add_value');
+      setCurrentAmount('1.0');
+      setOutputFormat('craftengine');
+      setCopySuccess('');
+      localStorage.removeItem('attributeModifierBuilder');
+    }
+  };
+
+  // Generate output based on format
+  const generateOutput = () => {
+    if (modifiers.length === 0) {
+      return '# No modifiers added yet';
+    }
+
+    if (outputFormat === 'craftengine') {
+      let output = '';
+      modifiers.forEach(mod => {
+        output += `- type: ${mod.attribute}\n`;
+        output += `  amount: ${mod.amount}\n`;
+        output += `  operation: ${mod.operation}\n`;
+        output += `  slot: ${mod.slot}\n`;
       });
+      return output;
+    } else if (outputFormat === 'json') {
+      const jsonModifiers = modifiers.map(mod => ({
+        type: mod.attribute,
+        amount: mod.amount,
+        operation: mod.operation,
+        slot: mod.slot
+      }));
+      return JSON.stringify({ "attribute-modifiers": jsonModifiers }, null, 2);
+    } else if (outputFormat === 'compact') {
+      let output = '';
+      modifiers.forEach(mod => {
+        output += `- type: ${mod.attribute}, amount: ${mod.amount}, operation: ${mod.operation}, slot: ${mod.slot}\n`;
+      });
+      return output;
     }
   };
 
-  const h = React.createElement;
+  // Copy to clipboard
+  const copyToClipboard = () => {
+    const output = generateOutput();
 
-  // Don't render if not visible
-  if (!isVisible) return null;
+    // Create a temporary textarea element
+    const textarea = document.createElement('textarea');
+    textarea.value = output;
+    textarea.style.position = 'fixed';
+    textarea.style.opacity = '0';
+    document.body.appendChild(textarea);
 
-  return h('div', {
-    style: {
-      position: 'fixed',
-      top: 0,
-      left: 0,
-      right: 0,
-      bottom: 0,
-      background: 'rgba(0, 0, 0, 0.5)',
-      zIndex: 2000,
-      overflow: 'auto',
-      padding: '40px 20px'
+    try {
+      textarea.select();
+      document.execCommand('copy');
+      setCopySuccess('Copied to clipboard!');
+      setTimeout(() => setCopySuccess(''), 3000);
+    } catch (err) {
+      // Fallback to modern clipboard API
+      navigator.clipboard.writeText(output).then(() => {
+        setCopySuccess('Copied to clipboard!');
+        setTimeout(() => setCopySuccess(''), 3000);
+      }).catch(clipErr => {
+        setCopySuccess('Failed to copy');
+        console.error('Copy failed:', clipErr);
+      });
+    } finally {
+      document.body.removeChild(textarea);
     }
-  }, [
-    h('div', {
-      key: 'modal-content',
-      style: {
+  };
+
+  // Get operation label
+  const getOperationLabel = (operation) => {
+    const op = OPERATIONS.find(o => o.value === operation);
+    return op ? op.label : operation;
+  };
+
+  return (
+    <div style={{
+      width: '100%',
+      height: '100vh',
+      overflow: 'auto',
+      backgroundColor: '#1e1e1e',
+      color: '#e0e0e0'
+    }}>
+      <div style={{
+        padding: '20px',
         maxWidth: '1200px',
         margin: '0 auto',
-        background: 'var(--col-background-primary)',
-        borderRadius: 'var(--radius-lg)',
-        boxShadow: '0 10px 40px rgba(0,0,0,0.3)',
-        position: 'relative'
-      }
-    }, [
-      // Close button
-      h('button', {
-        key: 'close-btn',
-        onClick: () => setIsVisible(false),
-        style: {
-          position: 'absolute',
-          top: '16px',
-          right: '16px',
-          width: '32px',
-          height: '32px',
-          borderRadius: '50%',
-          background: 'var(--col-danger)',
-          color: 'white',
-          border: 'none',
-          cursor: 'pointer',
-          fontSize: '18px',
+        fontFamily: 'system-ui, -apple-system, sans-serif',
+        paddingBottom: '40px'
+      }}>
+      <div style={{
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        marginBottom: '30px',
+        borderBottom: '2px solid #3a3a3a',
+        paddingBottom: '20px'
+      }}>
+        <h1 style={{
+          margin: 0,
+          fontSize: '28px',
           fontWeight: 'bold',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          zIndex: 10
-        }
-      }, '×'),
+          color: '#fff'
+        }}>
+          Minecraft Attribute Modifier Builder
+        </h1>
+        <button
+          onClick={clearEverything}
+          style={{
+            padding: '10px 20px',
+            fontSize: '14px',
+            fontWeight: 'bold',
+            backgroundColor: '#d32f2f',
+            color: 'white',
+            border: 'none',
+            borderRadius: '4px',
+            cursor: 'pointer',
+            transition: 'background-color 0.3s'
+          }}
+          onMouseOver={(e) => e.target.style.backgroundColor = '#b71c1c'}
+          onMouseOut={(e) => e.target.style.backgroundColor = '#d32f2f'}
+        >
+          Clear Everything
+        </button>
+      </div>
 
-      // Main content
-      h('div', {
-        key: 'content-wrapper',
-        style: {
-          padding: '20px',
-          color: 'var(--col-txt-primary)'
-        }
-      }, [
-    // Header
-    h('div', {
-      key: 'header',
-      style: {
-        marginBottom: '24px',
-        borderBottom: '2px solid var(--col-ouliner-default)',
-        paddingBottom: '16px'
-      }
-    }, [
-      h('h1', {
-        key: 'title',
-        style: { margin: '0 0 8px 0', fontSize: '24px', color: 'var(--col-txt-primary)' }
-      }, 'Attribute Modifier Builder'),
-      h('p', {
-        key: 'desc',
-        style: { margin: 0, color: 'var(--col-txt-secondary)', fontSize: '14px' }
-      }, 'Build attribute modifiers visually for CraftEngine items')
-    ]),
-
-    // Main content grid
-    h('div', {
-      key: 'content',
-      style: {
+      <div style={{
         display: 'grid',
         gridTemplateColumns: '1fr 1fr',
-        gap: '20px',
+        gap: '30px',
         marginBottom: '20px'
-      }
-    }, [
-      // Left panel - Form
-      h('div', {
-        key: 'form-panel',
-        style: {
-          padding: '20px',
-          background: 'var(--col-input-default)',
-          border: '1px solid var(--col-ouliner-default)',
-          borderRadius: 'var(--radius-md)'
-        }
-      }, [
-        h('h2', {
-          key: 'form-title',
-          style: { marginTop: 0, fontSize: '18px', marginBottom: '16px' }
-        }, selectedIndex !== null ? 'Edit Modifier' : 'Add Modifier'),
+      }}>
+        {/* Left Panel - Builder */}
+        <div style={{
+          backgroundColor: '#2a2a2a',
+          padding: '25px',
+          borderRadius: '8px',
+          border: '1px solid #3a3a3a'
+        }}>
+          <h2 style={{
+            marginTop: 0,
+            marginBottom: '20px',
+            fontSize: '20px',
+            color: '#fff',
+            borderBottom: '1px solid #3a3a3a',
+            paddingBottom: '10px'
+          }}>
+            Add Modifier
+          </h2>
 
-        // Attribute Type
-        h('div', { key: 'type-group', style: { marginBottom: '16px' } }, [
-          h('label', {
-            key: 'type-label',
-            style: { display: 'block', marginBottom: '6px', fontSize: '14px', fontWeight: '500' }
-          }, 'Attribute Type'),
-          h('select', {
-            key: 'type-select',
-            value: currentModifier.type,
-            onChange: (e) => setCurrentModifier({ ...currentModifier, type: e.target.value }),
-            style: {
-              width: '100%',
-              padding: '8px 12px',
-              background: 'var(--col-input-default)',
-              border: '1px solid var(--col-ouliner-default)',
-              borderRadius: 'var(--radius-sm)',
-              color: 'var(--col-txt-primary)',
-              fontSize: '14px'
-            }
-          }, attributeTypes.map(type =>
-            h('option', { key: type, value: type }, type.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase()))
-          ))
-        ]),
+          <div style={{ marginBottom: '15px' }}>
+            <label style={{
+              display: 'block',
+              marginBottom: '5px',
+              fontSize: '14px',
+              color: '#b0b0b0',
+              fontWeight: '500'
+            }}>
+              Attribute:
+            </label>
+            <select
+              value={currentAttribute}
+              onChange={(e) => setCurrentAttribute(e.target.value)}
+              style={{
+                width: '100%',
+                padding: '10px',
+                fontSize: '14px',
+                backgroundColor: '#1e1e1e',
+                color: '#e0e0e0',
+                border: '1px solid #4a4a4a',
+                borderRadius: '4px',
+                cursor: 'pointer'
+              }}
+            >
+              {ATTRIBUTES.map(attr => (
+                <option key={attr} value={attr}>{attr}</option>
+              ))}
+            </select>
+          </div>
 
-        // Amount
-        h('div', { key: 'amount-group', style: { marginBottom: '16px' } }, [
-          h('label', {
-            key: 'amount-label',
-            style: { display: 'block', marginBottom: '6px', fontSize: '14px', fontWeight: '500' }
-          }, 'Amount'),
-          h('input', {
-            key: 'amount-input',
-            type: 'number',
-            step: '0.1',
-            value: currentModifier.amount,
-            onChange: (e) => setCurrentModifier({ ...currentModifier, amount: parseFloat(e.target.value) || 0 }),
-            style: {
-              width: '100%',
-              padding: '8px 12px',
-              background: 'var(--col-input-default)',
-              border: '1px solid var(--col-ouliner-default)',
-              borderRadius: 'var(--radius-sm)',
-              color: 'var(--col-txt-primary)',
-              fontSize: '14px'
-            }
-          })
-        ]),
-
-        // Operation
-        h('div', { key: 'operation-group', style: { marginBottom: '16px' } }, [
-          h('label', {
-            key: 'operation-label',
-            style: { display: 'block', marginBottom: '6px', fontSize: '14px', fontWeight: '500' }
-          }, 'Operation'),
-          h('select', {
-            key: 'operation-select',
-            value: currentModifier.operation,
-            onChange: (e) => setCurrentModifier({ ...currentModifier, operation: e.target.value }),
-            style: {
-              width: '100%',
-              padding: '8px 12px',
-              background: 'var(--col-input-default)',
-              border: '1px solid var(--col-ouliner-default)',
-              borderRadius: 'var(--radius-sm)',
-              color: 'var(--col-txt-primary)',
-              fontSize: '14px'
-            }
-          }, operations.map(op =>
-            h('option', { key: op.value, value: op.value }, op.label)
-          ))
-        ]),
-
-        // Slot
-        h('div', { key: 'slot-group', style: { marginBottom: '16px' } }, [
-          h('label', {
-            key: 'slot-label',
-            style: { display: 'block', marginBottom: '6px', fontSize: '14px', fontWeight: '500' }
-          }, 'Slot'),
-          h('select', {
-            key: 'slot-select',
-            value: currentModifier.slot,
-            onChange: (e) => setCurrentModifier({ ...currentModifier, slot: e.target.value }),
-            style: {
-              width: '100%',
-              padding: '8px 12px',
-              background: 'var(--col-input-default)',
-              border: '1px solid var(--col-ouliner-default)',
-              borderRadius: 'var(--radius-sm)',
-              color: 'var(--col-txt-primary)',
-              fontSize: '14px'
-            }
-          }, slots.map(slot =>
-            h('option', { key: slot, value: slot }, slot.charAt(0).toUpperCase() + slot.slice(1))
-          ))
-        ]),
-
-        // Optional ID
-        h('div', { key: 'id-group', style: { marginBottom: '16px' } }, [
-          h('label', {
-            key: 'id-label',
-            style: { display: 'block', marginBottom: '6px', fontSize: '14px', fontWeight: '500' }
-          }, 'Custom ID (Optional)'),
-          h('input', {
-            key: 'id-input',
-            type: 'text',
-            placeholder: 'namespace:custom_attribute',
-            value: currentModifier.id,
-            onChange: (e) => setCurrentModifier({ ...currentModifier, id: e.target.value }),
-            style: {
-              width: '100%',
-              padding: '8px 12px',
-              background: 'var(--col-input-default)',
-              border: '1px solid var(--col-ouliner-default)',
-              borderRadius: 'var(--radius-sm)',
-              color: 'var(--col-txt-primary)',
-              fontSize: '14px'
-            }
-          })
-        ]),
-
-        // Display Override (1.21.5+)
-        h('div', { key: 'display-group', style: { marginBottom: '16px' } }, [
-          h('label', {
-            key: 'display-label',
-            style: { display: 'block', marginBottom: '6px', fontSize: '14px', fontWeight: '500' }
-          }, 'Display Override (1.21.5+)'),
-          h('select', {
-            key: 'display-type-select',
-            value: currentModifier.displayType,
-            onChange: (e) => setCurrentModifier({ ...currentModifier, displayType: e.target.value }),
-            style: {
-              width: '100%',
-              padding: '8px 12px',
+          <div style={{ marginBottom: '15px' }}>
+            <label style={{
+              display: 'block',
               marginBottom: '8px',
-              background: 'var(--col-input-default)',
-              border: '1px solid var(--col-ouliner-default)',
-              borderRadius: 'var(--radius-sm)',
-              color: 'var(--col-txt-primary)',
-              fontSize: '14px'
-            }
-          }, [
-            h('option', { key: 'default', value: 'default' }, 'None'),
-            h('option', { key: 'override', value: 'override' }, 'Override')
-          ]),
-          currentModifier.displayType !== 'default' && h('input', {
-            key: 'display-value-input',
-            type: 'text',
-            placeholder: '<yellow>Attack Speed +1',
-            value: currentModifier.displayValue,
-            onChange: (e) => setCurrentModifier({ ...currentModifier, displayValue: e.target.value }),
-            style: {
-              width: '100%',
-              padding: '8px 12px',
-              background: 'var(--col-input-default)',
-              border: '1px solid var(--col-ouliner-default)',
-              borderRadius: 'var(--radius-sm)',
-              color: 'var(--col-txt-primary)',
-              fontSize: '14px'
-            }
-          })
-        ]),
-
-        // Action buttons
-        h('div', { key: 'actions', style: { display: 'flex', gap: '8px' } }, [
-          h('button', {
-            key: 'add-btn',
-            onClick: addModifier,
-            style: {
-              flex: 1,
+              fontSize: '14px',
+              color: '#b0b0b0',
+              fontWeight: '500'
+            }}>
+              Slots (select one or more):
+            </label>
+            <div style={{
+              backgroundColor: '#1e1e1e',
+              border: '1px solid #4a4a4a',
+              borderRadius: '4px',
               padding: '10px',
-              background: 'var(--col-primary-form)',
+              display: 'grid',
+              gridTemplateColumns: 'repeat(2, 1fr)',
+              gap: '8px'
+            }}>
+              {SLOTS.map(slot => (
+                <label
+                  key={slot}
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    cursor: 'pointer',
+                    padding: '6px 8px',
+                    backgroundColor: currentSlots.includes(slot) ? '#4CAF50' : '#2a2a2a',
+                    borderRadius: '4px',
+                    transition: 'background-color 0.2s',
+                    fontSize: '13px'
+                  }}
+                  onMouseOver={(e) => {
+                    if (!currentSlots.includes(slot)) {
+                      e.currentTarget.style.backgroundColor = '#3a3a3a';
+                    }
+                  }}
+                  onMouseOut={(e) => {
+                    if (!currentSlots.includes(slot)) {
+                      e.currentTarget.style.backgroundColor = '#2a2a2a';
+                    }
+                  }}
+                >
+                  <input
+                    type="checkbox"
+                    checked={currentSlots.includes(slot)}
+                    onChange={() => toggleSlot(slot)}
+                    style={{
+                      marginRight: '8px',
+                      cursor: 'pointer',
+                      accentColor: '#4CAF50'
+                    }}
+                  />
+                  <span style={{ color: '#e0e0e0' }}>{slot}</span>
+                </label>
+              ))}
+            </div>
+          </div>
+
+          <div style={{ marginBottom: '15px' }}>
+            <label style={{
+              display: 'block',
+              marginBottom: '5px',
+              fontSize: '14px',
+              color: '#b0b0b0',
+              fontWeight: '500'
+            }}>
+              Operation:
+            </label>
+            <select
+              value={currentOperation}
+              onChange={(e) => setCurrentOperation(e.target.value)}
+              style={{
+                width: '100%',
+                padding: '10px',
+                fontSize: '14px',
+                backgroundColor: '#1e1e1e',
+                color: '#e0e0e0',
+                border: '1px solid #4a4a4a',
+                borderRadius: '4px',
+                cursor: 'pointer'
+              }}
+            >
+              {OPERATIONS.map(op => (
+                <option key={op.value} value={op.value}>
+                  {op.label} ({op.symbol})
+                </option>
+              ))}
+            </select>
+          </div>
+
+          <div style={{ marginBottom: '15px' }}>
+            <label style={{
+              display: 'block',
+              marginBottom: '5px',
+              fontSize: '14px',
+              color: '#b0b0b0',
+              fontWeight: '500'
+            }}>
+              Amount:
+            </label>
+            <input
+              type="number"
+              step="0.1"
+              value={currentAmount}
+              onChange={(e) => setCurrentAmount(e.target.value)}
+              style={{
+                width: '100%',
+                padding: '10px',
+                fontSize: '14px',
+                backgroundColor: '#1e1e1e',
+                color: '#e0e0e0',
+                border: '1px solid #4a4a4a',
+                borderRadius: '4px'
+              }}
+            />
+          </div>
+
+          <button
+            onClick={addModifier}
+            style={{
+              width: '100%',
+              padding: '12px',
+              fontSize: '16px',
+              fontWeight: 'bold',
+              backgroundColor: '#4CAF50',
               color: 'white',
               border: 'none',
-              borderRadius: 'var(--radius-sm)',
+              borderRadius: '4px',
               cursor: 'pointer',
+              transition: 'background-color 0.3s'
+            }}
+            onMouseOver={(e) => e.target.style.backgroundColor = '#45a049'}
+            onMouseOut={(e) => e.target.style.backgroundColor = '#4CAF50'}
+          >
+            Add Modifier
+          </button>
+        </div>
+
+        {/* Right Panel - List */}
+        <div style={{
+          backgroundColor: '#2a2a2a',
+          padding: '25px',
+          borderRadius: '8px',
+          border: '1px solid #3a3a3a'
+        }}>
+          <div style={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            marginBottom: '20px',
+            borderBottom: '1px solid #3a3a3a',
+            paddingBottom: '10px'
+          }}>
+            <h2 style={{
+              margin: 0,
+              fontSize: '20px',
+              color: '#fff'
+            }}>
+              Modifiers ({modifiers.length})
+            </h2>
+            {modifiers.length > 0 && (
+              <button
+                onClick={clearAll}
+                style={{
+                  padding: '6px 12px',
+                  fontSize: '12px',
+                  backgroundColor: '#d32f2f',
+                  color: 'white',
+                  border: 'none',
+                  borderRadius: '4px',
+                  cursor: 'pointer'
+                }}
+              >
+                Clear All
+              </button>
+            )}
+          </div>
+
+          <div style={{
+            maxHeight: '600px',
+            overflowY: 'auto'
+          }}>
+            {modifiers.length === 0 ? (
+              <div style={{
+                textAlign: 'center',
+                padding: '40px',
+                color: '#666',
+                fontSize: '14px'
+              }}>
+                No modifiers added yet. Add one using the form on the left.
+              </div>
+            ) : (
+              modifiers.map(mod => (
+                <div
+                  key={mod.id}
+                  style={{
+                    backgroundColor: '#1e1e1e',
+                    padding: '15px',
+                    marginBottom: '10px',
+                    borderRadius: '4px',
+                    border: '1px solid #3a3a3a',
+                    position: 'relative'
+                  }}
+                >
+                  <button
+                    onClick={() => removeModifier(mod.id)}
+                    style={{
+                      position: 'absolute',
+                      top: '10px',
+                      right: '10px',
+                      padding: '4px 8px',
+                      fontSize: '12px',
+                      backgroundColor: '#d32f2f',
+                      color: 'white',
+                      border: 'none',
+                      borderRadius: '3px',
+                      cursor: 'pointer'
+                    }}
+                  >
+                    Remove
+                  </button>
+                  <div style={{ fontSize: '16px', fontWeight: 'bold', marginBottom: '8px', color: '#4CAF50' }}>
+                    {mod.attribute}
+                  </div>
+                  <div style={{ fontSize: '13px', color: '#b0b0b0', marginBottom: '4px' }}>
+                    Slot: <span style={{ color: '#e0e0e0' }}>{mod.slot}</span>
+                  </div>
+                  <div style={{ fontSize: '13px', color: '#b0b0b0', marginBottom: '4px' }}>
+                    Operation: <span style={{ color: '#e0e0e0' }}>{getOperationLabel(mod.operation)}</span>
+                  </div>
+                  <div style={{ fontSize: '13px', color: '#b0b0b0', marginBottom: '4px' }}>
+                    Amount: <span style={{ color: '#e0e0e0' }}>{mod.amount}</span>
+                  </div>
+                </div>
+              ))
+            )}
+          </div>
+        </div>
+      </div>
+
+      {/* Output Panel */}
+      {modifiers.length > 0 && (
+        <div style={{
+          backgroundColor: '#2a2a2a',
+          padding: '25px',
+          borderRadius: '8px',
+          border: '1px solid #3a3a3a',
+          marginTop: '20px'
+        }}>
+          <div style={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            marginBottom: '15px'
+          }}>
+            <h2 style={{
+              margin: 0,
+              fontSize: '20px',
+              color: '#fff'
+            }}>
+              Output
+            </h2>
+            <div style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
+              <select
+                value={outputFormat}
+                onChange={(e) => {
+                  setOutputFormat(e.target.value);
+                  setCopySuccess('');
+                }}
+                style={{
+                  padding: '8px 12px',
+                  fontSize: '14px',
+                  backgroundColor: '#1e1e1e',
+                  color: '#e0e0e0',
+                  border: '1px solid #4a4a4a',
+                  borderRadius: '4px',
+                  cursor: 'pointer'
+                }}
+              >
+                <option value="craftengine">CraftEngine YAML</option>
+                <option value="json">JSON Format</option>
+                <option value="compact">Compact (Single Line)</option>
+              </select>
+              <button
+                onClick={copyToClipboard}
+                style={{
+                  padding: '8px 16px',
+                  fontSize: '14px',
+                  fontWeight: 'bold',
+                  backgroundColor: '#2196F3',
+                  color: 'white',
+                  border: 'none',
+                  borderRadius: '4px',
+                  cursor: 'pointer'
+                }}
+              >
+                Copy to Clipboard
+              </button>
+            </div>
+          </div>
+
+          {copySuccess && (
+            <div style={{
+              padding: '10px',
+              marginBottom: '10px',
+              backgroundColor: '#4CAF50',
+              color: 'white',
+              borderRadius: '4px',
               fontSize: '14px',
-              fontWeight: '500'
-            }
-          }, selectedIndex !== null ? 'Update Modifier' : 'Add Modifier'),
-          selectedIndex !== null && h('button', {
-            key: 'cancel-btn',
-            onClick: () => {
-              resetForm();
-              setSelectedIndex(null);
-            },
-            style: {
-              padding: '10px 16px',
-              background: 'var(--col-input-default)',
-              color: 'var(--col-txt-primary)',
-              border: '1px solid var(--col-ouliner-default)',
-              borderRadius: 'var(--radius-sm)',
-              cursor: 'pointer',
-              fontSize: '14px'
-            }
-          }, 'Cancel')
-        ])
-      ]),
+              textAlign: 'center'
+            }}>
+              {copySuccess}
+            </div>
+          )}
 
-      // Right panel - Preview & List
-      h('div', { key: 'preview-panel' }, [
-        // Modifiers list
-        h('div', {
-          key: 'list',
-          style: {
+          <pre style={{
+            backgroundColor: '#1e1e1e',
             padding: '20px',
-            background: 'var(--col-input-default)',
-            border: '1px solid var(--col-ouliner-default)',
-            borderRadius: 'var(--radius-md)',
-            marginBottom: '20px'
-          }
-        }, [
-          h('h2', {
-            key: 'list-title',
-            style: { marginTop: 0, fontSize: '18px', marginBottom: '16px' }
-          }, `Modifiers (${modifiers.length})`),
-          h('div', { key: 'list-items' },
-            modifiers.length === 0
-              ? h('p', {
-                  style: { color: 'var(--col-txt-secondary)', fontSize: '14px', textAlign: 'center', padding: '20px 0' }
-                }, 'No modifiers added yet')
-              : modifiers.map((mod, index) =>
-                  h('div', {
-                    key: index,
-                    style: {
-                      padding: '12px',
-                      background: selectedIndex === index ? 'var(--col-accent-col)' : 'rgba(255,255,255,0.03)',
-                      border: '1px solid var(--col-ouliner-default)',
-                      borderRadius: 'var(--radius-sm)',
-                      marginBottom: '8px',
-                      display: 'flex',
-                      justifyContent: 'space-between',
-                      alignItems: 'center'
-                    }
-                  }, [
-                    h('div', { key: 'info', style: { flex: 1 } }, [
-                      h('div', {
-                        key: 'type',
-                        style: { fontWeight: '500', fontSize: '14px', marginBottom: '4px' }
-                      }, mod.type.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase())),
-                      h('div', {
-                        key: 'details',
-                        style: { fontSize: '12px', color: 'var(--col-txt-secondary)' }
-                      }, `${mod.operation} ${mod.amount} @ ${mod.slot}`)
-                    ]),
-                    h('div', { key: 'buttons', style: { display: 'flex', gap: '8px' } }, [
-                      h('button', {
-                        key: 'edit',
-                        onClick: () => editModifier(index),
-                        style: {
-                          padding: '6px 12px',
-                          background: 'var(--col-input-default)',
-                          color: 'var(--col-txt-primary)',
-                          border: '1px solid var(--col-ouliner-default)',
-                          borderRadius: 'var(--radius-sm)',
-                          cursor: 'pointer',
-                          fontSize: '12px'
-                        }
-                      }, 'Edit'),
-                      h('button', {
-                        key: 'remove',
-                        onClick: () => removeModifier(index),
-                        style: {
-                          padding: '6px 12px',
-                          background: 'var(--col-danger)',
-                          color: 'white',
-                          border: 'none',
-                          borderRadius: 'var(--radius-sm)',
-                          cursor: 'pointer',
-                          fontSize: '12px'
-                        }
-                      }, 'Remove')
-                    ])
-                  ])
-                )
-          )
-        ]),
+            borderRadius: '4px',
+            border: '1px solid #3a3a3a',
+            fontSize: '13px',
+            lineHeight: '1.6',
+            overflowX: 'auto',
+            color: '#e0e0e0',
+            fontFamily: 'Consolas, Monaco, "Courier New", monospace'
+          }}>
+            {generateOutput()}
+          </pre>
+        </div>
+      )}
 
-        // YAML Preview
-        h('div', {
-          key: 'yaml-preview',
-          style: {
-            padding: '20px',
-            background: 'var(--col-input-default)',
-            border: '1px solid var(--col-ouliner-default)',
-            borderRadius: 'var(--radius-md)'
-          }
-        }, [
-          h('div', {
-            key: 'yaml-header',
-            style: { display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '12px' }
-          }, [
-            h('h2', {
-              key: 'yaml-title',
-              style: { margin: 0, fontSize: '18px' }
-            }, 'YAML Output'),
-            h('button', {
-              key: 'copy-btn',
-              onClick: copyToClipboard,
-              disabled: modifiers.length === 0,
-              style: {
-                padding: '6px 12px',
-                background: modifiers.length === 0 ? 'var(--col-input-default)' : 'var(--col-primary-form)',
-                color: modifiers.length === 0 ? 'var(--col-txt-secondary)' : 'white',
-                border: 'none',
-                borderRadius: 'var(--radius-sm)',
-                cursor: modifiers.length === 0 ? 'not-allowed' : 'pointer',
-                fontSize: '12px',
-                fontWeight: '500'
-              }
-            }, 'Copy to Clipboard')
-          ]),
-          h('pre', {
-            key: 'yaml-content',
-            style: {
-              padding: '12px',
-              background: 'rgba(0,0,0,0.2)',
-              border: '1px solid var(--col-ouliner-default)',
-              borderRadius: 'var(--radius-sm)',
-              fontSize: '13px',
-              fontFamily: 'monospace',
-              overflowX: 'auto',
-              whiteSpace: 'pre',
-              minHeight: '100px',
-              color: 'var(--col-txt-primary)'
-            }
-          }, generateYAML() || '# Add modifiers to see YAML output')
-        ])
-      ])
-    ])
-      ])
-    ])
-  ]);
+      {/* Info Panel */}
+      <div style={{
+        backgroundColor: '#2a2a2a',
+        padding: '20px',
+        borderRadius: '8px',
+        border: '1px solid #3a3a3a',
+        marginTop: '20px',
+        fontSize: '13px',
+        color: '#b0b0b0'
+      }}>
+        <h3 style={{ marginTop: 0, color: '#fff', fontSize: '16px' }}>How to use:</h3>
+        <ol style={{ margin: 0, paddingLeft: '20px' }}>
+          <li>Select an attribute from the dropdown (e.g., attack_damage, armor)</li>
+          <li>Select one or more slots using the checkboxes</li>
+          <li>Choose an operation type (add_value, add_multiplied_base, or add_multiplied_total)</li>
+          <li>Enter the amount value (can be negative for reductions)</li>
+          <li>Click "Add Modifier" to create modifiers for all selected slots</li>
+          <li>Use the output section to copy the generated CraftEngine YAML</li>
+          <li>Paste into your Nexo Maker "Attribute Modifiers" Editor Module</li>
+        </ol>
+        <div style={{ marginTop: '15px', padding: '10px', backgroundColor: '#1e1e1e', borderRadius: '4px' }}>
+          <strong style={{ color: '#4CAF50' }}>Operation Types:</strong>
+          <ul style={{ margin: '8px 0 0 0', paddingLeft: '20px' }}>
+            <li><strong>Add Value (+):</strong> Adds the value directly to the base attribute</li>
+            <li><strong>Add Multiplied Base (+%):</strong> Adds (base × value) to the attribute</li>
+            <li><strong>Add Multiplied Total (x%):</strong> Multiplies total by (1 + value)</li>
+          </ul>
+        </div>
+      </div>
+      </div>
+    </div>
+  );
 };
-
-
-
-
-//module.exports = ({ useState }) => {
-//  const [count, setCount] = useState(0);
-//
-//  return (
-//    <div>
-//      <h1>Hello</h1>
-//      <p>Count: {count}</p>
-//      <button onClick={() => setCount(count + 1)}>Increment</button>
-//    </div>
-//  );
-//};
-
-
-
-
