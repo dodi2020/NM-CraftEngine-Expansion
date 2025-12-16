@@ -180,5 +180,10 @@ module.exports.transform = (item, context) => {
         delete transformer.settings;
     }
 
-    return { [FurnitureKey]: transformer };
+    // Wrap in "furniture:" category
+    return {
+        furniture: {
+            [FurnitureKey]: transformer
+        }
+    };
 };

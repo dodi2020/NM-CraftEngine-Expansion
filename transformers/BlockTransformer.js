@@ -142,5 +142,10 @@ module.exports.transform = (item, context) => {
         delete transformer.settings;
     }
 
-    return { [BlockKey]: transformer };
+    // Wrap in "blocks:" category
+    return {
+        blocks: {
+            [BlockKey]: transformer
+        }
+    };
 };

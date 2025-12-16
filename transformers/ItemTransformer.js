@@ -212,5 +212,10 @@ module.exports.transform = (item, context) => {
         delete transformer.settings;
     }
 
-    return { [ItemKey]: transformer };
+    // Wrap in "items:" category
+    return {
+        items: {
+            [ItemKey]: transformer
+        }
+    };
 };
