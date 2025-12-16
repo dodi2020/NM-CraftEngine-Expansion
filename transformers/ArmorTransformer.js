@@ -75,6 +75,48 @@ module.exports.transform = (item, context) => {
         return null;
     };
 
+    // Helper to parse attribute modifiers (YAML string to array)
+    const getAttributeModifiers = () => {
+        const attrModule = item.modules?.craftengine_attributeModifiers;
+        if (attrModule && typeof attrModule === 'string') {
+            try {
+                // Parse YAML string manually (simple parser for our specific format)
+                const lines = attrModule.split('\n');
+                const modifiers = [];
+                let currentModifier = null;
+
+                for (const line of lines) {
+                    const trimmed = line.trim();
+                    if (!trimmed || trimmed.startsWith('#')) continue;
+
+                    if (trimmed.startsWith('- type:')) {
+                        // New modifier entry
+                        if (currentModifier) modifiers.push(currentModifier);
+                        currentModifier = { type: trimmed.split('type:')[1].trim() };
+                    } else if (currentModifier) {
+                        // Parse properties of current modifier
+                        if (trimmed.startsWith('amount:')) {
+                            currentModifier.amount = parseFloat(trimmed.split('amount:')[1].trim());
+                        } else if (trimmed.startsWith('operation:')) {
+                            currentModifier.operation = trimmed.split('operation:')[1].trim();
+                        } else if (trimmed.startsWith('slot:')) {
+                            currentModifier.slot = trimmed.split('slot:')[1].trim();
+                        }
+                    }
+                }
+
+                // Add the last modifier
+                if (currentModifier) modifiers.push(currentModifier);
+
+                return modifiers.length > 0 ? modifiers : null;
+            } catch (e) {
+                console.error('Failed to parse attribute modifiers:', e);
+                return null;
+            }
+        }
+        return null;
+    };
+
     const transformer = {
         // Material - construct from material + armor_type (e.g., diamond_chestplate)
         material: 'paper', // default, will be overridden below
@@ -92,7 +134,7 @@ module.exports.transform = (item, context) => {
             'dyed-color': item.modules?.craftengine_dyedColor,
             'custom-model-data': item.modules?.craftengine_customModelData || item.modules?.customModelData,
             'hide-tooltip': item.modules?.craftengine_hideTooltip,
-            'attribute-modifiers': item.modules?.craftengine_attributeModifiers,
+            'attribute-modifiers': getAttributeModifiers(),
             'max-damage': item.modules?.craftengine_maxDamage || item.modules?.durability,
             'trim': item.modules?.craftengine_trim,
             'equippable': item.modules?.craftengine_equippable || item.modules?.equippable,

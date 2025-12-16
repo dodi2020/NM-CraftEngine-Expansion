@@ -1,7 +1,7 @@
-﻿module.exports.init = async () => {
+module.exports.init = async () => {
   const nm = api.nexomaker;
   const itemTransformer = require("./transformers/transformer.js");
-
+  const strengthicon = await api.nexomaker.loadAsset(__dirname + "/assets/strength.png");
   // Register compatibility for built-in creators
   require('./registers/RegisterCreators.js')(nm);
 
@@ -11,28 +11,20 @@
   // Register export formats
   require('./registers/RegisterExportFormats.js')(nm, itemTransformer);
 
-  // Register Attribute Modifier Builder as a background module (overlay)
-  nm.registerBackgroundModule(
-    'craftengine-attribute-builder',
-    __dirname + '/pages/AttributeModifierBuilder.jsx',
-    { zIndex: 2000 }
-  );
+  // Register Attribute Modifier Builder Page
+  nm.registerModularPage("craftengine-attribute-builder", __dirname + "/pages/AttributeModifierBuilder.jsx");
 
-
-
-  nm.regRoute('attributeBuilderVisible', __dirname + '/pages/AttributeModifierBuilder.jsx');
-
-
+  nm.regRoute('AttributeBuilder', __dirname + '/pages/AttributeModifierBuilder.jsx');
 
   // Add sidebar icon to toggle the builder
   nm.postSidebarIcon({
     id: 'craftengine-attribute-builder-btn',
     key: 'craftengine_attribute_builder_key',
-    icon: 'assets/icons8-strength.png', // Attribute/strength icon
+    icon: strengthicon,
     tooltip: 'Attribute Modifier Builder',
-    route: '/pages',
-    page: 'attributeBuilderVisible',
-});
+    route: "/pages",
+    page: "craftengine-attribute-builder"
+  });
 
 
   api.console.log('✓ CraftEngine expansion loaded.');

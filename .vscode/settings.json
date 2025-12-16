@@ -1,8 +1,0 @@
-{
-  "chat.mcp.servers": {
-    "playwright": {
-      "command": "npx",
-      "args": ["-y", "@azazdeaz/playwright-mcp"]
-    }
-  }
-}

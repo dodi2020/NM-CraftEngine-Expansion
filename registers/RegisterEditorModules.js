@@ -1,4 +1,7 @@
 module.exports = async (nm, api) => {
+
+  const strengthicon = await api.nexomaker.loadAsset(__dirname + "/assets/strength.png");
+
   // Data Components - Simple Value Components
   api.nexomaker.postEditorModule({
     name: "craftengine_attackRange",
@@ -95,10 +98,14 @@ module.exports = async (nm, api) => {
     display: "Attribute Modifiers",
     plugins: ["craftengine"],
     compatibility: ["item", "tool", "weapon", "armor"],
-    description: "Attribute modifiers for the item (YAML list format). Use the Attribute Builder tool (sidebar icon) for a visual editor, or paste YAML directly here.",
-    type: "text",
+    description: "Attribute modifiers for the item. Use the Attribute Builder tool for a visual editor.",
+    icon: strengthicon,
+    type: "loot",
     default: "",
-    hint: "Click the strength icon in the sidebar to open the Attribute Builder tool",
+    placeholder: "Paste YAML here or use the Builder tool (strength icon in sidebar)\n\nExample:\n- type: attack_damage\n  amount: 5.0\n  operation: add_value\n  slot: mainhand",
+    rows: 8,
+    resize: "vertical",
+    maxLength: 10000
   });
 
   api.nexomaker.postEditorModule({
