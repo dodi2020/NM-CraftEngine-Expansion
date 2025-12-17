@@ -16,37 +16,69 @@ module.exports = (nm, itemTransformer) => {
 
       // Assets organized by item type and subtype
       assets: ({ item, assetType, assetName, projectId, namespace }) => {
+        // assetType is either 'texture' or 'model'
         // Organize by item.type first, then by subtype for better structure
 
         // Block assets
         if (item.type === 'block' || item.subtype === 'block') {
-          return `resources/${projectId}/assets/${namespace}/${assetType}s/blocks/${assetName}`;
+          if (assetType === 'texture') {
+            return `resources/${projectId}/assets/${namespace}/textures/blocks/${assetName}`;
+          } else if (assetType === 'model') {
+            return `resources/${projectId}/assets/${namespace}/models/blocks/${assetName}`;
+          }
         }
 
         // Furniture assets
         if (item.type === 'furniture' || item.subtype === 'furniture') {
-          return `resources/${projectId}/assets/${namespace}/${assetType}s/furniture/${assetName}`;
+          if (assetType === 'texture') {
+            return `resources/${projectId}/assets/${namespace}/textures/furniture/${assetName}`;
+          } else if (assetType === 'model') {
+            return `resources/${projectId}/assets/${namespace}/models/furniture/${assetName}`;
+          }
         }
 
         // Item assets organized by subtype
         if (item.subtype === 'weapon') {
-          return `resources/${projectId}/assets/${namespace}/${assetType}s/weapons/${assetName}`;
+          if (assetType === 'texture') {
+            return `resources/${projectId}/assets/${namespace}/textures/weapons/${assetName}`;
+          } else if (assetType === 'model') {
+            return `resources/${projectId}/assets/${namespace}/models/weapons/${assetName}`;
+          }
         }
 
         if (item.subtype === 'tool') {
-          return `resources/${projectId}/assets/${namespace}/${assetType}s/tools/${assetName}`;
+          if (assetType === 'texture') {
+            return `resources/${projectId}/assets/${namespace}/textures/tools/${assetName}`;
+          } else if (assetType === 'model') {
+            return `resources/${projectId}/assets/${namespace}/models/tools/${assetName}`;
+          }
         }
 
         if (item.subtype === 'armor') {
-          return `resources/${projectId}/assets/${namespace}/${assetType}s/armor/${assetName}`;
+          if (assetType === 'texture') {
+            return `resources/${projectId}/assets/${namespace}/textures/armor/${assetName}`;
+          } else if (assetType === 'model') {
+            return `resources/${projectId}/assets/${namespace}/models/armor/${assetName}`;
+          }
         }
 
         if (item.subtype === 'food') {
-          return `resources/${projectId}/assets/${namespace}/${assetType}s/food/${assetName}`;
+          if (assetType === 'texture') {
+            return `resources/${projectId}/assets/${namespace}/textures/food/${assetName}`;
+          } else if (assetType === 'model') {
+            return `resources/${projectId}/assets/${namespace}/models/food/${assetName}`;
+          }
         }
 
         // Default: general items
-        return `resources/${projectId}/assets/${namespace}/${assetType}s/items/${assetName}`;
+        if (assetType === 'texture') {
+          return `resources/${projectId}/assets/${namespace}/textures/items/${assetName}`;
+        } else if (assetType === 'model') {
+          return `resources/${projectId}/assets/${namespace}/models/items/${assetName}`;
+        }
+
+        // Fallback for any edge cases
+        return `resources/${projectId}/assets/${namespace}/${assetType}s/${assetName}`;
       },
     },
 
