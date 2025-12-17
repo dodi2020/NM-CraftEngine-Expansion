@@ -80,6 +80,18 @@ module.exports.transform = (item, context) => {
         // Material for furniture items
         material: (item.modules?.baseMaterial || 'paper').toLowerCase(),
 
+        // Model configuration
+        model: {
+            type: 'minecraft:model',
+            path: assetsPath,
+            generation: {
+                parent: 'item/handheld',
+                textures: {
+                    'layer0': assetsPath,
+                }
+            }
+        },
+
         // Data components (for the item representation)
         data: cleanObject({
             'external': getExternalData(),
@@ -149,18 +161,6 @@ module.exports.transform = (item, context) => {
             'glow-color': item.modules?.craftengine_glowColor,
             'client-bound-data-components': item.modules?.craftengine_clientBoundDataComponents,
         }),
-
-        // Model configuration
-        model: {
-            type: 'minecraft:model',
-            path: assetsPath,
-            generation: {
-                parent: 'item/generated',
-                textures: {
-                    'layer0': assetsPath,
-                }
-            }
-        }
     };
 
     // Clean up empty sections

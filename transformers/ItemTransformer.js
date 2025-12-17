@@ -182,14 +182,7 @@ module.exports.transform = (item, context) => {
 
         // Model configuration
         model: {
-            type: 'minecraft:model',
-            path: assetsPath,
-            generation: {
-                parent: 'item/handheld',
-                textures: {
-                    'layer0': assetsPath,
-                }
-            }
+            'path': assetsPath,
         },
 
         // Data components
