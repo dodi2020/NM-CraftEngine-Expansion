@@ -36,51 +36,31 @@
  */
 
 module.exports = ({ useState, useEffect }) => {
-  // Available Minecraft attributes
-  const ATTRIBUTES = [
-    'attack_damage',
-    'attack_knockback',
-    'attack_speed',
-    'armor',
-    'armor_toughness',
-    'knockback_resistance',
-    'max_health',
-    'movement_speed',
-    'flying_speed',
-    'luck',
-    'step_height',
-    'scale',
-    'gravity',
-    'jump_strength',
-    'burning_time',
-    'explosion_knockback_resistance',
-    'movement_efficiency',
-    'oxygen_bonus',
-    'water_movement_efficiency'
-  ];
-
-  // Equipment slots
-  const SLOTS = [
-    'mainhand',
-    'offhand',
-    'head',
-    'chest',
-    'legs',
-    'feet',
-    'body'
-  ];
-
-  // Operations
-  const OPERATIONS = [
-    { value: 'add_value', label: 'Add Value', symbol: '+' },
-    { value: 'add_multiplied_base', label: 'Add Multiplied Base', symbol: '+%' },
-    { value: 'add_multiplied_total', label: 'Add Multiplied Total', symbol: 'x%' }
+  // Available component types (common ones for easy access)
+  const COMPONENT_TYPES = [
+    { value: 'minecraft:max_damage', label: 'Max Damage', difficulty: 1 },
+    { value: 'minecraft:unbreakable', label: 'Unbreakable', difficulty: 1 },
+    { value: 'minecraft:custom_model_data', label: 'Custom Model Data', difficulty: 1 },
+    { value: 'minecraft:food', label: 'Food', difficulty: 2 },
+    { value: 'minecraft:block_state', label: 'Block State', difficulty: 2 },
+    { value: 'minecraft:instrument', label: 'Instrument', difficulty: 3 },
+    { value: 'minecraft:fireworks', label: 'Fireworks', difficulty: 4 },
+    { value: 'minecraft:can_break', label: 'Can Break', difficulty: 2 },
+    { value: 'minecraft:can_place_on', label: 'Can Place On', difficulty: 2 },
+    { value: 'minecraft:enchantment_glint_override', label: 'Enchantment Glint Override', difficulty: 1 },
+    { value: 'minecraft:fire_resistant', label: 'Fire Resistant', difficulty: 1 },
+    { value: 'minecraft:hide_additional_tooltip', label: 'Hide Additional Tooltip', difficulty: 1 },
+    { value: 'minecraft:intangible_projectile', label: 'Intangible Projectile', difficulty: 1 },
+    { value: 'minecraft:max_stack_size', label: 'Max Stack Size', difficulty: 1 },
+    { value: 'minecraft:rarity', label: 'Rarity', difficulty: 1 },
+    { value: 'minecraft:repair_cost', label: 'Repair Cost', difficulty: 1 },
+    { value: 'custom', label: 'Custom Component...', difficulty: 0 }
   ];
 
   // Load saved data from localStorage
   const loadSavedData = () => {
     try {
-      const saved = localStorage.getItem('attributeModifierBuilder');
+      const saved = localStorage.getItem('componentsBuilder');
       if (saved) {
         return JSON.parse(saved);
       }
@@ -92,130 +72,140 @@ module.exports = ({ useState, useEffect }) => {
 
   const savedData = loadSavedData();
 
-  // State for modifiers list
-  const [modifiers, setModifiers] = useState(savedData?.modifiers || []);
-
-  // State for current modifier being built
-  const [currentAttribute, setCurrentAttribute] = useState(savedData?.currentAttribute || 'attack_damage');
-  const [currentSlots, setCurrentSlots] = useState(savedData?.currentSlots || ['mainhand']);
-  const [currentOperation, setCurrentOperation] = useState(savedData?.currentOperation || 'add_value');
-  const [currentAmount, setCurrentAmount] = useState(savedData?.currentAmount || '1.0');
-
-  // State for output format
-  const [outputFormat, setOutputFormat] = useState(savedData?.outputFormat || 'craftengine');
+  // State for components list
+  const [components, setComponents] = useState(savedData?.components || []);
+  const [currentType, setCurrentType] = useState(savedData?.currentType || 'minecraft:max_damage');
+  const [customType, setCustomType] = useState(savedData?.customType || '');
+  const [currentValue, setCurrentValue] = useState(savedData?.currentValue || '100');
+  const [showCustomInput, setShowCustomInput] = useState(savedData?.showCustomInput || false);
   const [copySuccess, setCopySuccess] = useState('');
 
   // Save to localStorage whenever state changes
   useEffect(() => {
     try {
       const dataToSave = {
-        modifiers,
-        currentAttribute,
-        currentSlots,
-        currentOperation,
-        currentAmount,
-        outputFormat
+        components,
+        currentType,
+        customType,
+        currentValue,
+        showCustomInput
       };
-      localStorage.setItem('attributeModifierBuilder', JSON.stringify(dataToSave));
+      localStorage.setItem('componentsBuilder', JSON.stringify(dataToSave));
     } catch (err) {
       console.error('Failed to save data:', err);
     }
-  }, [modifiers, currentAttribute, currentSlots, currentOperation, currentAmount, outputFormat]);
+  }, [components, currentType, customType, currentValue, showCustomInput]);
 
-  // Toggle slot selection
-  const toggleSlot = (slot) => {
-    if (currentSlots.includes(slot)) {
-      setCurrentSlots(currentSlots.filter(s => s !== slot));
-    } else {
-      setCurrentSlots([...currentSlots, slot]);
-    }
+  // Generate YAML output
+  const generateOutput = () => {
+    if (components.length === 0) return '# No components added yet';
+
+    let output = '';
+    components.forEach(comp => {
+      const value = comp.value || '{}';
+      const lines = value.split('\n');
+
+      // If single line value, put it on same line as component key
+      if (lines.length === 1) {
+        output += `${comp.type}: ${value}\n`;
+      } else {
+        // Multi-line value, indent on separate lines
+        output += `${comp.type}:\n`;
+        lines.forEach(line => {
+          output += `  ${line}\n`;
+        });
+      }
+    });
+    return output;
   };
 
-  // Add modifier to list
-  const addModifier = () => {
-    if (currentSlots.length === 0) {
-      alert('Please select at least one slot');
+  // Add component
+  const addComponent = () => {
+    const type = showCustomInput ? customType : currentType;
+
+    if (!type || type === 'custom') {
+      alert('Please enter a component type');
       return;
     }
 
-    const newModifiers = currentSlots.map(slot => ({
-      id: Date.now() + Math.random(), // Unique ID for each
-      attribute: currentAttribute,
-      slot: slot,
-      operation: currentOperation,
-      amount: parseFloat(currentAmount) || 0
-    }));
+    const newComponent = {
+      id: Date.now() + Math.random(),
+      type: type,
+      value: currentValue || '{}'
+    };
 
-    setModifiers([...modifiers, ...newModifiers]);
-
-    // Reset form
-    setCurrentAmount('1.0');
+    setComponents([...components, newComponent]);
+    setCurrentValue(getDefaultValue(currentType));
+    setCustomType('');
+    setShowCustomInput(false);
     setCopySuccess('');
   };
 
-  // Remove modifier from list
-  const removeModifier = (id) => {
-    setModifiers(modifiers.filter(m => m.id !== id));
+  // Remove component
+  const removeComponent = (id) => {
+    setComponents(components.filter(c => c.id !== id));
     setCopySuccess('');
   };
 
-  // Clear all modifiers
+  // Clear all components
   const clearAll = () => {
-    setModifiers([]);
+    setComponents([]);
     setCopySuccess('');
   };
 
-  // Clear everything (reset to defaults)
+  // Clear everything
   const clearEverything = () => {
-    if (confirm('Are you sure you want to clear everything? This will reset all modifiers and settings.')) {
-      setModifiers([]);
-      setCurrentAttribute('attack_damage');
-      setCurrentSlots(['mainhand']);
-      setCurrentOperation('add_value');
-      setCurrentAmount('1.0');
-      setOutputFormat('craftengine');
+    if (confirm('Are you sure you want to clear everything? This will reset all components and settings.')) {
+      setComponents([]);
+      setCurrentType('minecraft:max_damage');
+      setCustomType('');
+      setCurrentValue('100');
+      setShowCustomInput(false);
       setCopySuccess('');
-      localStorage.removeItem('attributeModifierBuilder');
+      localStorage.removeItem('componentsBuilder');
     }
   };
 
-  // Generate output based on format
-  const generateOutput = () => {
-    if (modifiers.length === 0) {
-      return '# No modifiers added yet';
+  // Handle type change
+  const handleTypeChange = (value) => {
+    if (value === 'custom') {
+      setShowCustomInput(true);
+      setCurrentType(value);
+      setCurrentValue('{}');
+    } else {
+      setShowCustomInput(false);
+      setCurrentType(value);
+      setCurrentValue(getDefaultValue(value));
     }
+  };
 
-    if (outputFormat === 'craftengine') {
-      let output = '';
-      modifiers.forEach(mod => {
-        output += `- type: ${mod.attribute}\n`;
-        output += `  amount: ${mod.amount}\n`;
-        output += `  operation: ${mod.operation}\n`;
-        output += `  slot: ${mod.slot}\n`;
-      });
-      return output;
-    } else if (outputFormat === 'json') {
-      const jsonModifiers = modifiers.map(mod => ({
-        type: mod.attribute,
-        amount: mod.amount,
-        operation: mod.operation,
-        slot: mod.slot
-      }));
-      return JSON.stringify({ "attribute-modifiers": jsonModifiers }, null, 2);
-    } else if (outputFormat === 'compact') {
-      let output = '';
-      modifiers.forEach(mod => {
-        output += `- type: ${mod.attribute}, amount: ${mod.amount}, operation: ${mod.operation}, slot: ${mod.slot}\n`;
-      });
-      return output;
-    }
+  // Get default value for component type
+  const getDefaultValue = (type) => {
+    const defaults = {
+      'minecraft:max_damage': '100',
+      'minecraft:unbreakable': '{}',
+      'minecraft:custom_model_data': '1000',
+      'minecraft:food': 'nutrition: 5\nsaturation: 3.5\ncan-always-eat: false',
+      'minecraft:block_state': 'note: "1"\npowered: "false"\ninstrument: "harp"',
+      'minecraft:instrument': 'minecraft:ponder_goat_horn',
+      'minecraft:fireworks': 'explosions:\n  - shape: small_ball\n    colors: [255,0,0]\nflight_duration: 1',
+      'minecraft:can_break': 'blocks:\n  - minecraft:stone',
+      'minecraft:can_place_on': 'blocks:\n  - minecraft:stone',
+      'minecraft:enchantment_glint_override': 'true',
+      'minecraft:fire_resistant': '{}',
+      'minecraft:hide_additional_tooltip': '{}',
+      'minecraft:intangible_projectile': '{}',
+      'minecraft:max_stack_size': '64',
+      'minecraft:rarity': 'epic',
+      'minecraft:repair_cost': '0'
+    };
+    return defaults[type] || '{}';
   };
 
   // Copy to clipboard
   const copyToClipboard = () => {
     const output = generateOutput();
 
-    // Create a temporary textarea element
     const textarea = document.createElement('textarea');
     textarea.value = output;
     textarea.style.position = 'fixed';
@@ -228,7 +218,6 @@ module.exports = ({ useState, useEffect }) => {
       setCopySuccess('Copied to clipboard!');
       setTimeout(() => setCopySuccess(''), 3000);
     } catch (err) {
-      // Fallback to modern clipboard API
       navigator.clipboard.writeText(output).then(() => {
         setCopySuccess('Copied to clipboard!');
         setTimeout(() => setCopySuccess(''), 3000);
@@ -239,12 +228,6 @@ module.exports = ({ useState, useEffect }) => {
     } finally {
       document.body.removeChild(textarea);
     }
-  };
-
-  // Get operation label
-  const getOperationLabel = (operation) => {
-    const op = OPERATIONS.find(o => o.value === operation);
-    return op ? op.label : operation;
   };
 
   return React.createElement('div', {
@@ -284,14 +267,10 @@ module.exports = ({ useState, useEffect }) => {
               fontWeight: 'bold',
               color: 'var(--col-txt-primary)'
             }
-          }, 'Minecraft Attribute Modifier Builder'),
-          React.createElement('p', {
-            style: {
-              margin: '5px 0 0',
-              color: 'var(--col-txt-secondary)',
-              fontSize: '14px'
-            }
-          }, 'Build custom attribute modifiers for items and equipment')
+          }, 'Minecraft Components Builder (1.20.5+)'),
+          React.createElement('p', { style: { margin: '5px 0 0', color: 'var(--col-txt-secondary)', fontSize: '14px' } },
+            'Build custom data components for advanced item customization'
+          )
         ),
         React.createElement('button', {
           onClick: clearEverything,
@@ -344,9 +323,9 @@ module.exports = ({ useState, useEffect }) => {
               borderBottom: '1px solid var(--col-border-secondary)',
               paddingBottom: '10px'
             }
-          }, 'Add Modifier'),
+          }, 'Add Component'),
 
-          // Attribute selector
+          // Component type selector
           React.createElement('div', { style: { marginBottom: '15px' } },
             React.createElement('label', {
               style: {
@@ -356,10 +335,10 @@ module.exports = ({ useState, useEffect }) => {
                 color: 'var(--col-txt-secondary)',
                 fontWeight: '500'
               }
-            }, 'Attribute:'),
+            }, 'Component Type:'),
             React.createElement('select', {
-              value: currentAttribute,
-              onChange: (e) => setCurrentAttribute(e.target.value),
+              value: currentType,
+              onChange: (e) => handleTypeChange(e.target.value),
               style: {
                 width: '100%',
                 padding: '10px',
@@ -370,75 +349,15 @@ module.exports = ({ useState, useEffect }) => {
                 borderRadius: 'var(--radius-sm)',
                 cursor: 'pointer'
               }
-            }, ATTRIBUTES.map(attr =>
-              React.createElement('option', { key: attr, value: attr }, attr)
-            ))
-          ),
-
-          // Slots selector
-          React.createElement('div', { style: { marginBottom: '15px' } },
-            React.createElement('label', {
-              style: {
-                display: 'block',
-                marginBottom: '8px',
-                fontSize: '14px',
-                color: 'var(--col-txt-secondary)',
-                fontWeight: '500'
-              }
-            }, 'Slots (select one or more):'),
-            React.createElement('div', {
-              style: {
-                backgroundColor: 'var(--col-dropdown-items)',
-                border: '1px solid var(--col-ouliner-default)',
-                borderRadius: 'var(--radius-sm)',
-                padding: '10px',
-                display: 'grid',
-                gridTemplateColumns: 'repeat(2, 1fr)',
-                gap: '8px'
-              }
-            }, SLOTS.map(slot =>
-              React.createElement('label', {
-                key: slot,
-                style: {
-                  display: 'flex',
-                  alignItems: 'center',
-                  cursor: 'pointer',
-                  padding: '6px 8px',
-                  backgroundColor: currentSlots.includes(slot) ? 'var(--col-primary-form)' : 'var(--special-button-bg)',
-                  borderRadius: 'var(--radius-sm)',
-                  transition: 'background-color 0.2s',
-                  fontSize: '13px'
-                },
-                onMouseOver: (e) => {
-                  if (!currentSlots.includes(slot)) {
-                    e.currentTarget.style.opacity = '0.8';
-                  }
-                },
-                onMouseOut: (e) => {
-                  if (!currentSlots.includes(slot)) {
-                    e.currentTarget.style.opacity = '1';
-                  }
-                }
-              },
-                React.createElement('input', {
-                  type: 'checkbox',
-                  checked: currentSlots.includes(slot),
-                  onChange: () => toggleSlot(slot),
-                  style: {
-                    marginRight: '8px',
-                    cursor: 'pointer',
-                    accentColor: 'var(--col-primary-form)'
-                  }
-                }),
-                React.createElement('span', {
-                  style: { color: 'var(--col-txt-primary)' }
-                }, slot)
+            }, COMPONENT_TYPES.map(type =>
+              React.createElement('option', { key: type.value, value: type.value },
+                type.label + (type.difficulty ? ` ${'★'.repeat(type.difficulty)}` : '')
               )
             ))
           ),
 
-          // Operation selector
-          React.createElement('div', { style: { marginBottom: '15px' } },
+          // Custom type input
+          showCustomInput && React.createElement('div', { style: { marginBottom: '15px' } },
             React.createElement('label', {
               style: {
                 display: 'block',
@@ -447,43 +366,12 @@ module.exports = ({ useState, useEffect }) => {
                 color: 'var(--col-txt-secondary)',
                 fontWeight: '500'
               }
-            }, 'Operation:'),
-            React.createElement('select', {
-              value: currentOperation,
-              onChange: (e) => setCurrentOperation(e.target.value),
-              style: {
-                width: '100%',
-                padding: '10px',
-                fontSize: '14px',
-                backgroundColor: 'var(--col-dropdown-items)',
-                color: 'var(--col-txt-primary)',
-                border: '1px solid var(--col-ouliner-default)',
-                borderRadius: 'var(--radius-sm)',
-                cursor: 'pointer'
-              }
-            }, OPERATIONS.map(op =>
-              React.createElement('option', { key: op.value, value: op.value },
-                `${op.label} (${op.symbol})`
-              )
-            ))
-          ),
-
-          // Amount input
-          React.createElement('div', { style: { marginBottom: '15px' } },
-            React.createElement('label', {
-              style: {
-                display: 'block',
-                marginBottom: '5px',
-                fontSize: '14px',
-                color: 'var(--col-txt-secondary)',
-                fontWeight: '500'
-              }
-            }, 'Amount:'),
+            }, 'Custom Component:'),
             React.createElement('input', {
-              type: 'number',
-              step: '0.1',
-              value: currentAmount,
-              onChange: (e) => setCurrentAmount(e.target.value),
+              type: 'text',
+              value: customType,
+              onChange: (e) => setCustomType(e.target.value),
+              placeholder: 'minecraft:your_component',
               style: {
                 width: '100%',
                 padding: '10px',
@@ -496,8 +384,38 @@ module.exports = ({ useState, useEffect }) => {
             })
           ),
 
+          // Value textarea
+          React.createElement('div', { style: { marginBottom: '15px' } },
+            React.createElement('label', {
+              style: {
+                display: 'block',
+                marginBottom: '5px',
+                fontSize: '14px',
+                color: 'var(--col-txt-secondary)',
+                fontWeight: '500'
+              }
+            }, 'Component Value (YAML):'),
+            React.createElement('textarea', {
+              value: currentValue,
+              onChange: (e) => setCurrentValue(e.target.value),
+              placeholder: 'Enter YAML value or {} for boolean components',
+              rows: 8,
+              style: {
+                width: '100%',
+                padding: '10px',
+                fontSize: '13px',
+                fontFamily: 'Consolas, Monaco, monospace',
+                backgroundColor: 'var(--col-dropdown-items)',
+                color: 'var(--col-txt-primary)',
+                border: '1px solid var(--col-ouliner-default)',
+                borderRadius: 'var(--radius-sm)',
+                resize: 'vertical'
+              }
+            })
+          ),
+
           React.createElement('button', {
-            onClick: addModifier,
+            onClick: addComponent,
             style: {
               width: '100%',
               padding: '12px',
@@ -518,7 +436,7 @@ module.exports = ({ useState, useEffect }) => {
               e.target.style.backgroundColor = 'var(--col-primary-form)';
               e.target.style.transform = 'scale(1)';
             }
-          }, 'Add Modifier')
+          }, 'Add Component')
         ),
 
         // Right Panel - List
@@ -546,8 +464,8 @@ module.exports = ({ useState, useEffect }) => {
                 fontSize: '20px',
                 color: 'var(--col-txt-primary)'
               }
-            }, `Modifiers (${modifiers.length})`),
-            modifiers.length > 0 && React.createElement('button', {
+            }, `Components (${components.length})`),
+            components.length > 0 && React.createElement('button', {
               onClick: clearAll,
               style: {
                 padding: '6px 12px',
@@ -570,7 +488,7 @@ module.exports = ({ useState, useEffect }) => {
               overflowY: 'auto'
             }
           },
-            modifiers.length === 0 ?
+            components.length === 0 ?
               React.createElement('div', {
                 style: {
                   textAlign: 'center',
@@ -578,11 +496,11 @@ module.exports = ({ useState, useEffect }) => {
                   color: 'var(--col-txt-secondary)',
                   fontSize: '14px'
                 }
-              }, 'No modifiers added yet. Add one using the form on the left.')
+              }, 'No components added yet. Add one using the form on the left.')
             :
-              modifiers.map(mod =>
+              components.map(comp =>
                 React.createElement('div', {
-                  key: mod.id,
+                  key: comp.id,
                   style: {
                     backgroundColor: 'var(--special-button-bg)',
                     padding: '15px',
@@ -593,7 +511,7 @@ module.exports = ({ useState, useEffect }) => {
                   }
                 },
                   React.createElement('button', {
-                    onClick: () => removeModifier(mod.id),
+                    onClick: () => removeComponent(comp.id),
                     style: {
                       position: 'absolute',
                       top: '10px',
@@ -612,48 +530,22 @@ module.exports = ({ useState, useEffect }) => {
                   }, 'Remove'),
                   React.createElement('div', {
                     style: {
-                      fontSize: '16px',
+                      fontSize: '14px',
                       fontWeight: 'bold',
                       marginBottom: '8px',
                       color: 'var(--col-primary-form)'
                     }
-                  }, mod.attribute),
-                  React.createElement('div', {
+                  }, comp.type),
+                  React.createElement('pre', {
                     style: {
-                      fontSize: '13px',
+                      fontSize: '12px',
                       color: 'var(--col-txt-secondary)',
-                      marginBottom: '4px'
+                      fontFamily: 'Consolas, Monaco, monospace',
+                      margin: 0,
+                      whiteSpace: 'pre-wrap',
+                      wordBreak: 'break-word'
                     }
-                  },
-                    'Slot: ',
-                    React.createElement('span', {
-                      style: { color: 'var(--col-txt-primary)' }
-                    }, mod.slot)
-                  ),
-                  React.createElement('div', {
-                    style: {
-                      fontSize: '13px',
-                      color: 'var(--col-txt-secondary)',
-                      marginBottom: '4px'
-                    }
-                  },
-                    'Operation: ',
-                    React.createElement('span', {
-                      style: { color: 'var(--col-txt-primary)' }
-                    }, getOperationLabel(mod.operation))
-                  ),
-                  React.createElement('div', {
-                    style: {
-                      fontSize: '13px',
-                      color: 'var(--col-txt-secondary)',
-                      marginBottom: '4px'
-                    }
-                  },
-                    'Amount: ',
-                    React.createElement('span', {
-                      style: { color: 'var(--col-txt-primary)' }
-                    }, mod.amount)
-                  )
+                  }, comp.value)
                 )
               )
           )
@@ -661,7 +553,7 @@ module.exports = ({ useState, useEffect }) => {
       ),
 
       // Output Panel
-      modifiers.length > 0 && React.createElement('div', {
+      components.length > 0 && React.createElement('div', {
         style: {
           backgroundColor: 'var(--col-input-default)',
           padding: '25px',
@@ -684,53 +576,29 @@ module.exports = ({ useState, useEffect }) => {
               fontSize: '20px',
               color: 'var(--col-txt-primary)'
             }
-          }, 'Output'),
-          React.createElement('div', {
-            style: { display: 'flex', gap: '10px', alignItems: 'center' }
-          },
-            React.createElement('select', {
-              value: outputFormat,
-              onChange: (e) => {
-                setOutputFormat(e.target.value);
-                setCopySuccess('');
-              },
-              style: {
-                padding: '8px 12px',
-                fontSize: '14px',
-                backgroundColor: 'var(--col-dropdown-items)',
-                color: 'var(--col-txt-primary)',
-                border: '1px solid var(--col-ouliner-default)',
-                borderRadius: 'var(--radius-sm)',
-                cursor: 'pointer'
-              }
+          }, 'Output (YAML)'),
+          React.createElement('button', {
+            onClick: copyToClipboard,
+            style: {
+              padding: '8px 16px',
+              fontSize: '14px',
+              fontWeight: 'bold',
+              backgroundColor: 'var(--col-primary-form)',
+              color: 'white',
+              border: 'none',
+              borderRadius: 'var(--radius-sm)',
+              cursor: 'pointer',
+              transition: 'all 0.3s'
             },
-              React.createElement('option', { value: 'craftengine' }, 'CraftEngine YAML'),
-              React.createElement('option', { value: 'json' }, 'JSON Format'),
-              React.createElement('option', { value: 'compact' }, 'Compact (Single Line)')
-            ),
-            React.createElement('button', {
-              onClick: copyToClipboard,
-              style: {
-                padding: '8px 16px',
-                fontSize: '14px',
-                fontWeight: 'bold',
-                backgroundColor: 'var(--col-primary-form)',
-                color: 'white',
-                border: 'none',
-                borderRadius: 'var(--radius-sm)',
-                cursor: 'pointer',
-                transition: 'all 0.3s'
-              },
-              onMouseOver: (e) => {
-                e.target.style.backgroundColor = 'var(--col-btn-primary-hover)';
-                e.target.style.transform = 'scale(1.02)';
-              },
-              onMouseOut: (e) => {
-                e.target.style.backgroundColor = 'var(--col-primary-form)';
-                e.target.style.transform = 'scale(1)';
-              }
-            }, 'Copy to Clipboard')
-          )
+            onMouseOver: (e) => {
+              e.target.style.backgroundColor = 'var(--col-btn-primary-hover)';
+              e.target.style.transform = 'scale(1.02)';
+            },
+            onMouseOut: (e) => {
+              e.target.style.backgroundColor = 'var(--col-primary-form)';
+              e.target.style.transform = 'scale(1)';
+            }
+          }, 'Copy to Clipboard')
         ),
 
         copySuccess && React.createElement('div', {
@@ -786,13 +654,11 @@ module.exports = ({ useState, useEffect }) => {
             paddingLeft: '20px'
           }
         },
-          React.createElement('li', null, 'Select an attribute from the dropdown (e.g., attack_damage, armor)'),
-          React.createElement('li', null, 'Select one or more slots using the checkboxes'),
-          React.createElement('li', null, 'Choose an operation type (add_value, add_multiplied_base, or add_multiplied_total)'),
-          React.createElement('li', null, 'Enter the amount value (can be negative for reductions)'),
-          React.createElement('li', null, 'Click "Add Modifier" to create modifiers for all selected slots'),
-          React.createElement('li', null, 'Use the output section to copy the generated CraftEngine YAML'),
-          React.createElement('li', null, 'Paste into your Nexo Maker "Attribute Modifiers" Editor Module')
+          React.createElement('li', null, 'Select a component type from the dropdown (★ indicates difficulty level)'),
+          React.createElement('li', null, 'Edit the YAML value or use the default'),
+          React.createElement('li', null, 'Click "Add Component" to add it to your list'),
+          React.createElement('li', null, 'Copy the generated YAML output'),
+          React.createElement('li', null, 'Paste into your item\'s "Custom Components" field in CraftEngine')
         ),
         React.createElement('div', {
           style: {
@@ -802,9 +668,7 @@ module.exports = ({ useState, useEffect }) => {
             borderRadius: 'var(--radius-sm)'
           }
         },
-          React.createElement('strong', {
-            style: { color: 'var(--col-primary-form)' }
-          }, 'Operation Types:'),
+          React.createElement('strong', { style: { color: 'var(--col-primary-form)' } }, 'Documentation:'),
           React.createElement('ul', {
             style: {
               margin: '8px 0 0 0',
@@ -812,16 +676,18 @@ module.exports = ({ useState, useEffect }) => {
             }
           },
             React.createElement('li', null,
-              React.createElement('strong', null, 'Add Value (+):'),
-              ' Adds the value directly to the base attribute'
+              React.createElement('a', {
+                href: 'https://minecraft.wiki/w/Data_component_format',
+                target: '_blank',
+                style: { color: '#2196F3' }
+              }, 'Minecraft Wiki - Data Components')
             ),
             React.createElement('li', null,
-              React.createElement('strong', null, 'Add Multiplied Base (+%):'),
-              ' Adds (base × value) to the attribute'
-            ),
-            React.createElement('li', null,
-              React.createElement('strong', null, 'Add Multiplied Total (x%):'),
-              ' Multiplies total by (1 + value)'
+              React.createElement('a', {
+                href: 'https://xiao-momi.github.io/craft-engine-wiki/configuration/item/data',
+                target: '_blank',
+                style: { color: '#2196F3' }
+              }, 'CraftEngine Wiki - Item Data')
             )
           )
         )

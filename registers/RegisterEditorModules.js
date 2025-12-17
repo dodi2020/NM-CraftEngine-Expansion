@@ -4,16 +4,6 @@ module.exports = async (nm, api) => {
 
   // Data Components - Simple Value Components
   api.nexomaker.postEditorModule({
-    name: "craftengine_attackRange",
-    display: "Attack Range",
-    plugins: ["craftengine"],
-    compatibility: ["weapon", "tool", "item"],
-    description: "Sets the attack range for this item (minecraft:attack_range component)",
-    type: "number",
-    default: null,
-  });
-
-  api.nexomaker.postEditorModule({
     name: "craftengine_itemName",
     display: "Item Name",
     plugins: ["craftengine"],
@@ -108,15 +98,6 @@ module.exports = async (nm, api) => {
     maxLength: 10000
   });
 
-  api.nexomaker.postEditorModule({
-    name: "craftengine_food",
-    display: "Food Component",
-    plugins: ["craftengine"],
-    compatibility: ["food", "item"],
-    description: "Food component data",
-    type: "text",
-    default: "",
-  });
 
   api.nexomaker.postEditorModule({
     name: "craftengine_jukeboxPlayable",
@@ -156,6 +137,98 @@ module.exports = async (nm, api) => {
     description: "Armor trim configuration",
     type: "text",
     default: "",
+  });
+
+  // Equipment Configuration
+  api.nexomaker.postEditorModule({
+    name: "craftengine_equipmentAssetId",
+    display: "Equipment Asset ID",
+    plugins: ["craftengine"],
+    compatibility: ["item", "armor"],
+    description: "Required: The resource location of the equipment model (e.g., default:topaz)",
+    type: "text",
+    default: "",
+    placeholder: "namespace:id"
+  });
+
+  api.nexomaker.postEditorModule({
+    name: "craftengine_equipmentClientBoundModel",
+    display: "Equipment Client Bound Model",
+    plugins: ["craftengine"],
+    compatibility: ["item", "armor"],
+    description: "Optional: Defaults to the global client-bound-model option in config.yml",
+    type: "checkbox",
+    default: false,
+  });
+
+  api.nexomaker.postEditorModule({
+    name: "craftengine_equipmentSlot",
+    display: "Equipment Slot",
+    plugins: ["craftengine"],
+    compatibility: ["item", "armor"],
+    description: "Optional (1.21.2+): Equipment slot - required for other equipment options to work",
+    type: "dropdown",
+    options: [
+      { value: "", label: "None" },
+      { value: "head", label: "Head" },
+      { value: "chest", label: "Chest" },
+      { value: "legs", label: "Legs" },
+      { value: "feet", label: "Feet" },
+      { value: "body", label: "Body (Animal Armor)" },
+      { value: "saddle", label: "Saddle" }
+    ],
+    default: "",
+  });
+
+  api.nexomaker.postEditorModule({
+    name: "craftengine_equipmentCameraOverlay",
+    display: "Equipment Camera Overlay",
+    plugins: ["craftengine"],
+    compatibility: ["item", "armor"],
+    description: "Optional (1.21.2+): Resource location of overlay texture when equipped (assets/<namespace>/textures/<id>)",
+    type: "text",
+    default: "",
+    placeholder: "namespace:id"
+  });
+
+  api.nexomaker.postEditorModule({
+    name: "craftengine_equipmentDispensable",
+    display: "Equipment Dispensable",
+    plugins: ["craftengine"],
+    compatibility: ["item", "armor"],
+    description: "Optional (1.21.2+): Whether the item can be dispensed using a dispenser",
+    type: "checkbox",
+    default: false,
+  });
+
+  api.nexomaker.postEditorModule({
+    name: "craftengine_equipmentDamageOnHurt",
+    display: "Equipment Damage On Hurt",
+    plugins: ["craftengine"],
+    compatibility: ["item", "armor"],
+    description: "Optional (1.21.2+): Whether this item is damaged when the wearing entity is damaged",
+    type: "checkbox",
+    default: false,
+  });
+
+  api.nexomaker.postEditorModule({
+    name: "craftengine_equipmentSwappable",
+    display: "Equipment Swappable",
+    plugins: ["craftengine"],
+    compatibility: ["item", "armor"],
+    description: "Optional (1.21.2+): Whether the item can be equipped by right-clicking",
+    type: "checkbox",
+    default: false,
+  });
+
+  api.nexomaker.postEditorModule({
+    name: "craftengine_equipmentEquipOnInteract",
+    display: "Equipment Equip On Interact",
+    plugins: ["craftengine"],
+    compatibility: ["item", "armor"],
+    description: "Optional (1.21.5+): Whether this item can be equipped onto a target mob by pressing use on it",
+    type: "checkbox",
+    default: false,
   });
 
   // Settings - Item Settings
@@ -215,7 +288,7 @@ module.exports = async (nm, api) => {
     display: "Dyeable",
     plugins: ["craftengine"],
     compatibility: ["armor", "item"],
-    description: "Allow item dyeing",
+    description: "Decides if the item can be dyed in crafting tables",
     type: "checkbox",
     default: false,
   });
@@ -225,9 +298,10 @@ module.exports = async (nm, api) => {
     display: "Consume Replacement",
     plugins: ["craftengine"],
     compatibility: ["food", "item"],
-    description: "Item given after consumption",
+    description: "Set the return item after consuming (e.g., water bottle returns empty bottle)",
     type: "minecraftid",
     default: "",
+    placeholder: "minecraft:glass_bottle"
   });
 
   api.nexomaker.postEditorModule({
@@ -235,9 +309,11 @@ module.exports = async (nm, api) => {
     display: "Craft Remainder",
     plugins: ["craftengine"],
     compatibility: ["item"],
-    description: "Item left after crafting",
-    type: "minecraftid",
+    description: "Item returned after crafting. Supports fixed item, hurt_and_break, or recipe_based. Simple: minecraft:bucket, Complex: use textarea format",
+    type: "textarea",
     default: "",
+    placeholder: "minecraft:bucket\n\nOR for complex:\ntype: hurt_and_break\ndamage: 1",
+    rows: 3
   });
 
   api.nexomaker.postEditorModule({
@@ -245,9 +321,21 @@ module.exports = async (nm, api) => {
     display: "Invulnerable",
     plugins: ["craftengine"],
     compatibility: ["item", "tool", "weapon", "armor"],
-    description: "Make item invulnerable to damage",
+    description: "List of damage types item is immune to (lava, fire_tick, block_explosion, entity_explosion, lightning, contact)",
+    type: "textarea",
+    default: "",
+    placeholder: "- lava\n- fire_tick\n- block_explosion\n- entity_explosion\n- lightning\n- contact",
+    rows: 6
+  });
+
+  api.nexomaker.postEditorModule({
+    name: "craftengine_enchantable",
+    display: "Enchantable",
+    plugins: ["craftengine"],
+    compatibility: ["item", "tool", "weapon", "armor"],
+    description: "Block certain items from being used on enchantment table. Setting to true won't make unenchantable items enchantable",
     type: "checkbox",
-    default: false,
+    default: true,
   });
 
   api.nexomaker.postEditorModule({
@@ -255,7 +343,7 @@ module.exports = async (nm, api) => {
     display: "Compost Probability",
     plugins: ["craftengine"],
     compatibility: ["item", "food"],
-    description: "Probability of composting success (0.0-1.0)",
+    description: "Probability of composting success (0.0-1.0), default: 0.5",
     type: "number",
     default: null,
   });
@@ -275,9 +363,10 @@ module.exports = async (nm, api) => {
     display: "Dye Color",
     plugins: ["craftengine"],
     compatibility: ["item"],
-    description: "Color when used as dye",
+    description: "RGB color this item provides in dyeing recipe (e.g., 255,140,0)",
     type: "text",
     default: "",
+    placeholder: "255,140,0"
   });
 
   api.nexomaker.postEditorModule({
@@ -285,9 +374,10 @@ module.exports = async (nm, api) => {
     display: "Firework Color",
     plugins: ["craftengine"],
     compatibility: ["item"],
-    description: "Firework color configuration",
+    description: "RGB color this item provides in firework star fade recipe (e.g., 255,140,0)",
     type: "text",
     default: "",
+    placeholder: "255,140,0"
   });
 
   api.nexomaker.postEditorModule({
@@ -295,9 +385,11 @@ module.exports = async (nm, api) => {
     display: "Ingredient Substitute",
     plugins: ["craftengine"],
     compatibility: ["item"],
-    description: "Substitute ingredient for recipes",
-    type: "text",
+    description: "Which vanilla items this item can substitute for in recipes (one per line)",
+    type: "textarea",
     default: "",
+    placeholder: "- minecraft:leather\n- minecraft:paper",
+    rows: 3
   });
 
   api.nexomaker.postEditorModule({
@@ -335,9 +427,10 @@ module.exports = async (nm, api) => {
     display: "Drop Display",
     plugins: ["craftengine"],
     compatibility: ["item", "tool", "weapon", "armor"],
-    description: "Display configuration for dropped items",
+    description: "Control dropped item name display. Use 'true' for default, 'false' to disable, or custom format like '<arg:count>x <name>'",
     type: "text",
     default: "",
+    placeholder: "true / false / <arg:count>x <name>"
   });
 
   api.nexomaker.postEditorModule({
@@ -345,8 +438,27 @@ module.exports = async (nm, api) => {
     display: "Glow Color",
     plugins: ["craftengine"],
     compatibility: ["item", "tool", "weapon", "armor"],
-    description: "Glow color for item",
-    type: "text",
+    description: "Make items glow and display colors (black, dark_blue, dark_green, dark_aqua, dark_red, dark_purple, gold, gray, dark_gray, blue, green, aqua, red, light_purple, yellow, white)",
+    type: "dropdown",
+    options: [
+      { value: "", label: "None" },
+      { value: "white", label: "White" },
+      { value: "black", label: "Black" },
+      { value: "dark_blue", label: "Dark Blue" },
+      { value: "dark_green", label: "Dark Green" },
+      { value: "dark_aqua", label: "Dark Aqua" },
+      { value: "dark_red", label: "Dark Red" },
+      { value: "dark_purple", label: "Dark Purple" },
+      { value: "gold", label: "Gold" },
+      { value: "gray", label: "Gray" },
+      { value: "dark_gray", label: "Dark Gray" },
+      { value: "blue", label: "Blue" },
+      { value: "green", label: "Green" },
+      { value: "aqua", label: "Aqua" },
+      { value: "red", label: "Red" },
+      { value: "light_purple", label: "Light Purple" },
+      { value: "yellow", label: "Yellow" }
+    ],
     default: "",
   });
 
@@ -547,7 +659,7 @@ module.exports = async (nm, api) => {
     plugins: ["craftengine"],
     compatibility: ["block"],
     description: "Client-side tags",
-    type: "text",
+    type: "loot",
     default: "",
   });
 
@@ -718,21 +830,21 @@ module.exports = async (nm, api) => {
   });
 
   api.nexomaker.postEditorModule({
-    name: "craftengine_removeComponents",
-    display: "Remove Components (1.20.5+)",
-    plugins: ["craftengine"],
-    compatibility: ["item", "tool", "weapon", "armor", "food"],
-    description: "List of component IDs to remove (e.g., 'minecraft:equippable')",
-    type: "text",
-    default: "",
-  });
-
-  api.nexomaker.postEditorModule({
     name: "craftengine_customComponents",
     display: "Custom Components (1.20.5+)",
     plugins: ["craftengine"],
     compatibility: ["item", "tool", "weapon", "armor", "food", "block"],
     description: "Custom Minecraft components in YAML format (advanced users)",
+    type: "loot",
+    default: "",
+  });
+
+  api.nexomaker.postEditorModule({
+    name: "craftengine_removeComponents",
+    display: "Remove Components (1.20.5+)",
+    plugins: ["craftengine"],
+    compatibility: ["item", "tool", "weapon", "armor", "food"],
+    description: "List of component IDs to remove (e.g., 'minecraft:equippable')",
     type: "text",
     default: "",
   });
@@ -764,7 +876,7 @@ module.exports = async (nm, api) => {
     plugins: ["craftengine"],
     compatibility: ["item", "tool", "weapon", "armor", "food", "block"],
     description: "Client-side only data components in YAML format (requires Premium)",
-    type: "text",
+    type: "loot",
     default: "",
   });
 
@@ -837,6 +949,7 @@ module.exports = async (nm, api) => {
     'nutrition': { plugins: ['nexo', 'itemsadder', 'craftengine'] },
     'saturation': { plugins: ['nexo', 'itemsadder', 'craftengine'] },
     'consumable': { plugins: ['nexo', 'itemsadder', 'craftengine'] },
+    'equipment': { plugins: ['craftengine'] },
   
     // Block modules
     'block-hardness': { plugins: ['nexo', 'itemsadder', 'craftengine'] },

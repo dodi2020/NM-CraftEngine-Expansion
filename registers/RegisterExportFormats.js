@@ -12,7 +12,7 @@ module.exports = (nm, itemTransformer) => {
     // File structure configuration
     files: {
       perNamespace: true,
-      output: 'resources/{projectId}/configuration/{folder}/{namespace}.yml',
+      output: 'resources/{projectId}/configuration/{namespace}.yml',
 
       // Assets organized by item type and subtype
       assets: ({ item, assetType, assetName, projectId, namespace }) => {
@@ -22,9 +22,9 @@ module.exports = (nm, itemTransformer) => {
         // Block assets
         if (item.type === 'block' || item.subtype === 'block') {
           if (assetType === 'texture') {
-            return `resources/${projectId}/assets/${namespace}/textures/blocks/${assetName}`;
+            return `resources/${projectId}/assets/${namespace}/textures/block/${assetName}`;
           } else if (assetType === 'model') {
-            return `resources/${projectId}/assets/${namespace}/models/blocks/${assetName}`;
+            return `resources/${projectId}/assets/${namespace}/models/block/${assetName}`;
           }
         }
 
@@ -38,22 +38,6 @@ module.exports = (nm, itemTransformer) => {
         }
 
         // Item assets organized by subtype
-        if (item.subtype === 'weapon') {
-          if (assetType === 'texture') {
-            return `resources/${projectId}/assets/${namespace}/textures/weapons/${assetName}`;
-          } else if (assetType === 'model') {
-            return `resources/${projectId}/assets/${namespace}/models/weapons/${assetName}`;
-          }
-        }
-
-        if (item.subtype === 'tool') {
-          if (assetType === 'texture') {
-            return `resources/${projectId}/assets/${namespace}/textures/tools/${assetName}`;
-          } else if (assetType === 'model') {
-            return `resources/${projectId}/assets/${namespace}/models/tools/${assetName}`;
-          }
-        }
-
         if (item.subtype === 'armor') {
           if (assetType === 'texture') {
             return `resources/${projectId}/assets/${namespace}/textures/armor/${assetName}`;
@@ -72,13 +56,13 @@ module.exports = (nm, itemTransformer) => {
 
         // Default: general items
         if (assetType === 'texture') {
-          return `resources/${projectId}/assets/${namespace}/textures/items/${assetName}`;
+          return `resources/${projectId}/assets/${namespace}/textures/item/${assetName}`;
         } else if (assetType === 'model') {
-          return `resources/${projectId}/assets/${namespace}/models/items/${assetName}`;
+          return `resources/${projectId}/assets/${namespace}/models/item/${assetName}`;
         }
 
         // Fallback for any edge cases
-        return `resources/${projectId}/assets/${namespace}/${assetType}s/${assetName}`;
+        return `resources/${projectId}/assets/${namespace}/${assetType}/${assetName}`;
       },
     },
 

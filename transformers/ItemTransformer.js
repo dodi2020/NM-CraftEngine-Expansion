@@ -5,7 +5,8 @@
 
 module.exports.transform = (item, context) => {
     const ItemKey = `${item.namespace}:${item.id}`;
-    const assetsPath = `${item.namespace}:item/${context.folder}/${item.id}`;
+    const assetsPathTexture = `${item.namespace}:${item.type}/${item.id}`;
+    const assetsPathModel = `${item.namespace}:${item.type}/${item.id}`;
 
     // Helper to process lore string with line breaks
     const getLore = () => {
@@ -60,11 +61,66 @@ module.exports.transform = (item, context) => {
         return null;
     };
 
-    // Helper to parse custom components (YAML string)
+    // Helper to parse custom components (YAML string to object)
     const getCustomComponents = () => {
         const componentsModule = item.modules?.craftengine_customComponents;
         if (componentsModule && typeof componentsModule === 'string') {
-            return componentsModule;
+            try {
+                // Parse YAML string to JavaScript object
+                const lines = componentsModule.split('\n');
+                const components = {};
+                let currentComponent = null;
+                let componentValue = '';
+                let isMultiline = false;
+
+                for (const line of lines) {
+                    if (!line.trim() || line.trim().startsWith('#')) continue;
+
+                    const indent = line.search(/\S/);
+                    const trimmed = line.trim();
+
+                    // Check if this is a component key (at indent 0 and ends with :)
+                    if (indent === 0 && trimmed.endsWith(':')) {
+                        // Save previous component if exists
+                        if (currentComponent) {
+                            components[currentComponent] = isMultiline ? componentValue.trim() : parseValue(componentValue.trim());
+                        }
+
+                        // Start new component - keep full namespace:component format
+                        currentComponent = trimmed.slice(0, -1); // Remove trailing :
+                        componentValue = '';
+                        isMultiline = false;
+                    } else if (currentComponent && indent > 0) {
+                        // Multi-line component value
+                        if (componentValue) {
+                            componentValue += '\n' + trimmed;
+                            isMultiline = true;
+                        } else {
+                            componentValue = trimmed;
+                        }
+                    }
+                }
+
+                // Save last component
+                if (currentComponent) {
+                    components[currentComponent] = isMultiline ? componentValue.trim() : parseValue(componentValue.trim());
+                }
+
+                // Helper to parse simple values (numbers, booleans, empty objects)
+                function parseValue(val) {
+                    if (!val || val === '{}') return {};
+                    if (val === 'true') return true;
+                    if (val === 'false') return false;
+                    const num = Number(val);
+                    if (!isNaN(num)) return num;
+                    return val; // Return as string if not a special type
+                }
+
+                return Object.keys(components).length > 0 ? components : null;
+            } catch (e) {
+                console.error('Failed to parse custom components:', e);
+                return null;
+            }
         }
         return null;
     };
@@ -160,7 +216,6 @@ module.exports.transform = (item, context) => {
             'renameable': item.modules?.craftengine_renameable,
             'projectile': item.modules?.craftengine_projectile,
             'dyeable': item.modules?.craftengine_dyeable,
-            'food': item.modules?.craftengine_food,
             'consume-replacement': item.modules?.craftengine_consumeReplacement,
             'craft-remainder': item.modules?.craftengine_craftRemainder,
             'invulnerable': item.modules?.craftengine_invulnerable,
@@ -175,16 +230,26 @@ module.exports.transform = (item, context) => {
             'destroy-on-death-chance': item.modules?.craftengine_destroyOnDeathChance,
             'drop-display': item.modules?.craftengine_dropDisplay,
             'glow-color': item.modules?.craftengine_glowColor,
+            'equipment': cleanObject({
+                'asset-id': item.modules?.craftengine_equipmentAssetId,
+                'client-bound-model': item.modules?.craftengine_equipmentClientBoundModel,
+                'slot': item.modules?.craftengine_equipmentSlot,
+                'camera-overlay': item.modules?.craftengine_equipmentCameraOverlay,
+                'dispensable': item.modules?.craftengine_equipmentDispensable,
+                'damage-on-hurt': item.modules?.craftengine_equipmentDamageOnHurt,
+                'swappable': item.modules?.craftengine_equipmentSwappable,
+                'equip-on-interact': item.modules?.craftengine_equipmentEquipOnInteract,
+            }),
         }),
 
         // Model configuration
         model: {
             type: 'minecraft:model',
-            path: assetsPath,
+            path: assetsPathModel,
             generation: {
                 parent: 'item/handheld',
                 textures: {
-                    'layer0': assetsPath,
+                    'layer0': assetsPathTexture,
                 }
             }
         }

@@ -4,7 +4,8 @@
 
 module.exports.transform = (item, context) => {
     const ArmorKey = `${item.namespace}:${item.id}`;
-    const assetsPath = `${item.namespace}:item/${context.folder}/${item.id}`;
+    const assetsPathTexture = `${item.namespace}:${item.type}/${item.id}`;
+    const assetsPathModel = `${item.namespace}:${item.type}/${item.id}`;
 
     // Helper to process lore string with line breaks
     const getLore = () => {
@@ -164,11 +165,11 @@ module.exports.transform = (item, context) => {
         // Model configuration
         model: {
             type: 'minecraft:model',
-            path: assetsPath,
+            path: assetsPathModel,
             generation: {
                 parent: 'item/generated',
                 textures: {
-                    'layer0': assetsPath,
+                    'layer0': assetsPathTexture,
                 }
             }
         }
