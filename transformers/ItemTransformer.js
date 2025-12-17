@@ -5,8 +5,7 @@
 
 module.exports.transform = (item, context) => {
     const ItemKey = `${item.namespace}:${item.id}`;
-    const assetsPathTexture = `${item.namespace}:${item.type}/${item.id}`;
-    const assetsPathModel = `${item.namespace}:${item.type}/${item.id}`;
+    const assetsPath = `${item.namespace}:${item.type}/${item.id}`;
 
     // Helper to process lore string with line breaks
     const getLore = () => {
@@ -181,6 +180,18 @@ module.exports.transform = (item, context) => {
         // Material - use baseMaterial module or default to paper
         material: (item.modules?.baseMaterial || 'paper').toLowerCase(),
 
+        // Model configuration
+        model: {
+            type: 'minecraft:model',
+            path: assetsPath,
+            generation: {
+                parent: 'item/handheld',
+                textures: {
+                    'layer0': assetsPath,
+                }
+            }
+        },
+
         // Data components
         data: {
             'external': getExternalData(),
@@ -244,18 +255,6 @@ module.exports.transform = (item, context) => {
                 'saturation': item.modules?.craftengine_saturation,
             },
         },
-
-        // Model configuration
-        model: {
-            type: 'minecraft:model',
-            path: assetsPathModel,
-            generation: {
-                parent: 'item/handheld',
-                textures: {
-                    'layer0': assetsPathTexture,
-                }
-            }
-        }
     };
 
     // Subtype-specific logic for weapons

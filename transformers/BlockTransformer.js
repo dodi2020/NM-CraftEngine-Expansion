@@ -4,8 +4,8 @@
 
 module.exports.transform = (item, context) => {
     const BlockKey = `${item.namespace}:${item.id}`;
-    const assetsPathTexture = `${item.namespace}:${item.type}/${item.id}`;
-    const assetsPathModel = `${item.namespace}:${item.type}/${item.id}`;
+    const assetsPath = `${item.namespace}:${item.type}/${item.id}`;
+
 
     // Helper to process lore string with line breaks
     const getLore = () => {
@@ -125,11 +125,11 @@ module.exports.transform = (item, context) => {
         // Model configuration for blocks
         model: {
             type: 'minecraft:model',
-            path: assetsPathModel,
+            path: assetsPath,
             generation: {
                 parent: 'block/cube_all',
                 textures: {
-                    'all': assetsPathTexture,
+                    'all': assetsPath,
                 }
             }
         }

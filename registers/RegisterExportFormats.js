@@ -22,47 +22,47 @@ module.exports = (nm, itemTransformer) => {
         // Block assets
         if (item.type === 'block' || item.subtype === 'block') {
           if (assetType === 'texture') {
-            return `resources/${projectId}/resourcepack/assets/${namespace}/textures/block/${assetName}`;
+            return `resources/${projectId}/resourcepack/assets/${namespace}/textures/${item.type}/${assetName}`;
           } else if (assetType === 'model') {
-            return `resources/${projectId}/resourcepack/assets/${namespace}/models/block/${assetName}`;
+            return `resources/${projectId}/resourcepack/assets/${namespace}/models/${item.type}/${assetName}`;
           }
         }
 
         // Furniture assets
         if (item.type === 'furniture' || item.subtype === 'furniture') {
           if (assetType === 'texture') {
-            return `resources/${projectId}/resourcepack/assets/${namespace}/textures/furniture/${assetName}`;
+            return `resources/${projectId}/resourcepack/assets/${namespace}/textures/${item.type}/${assetName}`;
           } else if (assetType === 'model') {
-            return `resources/${projectId}/resourcepack/assets/${namespace}/models/furniture/${assetName}`;
+            return `resources/${projectId}/resourcepack/assets/${namespace}/models/${item.type}/${assetName}`;
           }
         }
 
         // Item assets organized by subtype
         if (item.subtype === 'armor') {
           if (assetType === 'texture') {
-            return `resources/${projectId}/resourcepack/assets/${namespace}/textures/armor/${assetName}`;
+            return `resources/${projectId}/resourcepack/assets/${namespace}/textures/${item.type}/${assetName}`;
           } else if (assetType === 'model') {
-            return `resources/${projectId}/resourcepack/assets/${namespace}/models/armor/${assetName}`;
+            return `resources/${projectId}/resourcepack/assets/${namespace}/models/${item.type}/${assetName}`;
           }
         }
 
         if (item.subtype === 'food') {
           if (assetType === 'texture') {
-            return `resources/${projectId}/resourcepack/assets/${namespace}/textures/food/${assetName}`;
+            return `resources/${projectId}/resourcepack/assets/${namespace}/textures/${item.type}/${assetName}`;
           } else if (assetType === 'model') {
-            return `resources/${projectId}/resourcepack/assets/${namespace}/models/food/${assetName}`;
+            return `resources/${projectId}/resourcepack/assets/${namespace}/models/${item.type}/${assetName}`;
           }
         }
 
         // Default: general items
         if (assetType === 'texture') {
-          return `resources/${projectId}/resourcepack/assets/${namespace}/textures/item/${assetName}`;
+          return `resources/${projectId}/resourcepack/assets/${namespace}/textures/${item.type}/${assetName}`;
         } else if (assetType === 'model') {
-          return `resources/${projectId}/resourcepack/assets/${namespace}/models/item/${assetName}`;
+          return `resources/${projectId}/resourcepack/assets/${namespace}/models/${item.type}/${assetName}`;
         }
 
         // Fallback for any edge cases
-        return `resources/${projectId}/resourcepack/assets/${namespace}/${assetType}/${assetName}`;
+        return `resources/${projectId}/resourcepack/assets/${namespace}/${assetType}/${item.type}/${assetName}`;
       },
     },
 
