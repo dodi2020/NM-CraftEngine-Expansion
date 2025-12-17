@@ -2,6 +2,7 @@ module.exports.init = async () => {
   const nm = api.nexomaker;
   const itemTransformer = require("./transformers/transformer.js");
   const strengthicon = await api.nexomaker.loadAsset(__dirname + "/assets/strength.png");
+
   // Register compatibility for built-in creators
   require('./registers/RegisterCreators.js')(nm);
 
@@ -26,6 +27,10 @@ module.exports.init = async () => {
     page: "craftengine-attribute-builder"
   });
 
+  // Register Attribute Builder Overlay
+  nm.registerBackgroundModule("craftengine-attribute-overlay", __dirname + "/overlays/AttributeBuilderOverlay.jsx", {
+    zIndex: 2000
+  });
 
   api.console.log('✓ CraftEngine expansion loaded.');
 }

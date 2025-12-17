@@ -98,11 +98,11 @@ module.exports = async (nm, api) => {
     display: "Attribute Modifiers",
     plugins: ["craftengine"],
     compatibility: ["item", "tool", "weapon", "armor"],
-    description: "Attribute modifiers for the item. Use the Attribute Builder tool for a visual editor.",
+    description: "Attribute modifiers for the item. Click the strength icon (⚡) in the sidebar to open the visual builder, or paste YAML directly here.",
     icon: strengthicon,
     type: "loot",
     default: "",
-    placeholder: "Paste YAML here or use the Builder tool (strength icon in sidebar)\n\nExample:\n- type: attack_damage\n  amount: 5.0\n  operation: add_value\n  slot: mainhand",
+    placeholder: "Click the strength icon in sidebar for visual builder, or paste YAML here\n\nExample:\n- type: attack_damage\n  amount: 5.0\n  operation: add_value\n  slot: mainhand",
     rows: 8,
     resize: "vertical",
     maxLength: 10000
