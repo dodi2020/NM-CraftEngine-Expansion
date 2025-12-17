@@ -1,6 +1,6 @@
 module.exports = async (nm, api) => {
 
-  const strengthicon = await api.nexomaker.loadAsset(__dirname + "/assets/strength.png");
+  const strengthicon = await api.nexomaker.loadAsset(__dirname + "/../assets/strength.png");
 
   // Data Components - Simple Value Components
   api.nexomaker.postEditorModule({
