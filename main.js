@@ -1,89 +1,73 @@
 module.exports.init = async () => {
   const nm = api.nexomaker;
+  const itemTransformer = require("./transformers/transformer.js");
+  const strengthicon = await api.nexomaker.loadAsset(__dirname + "/assets/strength.png");
+  const componenticon = await api.nexomaker.loadAsset(__dirname + "/assets/component.png");
 
-  // SIMPLIFIED API - No more normalization needed!
-  // The system auto-normalizes items for you, giving you:
-  // - item.id, item.name, item.type, item.namespace
-  // - item.modules (flat object of all module values)
-  // - item.textures, item.models (arrays)
+  // Register compatibility for built-in creators
+  require('./registers/RegisterCreators.js')(nm);
 
-  const itemTransformer = api.require("./transformers/item.js");
-  
-  // TODO: Add all needed modules for CraftEngine.
-  // const itemModules = api.require("./modules/item.js")
+  // Register editor modules
+  require('./registers/RegisterEditorModules.js')(nm, api);
 
-  // itemModules.regiter(nm);
+  // Register export formats
+  require('./registers/RegisterExportFormats.js')(nm, itemTransformer);
 
-  nm.registerExportFormat({
-    id: 'CraftEngine',
-    name: 'CraftEngine Format',
-    
-    // Simple transform function - receives normalized item, returns your format
-    transform: (item, context) => {
-      if (item.type === 'entity') {
-        return null;
-      }
-      if (item.type === 'block') {
-        return null;
-      }
-      if (item.type === 'furniture') {
-        return null;
-      }
-      return itemTransformer.transform(item, context);
-    },
-        
-    // Simplified file structure
-    files: {
-      perNamespace: true,
-      output: 'resources/{projectId}/configuration/{folder}/{namespace}.yml',
+  // Register Attribute Modifier Builder Page
+  nm.registerModularPage("craftengine-attribute-builder", __dirname + "/pages/AttributeModifierBuilder.jsx");
+  nm.regRoute('AttributeBuilder', __dirname + '/pages/AttributeModifierBuilder.jsx');
 
-      assets: (context) => {
-        const { item, assetType, assetName, projectId, namespace, folder } = context;
+  // Register Components Builder Page
+  nm.registerModularPage("craftengine-components-builder", __dirname + "/pages/ComponentsBuilder.jsx");
+  nm.regRoute('ComponentsBuilder', __dirname + '/pages/ComponentsBuilder.jsx');
 
-        // Example: Organize blocks and items differently
-        if (item.type === 'item') {
-          if (assetType === 'model') {
-            return 'resources/${projectId}/resourcepack/assets/${projectId}/models/item/${folder}/${assetName}';
-          } else if (assetType === 'texture') {
-            return 'resources/${projectId}/resourcepack/assets/${projectId}/texture/item/${folder}/${assetName}';
-          }
-        }
-
-        if (item.type === 'block') {
-          if (assetType === 'model') {
-            return 'resources/${projectId}/resourcepack/assets/${projectId}/models/block/${folder}/${assetName}';
-          } else if (assetType === 'texture') {
-            return 'resources/${projectId}/resourcepack/assets/${projectId}/texture/block/${folder}/${assetName}';
-          }
-        }
-
-        if (item.type === "entity") {
-          return null;  // Entities don't have assets in this example
-        }
-        return 'resources/${projectId}/resourcepack/assets/${projectId}/${assetType}/${assetName}';
-
-      }
-    },
-    
-    // Optional: Custom export logic
-    hooks: {
-      canExport: (item) => true,
-      
-      finalize: (allTransformedItems) => {
-        // Wrap all items under "items" key
-        return {
-          items: allTransformedItems
-        };
-      },
-      
-    },
+  // Add sidebar icon for attribute builder
+  nm.postSidebarIcon({
+    id: 'craftengine-attribute-builder-btn',
+    key: 'craftengine_attribute_builder_key',
+    icon: strengthicon,
+    button: "Attribute Builder",
+    route: "/AttributeBuilder",
+    page: "craftengine-attribute-builder"
   });
 
-  api.console.log('✅ CraftEngine format registered.');
-};
+  // Add sidebar icon for components builder
+  nm.postSidebarIcon({
+    id: 'craftengine-components-builder-btn',
+    key: 'craftengine_components_builder_key',
+    icon: componenticon,
+    button: "Component Builder",
+    route: "/ComponentsBuilder",
+    page: "craftengine-components-builder"
+  });
+
+//  // TEST BUTTONS - Remove these later
+//  for (let i = 1; i <= 10; i++) {
+//    nm.postSidebarIcon({
+//      id: `craftengine-test-btn-${i}`,
+//      key: `craftengine_test_key_${i}`,
+//      icon: i % 2 === 0 ? componenticon : strengthicon,
+//      button: `Test Button ${i}`,
+//      route: `/Test${i}`,
+//      page: "craftengine-attribute-builder"
+//    });
+//  }
+
+  // Register Attribute Builder Overlay
+  nm.registerBackgroundModule("craftengine-attribute-overlay", __dirname + "/overlays/AttributeBuilderOverlay.jsx", {
+    zIndex: 2000
+  });
+
+  // Register Components Builder Overlay (for future use when NexoMaker adds functionality)
+  nm.registerBackgroundModule("craftengine-components-overlay", __dirname + "/overlays/ComponentsBuilderOverlay.jsx", {
+    zIndex: 2000
+  });
+
+  api.console.log('✓ CraftEngine expansion loaded.');
+}
 
 module.exports.metadata = {
   id: 'craftengine_expansion',
-  version: '0.0.1-Alpha',
-  author: 'TamashiiMon, DeonixxStudio',
+  version: '0.0.7-Alpha',
+  author: 'dodi2020',
 };
