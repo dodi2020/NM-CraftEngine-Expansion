@@ -182,7 +182,7 @@ module.exports.transform = (item, context) => {
         material: (item.modules?.baseMaterial || 'paper').toLowerCase(),
 
         // Data components
-        data: cleanObject({
+        data: {
             'external': getExternalData(),
             'item-name': item.modules?.craftengine_itemName || item.name,
             'custom-name': item.modules?.craftengine_customName,
@@ -195,7 +195,6 @@ module.exports.transform = (item, context) => {
             'custom-model-data': item.modules?.craftengine_customModelData || item.modules?.customModelData,
             'hide-tooltip': item.modules?.craftengine_hideTooltip,
             'attribute-modifiers': getAttributeModifiers(),
-            'food': item.modules?.craftengine_food,
             'max-damage': item.modules?.craftengine_maxDamage || item.modules?.durability,
             'jukebox-playable': item.modules?.craftengine_jukeboxPlayable,
             'item-model': item.modules?.craftengine_itemModel,
@@ -206,10 +205,10 @@ module.exports.transform = (item, context) => {
             'nbt': item.modules?.craftengine_nbt,
             'components': getCustomComponents(),
             'remove-components': getRemoveComponents(),
-        }),
+        },
 
         // Settings
-        settings: cleanObject({
+        settings: {
             'fuel-time': item.modules?.craftengine_fuelTime,
             'repairable': item.modules?.craftengine_repairable || item.modules?.repairable,
             'anvil-repair-item': item.modules?.craftengine_anvilRepairItem,
@@ -230,7 +229,7 @@ module.exports.transform = (item, context) => {
             'destroy-on-death-chance': item.modules?.craftengine_destroyOnDeathChance,
             'drop-display': item.modules?.craftengine_dropDisplay,
             'glow-color': item.modules?.craftengine_glowColor,
-            'equipment': cleanObject({
+            equipment: {
                 'asset-id': item.modules?.craftengine_equipmentAssetId,
                 'client-bound-model': item.modules?.craftengine_equipmentClientBoundModel,
                 'slot': item.modules?.craftengine_equipmentSlot,
@@ -239,8 +238,12 @@ module.exports.transform = (item, context) => {
                 'damage-on-hurt': item.modules?.craftengine_equipmentDamageOnHurt,
                 'swappable': item.modules?.craftengine_equipmentSwappable,
                 'equip-on-interact': item.modules?.craftengine_equipmentEquipOnInteract,
-            }),
-        }),
+            },
+            food: {
+                'nutrition': item.modules?.craftengine_nutrition,
+                'saturation': item.modules?.craftengine_saturation,
+            },
+        },
 
         // Model configuration
         model: {
