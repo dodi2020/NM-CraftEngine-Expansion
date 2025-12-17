@@ -68,6 +68,6 @@ module.exports.init = async () => {
 
 module.exports.metadata = {
   id: 'craftengine_expansion',
-  version: '0.0.7-Alpha',
+  version: '1.0.0',
   author: 'dodi2020',
 };
