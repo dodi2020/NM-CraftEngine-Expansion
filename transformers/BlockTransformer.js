@@ -4,8 +4,8 @@
 
 module.exports.transform = (item, context) => {
     const BlockKey = `${item.namespace}:${item.id}`;
-    const assetsPathTexture = `${item.namespace}:${item.type}/${item.id}`;
-    const assetsPathModel = `${item.namespace}:${item.type}/${item.id}`;
+    const assetsPath = `${item.namespace}:${item.type}/${item.id}`;
+
 
     // Helper to process lore string with line breaks
     const getLore = () => {
@@ -69,6 +69,18 @@ module.exports.transform = (item, context) => {
         // Material for blocks (what vanilla block to use as base)
         material: (item.modules?.baseMaterial || 'note_block').toLowerCase(),
 
+        // Model configuration for blocks
+        model: {
+            type: 'minecraft:model',
+            path: assetsPath,
+            generation: {
+                parent: 'block/cube_all',
+                textures: {
+                    'all': assetsPath,
+                }
+            }
+        },
+
         // Data components
         data: cleanObject({
             'item-name': item.modules?.craftengine_itemName || item.name,
@@ -121,18 +133,6 @@ module.exports.transform = (item, context) => {
             'client-bound-material': item.modules?.craftengine_clientBoundMaterial,
             'client-bound-data-components': item.modules?.craftengine_clientBoundDataComponents,
         }),
-
-        // Model configuration for blocks
-        model: {
-            type: 'minecraft:model',
-            path: assetsPathModel,
-            generation: {
-                parent: 'block/cube_all',
-                textures: {
-                    'all': assetsPathTexture,
-                }
-            }
-        }
     };
 
     // Clean up empty sections

@@ -4,8 +4,8 @@
 
 module.exports.transform = (item, context) => {
     const ArmorKey = `${item.namespace}:${item.id}`;
-    const assetsPathTexture = `${item.namespace}:${item.type}/${item.id}`;
-    const assetsPathModel = `${item.namespace}:${item.type}/${item.id}`;
+    const assetsPath = `${item.namespace}:${item.type}/${item.id}`;
+
 
     // Helper to process lore string with line breaks
     const getLore = () => {
@@ -122,6 +122,18 @@ module.exports.transform = (item, context) => {
         // Material - construct from material + armor_type (e.g., diamond_chestplate)
         material: 'paper', // default, will be overridden below
 
+        // Model configuration
+        model: {
+            type: 'minecraft:model',
+            path: assetsPath,
+            generation: {
+                parent: 'item/generated',
+                textures: {
+                    'layer0': assetsPath,
+                }
+            }
+        },
+
         // Data components
         data: cleanObject({
             'external': getExternalData(),
@@ -161,18 +173,6 @@ module.exports.transform = (item, context) => {
             'glow-color': item.modules?.craftengine_glowColor,
             'client-bound-data-components': item.modules?.craftengine_clientBoundDataComponents,
         }),
-
-        // Model configuration
-        model: {
-            type: 'minecraft:model',
-            path: assetsPathModel,
-            generation: {
-                parent: 'item/generated',
-                textures: {
-                    'layer0': assetsPathTexture,
-                }
-            }
-        }
     };
 
     // Set material based on armor type and material
