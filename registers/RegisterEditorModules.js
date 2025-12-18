@@ -203,7 +203,7 @@ module.exports = async (nm, api) => {
     display: "Equipment Dispensable",
     plugins: ["craftengine"],
     compatibility: ["item", "armor"],
-    description: "Optional (1.21.2+): Whether the item can be dispensed using a dispenser",
+    description: "Optional (1.21.2+): Whether the item can be equipped using a dispenser",
     type: "checkbox",
     default: false,
   });
