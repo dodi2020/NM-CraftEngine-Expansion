@@ -20,6 +20,7 @@ module.exports.init = async () => {
   const itemTransformer = require("./transformers/transformer.js");
   const strengthicon = await api.nexomaker.loadAsset(__dirname + "/assets/strength.png");
   const componenticon = await api.nexomaker.loadAsset(__dirname + "/assets/component.png");
+  const enchantmenticon = await api.nexomaker.loadAsset(__dirname + "/assets/enchantment.png");
 
   // Register compatibility for built-in creators
   require('./registers/RegisterCreators.js')(nm);
@@ -37,6 +38,10 @@ module.exports.init = async () => {
   // Register Components Builder Page
   nm.registerModularPage("craftengine-components-builder", __dirname + "/pages/ComponentsBuilder.jsx");
   nm.regRoute('ComponentsBuilder', __dirname + '/pages/ComponentsBuilder.jsx');
+
+  // Register Enchantment Builder Page
+  nm.registerModularPage("craftengine-enchantment-builder", __dirname + "/pages/EnchantmentBuilder.jsx");
+  nm.regRoute('EnchantmentBuilder', __dirname + '/pages/EnchantmentBuilder.jsx');
 
   // Add sidebar icon for attribute builder
   nm.postSidebarIcon({
@@ -56,6 +61,16 @@ module.exports.init = async () => {
     button: "Component Builder",
     route: "/ComponentsBuilder",
     page: "craftengine-components-builder"
+  });
+
+  // Add sidebar icon for enchantment builder
+  nm.postSidebarIcon({
+    id: 'craftengine-enchantment-builder-btn',
+    key: 'craftengine_enchantment_builder_key',
+    icon: enchantmenticon,
+    button: "Enchantment Builder",
+    route: "/EnchantmentBuilder",
+    page: "craftengine-enchantment-builder"
   });
 
 //  // TEST BUTTONS - Remove these later

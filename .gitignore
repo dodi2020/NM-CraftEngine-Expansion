@@ -5,3 +5,6 @@ package-lock.json
 
 # Claude Code configuration
 .claude/
+
+./git
+

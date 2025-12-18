@@ -82,7 +82,7 @@ module.exports.transform = (item, context) => {
                     if (indent === 0 && trimmed.endsWith(':')) {
                         // Save previous component if exists
                         if (currentComponent) {
-                            components[currentComponent] = isMultiline ? componentValue.trim() : parseValue(componentValue.trim());
+                            components[currentComponent] = parseComponentValue(componentValue.trim(), isMultiline);
                         }
 
                         // Start new component - keep full namespace:component format
@@ -102,12 +102,34 @@ module.exports.transform = (item, context) => {
 
                 // Save last component
                 if (currentComponent) {
-                    components[currentComponent] = isMultiline ? componentValue.trim() : parseValue(componentValue.trim());
+                    components[currentComponent] = parseComponentValue(componentValue.trim(), isMultiline);
                 }
 
-                // Helper to parse simple values (numbers, booleans, empty objects)
-                function parseValue(val) {
+                // Helper to parse component values
+                function parseComponentValue(val, isMultiline) {
                     if (!val || val === '{}') return {};
+
+                    // If it's multiline, parse as YAML-like key: value pairs
+                    if (isMultiline) {
+                        const obj = {};
+                        const subLines = val.split('\n');
+                        for (const subLine of subLines) {
+                            const colonIndex = subLine.indexOf(':');
+                            if (colonIndex > 0) {
+                                const key = subLine.substring(0, colonIndex).trim();
+                                const value = subLine.substring(colonIndex + 1).trim();
+                                obj[key] = parseSimpleValue(value);
+                            }
+                        }
+                        return Object.keys(obj).length > 0 ? obj : val;
+                    }
+
+                    // Single line value
+                    return parseSimpleValue(val);
+                }
+
+                // Helper to parse simple values (numbers, booleans)
+                function parseSimpleValue(val) {
                     if (val === 'true') return true;
                     if (val === 'false') return false;
                     const num = Number(val);
@@ -176,6 +198,44 @@ module.exports.transform = (item, context) => {
         return null;
     };
 
+    // Helper to parse enchantments (YAML string to array)
+    const getEnchantments = () => {
+        const enchModule = item.modules?.craftengine_enchantment;
+        if (enchModule && typeof enchModule === 'string') {
+            try {
+                // Parse YAML string manually (simple parser for our specific format)
+                const lines = enchModule.split('\n');
+                const enchantments = [];
+                let currentEnchantment = null;
+
+                for (const line of lines) {
+                    const trimmed = line.trim();
+                    if (!trimmed || trimmed.startsWith('#')) continue;
+
+                    if (trimmed.startsWith('- enchantment:')) {
+                        // New enchantment entry
+                        if (currentEnchantment) enchantments.push(currentEnchantment);
+                        currentEnchantment = { enchantment: trimmed.split('enchantment:')[1].trim() };
+                    } else if (currentEnchantment) {
+                        // Parse properties of current enchantment
+                        if (trimmed.startsWith('level:')) {
+                            currentEnchantment.level = parseInt(trimmed.split('level:')[1].trim());
+                        }
+                    }
+                }
+
+                // Add the last enchantment
+                if (currentEnchantment) enchantments.push(currentEnchantment);
+
+                return enchantments.length > 0 ? enchantments : null;
+            } catch (e) {
+                console.error('Failed to parse enchantments:', e);
+                return null;
+            }
+        }
+        return null;
+    };
+
     const transformer = {
         // Material - use baseMaterial module or default to paper
         material: (item.modules?.baseMaterial || 'paper').toLowerCase(),
@@ -194,7 +254,7 @@ module.exports.transform = (item, context) => {
             'overwritable-lore': item.modules?.craftengine_overwritableLore,
             'overwritable-item-name': item.modules?.craftengine_overwritableItemName,
             'unbreakable': item.modules?.craftengine_unbreakable,
-            'enchantment': item.modules?.craftengine_enchantment,
+            'enchantment': getEnchantments(),
             'dyed-color': item.modules?.craftengine_dyedColor,
             'custom-model-data': item.modules?.craftengine_customModelData || item.modules?.customModelData,
             'hide-tooltip': item.modules?.craftengine_hideTooltip,
@@ -244,8 +304,9 @@ module.exports.transform = (item, context) => {
                 'equip-on-interact': item.modules?.craftengine_equipmentEquipOnInteract,
             },
             food: {
-                'nutrition': item.modules?.craftengine_nutrition,
-                'saturation': item.modules?.craftengine_saturation,
+                'nutrition': item.modules?.nutrition || item.modules?.craftengine_nutrition,
+                'saturation': item.modules?.saturation || item.modules?.craftengine_saturation,
+                'can-always-eat': item.modules?.craftengine_canAlwaysEat,
             },
         },
     };
@@ -264,11 +325,15 @@ module.exports.transform = (item, context) => {
         }
     }
 
-    // Clean up empty data and settings
-    if (Object.keys(transformer.data).length === 0) {
+    // Clean up empty nested objects and null values
+    transformer.data = cleanObject(transformer.data);
+    transformer.settings = cleanObject(transformer.settings);
+
+    // Remove data/settings if completely empty after cleaning
+    if (!transformer.data || Object.keys(transformer.data).length === 0) {
         delete transformer.data;
     }
-    if (Object.keys(transformer.settings).length === 0) {
+    if (!transformer.settings || Object.keys(transformer.settings).length === 0) {
         delete transformer.settings;
     }
 
