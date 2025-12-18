@@ -1,0 +1,13 @@
+configs:
+  id: top-secret-nxm
+  name: TOP SECRET NXM
+  path: C:\Users\Ido\Documents\NexoMaker\Projects\top-secret-nxm\
+  time: Thu Dec 11 2025 17:33:34 GMT+0200 (Israel Standard Time)
+  version: 1.21.10
+  date_of_creation: 11-12-2025
+  last_modification_date: 11-12-2025
+  author: TOP SECRET (dodi2020)
+  format: craftengine
+environment:
+  maxPlayers: 20
+  ram: 6144
