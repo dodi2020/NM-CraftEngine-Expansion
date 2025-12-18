@@ -1,7 +1,0 @@
-isEnabled: true
-entityType: IRON_GOLEM
-name: '&fLvl &2$level &fElite &fIron Golem'
-deathMessages:
-- $player &cmessed with the wrong $entity&c!
-- $player &chas been taught the way of fist by $entity&c!
-baseDamageV2: 15.0

@@ -1,7 +1,0 @@
-isEnabled: true
-location1: em_adventurers_guild,290.5,107.5,311.5,-135,0
-location1Text: '&8『Ruins Lair』 &cLvl 150'
-location2: the_ruins.yml
-style: CRYSTAL
-particleColor: 1315860
-blindPlayer: true

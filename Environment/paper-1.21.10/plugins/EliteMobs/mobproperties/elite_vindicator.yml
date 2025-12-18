@@ -1,6 +1,0 @@
-isEnabled: true
-entityType: VINDICATOR
-name: '&fLvl &2$level &fElite &8Vindicator'
-deathMessages:
-- $entity &cvindicated his fighting skills over $player&c!
-baseDamageV2: 19.5

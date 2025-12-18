@@ -1,6 +1,0 @@
-isEnabled: true
-entityType: ELDER_GUARDIAN
-name: '&fLvl &2$level &fElite &3Elder Guardian'
-deathMessages:
-- $entity &cprevented $player &cfrom exploring the depths!
-baseDamageV2: 12.0

@@ -1,7 +1,0 @@
-isEnabled: true
-entityType: POLAR_BEAR
-name: '&fLvl &2$level &fElite &fPolar Bear'
-deathMessages:
-- $player &cwas clawed to death by $entity&c!
-- $player &cwas mauled to death by $entity&c!
-baseDamageV2: 9.0

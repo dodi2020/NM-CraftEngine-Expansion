@@ -1,6 +1,0 @@
-isEnabled: true
-location1: em_adventurers_guild,290.5,105.5,293.5,45,0
-location1Text: '&4『Vampire Manor Lair』 &5Lvls 120-140'
-location2: vampire_manor_lair.yml
-particleColor: 6946816
-blindPlayer: true

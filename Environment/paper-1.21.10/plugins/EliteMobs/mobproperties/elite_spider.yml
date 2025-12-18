@@ -1,7 +1,0 @@
-isEnabled: true
-entityType: SPIDER
-name: '&fLvl &2$level &fElite &7Spider'
-deathMessages:
-- $player &cbecame entangled in $entity's &cweb!
-- $entity &chas devoured $player&c!
-baseDamageV2: 3.0

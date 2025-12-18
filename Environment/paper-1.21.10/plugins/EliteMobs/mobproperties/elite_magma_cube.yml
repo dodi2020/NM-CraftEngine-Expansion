@@ -1,7 +1,0 @@
-isEnabled: true
-entityType: MAGMA_CUBE
-name: '&2Lvl &2$level &fElite &6Magma Cube'
-deathMessages:
-- $player was incinerated by $entity&f!
-- $player got too close to $entity&f!
-baseDamageV2: 6.0

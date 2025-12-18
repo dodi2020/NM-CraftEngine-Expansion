@@ -1,7 +1,0 @@
-isEnabled: true
-location1: em_adventurers_guild,296.5,98,296.5,98,0
-location1Text: '&7『Catacombs Lair』 &aLvl 10'
-location2: catacombs_lair.yml
-style: CRYSTAL
-particleColor: 7960953
-blindPlayer: true

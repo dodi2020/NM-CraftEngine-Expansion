@@ -1,8 +1,0 @@
-isEnabled: true
-entityType: ZOMBIE
-name: $normalLevel Arena Zombie
-level: '4'
-followDistance: 60
-onSpawnBlockStates: []
-onRemoveBlockStates: []
-bossType: NORMAL

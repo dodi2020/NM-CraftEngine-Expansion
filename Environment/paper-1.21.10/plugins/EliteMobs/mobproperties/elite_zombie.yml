@@ -1,7 +1,0 @@
-isEnabled: true
-entityType: ZOMBIE
-name: '&fLvl &2$level &fElite &2Zombie'
-deathMessages:
-- $player &cwas devoured by $entity&c!
-- $entity &cgot to $player's &cbrains!
-baseDamageV2: 5.0

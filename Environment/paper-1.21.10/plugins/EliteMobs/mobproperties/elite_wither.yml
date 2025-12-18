@@ -1,7 +1,0 @@
-isEnabled: true
-entityType: WITHER
-name: '&fLvl &2$level &7Elite &5Wither'
-deathMessages:
-- $player &cangered $entity&c!
-- $player &chas met $entity's &cfury!
-baseDamageV2: 12.0

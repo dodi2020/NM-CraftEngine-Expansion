@@ -1,7 +1,0 @@
-isEnabled: true
-entityType: PILLAGER
-name: '&fLvl &2$level &fElite &8Pillager'
-deathMessages:
-- $entity &cplundered $player&c!
-- $entity &cpillaged $player&c!
-baseDamageV2: 5.0

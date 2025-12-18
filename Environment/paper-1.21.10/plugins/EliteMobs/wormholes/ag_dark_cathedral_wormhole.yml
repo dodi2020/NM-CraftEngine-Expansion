@@ -1,6 +1,0 @@
-isEnabled: true
-location1: em_adventurers_guild,290.5,101.5,293.5,-40,0
-location1Text: '&0『Dark Cathedral Lair』 &6Lvl 40'
-location2: dark_cathedral_lair.yml
-particleColor: 0
-blindPlayer: true

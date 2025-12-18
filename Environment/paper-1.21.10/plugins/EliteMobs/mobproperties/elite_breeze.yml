@@ -1,6 +1,0 @@
-isEnabled: true
-entityType: BREEZE
-name: '&2Lvl &2$level &2Elite &eBreeze'
-deathMessages:
-- $player &cwas blown away by $entity!
-baseDamageV2: 1.5

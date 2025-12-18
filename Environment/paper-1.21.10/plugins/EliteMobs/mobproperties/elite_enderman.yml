@@ -1,8 +1,0 @@
-isEnabled: true
-entityType: ENDERMAN
-name: '&fLvl &2$level &fElite &5Enderman'
-deathMessages:
-- $entity &csent $player &cinto the void!
-- $player &clooked at $entity &cwrong!
-- $player &cand $entity &cbecame best friends!
-baseDamageV2: 10.0

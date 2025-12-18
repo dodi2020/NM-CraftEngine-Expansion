@@ -1,7 +1,0 @@
-isEnabled: true
-name: Soulbind
-maxLevelV2: 1
-value: 10.0
-isEnabledForProcedurallyGeneratedItems: true
-loreStrings: '&7Soulbound to &f$player'
-hologramString: $player&f's

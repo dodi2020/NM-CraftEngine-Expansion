@@ -1,7 +1,0 @@
-isEnabled: true
-entityType: HOGLIN
-name: '&fLvl &2$level &fElite &dHoglin'
-deathMessages:
-- $player &cmessed with the $entity &cand got the horns!
-- $entity &cgot $player's &cbacon!
-baseDamageV2: 8.0

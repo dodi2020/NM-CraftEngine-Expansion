@@ -1,6 +1,0 @@
-{
-	"parent": "minecraft:item/generated",
-	"textures": {
-		"layer0": "elitemobs:items/corrupted_leggings_icon"
-	}
-}

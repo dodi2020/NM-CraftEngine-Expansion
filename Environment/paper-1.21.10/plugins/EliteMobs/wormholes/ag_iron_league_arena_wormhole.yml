@@ -1,8 +1,0 @@
-isEnabled: true
-location1: em_adventurers_guild,246.5,93,275.5,-89,0
-location1Text: '&f『Iron League Arena』 &aLvl 50'
-location2: iron_league_arena.yml
-location2Text: '&f『Adventurers Guild』'
-style: ICOSAHEDRON
-particleColor: 0
-blindPlayer: true

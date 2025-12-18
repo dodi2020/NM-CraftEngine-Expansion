@@ -1,6 +1,0 @@
-isEnabled: true
-entityType: GUARDIAN
-name: '&fLvl &2$level &fElite &3Guardian'
-deathMessages:
-- $entity &cprevented $player &cfrom exploring the depths!
-baseDamageV2: 9.0

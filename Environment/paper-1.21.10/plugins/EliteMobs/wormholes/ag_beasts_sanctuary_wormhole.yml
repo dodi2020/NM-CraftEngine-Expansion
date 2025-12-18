@@ -1,7 +1,0 @@
-isEnabled: true
-location1: em_adventurers_guild,296.5,106,296.5,90,0
-location1Text: '&5『Beasts Sanctuary Lair』 &cLvl 130'
-location2: beasts_sanctuary_lair.yml
-style: CRYSTAL
-particleColor: 9830655
-blindPlayer: true

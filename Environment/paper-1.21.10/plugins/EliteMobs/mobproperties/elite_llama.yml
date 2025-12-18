@@ -1,7 +1,0 @@
-isEnabled: true
-entityType: LLAMA
-name: '&fLvl &2$level &fElite &5Llama'
-deathMessages:
-- $player &cwas spit on by $entity&c!
-- $player &cwas made $entity&c angry!
-baseDamageV2: 1.0

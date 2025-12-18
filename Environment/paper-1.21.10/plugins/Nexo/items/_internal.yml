@@ -1,7 +1,0 @@
-gui-invisible-item:
-  itemname: GUI Invisible Item
-  material: paper
-  Pack:
-    custom_model_data: 777
-    texture: top-secret-nxm:item/_internal/gui-invisible-item
-    parent_model: top-secret-nxm:item/_internal/gui-invisible-item

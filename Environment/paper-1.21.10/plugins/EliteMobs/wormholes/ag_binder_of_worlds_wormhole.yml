@@ -1,7 +1,0 @@
-isEnabled: true
-location1: em_adventurers_guild,290.5,123,302.5,90,0
-location1Text: '&5『Shadow of the Binder Of Worlds』 &5Lvl 200'
-location2: shadow_of_the_binder_of_worlds_lair.yml
-style: CRYSTAL
-particleColor: 9830655
-blindPlayer: true

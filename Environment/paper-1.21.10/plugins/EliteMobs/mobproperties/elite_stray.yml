@@ -1,6 +1,0 @@
-isEnabled: true
-entityType: STRAY
-name: '&fLvl &2$level &fElite &bStray'
-deathMessages:
-- $player &cwas led astray by $entity&c!
-baseDamageV2: 5.0

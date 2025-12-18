@@ -1,8 +1,0 @@
-isEnabled: true
-location1: em_adventurers_guild,281.5,104.5,302.5,-45,0
-location1Text: '&7『Knight''s Castle』 &aLvl 95'
-location2: knights_castle_lair.yml
-location2Text: '&f『Adventurers Guild』'
-style: ICOSAHEDRON
-particleColor: 0
-blindPlayer: true

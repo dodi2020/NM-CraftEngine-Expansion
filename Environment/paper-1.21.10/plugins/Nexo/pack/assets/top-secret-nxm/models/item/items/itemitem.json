@@ -1,9 +1,0 @@
-{
-  "format_version": "1.21.6",
-  "credit": "Made with Blockbench",
-  "parent": "item/generated",
-  "textures": {
-    "0": "top-secret-nxm:item/items/itemitem"
-  },
-  "elements": []
-}

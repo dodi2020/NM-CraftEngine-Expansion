@@ -1,7 +1,0 @@
-isEnabled: true
-entityType: PIGLIN
-name: '&fLvl &2$level &fElite &ePiglin'
-deathMessages:
-- $entity &cwill fetch a good price for $player's remains!
-- $entity &ctaught $player &cthe value of gold!
-baseDamageV2: 13.0

@@ -1,9 +1,0 @@
-isEnabled: true
-validWorlds: []
-validWorldEnvironments:
-- NORMAL
-- CUSTOM
-validBiomesV2: []
-earliestTime: 12000
-moonPhase: NEW_MOON
-isSurfaceSpawn: true

@@ -1,4 +1,0 @@
-default_channel: AUTO
-player_tracking: true
-rate_limit: 5
-regen_time: 1000

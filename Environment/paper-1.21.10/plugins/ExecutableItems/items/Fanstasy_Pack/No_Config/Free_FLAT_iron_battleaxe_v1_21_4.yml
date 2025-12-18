@@ -1,6 +1,0 @@
-material: STICK
-config_5: true
-config_update: true
-itemModel: ei:iron_battleaxe
-hiders:
-  hideUsage: true

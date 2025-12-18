@@ -1,7 +1,0 @@
-isEnabled: true
-entityType: ZOMBIFIED_PIGLIN
-name: '&fLvl &2$level &fElite &6Zombified Piglin'
-deathMessages:
-- $player &cwas mobbed to death by $entity&c!
-- $entity &cgot $player's &cbacon!
-baseDamageV2: 12.0

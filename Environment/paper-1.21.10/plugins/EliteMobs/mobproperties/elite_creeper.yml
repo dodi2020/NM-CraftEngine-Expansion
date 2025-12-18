@@ -1,7 +1,0 @@
-isEnabled: true
-entityType: CREEPER
-name: '&fLvl &2$level &fElite &2Creeper'
-deathMessages:
-- $player &cwas blasted away by $entity!
-- $entity &cjust oh man'd $player&c!
-baseDamageV2: 64.5

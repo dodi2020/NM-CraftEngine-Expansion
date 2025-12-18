@@ -1,7 +1,0 @@
-isEnabled: true
-location1: em_adventurers_guild,284.5,109,296.5,0,0
-location1Text: '&2『Under Grove Lair』 &cLvl 170'
-location2: under_grove_lair.yml
-style: CRYSTAL
-particleColor: 9830655
-blindPlayer: true

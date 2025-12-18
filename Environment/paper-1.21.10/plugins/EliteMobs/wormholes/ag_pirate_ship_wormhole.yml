@@ -1,6 +1,0 @@
-isEnabled: true
-location1: em_adventurers_guild,299.5,98.5,302.5,133,0
-location1Text: '&9『Pirate Ship Minidungeon』 &aLvls 10-20'
-location2: pirate_ship_minidungeon.yml
-particleColor: 119
-blindPlayer: true

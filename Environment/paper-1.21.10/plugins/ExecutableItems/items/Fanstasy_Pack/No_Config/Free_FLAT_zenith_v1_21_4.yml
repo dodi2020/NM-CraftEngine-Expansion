@@ -1,8 +1,0 @@
-material: SHIELD
-config_5: true
-config_update: true
-itemModel: ei:zenith
-hiders:
-  hideUsage: true
-bannerSettings:
-  patterns: {}

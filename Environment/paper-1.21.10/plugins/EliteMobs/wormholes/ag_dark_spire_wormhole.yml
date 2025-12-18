@@ -1,6 +1,0 @@
-isEnabled: true
-location1: em_adventurers_guild,284.5,105,296.5,0,0
-location1Text: '&0『Dark Spire Minidungeon』 &cLvls 100-120'
-location2: dark_spire_minidungeon.yml
-particleColor: 0
-blindPlayer: true

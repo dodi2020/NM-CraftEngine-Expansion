@@ -1,6 +1,0 @@
-isEnabled: true
-entityType: RAVAGER
-name: '&fLvl &2$level &fElite &6Ravager'
-deathMessages:
-- $entity &cshowed $player &cwho's in charge!
-baseDamageV2: 18.0
