@@ -763,26 +763,9 @@ module.exports = async (nm, api) => {
     default: false,
   });
 
-  // Armor-specific modules
-  api.nexomaker.postEditorModule({
-    name: "craftengine_defense",
-    display: "Defense",
-    plugins: ["craftengine"],
-    compatibility: ["armor"],
-    description: "Armor defense value (minecraft:generic.armor)",
-    type: "number",
-    default: null,
-  });
-
-  api.nexomaker.postEditorModule({
-    name: "craftengine_toughness",
-    display: "Toughness",
-    plugins: ["craftengine"],
-    compatibility: ["armor"],
-    description: "Armor toughness value (minecraft:generic.armor_toughness)",
-    type: "number",
-    default: null,
-  });
+  // REMOVED: Armor-specific attribute modules - Use AttributeBuilder instead
+  // craftengine_defense - Replaced by AttributeBuilder (attribute: armor, slot: head/chest/legs/feet)
+  // craftengine_toughness - Replaced by AttributeBuilder (attribute: armor_toughness, slot: head/chest/legs/feet)
 
   api.nexomaker.postEditorModule({
     name: "craftengine_fireResistant",
@@ -937,14 +920,9 @@ module.exports = async (nm, api) => {
     'disableEnchanting': { plugins: ['nexo', 'itemsadder', 'craftengine'] },
     'enchantmentGlintOverride': { plugins: ['nexo', 'itemsadder', 'craftengine'] },
     'equippable': { plugins: ['nexo', 'itemsadder', 'craftengine'] },
-    'gravity': { plugins: ['nexo', 'itemsadder', 'craftengine'] },
-    'jumpStrength': { plugins: ['nexo', 'itemsadder', 'craftengine'] },
-    'knockbackResistance': { plugins: ['nexo', 'itemsadder', 'craftengine'] },
-    'luck': { plugins: ['nexo', 'itemsadder', 'craftengine'] },
-    'max-health': { plugins: ['nexo', 'itemsadder', 'craftengine'] },
-    'maxAbsorption': { plugins: ['nexo', 'itemsadder', 'craftengine'] },
+    // REMOVED: Attribute modules - Use AttributeBuilder instead
+    // 'gravity', 'jumpStrength', 'knockbackResistance', 'luck', 'max-health', 'maxAbsorption', 'movementEfficiency'
     'maxStackSize': { plugins: ['nexo', 'itemsadder', 'craftengine'] },
-    'movementEfficiency': { plugins: ['nexo', 'itemsadder', 'craftengine'] },
     'unbreakable': { plugins: ['nexo', 'itemsadder', 'craftengine'] },
     'nutrition': { plugins: ['nexo', 'itemsadder', 'craftengine'] },
     'saturation': { plugins: ['nexo', 'itemsadder', 'craftengine'] },
