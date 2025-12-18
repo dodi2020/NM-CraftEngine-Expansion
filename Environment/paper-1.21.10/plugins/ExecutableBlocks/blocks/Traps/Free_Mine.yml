@@ -1,0 +1,34 @@
+name: '&4&lDangerous Mine'
+material: RED_STAINED_GLASS
+lore:
+- §4>> §c------------ §4<<
+- §6Be carefull this mine
+- is very explosive !
+- §4>> §c------------ §4<<
+dropBlockIfItIsBroken: true
+dropBlockWhenItExplodes: true
+onlyBreakableWithEI: []
+activators:
+  activator1:
+    option: PLAYER_WALK_ON
+    displayName: Activator name
+    blockCommands:
+    - REMOVEBLOCK
+    ownerCommands: []
+    silenceOutput: true
+    playerCommands:
+    - SENDCENTEREDMESSAGE §4§lUhhhh §c:(
+    - execute at %player% run summon tnt %block_x_int% %block_y_int% %block_z_int%
+    - JUMP 1.5
+    cancelEventIfInvalidRequiredExecutableItems: false
+    cancelEvent: false
+    globalPlayerCooldown: 0
+    displayGlobalPlayerCooldownMsg: true
+    globalPlayerCooldownMsg: '&e'
+    inTickGlobalPlayerCooldown: false
+    cancelEventIfInGlobalPlayerCooldown: false
+    perPlayerCooldown: 1
+    displayPerPlayerCooldownMsg: false
+    perPlayerCooldownMsg: '&e'
+    inTickPerPlayerCooldown: false
+    cancelEventIfInPerPlayerCooldown: false

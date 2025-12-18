@@ -1,0 +1,220 @@
+name: '&fMotor Pickaxe'
+lore:
+- §7Left-Click blocks to break blocks
+- §7in a 3x3 area. Consumes 1 Coal
+- §7for every block broken.
+material: NETHERITE_PICKAXE
+glow: false
+disableEnchantGlide: false
+disableStack: false
+keepItemOnDeath: false
+canBeUsedOnlyByTheOwner: false
+cancelEventIfNotOwner: false
+onlyOwnerBlackListedActivators: []
+storeItemInfo: false
+unbreakable: false
+isDurabilityBasedOnUsage: false
+cancelEventIfNoPermission: false
+whitelistedWorlds: []
+glider: false
+keepDefaultAttributes: true
+ignoreKeepDefaultAttributesFeature: false
+config_5: true
+config_update: true
+usageFeatures:
+  usage: -1
+  isRefreshableClean: true
+  usageLimit: -1
+dropFeatures:
+  glowDrop: false
+  glowDropColor: WHITE
+  displayNameDrop: false
+enchantments: {}
+hiders:
+  hideEnchantments: false
+  hideUnbreakable: false
+  hideAttributes: false
+  hideUsage: false
+  hideDestroys: false
+  hidePlacedOn: false
+  hideDye: false
+  hideArmorTrim: false
+  hideAdditionalTooltip: false
+  hideToolTip: false
+giveFirstJoinFeatures:
+  giveFirstJoin: false
+  giveFirstJoinAmount: 1
+  giveFirstJoinSlot: 0
+restrictions:
+  locked-in-inventory: false
+variables:
+  var0:
+    variableName: fuel
+    type: NUMBER
+    default: 0.0
+    isRefreshableClean: true
+    refreshTagDoNotEdit: §天§他§道§人§天§道§心
+activators:
+  activator0:
+    name: '&eActivator'
+    option: PLAYER_LEFT_CLICK
+    typeTarget: ONLY_BLOCK
+    usageModification: 0
+    cancelEvent: false
+    noActivatorRunIfTheEventIsCancelled: false
+    autoUpdateItem: false
+    cooldownFeatures:
+      cooldown: 0
+      pausePlaceholdersConditions: {}
+    globalCooldownFeatures:
+      cooldown: 0
+    otherEICooldowns: {}
+    requiredItems: {}
+    requiredExecutableItems: {}
+    requiredMagics: {}
+    detailedSlots:
+    - -1
+    playerCommands: []
+    playerConditions: {}
+    worldConditions: {}
+    itemConditions: {}
+    customConditions: {}
+    placeholdersConditions: {}
+    detailedBlocks:
+      blocks: []
+      cancelEventIfNotValid: false
+    blockCommands:
+    - MINEINCUBE 1
+    blockConditions:
+      requiredItems: {}
+      requiredExecutableItems: {}
+    variablesModification: {}
+  activator1:
+    name: '&eActivator'
+    option: PLAYER_BLOCK_BREAK
+    usageModification: 0
+    cancelEvent: false
+    noActivatorRunIfTheEventIsCancelled: false
+    autoUpdateItem: false
+    cooldownFeatures:
+      cooldown: 0
+      pausePlaceholdersConditions: {}
+    globalCooldownFeatures:
+      cooldown: 0
+    otherEICooldowns: {}
+    requiredItems:
+      requiredItem0:
+        material: COAL
+        amount: 1
+        notExecutableItem: true
+      errorMessage: '&cNo coal detected. Please put coal in the inventory'
+      cancelEventIfError: true
+    requiredExecutableItems: {}
+    requiredMagics: {}
+    detailedSlots:
+    - -1
+    playerCommands: []
+    playerConditions: {}
+    worldConditions: {}
+    itemConditions: {}
+    customConditions: {}
+    placeholdersConditions:
+      plchCdt0:
+        type: PLAYER_NUMBER
+        comparator: EQUALS
+        part1: '%var_fuel%'
+        part2: '0'
+        cancelEventIfNotValid: false
+        messageIfNotValid: ''
+        messageIfNotValidForTarget: ''
+        stopCheckingOtherConditionsIfNotValid: true
+    detailedBlocks:
+      blocks: []
+      cancelEventIfNotValid: false
+    blockCommands: []
+    blockConditions:
+      requiredItems: {}
+      requiredExecutableItems: {}
+    variablesModification:
+      varUpdt0:
+        variableName: fuel
+        type: SET
+        modification: 2.0
+  activator2:
+    name: '&eActivator'
+    option: PLAYER_BLOCK_BREAK
+    usageModification: 0
+    cancelEvent: false
+    noActivatorRunIfTheEventIsCancelled: false
+    autoUpdateItem: false
+    cooldownFeatures:
+      cooldown: 0
+      pausePlaceholdersConditions: {}
+    globalCooldownFeatures:
+      cooldown: 0
+    otherEICooldowns: {}
+    requiredItems: {}
+    requiredExecutableItems: {}
+    requiredMagics: {}
+    detailedSlots:
+    - -1
+    playerCommands: []
+    playerConditions: {}
+    worldConditions: {}
+    itemConditions: {}
+    customConditions: {}
+    placeholdersConditions:
+      plchCdt0:
+        type: PLAYER_NUMBER
+        comparator: SUPERIOR
+        part1: '%var_fuel%'
+        part2: '0'
+        cancelEventIfNotValid: true
+        messageIfNotValid: ''
+        messageIfNotValidForTarget: ''
+        stopCheckingOtherConditionsIfNotValid: true
+    detailedBlocks:
+      blocks: []
+      cancelEventIfNotValid: false
+    blockCommands: []
+    blockConditions:
+      requiredItems: {}
+      requiredExecutableItems: {}
+    variablesModification:
+      varUpdt0:
+        variableName: fuel
+        type: MODIFICATION
+        modification: -1.0
+displayConditions:
+  playerConditions: {}
+  worldConditions: {}
+  itemConditions: {}
+  placeholdersConditions: {}
+  enableFeature: false
+foodFeatures:
+  nutrition: 1
+  saturation: 1
+  isMeat: false
+  canAlwaysEat: false
+consumableFeatures:
+  enable: false
+  animation: EAT
+  hasConsumeParticles: false
+  consumeSeconds: 3
+itemRarity:
+  enableRarity: false
+  rarity: COMMON
+repairableFeatures:
+  enable: false
+  repairCost: 2
+equippableFeatures:
+  enable: false
+  slot: BODY
+  enableSound: false
+  sound: ITEM.ARMOR.EQUIP_DIAMOND
+  damageableOnHurt: false
+  dispensable: true
+  swappable: true
+  allowedEntities:
+  - PLAYER
+attributes: {}

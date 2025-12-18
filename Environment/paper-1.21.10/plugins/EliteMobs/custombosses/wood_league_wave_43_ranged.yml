@@ -1,0 +1,18 @@
+isEnabled: true
+entityType: PILLAGER
+name: $normalLevel Arena Crossbowman
+level: '43'
+powers:
+- attack_freeze.yml
+- skeleton_tracking_arrow.yml
+- shield_wall.yml
+- attack_wither.yml
+followDistance: 60
+helmet: DIAMOND_HELMET
+chestplate: DIAMOND_CHESTPLATE
+leggings: DIAMOND_LEGGINGS
+boots: DIAMOND_BOOTS
+mainHand: CROSSBOW
+onSpawnBlockStates: []
+onRemoveBlockStates: []
+bossType: NORMAL

@@ -1,0 +1,4 @@
+isEnabled: true
+name: Levitation
+onHitDuration: 5
+value: 50.0

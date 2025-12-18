@@ -1,0 +1,7 @@
+isEnabled: true
+entityType: ZOGLIN
+name: '&fLvl &2$level &fElite &dZoglin'
+deathMessages:
+- $player &cmessed with the $entity &cand got the horns!
+- $entity &cgot $player's &cbacon!
+baseDamageV2: 12.0

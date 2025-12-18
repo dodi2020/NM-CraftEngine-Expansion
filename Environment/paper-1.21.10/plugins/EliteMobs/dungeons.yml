@@ -1,0 +1,68 @@
+# Sets the text that appears over resurrection banners in dungeons
+dungeonRezInstructions: '&aPunch to rez!'
+# Sets the text that shows how many lives players have left in a dungeon! Placeholders:
+# $amount - the amount of lives left
+dungeonLivesLeftText: '&c$amount lives left!'
+# Sets the text for joining a dungeon as a player! Placeholders:
+# $dungeonName - the name of the dungeon
+joinDungeonAsPlayerText: '&fJoin $dungeonName as a player!'
+# Sets the text for joining a dungeon as a spectator! Placeholders:
+# $dungeonName - the name of the dungeon
+joinDungeonAsSpectatorText: '&fJoin $dungeonName as a spectator!'
+# Sets the title that will show up in the item description of instanced dungeon menus
+# $difficulty is the placeholder for the difficulty name in the configuration file of the dungeon
+instancedDungeonTitle: Start $difficulty difficulty dungeon!
+# Sets the description that will show up in the item description of instanced dungeon menus
+# $dungeonName is the placeholder for the dungeon name in the configuration file of the dungeon
+instancedDungeonDescription:
+- '&fCreate a new instance of the dungeon'
+- $dungeonName &ffor yourself and maybe
+- '&fsome friends!'
+# Sets is spectating instanced content will be available.
+allowSpectatorsInInstancedContent: true
+# Sets the message that appears when an instanced dungeon is completed
+instancedDungeonCompleteMessage: '[EliteMobs] Dungeon completed! It will self-destruct
+  in 2 minutes!'
+# Sets the message that appears when an instanced dungeon closing
+instancedDungeonClosingInstanceMessage: '[EliteMobs] Closing instance!'
+# Sets if PvP will be allowed in dungeons
+friendlyFireInDungeons: false
+# Sets the damage multiplier for fire damage in dungeons
+# This is important for balance as by default the damage is a bit too high for the dungeons as we design them
+fireDamageMultiplier: 0.5
+# Sets the damage multiplier for wither damage in dungeons
+# This is important for balance as by default the damage is a bit too high for the dungeons as we design them
+witherDamageMultiplier: 0.5
+# Sets the damage multiplier for fire damage in dungeons
+# This is important for balance as by default the damage is a bit too high for the dungeons as we design them
+poisonDamageMultiplier: 0.5
+# Sets the title for the dynamic dungeon level selection menu
+dynamicDungeonLevelSelectionMenuTitle: '&8Select Dungeon Level'
+# Sets the title for level selection items in the dynamic dungeon menu
+# $level is the placeholder for the level number
+dynamicDungeonLevelSelectionItemTitle: '&fLevel $level'
+# Sets the 'click to select' text in the dynamic dungeon level selection menu
+# $level is the placeholder for the level number
+dynamicDungeonLevelSelectionClickToSelect: '&7Click to select level &e$level'
+# Sets the 'mobs will be level' text in the dynamic dungeon level selection menu
+# $level is the placeholder for the level number
+dynamicDungeonLevelSelectionMobsWillBeLevel: '&7All mobs will be level &e$level'
+# Sets the 'recommended level' text in the dynamic dungeon level selection menu
+dynamicDungeonLevelSelectionRecommended: '&a&lRecommended level!'
+# Sets the 'easier than recommended' text in the dynamic dungeon level selection menu
+dynamicDungeonLevelSelectionEasier: '&eEasier than recommended'
+# Sets the 'harder than recommended' text in the dynamic dungeon level selection menu
+dynamicDungeonLevelSelectionHarder: '&6Harder than recommended'
+# Sets the title for the dynamic dungeon difficulty selection menu
+dynamicDungeonDifficultySelectionMenuTitle: '&8Select Difficulty'
+# Sets the 'selected level' text in the dynamic dungeon difficulty selection menu
+# $level is the placeholder for the selected level number
+dynamicDungeonDifficultySelectionSelectedLevel: '&7Selected Level: &e$level'
+# Sets the subtitle shown when a player kills a boss they are locked out from
+dungeonLockoutSubtitle: '&cLockout!'
+# Sets the chat message shown when a player kills a boss they are locked out from
+# $bossName is the placeholder for the boss name
+# $remainingTime is the placeholder for the remaining lockout time
+dungeonLockoutChatMessage: '&c[EliteMobs] &7You killed &c$bossName &7in the last lockout
+  period and must wait another &e$remainingTime &7before it will drop loot for you
+  again.'

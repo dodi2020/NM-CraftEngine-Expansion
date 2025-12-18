@@ -1,0 +1,50 @@
+# https://mo-mi.gitbook.io/xiaomomi-plugins/plugin-wiki/customnameplates/config/advance-data.yml
+# namespace:font
+minecraft:default:
+  default: 9.0
+  template-loading-sequence:
+    - unifont
+    - nonlatin_european
+    - accented
+    - ascii
+    - space
+  values:
+    默: 9.0
+
+minecraft:uniform:
+  default: 9.0
+  template-loading-sequence:
+    - unifont
+    - space
+
+minecraft:alt:
+  default: 9.0
+  template-loading-sequence:
+    - ascii_sga
+    - space
+
+minecraft:asciillager:
+  default: 9.0
+  template-loading-sequence:
+    - asciillager
+    - space
+
+customcrops:default:
+  default: 9.0
+  template-loading-sequence: []
+  values:
+    뀁: -1.0
+    뀂: 5.0
+    뀃: 7.0
+    뀄: 7.0
+    뀅: 5.0
+
+minecraft:customcrops:
+  default: 9.0
+  template-loading-sequence: []
+  values:
+    뀁: -1.0
+    뀂: 5.0
+    뀃: 7.0
+    뀄: 7.0
+    뀅: 5.0

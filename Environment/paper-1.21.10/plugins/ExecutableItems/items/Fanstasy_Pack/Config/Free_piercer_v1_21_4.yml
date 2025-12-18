@@ -1,0 +1,45 @@
+name: "<gradient:#ff6b00:#ff3300><bold>Piercer</bold></gradient>"
+lore:
+  - "<dark_red><italic>It doesn’t cut. It sears.</italic></dark_red>"
+  - "<red><italic>Forged to penetrate shields, walls, souls.</italic></red>"
+  - ""
+  - "<gold>▶ <bold>Right-click</bold> to fire a molten beam</gold>"
+  - "<gray>• <red>Burns</red> and <dark_red>damages</dark_red> in a 30-block line</gray>"
+  - "<gray>• Dashes forward, then triggers a chained <yellow>explosive shockwave</yellow></gray>"
+  - ""
+  - "<dark_gray><italic>“No armor. No barrier. Only ash.”</italic></dark_gray>"
+material: STICK
+config_5: true
+config_update: true
+itemModel: ei:piercer
+hiders:
+  hideUsage: true
+activators:
+  activator0:
+    option: PLAYER_RIGHT_CLICK
+    typeTarget: NO_TYPE_TARGET
+    detailedSlots:
+    - -1
+    playerCommands:
+    - score particles shape:square location:%player_world_initial%,%player_x_initial%,%player_y_initial%,%player_z_initial%
+      particle:FLAME height:3.5 length:30 time:5 density:3 directionYaw:%player_yaw_initial%
+      directionPitch:%player_pitch_initial% verticalOrder:up horizontalOrder:near
+    - score particles shape:square location:%player_world_initial%,%player_x_initial%,%player_y_initial%,%player_z_initial%
+      particle:LAVA height:1 length:30 time:5 density:3 directionYaw:%player_yaw_initial%
+      directionPitch:%player_pitch_initial% verticalOrder:up horizontalOrder:near
+    - HITSCAN_ENTITIES range:30 radius:1 pitch:0 yaw:0 leftRightShift:0 yShift:0 throughBlocks:true
+      throughEntities:true DELAYTICK 2 <+> BURN 5 <+> DELAYTICK 13 <+> DAMAGE 5 <+>
+      DASH pitch:%player_pitch_initial% yaw:%player_yaw_initial% power:2
+    - FOR [1,2,3,4,5,6,7,8,9,10] > for2
+    - execute at %player% run playsound minecraft:block.fire.extinguish master @a
+    - DELAYTICK 1
+    - END_FOR for2
+    - DELAYTICK 5
+    - score particles shape:square location:%player_world_initial%,%player_x_initial%,%player_y_initial%,%player_z_initial%
+      particle:EXPLOSION height:1 length:30 time:20 density:1 directionYaw:%player_yaw_initial%
+      directionPitch:%player_pitch_initial% verticalOrder:up horizontalOrder:near
+      offsetY:-1
+    - FOR [1,2,3,4,5,6,7,8,9,10] > for1
+    - execute at %player% run playsound minecraft:entity.generic.explode master @a
+    - DELAYTICK 1
+    - END_FOR for1

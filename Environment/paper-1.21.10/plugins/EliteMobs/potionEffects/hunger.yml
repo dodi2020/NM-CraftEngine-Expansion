@@ -1,0 +1,4 @@
+isEnabled: true
+name: Hunger
+onHitDuration: 30
+value: 10.0

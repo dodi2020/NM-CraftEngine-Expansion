@@ -1,0 +1,14 @@
+isEnabled: true
+material: IRON_SWORD
+name: '&fGrunt''s Sword'
+lore:
+- '&2Awarded to those who challenge the'
+- '&2Wood League Arena!'
+enchantments:
+- SHARPNESS,5
+- KNOCKBACK,2
+- SWEEPING_EDGE,1
+- UNBREAKING,5
+potionEffects: []
+itemType: UNIQUE
+level: 20

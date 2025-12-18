@@ -1,0 +1,14 @@
+isEnabled: true
+material: GOLDEN_LEGGINGS
+name: '&6Veteran''s Leggings'
+lore:
+- '&2Awarded to those who challenge the'
+- '&2Wood League Arena!'
+enchantments:
+- PROTECTION,5
+- PROJECTILE_PROTECTION,4
+- MENDING,1
+- UNBREAKING,5
+potionEffects: []
+itemType: UNIQUE
+level: 30

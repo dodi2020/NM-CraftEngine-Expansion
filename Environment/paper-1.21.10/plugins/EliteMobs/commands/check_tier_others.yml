@@ -1,0 +1,3 @@
+message1: '&7[EM] $player''s combat tier is $tier'
+message2: '&7[EM] $player''s guild tier bonus is $tier'
+message3: '&7[EM] &a$player''s total threat tier is $tier'

@@ -1,0 +1,14 @@
+isEnabled: true
+chestType: CHEST
+facing: NORTH
+chestTier: 0
+dropStyle: SINGLE
+restockTimer: 1
+lootList:
+- magmaguys_toothpick.yml:1
+mimicChance: 0.5
+mimicCustomBossesList:
+- test_boss.yml:1
+effects:
+- BARRIER
+locations: []

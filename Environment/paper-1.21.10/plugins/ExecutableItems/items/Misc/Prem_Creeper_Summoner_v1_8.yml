@@ -1,0 +1,133 @@
+name: '&a&l>> &fCreeper summoner &a<<'
+lore:
+- '&7Summon a &aCreeper'
+- '&7that will explode when it will'
+- '&7touch the ground'
+- '&cYou should take the height'
+- '&cIf you just want launch a creeper'
+- '&4&lUse &6LAUNCHENTITY &4&lcommand'
+material: CREEPER_HEAD
+glow: false
+disableStack: false
+keepItemOnDeath: false
+canBeUsedOnlyByTheOwner: false
+storeItemInfo: false
+unbreakable: false
+usage: 0
+usageLimit: -1
+dropFeatures:
+  glowDrop: false
+  glowDropColor: WHITE
+  displayNameDrop: false
+hiders:
+  hideEnchantments: false
+  hideUnbreakable: false
+  hideAttributes: false
+  hidePotionEffects: false
+  hideUsage: false
+enchantments: {}
+giveFirstJoinFeatures:
+  giveFirstJoin: false
+  giveFirstJoinAmount: 1
+  giveFirstJoinSlot: 0
+restrictions: {}
+cancelEventIfNoPerm: false
+cancelEventIfNotOwner: false
+disabledWorlds: []
+variables:
+  x:
+    variableName: x
+    type: STRING
+    default: '0'
+activators:
+  activator1:
+    name: '&eActivator'
+    option: PLAYER_RIGHT_CLICK
+    typeTarget: NO_TYPE_TARGET
+    usageModification: 0
+    cancelEvent: false
+    silenceOutput: false
+    autoUpdateItem: false
+    cooldownFeatures:
+      cooldown: 0
+      isCooldownInTicks: false
+      cooldownMsg: '&cYou are in cooldown ! &7(&e%time_H%&6H &e%time_M%&6M &e%time_S%&6S&7)'
+      displayCooldownMessage: false
+      cancelEventIfInCooldown: false
+    globalCooldownFeatures:
+      cooldown: 0
+      isCooldownInTicks: false
+      cooldownMsg: '&cYou are in cooldown ! &7(&e%time_H%&6H &e%time_M%&6M &e%time_S%&6S&7)'
+      displayCooldownMessage: true
+      cancelEventIfInCooldown: false
+    otherEICooldowns: {}
+    requiredItems:
+      errorMessage: ''
+    requiredExecutableItems:
+      errorMessage: ''
+    detailedSlots:
+    - -1
+    playerCommands: []
+    playerConditions: {}
+    worldConditions: {}
+    itemConditions: {}
+    customConditions: {}
+    placeholdersConditions: {}
+    variablesModification:
+      varModif0:
+        variableName: x
+        type: SET
+        modification: '%rand:1|10000000%'
+  activator2:
+    name: '&eActivator'
+    option: PLAYER_RIGHT_CLICK
+    typeTarget: NO_TYPE_TARGET
+    usageModification: 0
+    cancelEvent: false
+    silenceOutput: false
+    autoUpdateItem: false
+    cooldownFeatures:
+      cooldown: 0
+      isCooldownInTicks: false
+      cooldownMsg: '&cYou are in cooldown ! &7(&e%time_H%&6H &e%time_M%&6M &e%time_S%&6S&7)'
+      displayCooldownMessage: false
+      cancelEventIfInCooldown: false
+    globalCooldownFeatures:
+      cooldown: 0
+      isCooldownInTicks: false
+      cooldownMsg: '&cYou are in cooldown ! &7(&e%time_H%&6H &e%time_M%&6M &e%time_S%&6S&7)'
+      displayCooldownMessage: true
+      cancelEventIfInCooldown: false
+    otherEICooldowns: {}
+    requiredItems:
+      errorMessage: ''
+    requiredExecutableItems:
+      errorMessage: ''
+    detailedSlots:
+    - -1
+    playerCommands:
+    - execute at %player% run summon armor_stand ~ ~ ~ {NoGravity:1b,Silent:1b,Invulnerable:1b,Marker:1b,Invisible:1b,Tags:["%var_x%"]}
+    - execute at %player% run summon creeper ~ ~ ~ {NoGravity:1b,Silent:1b,Invulnerable:1b,NoAI:1b,CanPickUpLoot:0b,Tags:["%var_x%"]}
+    - execute at %player% run execute at %player% as @e[type=creeper,tag=%var_x%]
+      run minecraft:tp @e[type=creeper,tag=%var_x%] ~ ~ ~ ~ 0
+    - 'LOOP START: 60'
+    - execute at %player% run execute at @e[type=creeper,tag=%var_x%] as @e[type=creeper,tag=%var_x%]
+      run minecraft:tp @e[type=creeper,tag=%var_x%] ^ ^ ^0.165
+    - execute at @e[type=creeper,tag=%var_x%] if block ~ ~-0.1 ~ air run execute at
+      @e[type=creeper,tag=%var_x%] as @e[type=creeper,tag=%var_x%] run minecraft:tp @e[type=creeper,tag=%var_x%]
+      ~ ~-0.1 ~
+    - execute at @e[type=creeper,tag=%var_x%] unless block ^ ^ ^0.1 air run data merge
+      entity @e[type=creeper,tag=%var_x%,limit=1] {Fuse:0}
+    - DELAYTICK 1
+    - LOOP END
+    - data merge entity @e[type=creeper,tag=%var_x%,limit=1] {Fuse:0}
+    playerConditions: {}
+    worldConditions: {}
+    itemConditions: {}
+    customConditions: {}
+    placeholdersConditions: {}
+    variablesModification: {}
+recognitions: []
+attributes: {}
+config_5: true
+config_update: true

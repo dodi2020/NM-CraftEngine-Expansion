@@ -1,0 +1,125 @@
+name: '&4✦ &cEpic helmet &4✦'
+lore:
+- '&c&l---&7&l>>&c&l-----&7&l<<&c&l---'
+- ''
+- '&4✦ &7Epic:'
+- '  &4➤ &cSpeed 3'
+- '  &4➤ &c+1 health bonus'
+- ''
+- '&4✦ &7Particle: &cTrue'
+- '&7&oRight Click to change to False'
+- ''
+- '&c&l---&7&l>>&c&l-----&7&l<<&c&l---'
+- '&8Signed by: &4%player%'
+material: LEATHER_HELMET
+glow: false
+disableStack: false
+keepItemOnDeath: false
+canBeUsedOnlyByTheOwner: false
+storeItemInfo: false
+unbreakable: false
+usage: 0
+usageLimit: -1
+dropFeatures:
+  glowDrop: false
+  glowDropColor: WHITE
+  displayNameDrop: false
+hiders:
+  hideEnchantments: true
+  hideUnbreakable: false
+  hideAttributes: true
+  hidePotionEffects: false
+  hideUsage: false
+enchantments: {}
+giveFirstJoinFeatures:
+  giveFirstJoin: false
+  giveFirstJoinAmount: 1
+  giveFirstJoinSlot: 0
+restrictions:
+  cancel-enchant: true
+  cancel-anvil: true
+  cancel-item-craft: true
+cancelEventIfNoPerm: false
+cancelEventIfNotOwner: false
+disabledWorlds: []
+variables: {}
+activators:
+  activator1:
+    name: '&eActivator'
+    option: LOOP
+    usageModification: 0
+    cancelEvent: false
+    silenceOutput: true
+    autoUpdateItem: false
+    cooldownFeatures:
+      cooldown: 0
+      isCooldownInTicks: false
+      cooldownMsg: '&cYou are in cooldown ! &7(&e%time_H%&6H &e%time_M%&6M &e%time_S%&6S&7)'
+      displayCooldownMessage: true
+      cancelEventIfInCooldown: false
+    globalCooldownFeatures:
+      cooldown: 0
+      isCooldownInTicks: false
+      cooldownMsg: '&cYou are in cooldown ! &7(&e%time_H%&6H &e%time_M%&6M &e%time_S%&6S&7)'
+      displayCooldownMessage: true
+      cancelEventIfInCooldown: false
+    otherEICooldowns: {}
+    requiredItems: {}
+    requiredExecutableItems: {}
+    detailedSlots:
+    - 39
+    playerCommands:
+    - effect give %player% minecraft:speed 2 3 true
+    - execute at %player% run particle minecraft:flame ~ ~3 ~ 0.5 0.5 0.5 0.001 10
+      normal
+    playerConditions: {}
+    worldConditions: {}
+    itemConditions: {}
+    customConditions: {}
+    placeholdersConditions: {}
+    delay: 1
+    delayInTick: false
+    variablesModification: {}
+  activator2:
+    name: '&eActivator'
+    option: INVENTORY_CLICK
+    detailedClick: RIGHT
+    usageModification: -1
+    cancelEvent: false
+    silenceOutput: false
+    autoUpdateItem: false
+    cooldownFeatures:
+      cooldown: 0
+      isCooldownInTicks: false
+      cooldownMsg: '&cYou are in cooldown ! &7(&e%time_H%&6H &e%time_M%&6M &e%time_S%&6S&7)'
+      displayCooldownMessage: true
+      cancelEventIfInCooldown: false
+    globalCooldownFeatures:
+      cooldown: 0
+      isCooldownInTicks: false
+      cooldownMsg: '&cYou are in cooldown ! &7(&e%time_H%&6H &e%time_M%&6M &e%time_S%&6S&7)'
+      displayCooldownMessage: true
+      cancelEventIfInCooldown: false
+    otherEICooldowns: {}
+    requiredItems: {}
+    requiredExecutableItems: {}
+    detailedSlots: []
+    playerCommands:
+    - ei giveslot %player% Prem_EpicHelmet-particlesOFF_v1_8 1 %slot%
+    playerConditions: {}
+    worldConditions: {}
+    itemConditions: {}
+    customConditions: {}
+    placeholdersConditions: {}
+    variablesModification: {}
+recognitions: []
+armorColor: 14031903
+attributes:
+  attribute1:
+    attribute: GENERIC_MAX_HEALTH
+    operation: ADD_NUMBER
+    amount: 2.0
+    slot: HEAD
+    uuid: aace69d0-38e6-412a-92c8-12632e77d140
+config_5: true
+config_update: true

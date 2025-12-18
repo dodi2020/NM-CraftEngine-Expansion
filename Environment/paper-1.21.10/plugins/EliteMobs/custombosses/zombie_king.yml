@@ -1,0 +1,30 @@
+isEnabled: true
+entityType: ZOMBIE
+name: $eventBossLevel &4Zombie King
+level: dynamic
+isPersistent: true
+healthMultiplier: 4.0
+damageMultiplier: 1.25
+uniqueLootList:
+- zombie_kings_axe.yml:1
+powers:
+- flame_pyre.yml
+- flamethrower.yml
+- summon_the_returned.yml
+- spirit_walk.yml
+- summonable:summonType=GLOBAL:filename=the_living_dead.yml:amount=5:customSpawn=normal_surface_spawn.yml
+trails:
+- FLAME
+locationMessage: '&cZombie King: $distance blocks away!'
+spawnMessage: '&cThe Zombie King has been sighted!'
+deathMessage: '&aThe Zombie King has been slain by $players!'
+escapeMessage: '&4The Zombie King has escaped!'
+announcementPriority: 2
+helmet: DIAMOND_HELMET
+chestplate: DIAMOND_CHESTPLATE
+leggings: DIAMOND_LEGGINGS
+boots: DIAMOND_BOOTS
+mainHand: GOLDEN_AXE
+onSpawnBlockStates: []
+onRemoveBlockStates: []
+bossType: NORMAL

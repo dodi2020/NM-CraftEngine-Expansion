@@ -1,0 +1,51 @@
+isEnabled: true
+entityType: ZOMBIE
+name: $eventBossLevel &2Charms Goblin
+level: dynamic
+isPersistent: true
+healthMultiplier: 4.0
+damageMultiplier: 1.25
+isBaby: true
+deathMessages:
+- '&e&l---------------------------------------------'
+- '&eThe Charms Goblin has been pillaged!'
+- '&c&l    1st Damager: $damager1name &cwith $damager1damage damage!'
+- '&6&l    2nd Damager: $damager2name &6with $damager2damage damage!'
+- '&e&l    3rd Damager: $damager3name &ewith $damager3damage damage!'
+- '&aSlayers: $players'
+- '&e&l---------------------------------------------'
+uniqueLootList:
+- berserker_charm.yml:0.2
+- chameleon_charm.yml:0.2
+- cheetah_charm.yml:0.2
+- elephant_charm.yml:0.2
+- firefly_charm.yml:0.2
+- fishy_charm.yml:0.2
+- lucky_charms.yml:0.2
+- owl_charm.yml:0.2
+- rabbit_charm.yml:0.2
+- salamander_charm.yml:0.2
+- scorpion_charm.yml:0.2
+- shulker_charm.yml:0.2
+- slowpoke_charm.yml:0.2
+- vampiric_charm.yml:0.2
+powers:
+- gold_explosion.yml
+- gold_shotgun.yml
+- spirit_walk.yml
+trails:
+- GOLD_NUGGET
+locationMessage: '&cCharms Goblin: $distance blocks away!'
+spawnMessage: '&cA Charms Goblin has been sighted!'
+deathMessage: '&aA Charms Goblin has been slain by $players!'
+escapeMessage: '&4A Charms Goblin has escaped!'
+customModel: em_goblin_charms
+announcementPriority: 2
+followDistance: 100
+helmet: IRON_HELMET
+chestplate: IRON_CHESTPLATE
+leggings: IRON_LEGGINGS
+boots: IRON_BOOTS
+onSpawnBlockStates: []
+onRemoveBlockStates: []
+bossType: NORMAL

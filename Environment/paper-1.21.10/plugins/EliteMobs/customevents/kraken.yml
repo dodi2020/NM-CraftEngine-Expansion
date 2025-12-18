@@ -1,0 +1,10 @@
+isEnabled: true
+eventType: FISH
+bossFilenames:
+- kraken.yml
+eventStartCommands: []
+eventEndCommands: []
+chance: 0.005
+breakableMaterials: []
+weight: 0.0
+eventDuration: 20.0

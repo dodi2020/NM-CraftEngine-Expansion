@@ -1,0 +1,6 @@
+isEnabled: true
+location1: em_adventurers_guild,284.5,100,308.5,-90,0
+location1Text: '&1『Sewers Minidungeon』 &aLvls 20-35'
+location2: sewers_minidungeon.yml
+particleColor: 830652
+blindPlayer: true

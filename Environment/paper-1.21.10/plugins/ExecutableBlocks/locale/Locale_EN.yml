@@ -1,0 +1,14 @@
+receiveBlock: '&a&l[ExecutableBlocks] &aYou have received &e%quantity% &ax &e%item%'
+giveMessage: '&a&l[ExecutableBlocks] &aYou have given &e%player% &6%quantity% &aof
+  &e%item%'
+fullInventory: '&c&l[ExecutableBlocks] &cYour inventory is full the &6%item% &chas
+  been give to you around your feet'
+requiredLevel: '&4&l[ExecutableBlocks] &cYou dont have: &6%level%$ &clevel !'
+notWhitelistedWorld: '&cYou can''t place EB in this world.'
+requiredItemsFirstPart: '&4Required Item(s): '
+requiredItemsQuantity: ' &cx &6'
+requiredItemsSeparator: '&c | '
+permissionMessage: '&c&l[ExecutableBlocks] &cYou do not have the permission to use
+  this block !'
+playerLimit: '&c&l[ExecutableBlocks] &cYou have reached the limit of EB you can place
+  ! &7(&6%quantity%&7)'

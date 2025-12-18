@@ -1,0 +1,21 @@
+isEnabled: true
+questName: Slay $amount $name
+headerTextLines2: |
+  §c§lGuild request!
+defaultLoreTextLines: '&8Slay $amount $name!'
+acceptTextLines: '&a&lAccept!'
+acceptHoverLines: "&aClick to \n&aaccept quest!"
+acceptCommandLines: /em quest accept $questID
+acceptedTextLines: '&2&lAccepted! &4[Abandon]'
+acceptedHoverLines: '&aClick to abandon quest!'
+acceptedCommandLines3: /em quest leave $questID
+completedTextLines: '&2&l[Turn in!]'
+completedHoverLines: '&aClick to turn quest in!'
+completedCommandLines: /em quest complete $questID
+turnedInTextLines: '&8[Completed!]'
+turnedInHoverLines: '&8Already turned in!'
+objectivesLine: '&c&lObjectives:'
+killQuestDefaultSummaryLine: '&c➤Kill $name:$color$current&0/$color$target'
+rewardsLine: '&2&lRewards:'
+rewardsDefaultSummaryLine: '&2➤$amountx $rewardName &8($chance%)'
+ongoingQuestColorCode: '&2'

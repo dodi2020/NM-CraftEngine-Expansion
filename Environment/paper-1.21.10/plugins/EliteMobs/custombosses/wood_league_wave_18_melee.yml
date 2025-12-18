@@ -1,0 +1,12 @@
+isEnabled: true
+entityType: ZOMBIE
+name: $normalLevel &4Fencing Club Enthusiast
+level: '18'
+powers:
+- corpse.yml
+- attack_fire.yml
+followDistance: 60
+mainHand: DIAMOND_SWORD
+onSpawnBlockStates: []
+onRemoveBlockStates: []
+bossType: NORMAL

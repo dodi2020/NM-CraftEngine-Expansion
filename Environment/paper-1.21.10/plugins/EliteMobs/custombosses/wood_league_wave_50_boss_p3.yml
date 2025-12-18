@@ -1,0 +1,19 @@
+isEnabled: true
+entityType: WITHER_SKELETON
+name: $bossLevel &6Uther the Champion
+level: '50'
+healthMultiplier: 10.0
+powers:
+- attack_lightning.yml
+- lightning_bolts.yml
+- gold_explosion.yml
+- photon_ray.yml
+- thunderstorm.yml
+- summonable:summonType=ON_COMBAT_ENTER:filename=wood_league_wave_50_reinforcement.yml:amount=2
+followDistance: 60
+mainHand: NETHERITE_AXE
+offHand: SHIELD
+onSpawnBlockStates: []
+onRemoveBlockStates: []
+movementSpeedAttribute: 0.6
+bossType: NORMAL

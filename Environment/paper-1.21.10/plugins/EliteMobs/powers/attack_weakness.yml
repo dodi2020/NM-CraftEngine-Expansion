@@ -1,0 +1,14 @@
+isEnabled: true
+effect: TOTEM_OF_UNDYING
+powerType: MISCELLANEOUS
+eliteScript:
+  WeakenPlayer:
+    Events:
+    - PlayerDamagedByEliteMobEvent
+    Actions:
+    - duration: 60
+      action: POTION_EFFECT
+      potionEffectType: weakness
+      amplifier: 0
+      Target:
+        targetType: DIRECT_TARGET

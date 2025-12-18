@@ -1,0 +1,17 @@
+isEnabled: true
+customRewards:
+- filename=magmaguys_toothpick.yml:amount=1:chance=1
+questAcceptPermission: ''
+questLockoutPermission: ''
+name: Kill the Test Boss
+questLore:
+- '&cEnd the test boss'' reign of terror!'
+temporaryPermissions: []
+questAcceptDialog: []
+questCompleteMessage: []
+questCompleteCommands: []
+customObjectives:
+  Objective1:
+    filename: test_boss.yml
+    amount: 1
+    objectiveType: KILL_CUSTOM

@@ -1,0 +1,4 @@
+isEnabled: true
+powerCooldown: 30
+globalCooldown: 20
+powerType: OFFENSIVE

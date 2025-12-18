@@ -1,0 +1,17 @@
+isEnabled: true
+entityType: ZOMBIE
+name: $normalLevel &4Arena Zombie
+level: '28'
+powers:
+- corpse.yml
+- attack_fire.yml
+- invulnerability_arrow.yml
+followDistance: 60
+helmet: LEATHER_HELMET
+chestplate: LEATHER_CHESTPLATE
+leggings: LEATHER_LEGGINGS
+boots: LEATHER_BOOTS
+mainHand: IRON_SWORD
+onSpawnBlockStates: []
+onRemoveBlockStates: []
+bossType: NORMAL

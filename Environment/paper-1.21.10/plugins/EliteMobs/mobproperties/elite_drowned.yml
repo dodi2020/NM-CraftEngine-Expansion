@@ -1,0 +1,7 @@
+isEnabled: true
+entityType: DROWNED
+name: '&fLvl &2$level &fElite &3Drowned'
+deathMessages:
+- $player &chas been brought down to the depths by $entity!
+- $player &chas been drowned by $entity!
+baseDamageV2: 4.0

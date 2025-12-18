@@ -1,0 +1,7 @@
+material: STICK
+glow: true
+config_5: true
+config_update: true
+itemModel: ei:amethyst_greatblade
+hiders:
+  hideUsage: true

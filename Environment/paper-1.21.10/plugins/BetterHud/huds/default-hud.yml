@@ -1,0 +1,18 @@
+test_hud:
+  layouts:
+    1:
+      name: health
+      gui:
+        x: 35
+        y: 100
+      pixel:
+        x: 0
+        y: -80
+    2:
+      name: hunger
+      gui:
+        x: 65
+        y: 100
+      pixel:
+        x: 0
+        y: -80

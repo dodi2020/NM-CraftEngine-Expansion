@@ -1,0 +1,17 @@
+isEnabled: true
+entityType: WOLF
+name: $normalLevel Wolfy
+level: dynamic
+healthMultiplier: 3.0
+dropsEliteMobsLoot: false
+dropsVanillaLoot: false
+onDamageMessages:
+- Woof!
+onDamagedMessages:
+- Woof!
+trails:
+- BONE
+timeout: 3
+onSpawnBlockStates: []
+onRemoveBlockStates: []
+bossType: NORMAL

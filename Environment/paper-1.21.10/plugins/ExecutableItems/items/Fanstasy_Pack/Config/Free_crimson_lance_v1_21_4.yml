@@ -1,0 +1,34 @@
+name: "<gradient:#ff4d4d:#ff9900><bold>Crimson Lance</bold></gradient>"
+lore:
+  - "<dark_red><italic>Forged in the molten heart of a fallen star...</italic></dark_red>"
+  - "<red><italic>This weapon pierces the veil between mercy and wrath.</italic></red>"
+  - ""
+  - "<gold>▶ <bold>Click</bold> to unleash a blazing thrust</gold>"
+  - "<gray>• Deals <red>5 damage</red> in a fiery line</gray>"
+  - "<gray>• Dashes forward with unstoppable momentum</gray>"
+  - ""
+  - "<dark_gray><italic>“Its fury cannot be sated—only directed.”</italic></dark_gray>"
+material: STICK
+config_5: true
+config_update: true
+itemModel: ei:crimson_lance
+hiders:
+  hideUsage: true
+activators:
+  activator0:
+    option: PLAYER_ALL_CLICK
+    typeTarget: NO_TYPE_TARGET
+    cancelEvent: true
+    detailedSlots:
+      - -1
+    playerCommands:
+      - execute at %player_uuid% run playsound minecraft:block.piston.contract ambient @a ~ ~ ~ 5 0.3
+      - DELAYTICK 15
+      - execute at %player_uuid% run playsound minecraft:entity.breeze.shoot ambient @a ~ ~ ~ 5 .04
+      - score particles shape:cylinder location:%player_world%,%player_x%,%player_y%,%player_z%
+        color:RED,ORANGE radius:0.5 density:20 time:5 drawMode:clockwise offsetY:1.5
+        directionYaw:%player_yaw% fillMode:cylinder directionPitch:%player_pitch%
+        height:15
+      - HITSCAN_ENTITIES range:15 radius:0.5 pitch:0 yaw:0 leftRightShift:0 yShift:0
+        throughBlocks:true throughEntities:true DAMAGE 5 <+> DASH pitch:%player_pitch_initial%
+        yaw:%player_yaw_initial% power:2

@@ -1,0 +1,214 @@
+name: '&7&l(&b&l❖&7&l)>> &7&oBack to Death''s Point'
+lore:
+- '&8&l»&7&l&m----------------&8&l«'
+- '&f'
+- '&7When you die, the item'
+- '&7saves your XYZ coordinates'
+- ''
+- '&7Upon respawning, right click'
+- '&7the item to return to that point'
+- '&f'
+- '&8&l»&7&l&m----------------&8&l«'
+material: HEART_OF_THE_SEA
+glow: true
+disableStack: false
+keepItemOnDeath: true
+canBeUsedOnlyByTheOwner: false
+storeItemInfo: false
+unbreakable: false
+usage: 0
+usageLimit: -1
+dropFeatures:
+  glowDrop: false
+  glowDropColor: WHITE
+  displayNameDrop: false
+hiders:
+  hideEnchantments: false
+  hideUnbreakable: false
+  hideAttributes: false
+  hidePotionEffects: false
+  hideUsage: false
+enchantments: {}
+giveFirstJoinFeatures:
+  giveFirstJoin: false
+  giveFirstJoinAmount: 1
+  giveFirstJoinSlot: 0
+restrictions:
+  cancel-item-craft-no-custom: true
+  cancel-enchant: true
+  cancel-anvil: true
+cancelEventIfNoPerm: false
+cancelEventIfNotOwner: false
+disabledWorlds: []
+variables:
+  SET:
+    variableName: SET
+    type: NUMBER
+    default: 0.0
+  X:
+    variableName: X
+    type: NUMBER
+    default: 0.0
+  Y:
+    variableName: Y
+    type: NUMBER
+    default: 0.0
+  PITCH:
+    variableName: PITCH
+    type: NUMBER
+    default: 0.0
+  Z:
+    variableName: Z
+    type: NUMBER
+    default: 0.0
+  WORLD:
+    variableName: WORLD
+    type: STRING
+    default: '0.0'
+  YAW:
+    variableName: YAW
+    type: NUMBER
+    default: 0.0
+activators:
+  activator1:
+    name: '&eActivator'
+    option: PLAYER_BEFORE_DEATH
+    usageModification: 0
+    cancelEvent: false
+    silenceOutput: false
+    autoUpdateItem: false
+    cooldownFeatures:
+      cooldown: 0
+      isCooldownInTicks: false
+      cooldownMsg: '&cYou are in cooldown ! &7(&e%time_H%&6H &e%time_M%&6M &e%time_S%&6S&7)'
+      displayCooldownMessage: false
+      cancelEventIfInCooldown: false
+    globalCooldownFeatures:
+      cooldown: 0
+      isCooldownInTicks: false
+      cooldownMsg: '&cYou are in cooldown ! &7(&e%time_H%&6H &e%time_M%&6M &e%time_S%&6S&7)'
+      displayCooldownMessage: true
+      cancelEventIfInCooldown: false
+    otherEICooldowns: {}
+    requiredItems: {}
+    requiredExecutableItems: {}
+    detailedSlots: []
+    playerCommands: []
+    playerConditions: {}
+    worldConditions: {}
+    itemConditions: {}
+    customConditions: {}
+    placeholdersConditions: {}
+    variablesModification:
+      varModif3:
+        variableName: PITCH
+        type: SET
+        modification: '%player_pitch%'
+      varModif2:
+        variableName: Z
+        type: SET
+        modification: '%player_z%'
+      varModif1:
+        variableName: Y
+        type: SET
+        modification: '%player_y%'
+      varModif0:
+        variableName: X
+        type: SET
+        modification: '%player_x%'
+      varModif6:
+        variableName: WORLD
+        type: SET
+        modification: '%player_world%'
+      varModif5:
+        variableName: SET
+        type: SET
+        modification: 1.0
+      varModif4:
+        variableName: YAW
+        type: SET
+        modification: '%player_yaw%'
+  activator2:
+    name: '&eActivator'
+    option: PLAYER_RIGHT_CLICK
+    typeTarget: NO_TYPE_TARGET
+    usageModification: 0
+    cancelEvent: false
+    silenceOutput: false
+    autoUpdateItem: false
+    cooldownFeatures:
+      cooldown: 0
+      isCooldownInTicks: false
+      cooldownMsg: '&cYou are in cooldown ! &7(&e%time_H%&6H &e%time_M%&6M &e%time_S%&6S&7)'
+      displayCooldownMessage: false
+      cancelEventIfInCooldown: false
+    globalCooldownFeatures:
+      cooldown: 0
+      isCooldownInTicks: false
+      cooldownMsg: '&cYou are in cooldown ! &7(&e%time_H%&6H &e%time_M%&6M &e%time_S%&6S&7)'
+      displayCooldownMessage: true
+      cancelEventIfInCooldown: false
+    otherEICooldowns: {}
+    requiredItems: {}
+    requiredExecutableItems: {}
+    detailedSlots:
+    - 40
+    - -1
+    playerCommands:
+    - execute in <<%var_WORLD%>> run teleport %player% %var_X% %var_Y% %var_Z% %var_YAW%
+      %var_PITCH%
+    - SENDMESSAGE §6§lExecutableItems §7§oTeleportation....
+    playerConditions: {}
+    worldConditions: {}
+    itemConditions: {}
+    customConditions: {}
+    placeholdersConditions:
+      plchC1:
+        type: PLAYER_NUMBER
+        comparator: EQUALS
+        part1: '%var_SET_int%'
+        part2: '1.0'
+        cancelEventIfNotValid: false
+        messageIfNotValid: '&4ExecutableItems &c&oYou are not dead or you have already
+          use it ! &7&o(One usage per death)'
+    variablesModification:
+      varModif0:
+        variableName: SET
+        type: SET
+        modification: 0.0
+  activator3:
+    name: '&eActivator'
+    option: PLAYER_RESPAWN
+    usageModification: 0
+    cancelEvent: false
+    silenceOutput: false
+    autoUpdateItem: false
+    cooldownFeatures:
+      cooldown: 0
+      isCooldownInTicks: false
+      cooldownMsg: '&cYou are in cooldown ! &7(&e%time_H%&6H &e%time_M%&6M &e%time_S%&6S&7)'
+      displayCooldownMessage: false
+      cancelEventIfInCooldown: false
+    globalCooldownFeatures:
+      cooldown: 0
+      isCooldownInTicks: false
+      cooldownMsg: '&cYou are in cooldown ! &7(&e%time_H%&6H &e%time_M%&6M &e%time_S%&6S&7)'
+      displayCooldownMessage: true
+      cancelEventIfInCooldown: false
+    otherEICooldowns: {}
+    requiredItems: {}
+    requiredExecutableItems: {}
+    detailedSlots: []
+    playerCommands:
+    - SENDMESSAGE §6ExecutableItems §ePosition saved ! §7§o(Click on the §bBack to
+      Deaths Point §7§oto go at your death's point) (%var_X_int%, %var_Y_int%, %var_Z_int%)
+    playerConditions: {}
+    worldConditions: {}
+    itemConditions: {}
+    customConditions: {}
+    placeholdersConditions: {}
+    variablesModification: {}
+recognitions: []
+attributes: {}
+config_5: true
+config_update: true

@@ -1,0 +1,958 @@
+name: '&fYami Yami No Mi'
+lore:
+- '&fShift-Right-Click to destroy nearby'
+- '&f &f projectiles'
+- '&f'
+- '&fHits deal heavy blows and 1s stun'
+- '&f'
+- '&fRight-Click to suck targets into a black hole'
+- '&f &f and toss them away after 3s'
+material: BLACK_DYE
+glow: true
+disableStack: false
+keepItemOnDeath: false
+canBeUsedOnlyByTheOwner: false
+storeItemInfo: false
+unbreakable: false
+usage: 1
+usageLimit: -1
+durability: 0
+cancelEventIfNoPerm: false
+cancelEventIfNotOwner: false
+disabledWorlds: []
+recognitions: []
+config_5: true
+config_update: true
+dropFeatures:
+  glowDrop: false
+  glowDropColor: WHITE
+  displayNameDrop: false
+hiders:
+  hideEnchantments: false
+  hideUnbreakable: false
+  hideAttributes: false
+  hidePotionEffects: false
+  hideUsage: true
+enchantments: {}
+giveFirstJoinFeatures:
+  giveFirstJoin: false
+  giveFirstJoinAmount: 1
+  giveFirstJoinSlot: 0
+restrictions: {}
+variables: {}
+activators:
+  activator0:
+    name: '&eActivator'
+    option: PLAYER_RIGHT_CLICK
+    typeTarget: NO_TYPE_TARGET
+    usageModification: 0
+    cancelEvent: false
+    silenceOutput: false
+    autoUpdateItem: false
+    cooldownFeatures:
+      cooldown: 5
+      isCooldownInTicks: false
+      cooldownMsg: '&cWait %time_S%s to recast black hole.'
+      displayCooldownMessage: true
+      cancelEventIfInCooldown: false
+    globalCooldownFeatures:
+      cooldown: 0
+      isCooldownInTicks: false
+      cooldownMsg: '&cYou are in cooldown ! &7(&e%time_H%&6H &e%time_M%&6M &e%time_S%&6S&7)'
+      displayCooldownMessage: true
+      cancelEventIfInCooldown: false
+    otherEICooldowns: {}
+    requiredItems: {}
+    requiredExecutableItems: {}
+    detailedSlots: []
+    playerCommands:
+    - LAUNCH ONEPIECE_004_1_BLACK_HOLE
+    playerConditions:
+      ifNotSneaking: true
+      ifNotSneakingMsg: ''
+      ifIsNotInTheBlock:
+        material0:
+          material: WATER
+      ifIsNotInTheBlockMsg: ''
+      ifIsNotOnTheBlock:
+        material0:
+          material: WATER
+      ifIsNotOnTheBlockMsg: ''
+    worldConditions: {}
+    itemConditions: {}
+    customConditions: {}
+    placeholdersConditions: {}
+    variablesModification: {}
+  activator1:
+    name: '&eActivator'
+    option: PLAYER_CUSTOM_LAUNCH
+    usageModification: 0
+    cancelEvent: false
+    silenceOutput: false
+    autoUpdateItem: false
+    cooldownFeatures:
+      cooldown: 0
+      isCooldownInTicks: false
+      cooldownMsg: '&cYou are in cooldown ! &7(&e%time_H%&6H &e%time_M%&6M &e%time_S%&6S&7)'
+      displayCooldownMessage: true
+      cancelEventIfInCooldown: false
+    globalCooldownFeatures:
+      cooldown: 0
+      isCooldownInTicks: false
+      cooldownMsg: '&cYou are in cooldown ! &7(&e%time_H%&6H &e%time_M%&6M &e%time_S%&6S&7)'
+      displayCooldownMessage: true
+      cancelEventIfInCooldown: false
+    otherEICooldowns: {}
+    requiredItems: {}
+    requiredExecutableItems: {}
+    detailedSlots: []
+    playerCommands: []
+    playerConditions:
+      ifIsNotInTheBlock:
+        material0:
+          material: WATER
+      ifIsNotInTheBlockMsg: ''
+      ifIsNotOnTheBlock:
+        material0:
+          material: WATER
+      ifIsNotOnTheBlockMsg: ''
+    worldConditions: {}
+    itemConditions: {}
+    customConditions: {}
+    placeholdersConditions:
+      plchCdt0:
+        type: PLAYER_STRING
+        comparator: EQUALS
+        part1: '%projectile_name%'
+        part2: ONEPIECE_004_1_BLACK_HOLE
+        cancelEventIfNotValid: false
+        messageIfNotValid: ''
+    detailedEntities: []
+    entityCommands:
+    - execute at %projectile_uuid% run playsound entity.ender_dragon.flap ambient
+      @a[distance=..10]
+    - execute at %player% as %projectile_uuid% run minecraft:tp ^ ^ ^5
+    - DELAYTICK 1
+    - 'LOOP START: 20'
+    - execute at %projectile_uuid% run playsound entity.ender_dragon.flap ambient
+      @a[distance=..10]
+    - execute at %player% as %projectile_uuid% run minecraft:tp ^ ^ ^5
+    - AROUND 2 CONDITIONS(%::player_name::%!=%player%) CUSTOMDASH1 %projectile_x% %projectile_y% %projectile_z% <+> DAMAGE
+      2
+    - MOB_AROUND 3 BLACKLIST(ARMOR_STAND) CUSTOMDASH1 %projectile_x% %projectile_y%
+      %projectile_z% <+> DAMAGE 2
+    - execute at %projectile_uuid% run particle dust{color:[0.0,0.0,0.0],scale:2} ~ ~ ~ 2.5 2.5 2.5 0 50
+    - DELAYTICK 2
+    - LOOP END
+    - execute at %player% as %projectile_uuid% run minecraft:tp ^ ^1 ^6
+    - execute at %projectile_uuid% run playsound entity.ender_dragon.flap ambient
+      @a[distance=..10]
+    - AROUND 3 CONDITIONS(%::player_name::%!=%player%) CUSTOMDASH1 %projectile_x% %projectile_y% %projectile_z% <+> DAMAGE
+      1
+    - MOB_AROUND 3 BLACKLIST(ARMOR_STAND) CUSTOMDASH1 %projectile_x% %projectile_y%
+      %projectile_z% <+> DAMAGE 1
+    - execute at %projectile_uuid% run particle dust{color:[0.0,0.0,0.0],scale:2} ~ ~ ~ 2.5 2.5 2.5 0 50
+    - DELAYTICK 2
+    - execute at %player% as %projectile_uuid% run minecraft:tp ^ ^1.2 ^7
+    - execute at %projectile_uuid% run playsound entity.ender_dragon.flap ambient
+      @a[distance=..10]
+    - AROUND 3 CONDITIONS(%::player_name::%!=%player%) CUSTOMDASH1 %projectile_x% %projectile_y% %projectile_z% <+> DAMAGE
+      1
+    - MOB_AROUND 3 BLACKLIST(ARMOR_STAND) CUSTOMDASH1 %projectile_x% %projectile_y%
+      %projectile_z% <+> DAMAGE 1
+    - execute at %projectile_uuid% run particle dust{color:[0.0,0.0,0.0],scale:2} ~ ~ ~ 2.5 2.5 2.5 0 50
+    - DELAYTICK 2
+    - execute at %player% as %projectile_uuid% run minecraft:tp ^ ^1.4 ^8
+    - execute at %projectile_uuid% run playsound entity.ender_dragon.flap ambient
+      @a[distance=..10]
+    - AROUND 3 CONDITIONS(%::player_name::%!=%player%) CUSTOMDASH1 %projectile_x% %projectile_y% %projectile_z% <+> DAMAGE
+      1
+    - MOB_AROUND 3 BLACKLIST(ARMOR_STAND) CUSTOMDASH1 %projectile_x% %projectile_y%
+      %projectile_z% <+> DAMAGE 1
+    - execute at %projectile_uuid% run particle dust{color:[0.0,0.0,0.0],scale:2} ~ ~ ~ 2.5 2.5 2.5 0 50
+    - DELAYTICK 2
+    - execute at %player% as %projectile_uuid% run minecraft:tp ^ ^1.6 ^9
+    - execute at %projectile_uuid% run playsound entity.ender_dragon.flap ambient
+      @a[distance=..10]
+    - AROUND 3 CONDITIONS(%::player_name::%!=%player%) CUSTOMDASH1 %projectile_x% %projectile_y% %projectile_z% <+> DAMAGE
+      1
+    - MOB_AROUND 3 BLACKLIST(ARMOR_STAND) CUSTOMDASH1 %projectile_x% %projectile_y%
+      %projectile_z% <+> DAMAGE 1
+    - execute at %projectile_uuid% run particle dust{color:[0.0,0.0,0.0],scale:2} ~ ~ ~ 2.5 2.5 2.5 0 50
+    - DELAYTICK 2
+    - execute at %player% as %projectile_uuid% run minecraft:tp ^ ^1.8 ^10
+    - execute at %projectile_uuid% run playsound entity.ender_dragon.flap ambient
+      @a[distance=..10]
+    - AROUND 3 CONDITIONS(%::player_name::%!=%player%) CUSTOMDASH1 %projectile_x% %projectile_y% %projectile_z% <+> DAMAGE
+      1
+    - MOB_AROUND 3 BLACKLIST(ARMOR_STAND) CUSTOMDASH1 %projectile_x% %projectile_y%
+      %projectile_z% <+> DAMAGE 1
+    - execute at %projectile_uuid% run particle dust{color:[0.0,0.0,0.0],scale:2} ~ ~ ~ 2.5 2.5 2.5 0 50
+    - DELAYTICK 2
+    - execute at %player% as %projectile_uuid% run minecraft:tp ^ ^2 ^12
+    - execute at %projectile_uuid% run playsound entity.ender_dragon.flap ambient
+      @a[distance=..10]
+    - AROUND 3 CONDITIONS(%::player_name::%!=%player%) CUSTOMDASH1 %projectile_x% %projectile_y% %projectile_z% <+> DAMAGE
+      1
+    - MOB_AROUND 3 BLACKLIST(ARMOR_STAND) CUSTOMDASH1 %projectile_x% %projectile_y%
+      %projectile_z% <+> DAMAGE 1
+    - execute at %projectile_uuid% run particle dust{color:[0.0,0.0,0.0],scale:2} ~ ~ ~ 2.5 2.5 2.5 0 50
+    - minecraft:kill %projectile_uuid%
+    entityConditions: {}
+    variablesModification: {}
+  activator4:
+    name: '&eActivator'
+    option: LOOP
+    usageModification: 0
+    cancelEvent: false
+    silenceOutput: false
+    autoUpdateItem: false
+    cooldownFeatures:
+      cooldown: 0
+      isCooldownInTicks: false
+      cooldownMsg: '&cYou are in cooldown ! &7(&e%time_H%&6H &e%time_M%&6M &e%time_S%&6S&7)'
+      displayCooldownMessage: true
+      cancelEventIfInCooldown: false
+    globalCooldownFeatures:
+      cooldown: 0
+      isCooldownInTicks: false
+      cooldownMsg: '&cYou are in cooldown ! &7(&e%time_H%&6H &e%time_M%&6M &e%time_S%&6S&7)'
+      displayCooldownMessage: true
+      cancelEventIfInCooldown: false
+    otherEICooldowns: {}
+    requiredItems: {}
+    requiredExecutableItems: {}
+    detailedSlots: []
+    playerCommands:
+    - 'LOOP START: 5'
+    - 'RANDOM RUN: 10'
+    - execute at %player% run particle large_smoke ~1 ~ ~ 0 1 0 0.1 0
+    - execute at %player% run particle large_smoke ~1 ~ ~0.1 0 1 0 0.1 0
+    - execute at %player% run particle large_smoke ~1 ~ ~0.2 0 1 0 0.1 0
+    - execute at %player% run particle large_smoke ~1 ~ ~0.3 0 1 0 0.1 0
+    - execute at %player% run particle large_smoke ~0.9 ~ ~0.4 0 1 0 0.1 0
+    - execute at %player% run particle large_smoke ~0.9 ~ ~0.5 0 1 0 0.1 0
+    - execute at %player% run particle large_smoke ~0.8 ~ ~0.6 0 1 0 0.1 0
+    - execute at %player% run particle large_smoke ~0.7 ~ ~0.7 0 1 0 0.1 0
+    - execute at %player% run particle large_smoke ~0.6 ~ ~0.8 0 1 0 0.1 0
+    - execute at %player% run particle large_smoke ~0.5 ~ ~0.9 0 1 0 0.1 0
+    - execute at %player% run particle large_smoke ~0.4 ~ ~0.9 0 1 0 0.1 0
+    - execute at %player% run particle large_smoke ~0.3 ~ ~1 0 1 0 0.1 0
+    - execute at %player% run particle large_smoke ~0.2 ~ ~1 0 1 0 0.1 0
+    - execute at %player% run particle large_smoke ~0.1 ~ ~1 0 1 0 0.1 0
+    - execute at %player% run particle large_smoke ~ ~ ~1 0 1 0 0.1 0
+    - execute at %player% run particle large_smoke ~-0.1 ~ ~1 0 1 0 0.1 0
+    - execute at %player% run particle large_smoke ~-0.2 ~ ~1 0 1 0 0.1 0
+    - execute at %player% run particle large_smoke ~-0.3 ~ ~1 0 1 0 0.1 0
+    - execute at %player% run particle large_smoke ~-0.4 ~ ~0.9 0 1 0 0.1 0
+    - execute at %player% run particle large_smoke ~-0.5 ~ ~0.9 0 1 0 0.1 0
+    - execute at %player% run particle large_smoke ~-0.6 ~ ~0.8 0 1 0 0.1 0
+    - execute at %player% run particle large_smoke ~-0.7 ~ ~0.7 0 1 0 0.1 0
+    - execute at %player% run particle large_smoke ~-0.8 ~ ~0.6 0 1 0 0.1 0
+    - execute at %player% run particle large_smoke ~-0.9 ~ ~0.5 0 1 0 0.1 0
+    - execute at %player% run particle large_smoke ~-0.9 ~ ~0.4 0 1 0 0.1 0
+    - execute at %player% run particle large_smoke ~-1 ~ ~0.3 0 1 0 0.1 0
+    - execute at %player% run particle large_smoke ~-1 ~ ~0.2 0 1 0 0.1 0
+    - execute at %player% run particle large_smoke ~-1 ~ ~0.1 0 1 0 0.1 0
+    - execute at %player% run particle large_smoke ~-1 ~ ~ 0 1 0 0.1 0
+    - execute at %player% run particle large_smoke ~-1 ~ ~-0.1 0 1 0 0.1 0
+    - execute at %player% run particle large_smoke ~-1 ~ ~-0.2 0 1 0 0.1 0
+    - execute at %player% run particle large_smoke ~-1 ~ ~-0.3 0 1 0 0.1 0
+    - execute at %player% run particle large_smoke ~-0.9 ~ ~-0.4 0 1 0 0.1 0
+    - execute at %player% run particle large_smoke ~-0.9 ~ ~-0.5 0 1 0 0.1 0
+    - execute at %player% run particle large_smoke ~-0.8 ~ ~-0.6 0 1 0 0.1 0
+    - execute at %player% run particle large_smoke ~-0.7 ~ ~-0.7 0 1 0 0.1 0
+    - execute at %player% run particle large_smoke ~-0.6 ~ ~-0.8 0 1 0 0.1 0
+    - execute at %player% run particle large_smoke ~-0.5 ~ ~-0.9 0 1 0 0.1 0
+    - execute at %player% run particle large_smoke ~-0.4 ~ ~-0.9 0 1 0 0.1 0
+    - execute at %player% run particle large_smoke ~-0.3 ~ ~-1 0 1 0 0.1 0
+    - execute at %player% run particle large_smoke ~-0.2 ~ ~-1 0 1 0 0.1 0
+    - execute at %player% run particle large_smoke ~-0.1 ~ ~-1 0 1 0 0.1 0
+    - execute at %player% run particle large_smoke ~ ~1 ~ 0 1 0 0.1 0
+    - execute at %player% run particle large_smoke ~0.1 ~ ~-1 0 1 0 0.1 0
+    - execute at %player% run particle large_smoke ~0.2 ~ ~-1 0 1 0 0.1 0
+    - execute at %player% run particle large_smoke ~0.3 ~ ~-1 0 1 0 0.1 0
+    - execute at %player% run particle large_smoke ~0.4 ~ ~-0.9 0 1 0 0.1 0
+    - execute at %player% run particle large_smoke ~0.5 ~ ~-0.9 0 1 0 0.1 0
+    - execute at %player% run particle large_smoke ~0.6 ~ ~-0.8 0 1 0 0.1 0
+    - execute at %player% run particle large_smoke ~0.7 ~ ~-0.7 0 1 0 0.1 0
+    - execute at %player% run particle large_smoke ~0.8 ~ ~-0.6 0 1 0 0.1 0
+    - execute at %player% run particle large_smoke ~0.9 ~ ~-0.5 0 1 0 0.1 0
+    - execute at %player% run particle large_smoke ~0.9 ~ ~-0.4 0 1 0 0.1 0
+    - execute at %player% run particle large_smoke ~1 ~ ~-0.3 0 1 0 0.1 0
+    - execute at %player% run particle large_smoke ~1 ~ ~-0.2 0 1 0 0.1 0
+    - execute at %player% run particle large_smoke ~1 ~ ~-0.1 0 1 0 0.1 0
+    - RANDOM END
+    - DELAYTICK 4
+    - LOOP END
+    playerConditions:
+      ifIsNotInTheBlock:
+        material0:
+          material: WATER
+      ifIsNotInTheBlockMsg: ''
+      ifIsNotOnTheBlock:
+        material0:
+          material: WATER
+      ifIsNotOnTheBlockMsg: ''
+    worldConditions: {}
+    itemConditions: {}
+    customConditions: {}
+    placeholdersConditions: {}
+    delay: 1
+    delayInTick: false
+    variablesModification: {}
+  activator2:
+    name: '&eActivator'
+    option: PLAYER_CLICK_ON_ENTITY
+    detailedClick: LEFT
+    usageModification: 0
+    cancelEvent: false
+    silenceOutput: false
+    autoUpdateItem: false
+    cooldownFeatures:
+      cooldown: 0
+      isCooldownInTicks: false
+      cooldownMsg: '&cYou are in cooldown ! &7(&e%time_H%&6H &e%time_M%&6M &e%time_S%&6S&7)'
+      displayCooldownMessage: true
+      cancelEventIfInCooldown: false
+    globalCooldownFeatures:
+      cooldown: 0
+      isCooldownInTicks: false
+      cooldownMsg: '&cYou are in cooldown ! &7(&e%time_H%&6H &e%time_M%&6M &e%time_S%&6S&7)'
+      displayCooldownMessage: true
+      cancelEventIfInCooldown: false
+    otherEICooldowns: {}
+    requiredItems: {}
+    requiredExecutableItems: {}
+    detailedSlots: []
+    playerCommands:
+    - REGAIN HEALTH 5
+    playerConditions:
+      ifIsNotInTheBlock:
+        material0:
+          material: WATER
+      ifIsNotInTheBlockMsg: ''
+      ifIsNotOnTheBlock:
+        material0:
+          material: WATER
+      ifIsNotOnTheBlockMsg: ''
+    worldConditions: {}
+    itemConditions: {}
+    customConditions: {}
+    placeholdersConditions: {}
+    detailedEntities: []
+    entityCommands:
+    - execute at %entity_uuid% run particle large_smoke ~ ~1 ~ 0.01 0.01 0.01 0.5
+      50
+    - execute at %entity_uuid% run particle explosion ~ ~1 ~ 0.01 0.01 0.01 0 1
+    - execute at %entity_uuid% run playsound entity.wither.hurt ambient @a[distance=..7]
+    - DAMAGE 15
+    - STUN_ENABLE
+    - DELAY 1
+    - STUN_DISABLE
+    entityConditions: {}
+    variablesModification: {}
+  activator3:
+    name: '&eActivator'
+    option: PLAYER_CLICK_ON_PLAYER
+    detailedClick: LEFT
+    usageModification: 0
+    cancelEvent: false
+    silenceOutput: false
+    autoUpdateItem: false
+    cooldownFeatures:
+      cooldown: 0
+      isCooldownInTicks: false
+      cooldownMsg: '&cYou are in cooldown ! &7(&e%time_H%&6H &e%time_M%&6M &e%time_S%&6S&7)'
+      displayCooldownMessage: true
+      cancelEventIfInCooldown: false
+    globalCooldownFeatures:
+      cooldown: 0
+      isCooldownInTicks: false
+      cooldownMsg: '&cYou are in cooldown ! &7(&e%time_H%&6H &e%time_M%&6M &e%time_S%&6S&7)'
+      displayCooldownMessage: true
+      cancelEventIfInCooldown: false
+    otherEICooldowns: {}
+    requiredItems: {}
+    requiredExecutableItems: {}
+    detailedSlots: []
+    playerCommands:
+    - REGAIN HEALTH 5
+    playerConditions:
+      ifIsNotInTheBlock:
+        material0:
+          material: WATER
+      ifIsNotInTheBlockMsg: ''
+      ifIsNotOnTheBlock:
+        material0:
+          material: WATER
+      ifIsNotOnTheBlockMsg: ''
+    worldConditions: {}
+    itemConditions: {}
+    customConditions: {}
+    placeholdersConditions: {}
+    targetCommands:
+    - execute at %target% run particle large_smoke ~ ~1 ~ 0.01 0.01 0.01 0.5 50
+    - execute at %target% run particle explosion ~ ~1 ~ 0.01 0.01 0.01 0 1
+    - execute at %target% run playsound entity.wither.hurt ambient @a[distance=..7]
+    - effect give %target% blindness 5 0 true
+    - DAMAGE 15
+    - STUN_ENABLE
+    - DELAY 1
+    - STUN_DISABLE
+    targetConditions: {}
+    variablesModification: {}
+  activator5:
+    name: '&eActivator'
+    option: PLAYER_RIGHT_CLICK
+    typeTarget: NO_TYPE_TARGET
+    usageModification: 0
+    cancelEvent: false
+    silenceOutput: false
+    autoUpdateItem: false
+    cooldownFeatures:
+      cooldown: 0
+      isCooldownInTicks: false
+      cooldownMsg: '&cYou are in cooldown ! &7(&e%time_H%&6H &e%time_M%&6M &e%time_S%&6S&7)'
+      displayCooldownMessage: true
+      cancelEventIfInCooldown: false
+    globalCooldownFeatures:
+      cooldown: 0
+      isCooldownInTicks: false
+      cooldownMsg: '&cYou are in cooldown ! &7(&e%time_H%&6H &e%time_M%&6M &e%time_S%&6S&7)'
+      displayCooldownMessage: true
+      cancelEventIfInCooldown: false
+    otherEICooldowns: {}
+    requiredItems: {}
+    requiredExecutableItems: {}
+    detailedSlots: []
+    playerCommands:
+    - execute at %player% run playsound entity.wither.ambient ambient @a[distance=..10]
+    - execute at %player% run execute at @e[distance=..7,name=!%player%] run particle
+      explosion ~ ~ ~ 0.01 0.01 0.01 0 1
+    - execute at %player% run execute at @e[distance=..7,name=!%player%] run playsound
+      entity.zombie.break_wooden_door ambient @a[distance=..7]
+    - execute at %player% run minecraft:kill @e[distance=..7,name=!%player%]
+    - execute at %player% positioned ~ ~1 ~ run particle large_smoke ^0.000 ^0.000
+      ^2.000 0 %math_(%rand:5|10%)*0.1% 0 %math_(%rand:5|10%)*0.1% 0
+    - execute at %player% positioned ~ ~1 ~ run particle large_smoke ^0.140 ^1.282
+      ^1.528 0 %math_(%rand:5|10%)*0.1% 0 %math_(%rand:5|10%)*0.1% 0
+    - execute at %player% positioned ~ ~1 ~ run particle large_smoke ^0.278 ^1.950
+      ^0.344 0 %math_(%rand:5|10%)*0.1% 0 %math_(%rand:5|10%)*0.1% 0
+    - execute at %player% positioned ~ ~1 ~ run particle large_smoke ^0.416 ^1.694
+      ^-0.978 0 %math_(%rand:5|10%)*0.1% 0 %math_(%rand:5|10%)*0.1% 0
+    - execute at %player% positioned ~ ~1 ~ run particle large_smoke ^0.551 ^0.658
+      ^-1.807 0 %math_(%rand:5|10%)*0.1% 0 %math_(%rand:5|10%)*0.1% 0
+    - execute at %player% positioned ~ ~1 ~ run particle large_smoke ^0.684 ^-0.643
+      ^-1.766 0 %math_(%rand:5|10%)*0.1% 0 %math_(%rand:5|10%)*0.1% 0
+    - execute at %player% positioned ~ ~1 ~ run particle large_smoke ^0.813 ^-1.582
+      ^-0.914 0 %math_(%rand:5|10%)*0.1% 0 %math_(%rand:5|10%)*0.1% 0
+    - execute at %player% positioned ~ ~1 ~ run particle large_smoke ^0.939 ^-1.739
+      ^0.307 0 %math_(%rand:5|10%)*0.1% 0 %math_(%rand:5|10%)*0.1% 0
+    - execute at %player% positioned ~ ~1 ~ run particle large_smoke ^1.060 ^-1.090
+      ^1.299 0 %math_(%rand:5|10%)*0.1% 0 %math_(%rand:5|10%)*0.1% 0
+    - execute at %player% positioned ~ ~1 ~ run particle large_smoke ^1.176 ^0.000
+      ^1.618 0 %math_(%rand:5|10%)*0.1% 0 %math_(%rand:5|10%)*0.1% 0
+    - execute at %player% positioned ~ ~1 ~ run particle large_smoke ^1.286 ^0.985
+      ^1.174 0 %math_(%rand:5|10%)*0.1% 0 %math_(%rand:5|10%)*0.1% 0
+    - execute at %player% positioned ~ ~1 ~ run particle large_smoke ^1.389 ^1.417
+      ^0.250 0 %math_(%rand:5|10%)*0.1% 0 %math_(%rand:5|10%)*0.1% 0
+    - execute at %player% positioned ~ ~1 ~ run particle large_smoke ^1.486 ^1.159
+      ^-0.669 0 %math_(%rand:5|10%)*0.1% 0 %math_(%rand:5|10%)*0.1% 0
+    - execute at %player% positioned ~ ~1 ~ run particle large_smoke ^1.576 ^0.421
+      ^-1.157 0 %math_(%rand:5|10%)*0.1% 0 %math_(%rand:5|10%)*0.1% 0
+    - execute at %player% positioned ~ ~1 ~ run particle large_smoke ^1.658 ^-0.383
+      ^-1.051 0 %math_(%rand:5|10%)*0.1% 0 %math_(%rand:5|10%)*0.1% 0
+    - execute at %player% positioned ~ ~1 ~ run particle large_smoke ^1.732 ^-0.866
+      ^-0.500 0 %math_(%rand:5|10%)*0.1% 0 %math_(%rand:5|10%)*0.1% 0
+    - execute at %player% positioned ~ ~1 ~ run particle large_smoke ^1.798 ^-0.863
+      ^0.152 0 %math_(%rand:5|10%)*0.1% 0 %math_(%rand:5|10%)*0.1% 0
+    - execute at %player% positioned ~ ~1 ~ run particle large_smoke ^1.854 ^-0.482
+      ^0.574 0 %math_(%rand:5|10%)*0.1% 0 %math_(%rand:5|10%)*0.1% 0
+    - execute at %player% positioned ~ ~1 ~ run particle large_smoke ^1.902 ^0.000
+      ^0.618 0 %math_(%rand:5|10%)*0.1% 0 %math_(%rand:5|10%)*0.1% 0
+    - execute at %player% positioned ~ ~1 ~ run particle large_smoke ^1.941 ^0.311
+      ^0.371 0 %math_(%rand:5|10%)*0.1% 0 %math_(%rand:5|10%)*0.1% 0
+    - execute at %player% positioned ~ ~1 ~ run particle large_smoke ^1.970 ^0.342
+      ^0.060 0 %math_(%rand:5|10%)*0.1% 0 %math_(%rand:5|10%)*0.1% 0
+    - execute at %player% positioned ~ ~1 ~ run particle large_smoke ^1.989 ^0.181
+      ^-0.105 0 %math_(%rand:5|10%)*0.1% 0 %math_(%rand:5|10%)*0.1% 0
+    - execute at %player% positioned ~ ~1 ~ run particle large_smoke ^1.999 ^0.024
+      ^-0.066 0 %math_(%rand:5|10%)*0.1% 0 %math_(%rand:5|10%)*0.1% 0
+    - execute at %player% positioned ~ ~1 ~ run particle large_smoke ^1.999 ^0.024
+      ^0.066 0 %math_(%rand:5|10%)*0.1% 0 %math_(%rand:5|10%)*0.1% 0
+    - execute at %player% positioned ~ ~1 ~ run particle large_smoke ^1.989 ^0.181
+      ^0.105 0 %math_(%rand:5|10%)*0.1% 0 %math_(%rand:5|10%)*0.1% 0
+    - execute at %player% positioned ~ ~1 ~ run particle large_smoke ^1.970 ^0.342
+      ^-0.060 0 %math_(%rand:5|10%)*0.1% 0 %math_(%rand:5|10%)*0.1% 0
+    - execute at %player% positioned ~ ~1 ~ run particle large_smoke ^1.941 ^0.311
+      ^-0.371 0 %math_(%rand:5|10%)*0.1% 0 %math_(%rand:5|10%)*0.1% 0
+    - execute at %player% positioned ~ ~1 ~ run particle large_smoke ^1.902 ^-0.000
+      ^-0.618 0 %math_(%rand:5|10%)*0.1% 0 %math_(%rand:5|10%)*0.1% 0
+    - execute at %player% positioned ~ ~1 ~ run particle large_smoke ^1.854 ^-0.482
+      ^-0.574 0 %math_(%rand:5|10%)*0.1% 0 %math_(%rand:5|10%)*0.1% 0
+    - execute at %player% positioned ~ ~1 ~ run particle large_smoke ^1.798 ^-0.863
+      ^-0.152 0 %math_(%rand:5|10%)*0.1% 0 %math_(%rand:5|10%)*0.1% 0
+    - execute at %player% positioned ~ ~1 ~ run particle large_smoke ^1.732 ^-0.866
+      ^0.500 0 %math_(%rand:5|10%)*0.1% 0 %math_(%rand:5|10%)*0.1% 0
+    - execute at %player% positioned ~ ~1 ~ run particle large_smoke ^1.658 ^-0.383
+      ^1.051 0 %math_(%rand:5|10%)*0.1% 0 %math_(%rand:5|10%)*0.1% 0
+    - execute at %player% positioned ~ ~1 ~ run particle large_smoke ^1.576 ^0.421
+      ^1.157 0 %math_(%rand:5|10%)*0.1% 0 %math_(%rand:5|10%)*0.1% 0
+    - execute at %player% positioned ~ ~1 ~ run particle large_smoke ^1.486 ^1.159
+      ^0.669 0 %math_(%rand:5|10%)*0.1% 0 %math_(%rand:5|10%)*0.1% 0
+    - execute at %player% positioned ~ ~1 ~ run particle large_smoke ^1.389 ^1.417
+      ^-0.250 0 %math_(%rand:5|10%)*0.1% 0 %math_(%rand:5|10%)*0.1% 0
+    - execute at %player% positioned ~ ~1 ~ run particle large_smoke ^1.286 ^0.985
+      ^-1.174 0 %math_(%rand:5|10%)*0.1% 0 %math_(%rand:5|10%)*0.1% 0
+    - execute at %player% positioned ~ ~1 ~ run particle large_smoke ^1.176 ^-0.000
+      ^-1.618 0 %math_(%rand:5|10%)*0.1% 0 %math_(%rand:5|10%)*0.1% 0
+    - execute at %player% positioned ~ ~1 ~ run particle large_smoke ^1.060 ^-1.090
+      ^-1.299 0 %math_(%rand:5|10%)*0.1% 0 %math_(%rand:5|10%)*0.1% 0
+    - execute at %player% positioned ~ ~1 ~ run particle large_smoke ^0.939 ^-1.739
+      ^-0.307 0 %math_(%rand:5|10%)*0.1% 0 %math_(%rand:5|10%)*0.1% 0
+    - execute at %player% positioned ~ ~1 ~ run particle large_smoke ^0.813 ^-1.582
+      ^0.914 0 %math_(%rand:5|10%)*0.1% 0 %math_(%rand:5|10%)*0.1% 0
+    - execute at %player% positioned ~ ~1 ~ run particle large_smoke ^0.684 ^-0.643
+      ^1.766 0 %math_(%rand:5|10%)*0.1% 0 %math_(%rand:5|10%)*0.1% 0
+    - execute at %player% positioned ~ ~1 ~ run particle large_smoke ^0.551 ^0.658
+      ^1.807 0 %math_(%rand:5|10%)*0.1% 0 %math_(%rand:5|10%)*0.1% 0
+    - execute at %player% positioned ~ ~1 ~ run particle large_smoke ^0.416 ^1.694
+      ^0.978 0 %math_(%rand:5|10%)*0.1% 0 %math_(%rand:5|10%)*0.1% 0
+    - execute at %player% positioned ~ ~1 ~ run particle large_smoke ^0.278 ^1.950
+      ^-0.344 0 %math_(%rand:5|10%)*0.1% 0 %math_(%rand:5|10%)*0.1% 0
+    - execute at %player% positioned ~ ~1 ~ run particle large_smoke ^0.140 ^1.282
+      ^-1.528 0 %math_(%rand:5|10%)*0.1% 0 %math_(%rand:5|10%)*0.1% 0
+    - execute at %player% positioned ~ ~1 ~ run particle large_smoke ^0.000 ^0.000
+      ^-2.000 0 %math_(%rand:5|10%)*0.1% 0 %math_(%rand:5|10%)*0.1% 0
+    - execute at %player% positioned ~ ~1 ~ run particle large_smoke ^-0.140 ^-1.282
+      ^-1.528 0 %math_(%rand:5|10%)*0.1% 0 %math_(%rand:5|10%)*0.1% 0
+    - execute at %player% positioned ~ ~1 ~ run particle large_smoke ^-0.278 ^-1.950
+      ^-0.344 0 %math_(%rand:5|10%)*0.1% 0 %math_(%rand:5|10%)*0.1% 0
+    - execute at %player% positioned ~ ~1 ~ run particle large_smoke ^-0.416 ^-1.694
+      ^0.978 0 %math_(%rand:5|10%)*0.1% 0 %math_(%rand:5|10%)*0.1% 0
+    - execute at %player% positioned ~ ~1 ~ run particle large_smoke ^-0.551 ^-0.658
+      ^1.807 0 %math_(%rand:5|10%)*0.1% 0 %math_(%rand:5|10%)*0.1% 0
+    - execute at %player% positioned ~ ~1 ~ run particle large_smoke ^-0.684 ^0.643
+      ^1.766 0 %math_(%rand:5|10%)*0.1% 0 %math_(%rand:5|10%)*0.1% 0
+    - execute at %player% positioned ~ ~1 ~ run particle large_smoke ^-0.813 ^1.582
+      ^0.914 0 %math_(%rand:5|10%)*0.1% 0 %math_(%rand:5|10%)*0.1% 0
+    - execute at %player% positioned ~ ~1 ~ run particle large_smoke ^-0.939 ^1.739
+      ^-0.307 0 %math_(%rand:5|10%)*0.1% 0 %math_(%rand:5|10%)*0.1% 0
+    - execute at %player% positioned ~ ~1 ~ run particle large_smoke ^-1.060 ^1.090
+      ^-1.299 0 %math_(%rand:5|10%)*0.1% 0 %math_(%rand:5|10%)*0.1% 0
+    - execute at %player% positioned ~ ~1 ~ run particle large_smoke ^-1.176 ^0.000
+      ^-1.618 0 %math_(%rand:5|10%)*0.1% 0 %math_(%rand:5|10%)*0.1% 0
+    - execute at %player% positioned ~ ~1 ~ run particle large_smoke ^-1.286 ^-0.985
+      ^-1.174 0 %math_(%rand:5|10%)*0.1% 0 %math_(%rand:5|10%)*0.1% 0
+    - execute at %player% positioned ~ ~1 ~ run particle large_smoke ^-1.389 ^-1.417
+      ^-0.250 0 %math_(%rand:5|10%)*0.1% 0 %math_(%rand:5|10%)*0.1% 0
+    - execute at %player% positioned ~ ~1 ~ run particle large_smoke ^-1.486 ^-1.159
+      ^0.669 0 %math_(%rand:5|10%)*0.1% 0 %math_(%rand:5|10%)*0.1% 0
+    - execute at %player% positioned ~ ~1 ~ run particle large_smoke ^-1.576 ^-0.421
+      ^1.157 0 %math_(%rand:5|10%)*0.1% 0 %math_(%rand:5|10%)*0.1% 0
+    - execute at %player% positioned ~ ~1 ~ run particle large_smoke ^-1.658 ^0.383
+      ^1.051 0 %math_(%rand:5|10%)*0.1% 0 %math_(%rand:5|10%)*0.1% 0
+    - execute at %player% positioned ~ ~1 ~ run particle large_smoke ^-1.732 ^0.866
+      ^0.500 0 %math_(%rand:5|10%)*0.1% 0 %math_(%rand:5|10%)*0.1% 0
+    - execute at %player% positioned ~ ~1 ~ run particle large_smoke ^-1.798 ^0.863
+      ^-0.152 0 %math_(%rand:5|10%)*0.1% 0 %math_(%rand:5|10%)*0.1% 0
+    - execute at %player% positioned ~ ~1 ~ run particle large_smoke ^-1.854 ^0.482
+      ^-0.574 0 %math_(%rand:5|10%)*0.1% 0 %math_(%rand:5|10%)*0.1% 0
+    - execute at %player% positioned ~ ~1 ~ run particle large_smoke ^-1.902 ^0.000
+      ^-0.618 0 %math_(%rand:5|10%)*0.1% 0 %math_(%rand:5|10%)*0.1% 0
+    - execute at %player% positioned ~ ~1 ~ run particle large_smoke ^-1.941 ^-0.311
+      ^-0.371 0 %math_(%rand:5|10%)*0.1% 0 %math_(%rand:5|10%)*0.1% 0
+    - execute at %player% positioned ~ ~1 ~ run particle large_smoke ^-1.970 ^-0.342
+      ^-0.060 0 %math_(%rand:5|10%)*0.1% 0 %math_(%rand:5|10%)*0.1% 0
+    - execute at %player% positioned ~ ~1 ~ run particle large_smoke ^-1.989 ^-0.181
+      ^0.105 0 %math_(%rand:5|10%)*0.1% 0 %math_(%rand:5|10%)*0.1% 0
+    - execute at %player% positioned ~ ~1 ~ run particle large_smoke ^-1.999 ^-0.024
+      ^0.066 0 %math_(%rand:5|10%)*0.1% 0 %math_(%rand:5|10%)*0.1% 0
+    - execute at %player% positioned ~ ~1 ~ run particle large_smoke ^-1.999 ^-0.024
+      ^-0.066 0 %math_(%rand:5|10%)*0.1% 0 %math_(%rand:5|10%)*0.1% 0
+    - execute at %player% positioned ~ ~1 ~ run particle large_smoke ^-1.989 ^-0.181
+      ^-0.105 0 %math_(%rand:5|10%)*0.1% 0 %math_(%rand:5|10%)*0.1% 0
+    - execute at %player% positioned ~ ~1 ~ run particle large_smoke ^-1.970 ^-0.342
+      ^0.060 0 %math_(%rand:5|10%)*0.1% 0 %math_(%rand:5|10%)*0.1% 0
+    - execute at %player% positioned ~ ~1 ~ run particle large_smoke ^-1.941 ^-0.311
+      ^0.371 0 %math_(%rand:5|10%)*0.1% 0 %math_(%rand:5|10%)*0.1% 0
+    - execute at %player% positioned ~ ~1 ~ run particle large_smoke ^-1.902 ^-0.000
+      ^0.618 0 %math_(%rand:5|10%)*0.1% 0 %math_(%rand:5|10%)*0.1% 0
+    - execute at %player% positioned ~ ~1 ~ run particle large_smoke ^-1.854 ^0.482
+      ^0.574 0 %math_(%rand:5|10%)*0.1% 0 %math_(%rand:5|10%)*0.1% 0
+    - execute at %player% positioned ~ ~1 ~ run particle large_smoke ^-1.798 ^0.863
+      ^0.152 0 %math_(%rand:5|10%)*0.1% 0 %math_(%rand:5|10%)*0.1% 0
+    - execute at %player% positioned ~ ~1 ~ run particle large_smoke ^-1.732 ^0.866
+      ^-0.500 0 %math_(%rand:5|10%)*0.1% 0 %math_(%rand:5|10%)*0.1% 0
+    - execute at %player% positioned ~ ~1 ~ run particle large_smoke ^-1.658 ^0.383
+      ^-1.051 0 %math_(%rand:5|10%)*0.1% 0 %math_(%rand:5|10%)*0.1% 0
+    - execute at %player% positioned ~ ~1 ~ run particle large_smoke ^-1.576 ^-0.421
+      ^-1.157 0 %math_(%rand:5|10%)*0.1% 0 %math_(%rand:5|10%)*0.1% 0
+    - execute at %player% positioned ~ ~1 ~ run particle large_smoke ^-1.486 ^-1.159
+      ^-0.669 0 %math_(%rand:5|10%)*0.1% 0 %math_(%rand:5|10%)*0.1% 0
+    - execute at %player% positioned ~ ~1 ~ run particle large_smoke ^-1.389 ^-1.417
+      ^0.250 0 %math_(%rand:5|10%)*0.1% 0 %math_(%rand:5|10%)*0.1% 0
+    - execute at %player% positioned ~ ~1 ~ run particle large_smoke ^-1.286 ^-0.985
+      ^1.174 0 %math_(%rand:5|10%)*0.1% 0 %math_(%rand:5|10%)*0.1% 0
+    - execute at %player% positioned ~ ~1 ~ run particle large_smoke ^-1.176 ^-0.000
+      ^1.618 0 %math_(%rand:5|10%)*0.1% 0 %math_(%rand:5|10%)*0.1% 0
+    - execute at %player% positioned ~ ~1 ~ run particle large_smoke ^-1.060 ^1.090
+      ^1.299 0 %math_(%rand:5|10%)*0.1% 0 %math_(%rand:5|10%)*0.1% 0
+    - execute at %player% positioned ~ ~1 ~ run particle large_smoke ^-0.939 ^1.739
+      ^0.307 0 %math_(%rand:5|10%)*0.1% 0 %math_(%rand:5|10%)*0.1% 0
+    - execute at %player% positioned ~ ~1 ~ run particle large_smoke ^-0.813 ^1.582
+      ^-0.914 0 %math_(%rand:5|10%)*0.1% 0 %math_(%rand:5|10%)*0.1% 0
+    - execute at %player% positioned ~ ~1 ~ run particle large_smoke ^-0.684 ^0.643
+      ^-1.766 0 %math_(%rand:5|10%)*0.1% 0 %math_(%rand:5|10%)*0.1% 0
+    - execute at %player% positioned ~ ~1 ~ run particle large_smoke ^-0.551 ^-0.658
+      ^-1.807 0 %math_(%rand:5|10%)*0.1% 0 %math_(%rand:5|10%)*0.1% 0
+    - execute at %player% positioned ~ ~1 ~ run particle large_smoke ^-0.416 ^-1.694
+      ^-0.978 0 %math_(%rand:5|10%)*0.1% 0 %math_(%rand:5|10%)*0.1% 0
+    - execute at %player% positioned ~ ~1 ~ run particle large_smoke ^-0.278 ^-1.950
+      ^0.344 0 %math_(%rand:5|10%)*0.1% 0 %math_(%rand:5|10%)*0.1% 0
+    - execute at %player% positioned ~ ~1 ~ run particle large_smoke ^-0.140 ^-1.282
+      ^1.528 0 %math_(%rand:5|10%)*0.1% 0 %math_(%rand:5|10%)*0.1% 0
+    playerConditions:
+      ifSneaking: true
+      ifSneakingMsg: ''
+      ifIsNotInTheBlock:
+        material0:
+          material: WATER
+      ifIsNotInTheBlockMsg: ''
+      ifIsNotOnTheBlock:
+        material0:
+          material: WATER
+      ifIsNotOnTheBlockMsg: ''
+    worldConditions: {}
+    itemConditions: {}
+    customConditions: {}
+    placeholdersConditions: {}
+    variablesModification: {}
+  activator6:
+    name: '&eActivator'
+    option: PLAYER_RECEIVE_HIT_GLOBAL
+    usageModification: 0
+    cancelEvent: true
+    silenceOutput: false
+    autoUpdateItem: false
+    cooldownFeatures:
+      cooldown: 0
+      isCooldownInTicks: false
+      cooldownMsg: '&cYou are in cooldown ! &7(&e%time_H%&6H &e%time_M%&6M &e%time_S%&6S&7)'
+      displayCooldownMessage: true
+      cancelEventIfInCooldown: false
+    globalCooldownFeatures:
+      cooldown: 0
+      isCooldownInTicks: false
+      cooldownMsg: '&cYou are in cooldown ! &7(&e%time_H%&6H &e%time_M%&6M &e%time_S%&6S&7)'
+      displayCooldownMessage: true
+      cancelEventIfInCooldown: false
+    otherEICooldowns: {}
+    requiredItems: {}
+    requiredExecutableItems: {}
+    detailedSlots:
+    - -1
+    playerCommands: []
+    playerConditions: {}
+    worldConditions: {}
+    itemConditions: {}
+    customConditions: {}
+    placeholdersConditions:
+      plchC1:
+        type: PLAYER_NUMBER
+        comparator: SUPERIOR_OR_EQUALS
+        part1: '%math_0_({player_time})-(24000*(FLOOR({player_time}/24000)))%'
+        part2: '13000.0'
+        cancelEventIfNotValid: false
+        messageIfNotValid: '&e'
+      plchC2:
+        type: PLAYER_NUMBER
+        comparator: INFERIOR_OR_EQUALS
+        part1: '%math_0_({player_time})-(24000*(FLOOR({player_time}/24000)))%'
+        part2: '23000.0'
+        cancelEventIfNotValid: false
+        messageIfNotValid: '&e'
+    detailedDamageCauses: []
+    variablesModification: {}
+  activator7:
+    name: '&eActivator'
+    option: LOOP
+    usageModification: 0
+    cancelEvent: false
+    silenceOutput: false
+    autoUpdateItem: false
+    cooldownFeatures:
+      cooldown: 0
+      isCooldownInTicks: false
+      cooldownMsg: '&cYou are in cooldown ! &7(&e%time_H%&6H &e%time_M%&6M &e%time_S%&6S&7)'
+      displayCooldownMessage: true
+      cancelEventIfInCooldown: false
+    globalCooldownFeatures:
+      cooldown: 0
+      isCooldownInTicks: false
+      cooldownMsg: '&cYou are in cooldown ! &7(&e%time_H%&6H &e%time_M%&6M &e%time_S%&6S&7)'
+      displayCooldownMessage: true
+      cancelEventIfInCooldown: false
+    otherEICooldowns: {}
+    requiredItems: {}
+    requiredExecutableItems: {}
+    detailedSlots: []
+    playerCommands:
+    - REGAIN FOOD 1000
+    - REGAIN HEALTH 1000
+    playerConditions: {}
+    worldConditions: {}
+    itemConditions: {}
+    customConditions: {}
+    placeholdersConditions:
+      plchC1:
+        type: PLAYER_NUMBER
+        comparator: SUPERIOR_OR_EQUALS
+        part1: '%math_0_({player_time})-(24000*(FLOOR({player_time}/24000)))%'
+        part2: '13000.0'
+        cancelEventIfNotValid: false
+        messageIfNotValid: '&e'
+      plchC2:
+        type: PLAYER_NUMBER
+        comparator: INFERIOR_OR_EQUALS
+        part1: '%math_0_({player_time})-(24000*(FLOOR({player_time}/24000)))%'
+        part2: '23000.0'
+        cancelEventIfNotValid: false
+        messageIfNotValid: '&e'
+    delay: 2
+    delayInTick: false
+    variablesModification: {}
+  activator8:
+    name: '&eActivator'
+    option: PLAYER_LEFT_CLICK
+    typeTarget: NO_TYPE_TARGET
+    usageModification: 0
+    cancelEvent: false
+    silenceOutput: false
+    autoUpdateItem: false
+    cooldownFeatures:
+      cooldown: 0
+      isCooldownInTicks: false
+      cooldownMsg: '&cYou are in cooldown ! &7(&e%time_H%&6H &e%time_M%&6M &e%time_S%&6S&7)'
+      displayCooldownMessage: true
+      cancelEventIfInCooldown: false
+    globalCooldownFeatures:
+      cooldown: 0
+      isCooldownInTicks: false
+      cooldownMsg: '&cYou are in cooldown ! &7(&e%time_H%&6H &e%time_M%&6M &e%time_S%&6S&7)'
+      displayCooldownMessage: true
+      cancelEventIfInCooldown: false
+    otherEICooldowns: {}
+    requiredItems: {}
+    requiredExecutableItems: {}
+    detailedSlots: []
+    playerCommands:
+    - LAUNCH ONEPIECE_004_2_BLACK_PUNCH
+    playerConditions:
+      ifSneaking: true
+      ifSneakingMsg: ''
+    worldConditions: {}
+    itemConditions: {}
+    customConditions: {}
+    placeholdersConditions: {}
+    variablesModification: {}
+  activator9:
+    name: '&eActivator'
+    option: PLAYER_CUSTOM_LAUNCH
+    usageModification: 0
+    cancelEvent: false
+    silenceOutput: false
+    autoUpdateItem: false
+    cooldownFeatures:
+      cooldown: 0
+      isCooldownInTicks: false
+      cooldownMsg: '&cYou are in cooldown ! &7(&e%time_H%&6H &e%time_M%&6M &e%time_S%&6S&7)'
+      displayCooldownMessage: true
+      cancelEventIfInCooldown: false
+    globalCooldownFeatures:
+      cooldown: 0
+      isCooldownInTicks: false
+      cooldownMsg: '&cYou are in cooldown ! &7(&e%time_H%&6H &e%time_M%&6M &e%time_S%&6S&7)'
+      displayCooldownMessage: true
+      cancelEventIfInCooldown: false
+    otherEICooldowns: {}
+    requiredItems: {}
+    requiredExecutableItems: {}
+    detailedSlots: []
+    playerCommands:
+    - AROUND 5 false CUSTOMDASH1 %x% %y% %z% <+> DELAYTICK 10 <+> DAMAGE 35
+    - MOB_AROUND 5 true CUSTOMDASH1 %x% %y% %z% <+> DELAYTICK 10 <+> DAMAGE 35
+    - 'LOOP START: 10'
+    - execute at %player% as %projectile_uuid% run minecraft:tp %projectile_uuid% ^ ^ ^15
+    - DELAYTICK 1
+    - LOOP END
+    - execute at %player% run playsound entity.generic.explode ambient @a[distance=..15]
+    - AROUND 3 false CUSTOMDASH1 %projectile_x% %projectile_y% %projectile_z% <+>
+      execute at %around_target% run particle smoke ~ ~ ~ 0.01 0.01 0.01 0.5 10 <+>
+      DELAYTICK 1 <+> execute at %around_target% run particle smoke ~ ~ ~ 0.01 0.01
+      0.01 0.5 10 <+> DELAYTICK 1 <+> execute at %around_target% run particle smoke
+      ~ ~ ~ 0.01 0.01 0.01 0.5 10 <+> DELAYTICK 1 <+> execute at %around_target% run
+      particle smoke ~ ~ ~ 0.01 0.01 0.01 0.5 10 <+> DELAYTICK 1 <+> execute at %around_target%
+      run particle smoke ~ ~ ~ 0.01 0.01 0.01 0.5 10 <+> DELAYTICK 1 <+> execute at
+      %around_target% run particle smoke ~ ~ ~ 0.01 0.01 0.01 0.5 10 <+> DELAYTICK
+      1 <+> execute at %around_target% run particle smoke ~ ~ ~ 0.01 0.01 0.01 0.5
+      10 <+> DELAYTICK 1 <+> execute at %around_target% run particle smoke ~ ~ ~ 0.01
+      0.01 0.01 0.5 10 <+> DELAYTICK 1 <+> execute at %around_target% run particle
+      smoke ~ ~ ~ 0.01 0.01 0.01 0.5 10 <+> DELAYTICK 1 <+> execute at %around_target%
+      run particle smoke ~ ~ ~ 0.01 0.01 0.01 0.5 10 <+> DELAYTICK 1 <+> execute at
+      %around_target% run particle smoke ~ ~ ~ 0.01 0.01 0.01 0.5 10 <+> DELAYTICK
+      1 <+> execute at %around_target% run particle smoke ~ ~ ~ 0.01 0.01 0.01 0.5
+      10 <+> DELAYTICK 1 <+> execute at %around_target% run particle smoke ~ ~ ~ 0.01
+      0.01 0.01 0.5 10 <+> DELAYTICK 1 <+> execute at %around_target% run particle
+      smoke ~ ~ ~ 0.01 0.01 0.01 0.5 10 <+> DELAYTICK 1 <+> execute at %around_target%
+      run particle smoke ~ ~ ~ 0.01 0.01 0.01 0.5 10 <+> DELAYTICK 1 <+> execute at
+      %around_target% run particle smoke ~ ~ ~ 0.01 0.01 0.01 0.5 10 <+> DELAYTICK
+      1 <+> execute at %around_target% run particle smoke ~ ~ ~ 0.01 0.01 0.01 0.5
+      10 <+> DELAYTICK 1 <+> execute at %around_target% run particle smoke ~ ~ ~ 0.01
+      0.01 0.01 0.5 10 <+> DELAYTICK 1 <+> execute at %around_target% run particle
+      smoke ~ ~ ~ 0.01 0.01 0.01 0.5 10 <+> DELAYTICK 1 <+> execute at %around_target%
+      run particle smoke ~ ~ ~ 0.01 0.01 0.01 0.5 10 <+> DELAYTICK 1
+    - MOB_AROUND 3 true CUSTOMDASH1 %projectile_x% %projectile_y% %projectile_z% <+>
+      execute at %around_target_uuid% run particle smoke ~ ~ ~ 0.01 0.01 0.01 0.5
+      10 <+> DELAYTICK 1 <+> execute at %around_target_uuid% run particle smoke ~
+      ~ ~ 0.01 0.01 0.01 0.5 10 <+> DELAYTICK 1 <+> execute at %around_target_uuid%
+      run particle smoke ~ ~ ~ 0.01 0.01 0.01 0.5 10 <+> DELAYTICK 1 <+> execute at
+      %around_target_uuid% run particle smoke ~ ~ ~ 0.01 0.01 0.01 0.5 10 <+> DELAYTICK
+      1 <+> execute at %around_target_uuid% run particle smoke ~ ~ ~ 0.01 0.01 0.01
+      0.5 10 <+> DELAYTICK 1 <+> execute at %around_target_uuid% run particle smoke
+      ~ ~ ~ 0.01 0.01 0.01 0.5 10 <+> DELAYTICK 1 <+> execute at %around_target_uuid%
+      run particle smoke ~ ~ ~ 0.01 0.01 0.01 0.5 10 <+> DELAYTICK 1 <+> execute at
+      %around_target_uuid% run particle smoke ~ ~ ~ 0.01 0.01 0.01 0.5 10 <+> DELAYTICK
+      1 <+> execute at %around_target_uuid% run particle smoke ~ ~ ~ 0.01 0.01 0.01
+      0.5 10 <+> DELAYTICK 1 <+> execute at %around_target_uuid% run particle smoke
+      ~ ~ ~ 0.01 0.01 0.01 0.5 10 <+> DELAYTICK 1 <+> execute at %around_target_uuid%
+      run particle smoke ~ ~ ~ 0.01 0.01 0.01 0.5 10 <+> DELAYTICK 1 <+> execute at
+      %around_target_uuid% run particle smoke ~ ~ ~ 0.01 0.01 0.01 0.5 10 <+> DELAYTICK
+      1 <+> execute at %around_target_uuid% run particle smoke ~ ~ ~ 0.01 0.01 0.01
+      0.5 10 <+> DELAYTICK 1 <+> execute at %around_target_uuid% run particle smoke
+      ~ ~ ~ 0.01 0.01 0.01 0.5 10 <+> DELAYTICK 1 <+> execute at %around_target_uuid%
+      run particle smoke ~ ~ ~ 0.01 0.01 0.01 0.5 10 <+> DELAYTICK 1 <+> execute at
+      %around_target_uuid% run particle smoke ~ ~ ~ 0.01 0.01 0.01 0.5 10 <+> DELAYTICK
+      1 <+> execute at %around_target_uuid% run particle smoke ~ ~ ~ 0.01 0.01 0.01
+      0.5 10 <+> DELAYTICK 1 <+> execute at %around_target_uuid% run particle smoke
+      ~ ~ ~ 0.01 0.01 0.01 0.5 10 <+> DELAYTICK 1 <+> execute at %around_target_uuid%
+      run particle smoke ~ ~ ~ 0.01 0.01 0.01 0.5 10 <+> DELAYTICK 1 <+> execute at
+      %around_target_uuid% run particle smoke ~ ~ ~ 0.01 0.01 0.01 0.5 10 <+> DELAYTICK
+      1
+    - DELAYTICK 2
+    - minecraft:kill %projectile_uuid%
+    playerConditions: {}
+    worldConditions: {}
+    itemConditions: {}
+    customConditions: {}
+    placeholdersConditions:
+      plchCdt0:
+        type: PLAYER_STRING
+        comparator: EQUALS
+        part1: '%projectile_name%'
+        part2: ONEPIECE_004_2_BLACK_PUNCH
+        cancelEventIfNotValid: false
+        messageIfNotValid: ''
+    detailedEntities: []
+    entityCommands: []
+    entityConditions: {}
+    variablesModification: {}
+  activator10:
+    name: '&eActivator'
+    option: PLAYER_RECEIVE_HIT_GLOBAL
+    usageModification: 0
+    cancelEvent: true
+    silenceOutput: false
+    autoUpdateItem: false
+    cooldownFeatures:
+      cooldown: 0
+      isCooldownInTicks: false
+      cooldownMsg: '&cYou are in cooldown ! &7(&e%time_H%&6H &e%time_M%&6M &e%time_S%&6S&7)'
+      displayCooldownMessage: true
+      cancelEventIfInCooldown: false
+    globalCooldownFeatures:
+      cooldown: 0
+      isCooldownInTicks: false
+      cooldownMsg: '&cYou are in cooldown ! &7(&e%time_H%&6H &e%time_M%&6M &e%time_S%&6S&7)'
+      displayCooldownMessage: true
+      cancelEventIfInCooldown: false
+    otherEICooldowns: {}
+    requiredItems: {}
+    requiredExecutableItems: {}
+    detailedSlots: []
+    playerCommands: []
+    playerConditions: {}
+    worldConditions: {}
+    itemConditions: {}
+    customConditions: {}
+    placeholdersConditions:
+      plchC1:
+        type: PLAYER_NUMBER
+        comparator: SUPERIOR_OR_EQUALS
+        part1: '%math_0_({player_time})-(24000*(FLOOR({player_time}/24000)))%'
+        part2: '13000.0'
+        cancelEventIfNotValid: false
+        messageIfNotValid: '&e'
+      plchC2:
+        type: PLAYER_NUMBER
+        comparator: INFERIOR_OR_EQUALS
+        part1: '%math_0_({player_time})-(24000*(FLOOR({player_time}/24000)))%'
+        part2: '23000.0'
+        cancelEventIfNotValid: false
+        messageIfNotValid: '&e'
+    detailedDamageCauses: []
+    variablesModification: {}
+  activator11:
+    name: '&eActivator'
+    option: PLAYER_JUMP
+    usageModification: 0
+    cancelEvent: false
+    silenceOutput: false
+    autoUpdateItem: false
+    cooldownFeatures:
+      cooldown: 0
+      isCooldownInTicks: false
+      cooldownMsg: '&cYou are in cooldown ! &7(&e%time_H%&6H &e%time_M%&6M &e%time_S%&6S&7)'
+      displayCooldownMessage: true
+      cancelEventIfInCooldown: false
+    globalCooldownFeatures:
+      cooldown: 0
+      isCooldownInTicks: false
+      cooldownMsg: '&cYou are in cooldown ! &7(&e%time_H%&6H &e%time_M%&6M &e%time_S%&6S&7)'
+      displayCooldownMessage: true
+      cancelEventIfInCooldown: false
+    otherEICooldowns: {}
+    requiredItems: {}
+    requiredExecutableItems: {}
+    detailedSlots: []
+    playerCommands:
+    - execute at %player% run playsound entity.generic.explode ambient @a[distance=..20]
+    - JUMP 2
+    - 'LOOP START: 30'
+    - execute at %player% run particle large_smoke ~ ~ ~ 0.01 0.01 0.01 0 10
+    - DELAYTICK 1
+    - execute at %player% run particle sweep_attack ~ ~ ~ 2 2 2 0 10
+    - LOOP END
+    - CUSTOMDASH1 %x% %y%-10 %z%
+    - 'LOOP START: 15'
+    - execute at %player% run particle large_smoke ~ ~ ~ 0.01 0.01 0.01 0 10
+    - DELAYTICK 1
+    - execute at %player% run particle sweep_attack ~ ~ ~ 2 2 2 0 10
+    - LOOP END
+    - 'LOOP START: 5'
+    - execute at %player% run particle explosion ~ ~ ~ 7 0.1 7 0 50
+    - execute at %player% run playsound entity.generic.explode ambient @a[distance=..20]
+    - MOB_AROUND 7 true DAMAGE 10
+    - AROUND 7 false DAMAGE 10
+    - DELAYTICK 1
+    - LOOP END
+    playerConditions:
+      ifSneaking: true
+      ifSneakingMsg: ''
+    worldConditions: {}
+    itemConditions: {}
+    customConditions: {}
+    placeholdersConditions: {}
+    variablesModification: {}
+attributes: {}

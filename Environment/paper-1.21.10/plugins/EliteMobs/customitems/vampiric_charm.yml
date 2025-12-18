@@ -1,0 +1,14 @@
+isEnabled: true
+material: STICK
+name: '&bVampiric Charm'
+lore:
+- '&aNo one can remember where this'
+- '&acame from, and no one can,'
+- '&aforget how dangerous it is...'
+enchantments:
+- VANISHING_CURSE,1
+potionEffects:
+- HEAL,0,self,onHit
+- BLINDNESS,0,self,onHit
+- SLOW,0,self,onHit
+dropWeight: '1'

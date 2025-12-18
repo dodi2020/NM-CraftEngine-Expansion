@@ -1,0 +1,24 @@
+isEnabled: true
+name: '&2[lvl 000-200] &fEnchantment Challenge 09'
+customInfo:
+- '&fAn enchantment challenge dungeon!'
+dungeonSizeCategory: SANCTUM
+worldName: em_id_enchantment_challenge_9
+environment: NORMAL
+protect: true
+playerInfo: 'Difficulty: &4solo hard content!'
+regionEnterMessage: '&bChallenge time!'
+regionLeaveMessage: '&bYou have left the enchantment challenge!'
+startLocation: em_id_enchantment_challenge_9,14.5,65,-12.5,45,0
+teleportLocation: em_id_enchantment_challenge_9,18.5,95,-15.5,45,0.0
+maxPlayerCount: 1
+dungeonObjectives:
+- filename=enchantment_boss_the_glass_master.yml
+contentType: INSTANCED_DUNGEON
+dungeonConfigFolderName: em_id_enchantment_challenge_9
+contentLevel: 1
+difficulties:
+- name: normal
+  id: 0
+enchantmentChallenge: true
+setupMenuDescription: []

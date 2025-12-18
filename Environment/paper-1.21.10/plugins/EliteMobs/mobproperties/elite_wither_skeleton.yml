@@ -1,0 +1,7 @@
+isEnabled: true
+entityType: WITHER_SKELETON
+name: '&fLvl &2$level &fElite &8Wither Skeleton'
+deathMessages:
+- $entity's &carrows withered away $player&c!
+- $entity's &chas withered $player &caway!
+baseDamageV2: 12.0

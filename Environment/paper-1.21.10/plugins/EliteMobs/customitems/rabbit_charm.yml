@@ -1,0 +1,12 @@
+isEnabled: true
+material: RABBIT_FOOT
+name: '&bRabbit Charm'
+lore:
+- '&aWith this charm, just about'
+- '&aany destination is only a hop,'
+- '&askip and a jump away!'
+enchantments:
+- VANISHING_CURSE,1
+potionEffects:
+- JUMP,2,self,continuous
+dropWeight: '1'

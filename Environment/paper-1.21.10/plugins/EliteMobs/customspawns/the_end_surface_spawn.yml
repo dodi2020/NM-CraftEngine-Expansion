@@ -1,0 +1,7 @@
+isEnabled: true
+validWorlds: []
+validWorldEnvironments:
+- THE_END
+validBiomesV2: []
+canSpawnInLight: true
+isSurfaceSpawn: true

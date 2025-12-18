@@ -1,0 +1,9 @@
+isEnabled: true
+entityType: ZOMBIE
+name: $normalLevel Arena Zombie
+level: '1'
+followDistance: 60
+helmet: LEATHER_HELMET
+onSpawnBlockStates: []
+onRemoveBlockStates: []
+bossType: NORMAL

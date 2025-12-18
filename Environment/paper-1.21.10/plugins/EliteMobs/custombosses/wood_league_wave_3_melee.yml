@@ -1,0 +1,10 @@
+isEnabled: true
+entityType: ZOMBIE
+name: $normalLevel Arena Zombie
+level: '3'
+powers:
+- attack_fire.yml
+followDistance: 60
+onSpawnBlockStates: []
+onRemoveBlockStates: []
+bossType: NORMAL

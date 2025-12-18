@@ -1,0 +1,6 @@
+isEnabled: true
+location1: em_adventurers_guild,284.5,101,296.5,0,0
+location1Text: '&8『Invasion Minidungeon』 &aLvls 35-45'
+location2: invasion_minidungeon.yml
+particleColor: 22016
+blindPlayer: true

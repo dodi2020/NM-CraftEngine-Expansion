@@ -1,0 +1,6 @@
+isEnabled: true
+name: Knockback
+maxLevelV2: 2
+value: 6.0
+isEnabledForProcedurallyGeneratedItems: true
+maxEnchantmentLevel: 10

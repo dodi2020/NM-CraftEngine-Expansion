@@ -1,0 +1,8 @@
+isEnabled: true
+location1: em_adventurers_guild,290.5,98,302.5,109,0
+location1Text: '&2『Primis Adventure』 &aLvls 0-20'
+location2: primis_adventure.yml
+style: ICOSAHEDRON
+particleColor: 32768
+blindPlayer: true
+sizeMultiplier: 2.0

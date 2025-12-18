@@ -1,0 +1,25 @@
+isEnabled: true
+name: '&2[000-055] All 10 Free Story Mode Dungeons and Sanctums!'
+customInfo:
+- The perfect set of story dungeons
+- for players new to EliteMobs!
+dungeonSizeCategory: LAIR
+environment: NORMAL
+protect: true
+contentType: META_PACKAGE
+containedPackages:
+- the_climb_dungeon.yml
+- the_cave_sanctum.yml
+- the_mines_dungeon.yml
+- the_bridge_sanctum.yml
+- the_city_dungeon.yml
+- the_palace_sanctum.yml
+- the_quarry_dungeon.yml
+- the_deep_mines_dungeon.yml
+- the_nether_wastes_dungeon.yml
+- the_nether_bell_sanctum.yml
+setupMenuDescription:
+- '&2All free story mode dungeons for EliteMobs!'
+- '&2Featuring multiple custom soundtracks, models'
+- '&2unique powers and elaborate maps, it''s a really'
+- '&2fun way of experiencing EliteMobs content!'

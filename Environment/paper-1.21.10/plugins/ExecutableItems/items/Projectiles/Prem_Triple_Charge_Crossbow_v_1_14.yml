@@ -1,0 +1,240 @@
+name: '&eCharge 3 on charge'
+glow: false
+disableEnchantGlide: false
+lore:
+- §b§oDefault lore
+- '§eCharge: §5%var_charge%'
+material: CROSSBOW
+disableStack: false
+keepItemOnDeath: false
+canBeUsedOnlyByTheOwner: false
+cancelEventIfNotOwner: false
+onlyOwnerBlackListedActivators: []
+storeItemInfo: false
+unbreakable: true
+isDurabilityBasedOnUsage: false
+cancelEventIfNoPermission: false
+whitelistedWorlds: []
+chargedProjectiles:
+- arrow
+keepDefaultAttributes: true
+ignoreKeepDefaultAttributesFeature: false
+config_5: true
+config_update: true
+glider: false
+usageFeatures:
+  usage: 1
+  isRefreshableClean: true
+  usageLimit: -1
+dropFeatures:
+  glowDrop: false
+  glowDropColor: WHITE
+  displayNameDrop: false
+enchantments: {}
+hiders:
+  hideEnchantments: false
+  hideUnbreakable: false
+  hideAttributes: false
+  hideUsage: false
+  hideDestroys: false
+  hidePlacedOn: false
+  hideDye: false
+  hideArmorTrim: false
+  hideAdditionalTooltip: false
+  hideToolTip: false
+giveFirstJoinFeatures:
+  giveFirstJoin: false
+  giveFirstJoinAmount: 1
+  giveFirstJoinSlot: 0
+restrictions:
+  locked-in-inventory: false
+variables:
+  var0:
+    variableName: charge
+    type: NUMBER
+    default: 3.0
+    isRefreshableClean: true
+    refreshTagDoNotEdit: §他§天§生§他§生§天§地§道§心§心
+activators:
+  activator0:
+    name: '&eActivator'
+    option: PLAYER_RIGHT_CLICK
+    typeTarget: NO_TYPE_TARGET
+    usageModification: 0
+    cancelEvent: true
+    noActivatorRunIfTheEventIsCancelled: false
+    autoUpdateItem: false
+    cooldownFeatures:
+      cooldown: 0
+      pausePlaceholdersConditions: {}
+    globalCooldownFeatures:
+      cooldown: 0
+    otherEICooldowns: {}
+    requiredItems: {}
+    requiredExecutableItems: {}
+    requiredMagics: {}
+    detailedSlots:
+    - -1
+    playerCommands:
+    - LAUNCH FIREBALL
+    playerConditions: {}
+    worldConditions: {}
+    itemConditions:
+      ifCrossbowMustBeCharged: true
+      ifCrossbowMustBeChargedMsg: ''
+    customConditions: {}
+    placeholdersConditions:
+      plchCdt0:
+        type: PLAYER_NUMBER
+        comparator: SUPERIOR
+        part1: '%var_charge%'
+        part2: '1'
+        cancelEventIfNotValid: false
+        messageIfNotValid: ''
+        messageIfNotValidForTarget: ''
+        stopCheckingOtherConditionsIfNotValid: true
+    variablesModification: {}
+  activator1:
+    name: '&eActivator'
+    option: PLAYER_RIGHT_CLICK
+    typeTarget: NO_TYPE_TARGET
+    usageModification: 0
+    cancelEvent: false
+    noActivatorRunIfTheEventIsCancelled: false
+    autoUpdateItem: false
+    cooldownFeatures:
+      cooldown: 0
+      pausePlaceholdersConditions: {}
+    globalCooldownFeatures:
+      cooldown: 0
+    otherEICooldowns: {}
+    requiredItems: {}
+    requiredExecutableItems: {}
+    requiredMagics: {}
+    detailedSlots:
+    - -1
+    playerCommands: []
+    playerConditions: {}
+    worldConditions: {}
+    itemConditions: {}
+    customConditions: {}
+    placeholdersConditions:
+      plchCdt0:
+        type: PLAYER_NUMBER
+        comparator: EQUALS
+        part1: '%var_charge%'
+        part2: '1'
+        cancelEventIfNotValid: false
+        messageIfNotValid: ''
+        messageIfNotValidForTarget: ''
+        stopCheckingOtherConditionsIfNotValid: true
+    variablesModification:
+      varUpdt0:
+        variableName: charge
+        type: SET
+        modification: 3.0
+  activator2:
+    name: '&eActivator'
+    option: PLAYER_CUSTOM_LAUNCH
+    usageModification: 0
+    cancelEvent: false
+    noActivatorRunIfTheEventIsCancelled: false
+    autoUpdateItem: false
+    cooldownFeatures:
+      cooldown: 0
+      pausePlaceholdersConditions: {}
+    globalCooldownFeatures:
+      cooldown: 0
+    otherEICooldowns: {}
+    requiredItems: {}
+    requiredExecutableItems: {}
+    requiredMagics: {}
+    detailedSlots:
+    - -1
+    playerCommands: []
+    playerConditions: {}
+    worldConditions: {}
+    itemConditions: {}
+    customConditions: {}
+    placeholdersConditions:
+      plchCdt0:
+        type: PLAYER_NUMBER
+        comparator: SUPERIOR
+        part1: '%var_charge%'
+        part2: '0'
+        cancelEventIfNotValid: false
+        messageIfNotValid: ''
+        messageIfNotValidForTarget: ''
+        stopCheckingOtherConditionsIfNotValid: true
+    detailedEntities: []
+    entityCommands: []
+    entityConditions:
+      ifAdult: false
+    variablesModification:
+      varUpdt0:
+        variableName: charge
+        type: MODIFICATION
+        modification: -1.0
+  activator3:
+    name: '&eActivator'
+    option: PLAYER_LAUNCH_PROJECTILE
+    usageModification: 0
+    cancelEvent: true
+    noActivatorRunIfTheEventIsCancelled: false
+    autoUpdateItem: false
+    cooldownFeatures:
+      cooldown: 0
+      pausePlaceholdersConditions: {}
+    globalCooldownFeatures:
+      cooldown: 0
+    otherEICooldowns: {}
+    requiredItems: {}
+    requiredExecutableItems: {}
+    requiredMagics: {}
+    detailedSlots:
+    - -1
+    playerCommands:
+    - LAUNCH FIREBALL
+    playerConditions: {}
+    worldConditions: {}
+    itemConditions: {}
+    customConditions: {}
+    placeholdersConditions: {}
+    detailedEntities: []
+    entityCommands: []
+    entityConditions:
+      ifAdult: false
+    variablesModification: {}
+displayConditions:
+  playerConditions: {}
+  worldConditions: {}
+  itemConditions: {}
+  placeholdersConditions: {}
+  enableFeature: false
+foodFeatures:
+  nutrition: 1
+  saturation: 1
+  isMeat: false
+  canAlwaysEat: false
+consumableFeatures:
+  enable: false
+  animation: EAT
+  hasConsumeParticles: false
+  consumeSeconds: 3
+itemRarity:
+  enableRarity: false
+  rarity: COMMON
+repairableFeatures:
+  enable: false
+  repairCost: 2
+equippableFeatures:
+  enable: false
+  slot: BODY
+  enableSound: false
+  sound: ITEM.ARMOR.EQUIP_DIAMOND
+  damageableOnHurt: false
+  dispensable: true
+  swappable: true
+  allowedEntities:
+  - PLAYER
+attributes: {}

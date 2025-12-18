@@ -1,0 +1,12 @@
+id: gui-invisible-item
+display: GUI Invisible Item
+type: item
+subtype: item
+material: PAPER
+parent: item/generated
+modules:
+  baseMaterial: paper
+  customModelData: 777
+assets:
+  - textures:gui-invisible-item.png
+  - models:gui-invisible-item.json

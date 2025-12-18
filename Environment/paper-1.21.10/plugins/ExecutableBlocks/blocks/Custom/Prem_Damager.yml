@@ -1,0 +1,77 @@
+creationType: BASIC_CREATION
+name: '&4&l>> &fDiamond Spike &4&l<<'
+lore:
+- '&7Deals 8 Damage per second'
+- '&7to anything above it.'
+- ''
+- '&7The kill counts goes to the'
+- '&7owner of the spike.'
+- ''
+- '&7&oCreated by: &fSpecial70'
+material: PRISMARINE_SLAB
+usage: -1
+cancelGravity: false
+onlyBreakableWithEI: []
+dropBlockIfItIsBroken: true
+dropBlockWhenItExplodes: true
+dropBlockWhenItBurns: true
+canBeMoved: true
+config_3: true
+config_update: true
+resetInternalDatasWhenBroken: false
+titleFeatures:
+  activeTitle: true
+  title:
+  - '&fOne thing !'
+  - '&4&lBe careful !'
+  titleAdjustment: 0.5
+activators:
+  activator1:
+    name: '&eActivator'
+    option: LOOP
+    usageModification: -1
+    cancelEvent: false
+    silenceOutput: true
+    requiredItems:
+      errorMessage: ''
+    requiredExecutableItems:
+      errorMessage: ''
+    blockCommands:
+    - AROUND 0.7 DAMAGE 8
+    - MOB_AROUND 0.7 DAMAGE 8
+    blockConditions: {}
+    worldConditions: {}
+    placeholdersConditions: {}
+    delay: 1
+    delayInTick: false
+    ownerCommands: []
+    ownerConditions: {}
+  activator2:
+    name: '&eActivator'
+    option: PLAYER_PLACE
+    usageModification: -1
+    cancelEvent: false
+    silenceOutput: true
+    requiredItems:
+      errorMessage: ''
+    requiredExecutableItems:
+      errorMessage: ''
+    blockCommands:
+    - execute at %player% run setblock %block_x_int% %block_y_int% %block_z_int% prismarine_slab[type=bottom]
+    blockConditions: {}
+    worldConditions: {}
+    placeholdersConditions: {}
+    playerCommands: []
+    playerConditions: {}
+    playerCooldownFeatures:
+      cooldown: 0
+      isCooldownInTicks: false
+      cooldownMsg: '&cYou are in cooldown ! &7(&e%time_H%&6H &e%time_M%&6M &e%time_S%&6S&7)'
+      displayCooldownMessage: true
+      cancelEventIfInCooldown: false
+    globalCooldownFeatures:
+      cooldown: 0
+      isCooldownInTicks: false
+      cooldownMsg: '&cYou are in cooldown ! &7(&e%time_H%&6H &e%time_M%&6M &e%time_S%&6S&7)'
+      displayCooldownMessage: true
+      cancelEventIfInCooldown: false

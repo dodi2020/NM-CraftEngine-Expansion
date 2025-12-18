@@ -1,0 +1,148 @@
+creationType: BASIC_CREATION
+name: Custom spawner
+lore: []
+material: END_PORTAL_FRAME
+spawnerType: UNKNOWN
+dropType: IN_THE_INVENTORY
+usage: -1
+cancelGravity: false
+onlyBreakableWithEI: []
+dropBlockIfItIsBroken: true
+dropBlockWhenItExplodes: true
+dropBlockWhenItBurns: true
+resetInternalDatasWhenBroken: false
+canBeMoved: true
+config_3: true
+config_update: true
+titleFeatures:
+  activeTitle: false
+  title: []
+  titleAdjustment: 0.5
+activators:
+  activator3:
+    name: '&eActivator'
+    option: LOOP
+    usageModification: 0
+    cancelEvent: false
+    silenceOutput: false
+    requiredItems: {}
+    requiredExecutableItems: {}
+    blockCommands:
+    - execute in <<%block_world%>> positioned %block_x% %block_y% %block_z% run summon
+      zombie ~ ~1 ~
+    blockConditions:
+      blockAroundCdts:
+        blockAround0:
+          southValue: 0
+          northValue: 0
+          westValue: 0
+          eastValue: 0
+          aboveValue: 0
+          underValue: 1
+          errorMsg: ''
+          blockMustBeExecutableBlock: []
+          blockTypeMustBe:
+            material0:
+              material: GREEN_WOOL
+          blockTypeMustNotBe: {}
+      blockAroundCdtsMsg: ''
+    worldConditions: {}
+    placeholdersConditions: {}
+    variablesModification: {}
+    delay: 1
+    delayInTick: false
+    ownerCommands: []
+    ownerConditions: {}
+  activator0:
+    name: '&eActivator'
+    option: LOOP
+    usageModification: 0
+    cancelEvent: false
+    silenceOutput: false
+    requiredItems: {}
+    requiredExecutableItems: {}
+    blockCommands:
+    - execute in <<%block_world%>> positioned %block_x% %block_y% %block_z% store
+      result score zombies eb-spawner-%block_x%_%block_y%_%block_z%_%block_world%
+      if entity @e[type=minecraft:zombie,distance=..10]
+    - execute in <<%block_world%>> positioned %block_x% %block_y% %block_z% if score
+      zombies eb-spawner-%block_x%_%block_y%_%block_z%_%block_world% matches 3.. run
+      setblock ~ ~-1 ~ red_wool
+    - execute in <<%block_world%>> positioned %block_x% %block_y% %block_z% if score
+      zombies eb-spawner-%block_x%_%block_y%_%block_z%_%block_world% matches ..2 run
+      setblock ~ ~-1 ~ green_wool
+    blockConditions: {}
+    worldConditions: {}
+    placeholdersConditions: {}
+    variablesModification: {}
+    delay: 1
+    delayInTick: false
+    ownerCommands: []
+    ownerConditions: {}
+  activator1:
+    name: '&eActivator'
+    option: PLAYER_PLACE
+    usageModification: 0
+    cancelEvent: false
+    silenceOutput: false
+    requiredItems: {}
+    requiredExecutableItems: {}
+    blockCommands:
+    - execute at %player% run scoreboard objectives add eb-spawner-%block_x%_%block_y%_%block_z%_%block_world%
+      dummy
+    blockConditions: {}
+    worldConditions: {}
+    placeholdersConditions: {}
+    variablesModification: {}
+    playerCommands: []
+    playerConditions: {}
+    playerCooldownFeatures:
+      cooldown: 0
+      isCooldownInTicks: false
+      cooldownMsg: '&cYou are in cooldown ! &7(&e%time_H%&6H &e%time_M%&6M &e%time_S%&6S&7)'
+      displayCooldownMessage: true
+      cancelEventIfInCooldown: false
+    globalCooldownFeatures:
+      cooldown: 0
+      isCooldownInTicks: false
+      cooldownMsg: '&cYou are in cooldown ! &7(&e%time_H%&6H &e%time_M%&6M &e%time_S%&6S&7)'
+      displayCooldownMessage: true
+      cancelEventIfInCooldown: false
+  activator2:
+    name: '&eActivator'
+    option: PLAYER_BREAK
+    usageModification: 0
+    cancelEvent: false
+    silenceOutput: false
+    requiredItems: {}
+    requiredExecutableItems: {}
+    blockCommands:
+    - execute at %player% run scoreboard objectives remove eb-spawner-%block_x%_%block_y%_%block_z%_%block_world%
+    blockConditions: {}
+    worldConditions: {}
+    placeholdersConditions: {}
+    variablesModification: {}
+    ownerCommands: []
+    ownerConditions: {}
+    playerCommands: []
+    playerConditions: {}
+    playerCooldownFeatures:
+      cooldown: 0
+      isCooldownInTicks: false
+      cooldownMsg: '&cYou are in cooldown ! &7(&e%time_H%&6H &e%time_M%&6M &e%time_S%&6S&7)'
+      displayCooldownMessage: true
+      cancelEventIfInCooldown: false
+    globalCooldownFeatures:
+      cooldown: 0
+      isCooldownInTicks: false
+      cooldownMsg: '&cYou are in cooldown ! &7(&e%time_H%&6H &e%time_M%&6M &e%time_S%&6S&7)'
+      displayCooldownMessage: true
+      cancelEventIfInCooldown: false
+variables: {}
+containerFeatures:
+  whitelistMaterials: []
+  blacklistMaterials: []
+  isLocked: false
+hopperFeatures: {}
+furnaceFeatures:
+  furnaceSpeed: 1.0

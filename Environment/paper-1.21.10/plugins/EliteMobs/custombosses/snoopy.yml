@@ -1,0 +1,22 @@
+isEnabled: true
+entityType: WOLF
+name: '&6{&4☠&6} &fSnoopy'
+level: dynamic
+healthMultiplier: 10.0
+damageMultiplier: 2.0
+dropsEliteMobsLoot: false
+dropsVanillaLoot: false
+powers:
+- invulnerability_fire.yml
+onDamageMessages:
+- Woof!
+onDamagedMessages:
+- Woof!
+trails:
+- BONE
+spawnMessage: '&aAn extremely rare Snoopy has been sighted!'
+announcementPriority: 3
+timeout: 3
+onSpawnBlockStates: []
+onRemoveBlockStates: []
+bossType: NORMAL

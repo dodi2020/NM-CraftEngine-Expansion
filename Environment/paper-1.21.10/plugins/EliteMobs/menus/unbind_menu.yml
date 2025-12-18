@@ -1,0 +1,47 @@
+isEnabled: true
+shopName: '[EM] Unbind menu!'
+infoButton:
+  material: PLAYER_HEAD
+  name: §4§lEliteMobs §cby §4§lMagmaGuy
+  lore:
+  - §8Support the plugins you enjoy!
+  - §aUse an §5Unbind Scroll §ato remove Soulbind from an item!
+infoButtonSlot: 4
+eliteItemInputInformationSlot: 20
+eliteItemInputSlot: 29
+eliteItemInputInformationButton:
+  material: GREEN_BANNER
+  name: §2Elite Item Input slots
+  lore:
+  - §aThis slot is for your elite item!
+  customModelID: 31173
+unbindScrollInputInformationSlot: 22
+unbindScrollInputSlot: 31
+unbindScrollInputInformationButton:
+  material: GREEN_BANNER
+  name: §5Unbind Scroll §aInput slots
+  lore:
+  - §aThis slot is for your §9Unbind Scroll§a!
+  customModelID: 31173
+informationOutputButtonSlot: 24
+outputSlot: 33
+cancelButton:
+  material: BARRIER
+  name: §4Cancel
+  lore:
+  - §cCancel unbind!
+  customModelID: 31173
+outputInformationButton:
+  material: RED_BANNER
+  name: §2Unbound Item Output slot
+  lore:
+  - §aThis slot previews the result of your unbind!
+  customModelID: 31173
+cancelButtonSlot: 27
+confirmButton:
+  material: EMERALD
+  name: §2Confirm!
+  lore:
+  - §aUnbind item!
+  customModelID: 31175
+confirmUnbindSlot: 35

@@ -1,0 +1,8 @@
+isEnabled: true
+name: Earthquake
+maxLevelV2: 5
+value: 50.0
+isEnabledForProcedurallyGeneratedItems: false
+maxEnchantmentLevel: 5
+earthquakeActivationMessage: '&8[EliteMobs] &aEarthquake triggered! &c2 min cooldown!'
+earthquakeAvailableMessage: '&8[EliteMobs] &2Earthquake cooldown over!'

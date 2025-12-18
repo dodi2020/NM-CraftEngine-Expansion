@@ -1,0 +1,24 @@
+name: '&3✦ &bTest &3✦'
+lore:
+- 'Test block for playerwalk'
+material: SPONGE
+activators:
+  #activator1:
+   # activator: PLAYER_WALK_ON
+    #displayName: '&ean activator'
+   # commands:
+    #- "SENDMESSAGE &6Activator: &ePLAYER_WALK_ON"
+  activator2:
+    activator: PLAYER_WALK_ON
+    displayName: '&ean activator'
+    playerCommands:
+    - "SENDMESSAGE &6Activator: &ePLAYER_WALK_ON"
+    globalPlayerCooldown: 0
+    displayGlobalPlayerCooldownMsg: true
+    inTickGlobalPlayerCooldown: false
+    cancelEventIfInGlobalPlayerCooldown: false
+    perPlayerCooldown: 10
+    inTickPerPlayerCooldown: false
+    displayPerPlayerCooldownMsg: true
+    perPlayerCooldownMsg: "&6Hey &e%player% &6you are in cooldown &e(&a%time% secs&e)"
+    cancelEventIfInPerPlayerCooldown: false

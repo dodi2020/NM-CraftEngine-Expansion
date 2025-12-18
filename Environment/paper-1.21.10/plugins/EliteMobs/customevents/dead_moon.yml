@@ -1,0 +1,13 @@
+isEnabled: true
+eventType: TIMED
+bossFilenames:
+- zombie_king.yml
+eventStartCommands: []
+eventEndCommands: []
+breakableMaterials: []
+localCooldown: 240.0
+globalCooldown: 25.0
+weight: 50.0
+eventDuration: 10.0
+eventEndTime: 23000
+spawnType: dead_moon_spawn.yml

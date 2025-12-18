@@ -1,0 +1,192 @@
+name: '&fSeed Planter'
+glow: true
+disableEnchantGlide: false
+lore:
+- §7Place it in the farmland. It will move forward based on your current direction.
+- §7As it moves, it will take 1 wheat seed from your
+- §7inventory, then places one wheat seed.
+- §7It only moves up to 10 blocks. Stops operation if
+- §7it gets close to a wheat seed while moving
+material: HAY_BLOCK
+disableStack: false
+keepItemOnDeath: false
+canBeUsedOnlyByTheOwner: false
+cancelEventIfNotOwner: false
+onlyOwnerBlackListedActivators: []
+storeItemInfo: false
+unbreakable: false
+usage: 1
+usageLimit: -1
+isDurabilityBasedOnUsage: false
+cancelEventIfNoPermission: false
+whitelistedWorlds: []
+recognitions: []
+keepDefaultAttributes: true
+ignoreKeepDefaultAttributesFeature: false
+config_5: true
+config_update: true
+dropFeatures:
+  glowDrop: false
+  glowDropColor: WHITE
+  displayNameDrop: false
+hiders:
+  hideEnchantments: false
+  hideUnbreakable: false
+  hideAttributes: false
+  hideUsage: true
+  hideDestroys: false
+  hidePlacedOn: false
+  hideDye: false
+  hideArmorTrim: false
+  hideAdditionalTooltip: false
+enchantments: {}
+giveFirstJoinFeatures:
+  giveFirstJoin: false
+  giveFirstJoinAmount: 1
+  giveFirstJoinSlot: 0
+restrictions: {}
+variables:
+  var0:
+    variableName: uuid
+    type: STRING
+    default: ''
+activators:
+  activator1:
+    name: '&eActivator'
+    option: PLAYER_BLOCK_PLACE
+    usageModification: 0
+    cancelEvent: true
+    noActivatorRunIfTheEventIsCancelled: false
+    silenceOutput: false
+    autoUpdateItem: false
+    updateName: true
+    updateLore: true
+    updateDurability: false
+    updateAttributes: false
+    updateEnchants: false
+    updateCustomModelData: false
+    updateArmorSettings: false
+    cooldownFeatures:
+      cooldown: 0
+      isCooldownInTicks: false
+      cooldownMsg: '&cYou are in cooldown ! &7(&e%time_H%&6H &e%time_M%&6M &e%time_S%&6S&7)'
+      displayCooldownMessage: true
+      cancelEventIfInCooldown: false
+      pauseWhenOffline: false
+      pausePlaceholdersConditions: {}
+    globalCooldownFeatures:
+      cooldown: 0
+      isCooldownInTicks: false
+      cooldownMsg: '&cYou are in cooldown ! &7(&e%time_H%&6H &e%time_M%&6M &e%time_S%&6S&7)'
+      displayCooldownMessage: true
+      cancelEventIfInCooldown: false
+      pauseWhenOffline: false
+      pausePlaceholdersConditions: {}
+    otherEICooldowns: {}
+    requiredItems: {}
+    requiredExecutableItems: {}
+    requiredMagics: {}
+    detailedSlots:
+    - -1
+    playerCommands: []
+    playerConditions: {}
+    worldConditions: {}
+    itemConditions: {}
+    customConditions:
+      ifNeedPlayerConfirmationCancel: false
+    placeholdersConditions: {}
+    detailedBlocks:
+      blocks: []
+      cancelEventIfNotValid: false
+    blockCommands: []
+    blockConditions:
+      requiredItems: {}
+      requiredExecutableItems: {}
+    variablesModification:
+      varUpdt0:
+        variableName: uuid
+        type: SET
+        modification: '%rand:1|1000000%'
+  activator0:
+    name: '&eActivator'
+    option: PLAYER_BLOCK_PLACE
+    usageModification: 0
+    cancelEvent: true
+    noActivatorRunIfTheEventIsCancelled: false
+    silenceOutput: false
+    autoUpdateItem: false
+    updateName: true
+    updateLore: true
+    updateDurability: false
+    updateAttributes: false
+    updateEnchants: false
+    updateCustomModelData: false
+    updateArmorSettings: false
+    cooldownFeatures:
+      cooldown: 0
+      isCooldownInTicks: false
+      cooldownMsg: '&cYou are in cooldown ! &7(&e%time_H%&6H &e%time_M%&6M &e%time_S%&6S&7)'
+      displayCooldownMessage: true
+      cancelEventIfInCooldown: false
+      pauseWhenOffline: false
+      pausePlaceholdersConditions: {}
+    globalCooldownFeatures:
+      cooldown: 0
+      isCooldownInTicks: false
+      cooldownMsg: '&cYou are in cooldown ! &7(&e%time_H%&6H &e%time_M%&6M &e%time_S%&6S&7)'
+      displayCooldownMessage: true
+      cancelEventIfInCooldown: false
+      pauseWhenOffline: false
+      pausePlaceholdersConditions: {}
+    otherEICooldowns: {}
+    requiredItems: {}
+    requiredExecutableItems: {}
+    requiredMagics: {}
+    detailedSlots:
+    - -1
+    playerCommands:
+    - execute at %player% positioned %block_x% %block_y% %block_z% run minecraft:summon
+      armor_stand ~ ~ ~ {NoGravity:1b,Silent:1b,Marker:1b,Tags:["%player_uuid%%var_uuid%"],Rotation:[%player_yaw%F,0F]}
+    - 'LOOP START: 10'
+    - execute at @e[tag=%player_uuid%%var_uuid%] if block ~ ~-1 ~ farmland if block
+      ~ ~ ~ wheat run minecraft:kill @e[tag=%player_uuid%%var_uuid%]
+    - execute at @e[tag=%player_uuid%%var_uuid%] if entity @a[nbt={Inventory:[{id:"minecraft:wheat_seeds"}]},name=%player%]
+      if block ~ ~-1 ~ farmland if block ~ ~ ~ air run minecraft:setblock ~ ~ ~ wheat
+    - execute at @e[tag=%player_uuid%%var_uuid%] if entity @a[nbt={Inventory:[{id:"minecraft:wheat_seeds"}]},name=%player%]
+      if block ~ ~-1 ~ farmland if block ~ ~ ~ wheat run minecraft:clear %player%
+      wheat_seeds 1
+    - execute at @e[tag=%player_uuid%%var_uuid%] as @e[tag=%player_uuid%%var_uuid%]
+      run minecraft:tp @e[tag=%player_uuid%%var_uuid%] ^ ^ ^1
+    - DELAYTICK 5
+    - LOOP END
+    - execute if entity @e[tag=%player_uuid%%var_uuid%] run minecraft:kill @e[tag=%player_uuid%%var_uuid%]
+    playerConditions: {}
+    worldConditions: {}
+    itemConditions: {}
+    customConditions:
+      ifNeedPlayerConfirmationCancel: false
+    placeholdersConditions: {}
+    detailedBlocks:
+      blocks: []
+      cancelEventIfNotValid: false
+    blockCommands: []
+    blockConditions:
+      requiredItems: {}
+      requiredExecutableItems: {}
+    variablesModification: {}
+displayConditions:
+  playerConditions: {}
+  worldConditions: {}
+  itemConditions: {}
+  placeholdersConditions: {}
+  enableFeature: false
+foodFeatures:
+  nutrition: 1
+  saturation: 1
+  isMeat: false
+  canAlwaysEat: false
+  eatSeconds: 1
+itemRarity:
+  enableRarity: false
+  rarity: COMMON
+attributes: {}

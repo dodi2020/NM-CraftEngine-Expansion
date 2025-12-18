@@ -1,0 +1,91 @@
+name: '#FF7A00✦ &aBlack powder #0029FF✦'
+lore:
+- '&8————————————————————'
+- ''
+- '&8» &7Grants:'
+- ' &f &f When used, this item effects'
+- ' &f &f all players within 20 block'
+- ' &f &f radius with Withering for 15'
+- ' &f &f seconds. Reusable.'
+- ''
+- '&8» &7Cooldown: &f10 Minutes'
+- ''
+- '&8————————————————————'
+material: BLACK_DYE
+glow: true
+disableStack: false
+keepItemOnDeath: false
+canBeUsedOnlyByTheOwner: false
+storeItemInfo: false
+unbreakable: false
+usage: 0
+usageLimit: -1
+dropFeatures:
+  glowDrop: false
+  glowDropColor: WHITE
+  displayNameDrop: false
+hiders:
+  hideEnchantments: true
+  hideUnbreakable: true
+  hideAttributes: false
+  hidePotionEffects: false
+  hideUsage: false
+  hideDye: false
+enchantments: {}
+giveFirstJoinFeatures:
+  giveFirstJoin: false
+  giveFirstJoinAmount: 1
+  giveFirstJoinSlot: 0
+restrictions:
+  cancel-anvil: true
+cancelEventIfNoPerm: false
+cancelEventIfNotOwner: false
+disabledWorlds: []
+variables: {}
+activators:
+  activator1:
+    name: Activator name
+    option: PLAYER_ALL_CLICK
+    typeTarget: NO_TYPE_TARGET
+    usageModification: 0
+    cancelEvent: false
+    silenceOutput: true
+    autoUpdateItem: false
+    cooldownFeatures:
+      cooldown: 0
+      isCooldownInTicks: false
+      cooldownMsg: '&cYou are in cooldown ! &7(&e%time_H%&6H &e%time_M%&6M &e%time_S%&6S&7)'
+      displayCooldownMessage: true
+      cancelEventIfInCooldown: false
+    globalCooldownFeatures:
+      cooldown: 0
+      isCooldownInTicks: false
+      cooldownMsg: '&cYou are in cooldown ! &7(&e%time_H%&6H &e%time_M%&6M &e%time_S%&6S&7)'
+      displayCooldownMessage: true
+      cancelEventIfInCooldown: false
+    otherEICooldowns: {}
+    requiredItems:
+      errorMessage: ''
+    requiredExecutableItems:
+      errorMessage: ''
+    detailedSlots:
+    - -1
+    playerCommands:
+    - execute at %player% run playsound minecraft:block.dispenser.dispense master @a
+    - AROUND 20 true effect give %around_target% wither 15 0 <+> execute at %around_target%
+      run playsound entity.wither.hurt ambient @a[distance=..10]
+    - execute at %player% run particle minecraft:campfire_signal_smoke ~ ~0.5 ~ 1 1 1 0.05 50 force
+    - DELAYTICK 5
+    - execute at %player% run particle minecraft:campfire_signal_smoke ~ ~0.5 ~ 1 1 1 0.05 50 force
+    - DELAYTICK 5
+    - execute at %player% run particle minecraft:campfire_signal_smoke ~ ~0.5 ~ 1 1 1 0.05 50 force
+    playerConditions: {}
+    worldConditions: {}
+    itemConditions: {}
+    customConditions: {}
+    placeholdersConditions: {}
+    variablesModification: {}
+recognitions: []
+attributes: {}
+config_5: true
+config_update: true

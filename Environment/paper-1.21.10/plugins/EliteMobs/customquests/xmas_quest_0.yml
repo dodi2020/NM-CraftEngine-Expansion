@@ -1,0 +1,36 @@
+isEnabled: true
+customRewards:
+- filename=xmas_treat.yml:amount=10:chance=.3
+- filename=xmas_treat_v2.yml:amount=1:chance=.3
+- filename=xmas_and_gold.yml:amount=1:chance=.2
+- filename=xmas_and_goooooold.yml:amount=1:chance=.2
+- filename=xmas_silver.yml:amount=1:chance=.2
+- filename=xmas_siiiiilver.yml:amount=1:chance=.2
+- filename=xmas_peppermint.yml:amount=1:chance=.1
+- filename=xmas_cornelius_pick.yml:amount=1:chance=.1
+- filename=xmas_substitute_elf_practice.yml:amount=1:chance=.1
+- currencyAmount=300:amount=1:chance=.3
+- currencyAmount=300:amount=1:chance=.3
+- currencyAmount=300:amount=1:chance=.3
+questAcceptPermission: ''
+questLockoutPermission: ''
+name: '&2Find the lost gifts!'
+questLore:
+- I seem to have lost some Christmas gifts along the way, would you help a poor old
+  man find them again?
+- I will let you open one of them in return!
+temporaryPermissions:
+- elitequest.xmas_quest.yml
+questAcceptDialog:
+- '&8[&cSaint Nick&8]&f Thank you! I will be waiting here for you!'
+questCompleteMessage:
+- '&8[&cSaint Nick&8]&f Thank you for your help! There are still some lost gifts out
+  there, talk to me again if you want to help out more!'
+questCompleteCommands: []
+questLevel: 10
+customObjectives:
+  Objective1:
+    objectiveType: FETCH_ITEM
+    itemName: Lost Present
+    filename: xmas_lost_present.yml
+    amount: 10

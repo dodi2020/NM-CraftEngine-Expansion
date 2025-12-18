@@ -1,0 +1,4 @@
+isEnabled: true
+name: Absorption
+onHitDuration: 2
+value: 100.0

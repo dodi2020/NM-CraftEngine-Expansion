@@ -1,0 +1,22 @@
+boss_bar: false                             # Boss bar when looking at furniture
+furniture_evolution_status: true            # Display hologram on interacting with Furniture with evolution mechanics
+prevent_furniture_break_with_tools: true
+prevent_furniture_break_with_sword: true
+double_hit_destroy_mechanic: true           # Destroy furniture with double hit
+count_shears_as_silktouch: [ ]              # List of STRINGBLOCKs and CHORUSBLOCKs ids
+aura_mechanic_delay: 5                      # Delay of refreshing particles in ticks
+
+update_checker: true
+
+messages:
+  bigmining:
+    enabled: <green>Bigmining on
+    disabled: <red>Bigmining off
+  veinminer:
+    enabled: <green>VeinMiner on
+    disabled: <red>VeinMiner off
+  bottledexp:
+    not_enough_exp: <red>Not enough experience to convert
+  autocatch:
+    enabled: "<gray>AutoCatch is now <green>enabled<gray>."
+    disabled: "<gray>AutoCatch is now <red>disabled<gray>."

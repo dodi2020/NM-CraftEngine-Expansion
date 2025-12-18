@@ -1,0 +1,4 @@
+isEnabled: true
+effect: FIRE_CHARGE
+powerType: MAJOR_GHAST
+fireballSpeed: 0.5

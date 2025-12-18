@@ -1,0 +1,6 @@
+isEnabled: true
+location1: em_adventurers_guild,296.5,102,296.5,-90,0
+location1Text: '&f『Airship Minidungeon』 &aLvls 45-55'
+location2: airship_minidungeon.yml
+particleColor: 16777215
+blindPlayer: true

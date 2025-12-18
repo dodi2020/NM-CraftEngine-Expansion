@@ -1,0 +1,21 @@
+isEnabled: true
+name: '&2[lvl 000-020] &7Primis'
+customInfo:
+- '&fA tutorial adventure for new players!'
+- '&6Credits: 69OzCanOfBepis, MagmaGuy'
+dungeonSizeCategory: ADVENTURE
+worldName: em_primis
+wormholeWorldName: em_primis_wormhole
+environment: NORMAL
+protect: true
+playerInfo: |-
+  Difficulty: &2Easy
+  $bossCount bosses, from level $lowestTier to $highestTier
+  &6A tutorial adventure for new players!
+regionEnterMessage: '&8[EM] &6Primis awaits, strike the earth!'
+regionLeaveMessage: '&8[EM] &6You have left Primis!'
+hasCustomModels: true
+teleportLocation: em_primis,1406.5,21.5,357.5,33,0
+contentType: OPEN_DUNGEON
+dungeonConfigFolderName: primis
+setupMenuDescription: []

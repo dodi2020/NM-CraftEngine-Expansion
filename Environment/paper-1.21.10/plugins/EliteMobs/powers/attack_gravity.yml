@@ -1,0 +1,14 @@
+isEnabled: true
+effect: ELYTRA
+powerType: OFFENSIVE
+eliteScript:
+  LevitatePlayer:
+    Events:
+    - PlayerDamagedByEliteMobEvent
+    Actions:
+    - duration: 60
+      action: POTION_EFFECT
+      potionEffectType: levitation
+      amplifier: 0
+      Target:
+        targetType: DIRECT_TARGET

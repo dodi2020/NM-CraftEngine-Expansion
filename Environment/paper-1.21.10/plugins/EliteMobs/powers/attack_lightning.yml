@@ -1,0 +1,4 @@
+isEnabled: true
+effect: HORN_CORAL
+powerType: OFFENSIVE
+delayBetweenStrikes: 15

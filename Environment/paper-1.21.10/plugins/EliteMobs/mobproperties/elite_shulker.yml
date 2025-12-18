@@ -1,0 +1,6 @@
+isEnabled: true
+entityType: SHULKER
+name: '&fLvl &2$level &fElite &5Shulker'
+deathMessages:
+- $entity &cshowed $player &cnew heights!
+baseDamageV2: 4.0

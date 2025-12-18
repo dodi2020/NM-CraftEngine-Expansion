@@ -1,0 +1,82 @@
+name: '&3☄ &b&lSPIIIT &3☄'
+lore:
+- '&8&m------------------------'
+- '&7'
+- '&3➤ &b&oClick to spit !'
+- '&7'
+- '&7&oInfo:'
+- '&3» &a10 secs &bof cooldowns'
+- '&7'
+- '&8&m------------------------'
+material: PLAYER_HEAD
+glow: false
+disableStack: false
+keepItemOnDeath: false
+canBeUsedOnlyByTheOwner: false
+storeItemInfo: false
+unbreakable: false
+usage: -1
+usageLimit: -1
+dropFeatures:
+  glowDrop: false
+  glowDropColor: WHITE
+  displayNameDrop: false
+hiders:
+  hideEnchantments: false
+  hideUnbreakable: false
+  hideAttributes: false
+  hidePotionEffects: false
+  hideUsage: false
+enchantments: {}
+giveFirstJoinFeatures:
+  giveFirstJoin: false
+  giveFirstJoinAmount: 1
+  giveFirstJoinSlot: 0
+restrictions:
+  cancel-item-drop: true
+cancelEventIfNoPerm: false
+cancelEventIfNotOwner: false
+disabledWorlds: []
+variables: {}
+activators:
+  activator1:
+    name: '&eActivator'
+    option: PLAYER_ALL_CLICK
+    typeTarget: NO_TYPE_TARGET
+    usageModification: 0
+    cancelEvent: false
+    silenceOutput: true
+    autoUpdateItem: false
+    cooldownFeatures:
+      cooldown: 10
+      isCooldownInTicks: false
+      cooldownMsg: '&cYou are in cooldown ! &7(&e%time_H%&6H &e%time_M%&6M &e%time_S%&6S&7)'
+      displayCooldownMessage: true
+      cancelEventIfInCooldown: false
+    globalCooldownFeatures:
+      cooldown: 0
+      isCooldownInTicks: false
+      cooldownMsg: '&cYou are in cooldown ! &7(&e%time_H%&6H &e%time_M%&6M &e%time_S%&6S&7)'
+      displayCooldownMessage: true
+      cancelEventIfInCooldown: false
+    otherEICooldowns: {}
+    requiredItems: {}
+    requiredExecutableItems: {}
+    detailedSlots:
+    - -1
+    - 40
+    playerCommands:
+    - LAUNCH lLAMASPIT
+    - playsound minecraft:entity.llama.spit ambient @a %x% %y% %z%
+    playerConditions: {}
+    worldConditions: {}
+    itemConditions: {}
+    customConditions: {}
+    placeholdersConditions: {}
+    variablesModification: {}
+recognitions: []
+headValue: eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYWUyZjNiZTY3MzJlODJjNTM3YjVlZWQwZjQ1NjhiODQ5NzhmZjMzYmM4YTQ3OWFmNGJiZmYxMWQzNzg3YjI3NCJ9fX0=
+headDBID: ''
+attributes: {}
+config_5: true
+config_update: true

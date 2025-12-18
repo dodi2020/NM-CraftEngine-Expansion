@@ -1,0 +1,7 @@
+isEnabled: true
+entityType: SKELETON
+name: '&fLvl &2$level &fElite &fSkeleton'
+deathMessages:
+- $player &cbecame $entity's &cpin cushion!
+- $entity &cwanted to see $player's &cbones!
+baseDamageV2: 5.0

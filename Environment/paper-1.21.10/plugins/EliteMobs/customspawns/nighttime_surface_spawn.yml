@@ -1,0 +1,8 @@
+isEnabled: true
+validWorlds: []
+validWorldEnvironments:
+- NORMAL
+- CUSTOM
+validBiomesV2: []
+earliestTime: 12000
+isSurfaceSpawn: true

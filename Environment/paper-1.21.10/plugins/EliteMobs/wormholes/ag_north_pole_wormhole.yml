@@ -1,0 +1,6 @@
+isEnabled: true
+location1: em_adventurers_guild,299.5,102.5,302.5,-133,0
+location1Text: '&f『North Pole Minidungeon』 &6Lvls 55-60'
+location2: north_pole_minidungeon.yml
+particleColor: 16777215
+blindPlayer: true

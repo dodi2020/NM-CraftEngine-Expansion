@@ -1,0 +1,138 @@
+creationType: BASIC_CREATION
+name: '&e&lGenerator &6>> &aLVL 2&6'
+lore:
+- §8>> §c------------ §8<<
+- §7You can create cool custom generator
+- '&7with ExecutableBlocks'
+- §8>> §c------------ §8<<
+material: BEACON
+titleFeatures:
+  activeTitle: false
+  title:
+  - '&7&oDefault title'
+  titleAdjustment: 0.5
+usage: -1
+cancelGravity: false
+onlyBreakableWithEI: []
+dropBlockIfItIsBroken: true
+dropBlockWhenItExplodes: true
+dropBlockWhenItBurns: true
+resetInternalDatasWhenBroken: false
+canBeMoved: true
+activators:
+  activator1:
+    name: Activator name
+    option: LOOP
+    usageModification: -1
+    cancelEvent: false
+    silenceOutput: true
+    requiredItems:
+      errorMessage: ''
+    requiredExecutableItems:
+      errorMessage: ''
+    blockCommands:
+    - 'RANDOM RUN: 1'
+    - 'LOOP START: 50'
+    - execute in <<%block_world_lower%>> run setblock %block_x_int% %block_y_int%+1 %block_z_int% stone keep
+    - LOOP END
+    - 'LOOP START: 10'
+    - execute in <<%block_world_lower%>> run msetblock %block_x_int% %block_y_int%+1 %block_z_int% iron_block keep
+    - LOOP END
+    - 'LOOP START: 5'
+    - execute in <<%block_world_lower%>> run setblock %block_x_int% %block_y_int%+1 %block_z_int% emerald_block
+      keep
+    - LOOP END
+    - 'LOOP START: 5'
+    - execute in <<%block_world_lower%>> run setblock %block_x_int% %block_y_int%+1 %block_z_int% diamond_block
+      keep
+    - LOOP END
+    - 'LOOP START: 15'
+    - execute in <<%block_world_lower%>> run setblock %block_x_int% %block_y_int%+1 %block_z_int% granite keep
+    - LOOP END
+    - 'LOOP START: 15'
+    - execute in <<%block_world_lower%>> run setblock %block_x_int% %block_y_int%+1 %block_z_int% diorite keep
+    - LOOP END
+    - RANDOM END
+    blockConditions: {}
+    worldConditions: {}
+    placeholdersConditions: {}
+    variablesModification: {}
+    delay: 5
+    delayInTick: true
+    ownerCommands: []
+    ownerConditions: {}
+  activator2:
+    name: Activator name
+    option: PLAYER_RIGHT_CLICK_ON
+    usageModification: -1
+    cancelEvent: true
+    silenceOutput: false
+    requiredItems:
+      errorMessage: ''
+    requiredExecutableItems:
+      errorMessage: ''
+    blockCommands: []
+    blockConditions: {}
+    worldConditions: {}
+    placeholdersConditions: {}
+    variablesModification: {}
+    ownerCommands: []
+    ownerConditions: {}
+    playerCommands:
+    - SENDMESSAGE §6§lExecutableBlocks >> §eYou have the max generator !
+    playerConditions: {}
+    playerCooldownFeatures:
+      cooldown: 0
+      isCooldownInTicks: false
+      cooldownMsg: '&cYou are in cooldown ! &7(&e%time_H%&6H &e%time_M%&6M &e%time_S%&6S&7)'
+      displayCooldownMessage: true
+      cancelEventIfInCooldown: false
+    globalCooldownFeatures:
+      cooldown: 0
+      isCooldownInTicks: false
+      cooldownMsg: '&cYou are in cooldown ! &7(&e%time_H%&6H &e%time_M%&6M &e%time_S%&6S&7)'
+      displayCooldownMessage: true
+      cancelEventIfInCooldown: false
+  activator3:
+    name: Activator name
+    option: PLAYER_LEFT_CLICK_ON
+    usageModification: -1
+    cancelEvent: false
+    silenceOutput: false
+    requiredItems:
+      errorMessage: ''
+    requiredExecutableItems:
+      errorMessage: ''
+    blockCommands: []
+    blockConditions: {}
+    worldConditions: {}
+    placeholdersConditions: {}
+    variablesModification: {}
+    ownerCommands: []
+    ownerConditions: {}
+    playerCommands:
+    - SENDMESSAGE §6§lExecutableBlocks >> §eThis generator is a generator §alvl 2
+    - SENDBLANKMESSAGE
+    - SENDMESSAGE §6>> §eStone §a50%
+    - SENDMESSAGE §6>> §eDiorite §a15%
+    - SENDMESSAGE §6>> §eGranite §a15%
+    - SENDMESSAGE §6>> §eIron block §a10%
+    - SENDMESSAGE §6>> §eEmerald block §a5%
+    - SENDMESSAGE §6>> §eDiamond block §a5%
+    - SENDBLANKMESSAGE
+    playerConditions: {}
+    playerCooldownFeatures:
+      cooldown: 0
+      isCooldownInTicks: false
+      cooldownMsg: '&cYou are in cooldown ! &7(&e%time_H%&6H &e%time_M%&6M &e%time_S%&6S&7)'
+      displayCooldownMessage: true
+      cancelEventIfInCooldown: false
+    globalCooldownFeatures:
+      cooldown: 0
+      isCooldownInTicks: false
+      cooldownMsg: '&cYou are in cooldown ! &7(&e%time_H%&6H &e%time_M%&6M &e%time_S%&6S&7)'
+      displayCooldownMessage: true
+      cancelEventIfInCooldown: false
+variables: {}
+config_3: true
+config_update: true

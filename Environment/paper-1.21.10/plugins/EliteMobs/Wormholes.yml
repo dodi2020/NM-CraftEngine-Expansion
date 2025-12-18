@@ -1,0 +1,12 @@
+# Sets the message that appears when a teleport is used for a dungeon that is not installed.
+dungeonNotInstalledMessage: '&8[EliteMobs] &cDungeon $dungeonID &cis not installed!
+  This teleport will not work.'
+# Sets the message that appears when a wormhole is used for a dungeon that is not installed.
+defaultPortalMissingMessage: '&8[EliteMobs] &cThis portal doesn''t seem to lead anywhere!'
+# Sets if the reduced particles mode for wormholes is used. This is especially recommended if you are allowing bedrock clients in.
+reducedParticlesMode: true
+# Sets if wormholes don't use particles at all. Not recommended, but might be necessary for really bad bedrock clients.
+noParticlesMode: false
+# Sets the message that is sent when a player tries to use a wormhole but does not have enough currency to use it.
+insufficientCurrencyForWormholeMessage: '&8[EliteMobs] &cInsufficient currency! You
+  need $amount to use this wormhole!'

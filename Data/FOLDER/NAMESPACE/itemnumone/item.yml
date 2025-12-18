@@ -1,0 +1,12 @@
+id: itemnumone
+display: ITEMNUMONE
+type: item
+subtype: item
+material: PAPER
+parent: item/generated
+assets:
+  - textures:itemnumone.png
+  - models:itemnumone.json
+modules:
+  baseMaterial: POLISHED_DIORITE
+  craftengine_dyeable: true

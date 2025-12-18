@@ -1,0 +1,98 @@
+name: '&3☁ &b&lFly &3☁'
+lore:
+- '&8&m------------------------'
+- '&7'
+- '&3➤ &b&oClick to execute me !'
+- '&7'
+- '&7&oInfo:'
+- '&3» &a10 min &bof FLY'
+- '&7'
+- '&8&m------------------------'
+material: FEATHER
+glow: true
+disableStack: false
+keepItemOnDeath: false
+canBeUsedOnlyByTheOwner: false
+storeItemInfo: false
+unbreakable: false
+usage: 3
+usageLimit: -1
+dropFeatures:
+  glowDrop: false
+  glowDropColor: WHITE
+  displayNameDrop: false
+hiders:
+  hideEnchantments: false
+  hideUnbreakable: false
+  hideAttributes: false
+  hidePotionEffects: false
+  hideUsage: false
+enchantments: {}
+giveFirstJoinFeatures:
+  giveFirstJoin: false
+  giveFirstJoinAmount: 1
+  giveFirstJoinSlot: 0
+restrictions:
+  cancel-item-drop: true
+cancelEventIfNoPerm: false
+cancelEventIfNotOwner: false
+disabledWorlds: []
+variables: {}
+activators:
+  activator1:
+    name: '&eActivator'
+    option: PLAYER_ALL_CLICK
+    typeTarget: NO_TYPE_TARGET
+    usageModification: -1
+    cancelEvent: false
+    silenceOutput: true
+    autoUpdateItem: false
+    cooldownFeatures:
+      cooldown: 600
+      isCooldownInTicks: false
+      cooldownMsg: '&cYou are in cooldown ! &7(&e%time_H%&6H &e%time_M%&6M &e%time_S%&6S&7)'
+      displayCooldownMessage: true
+      cancelEventIfInCooldown: false
+    globalCooldownFeatures:
+      cooldown: 0
+      isCooldownInTicks: false
+      cooldownMsg: '&cYou are in cooldown ! &7(&e%time_H%&6H &e%time_M%&6M &e%time_S%&6S&7)'
+      displayCooldownMessage: true
+      cancelEventIfInCooldown: false
+    otherEICooldowns: {}
+    requiredItems: {}
+    requiredExecutableItems: {}
+    detailedSlots:
+    - -1
+    - 40
+    playerCommands:
+    - FLY ON
+    - ACTIONBAR ON
+    - 'LOOP START: 10'
+    - execute at %player% run playsound minecraft:item.armor.equip_leather master @a
+    - PARTICLE DRAGON_BREATH 500 3 0.2
+    - DELAYTICK 2
+    - LOOP END
+    - SENDMESSAGE §a§l[ExecutableItems] §eYou can fly !
+    - DELAY 570
+    - SENDMESSAGE §a§l[ExecutableItems] §eYour fly will be disable in 30 sec
+    - DELAY 30
+    - FLY OFF
+    - ACTIONBAR OFF
+    - PARTICLE DRAGON_BREATH 500 3 0.2
+    playerConditions: {}
+    worldConditions: {}
+    itemConditions: {}
+    customConditions: {}
+    placeholdersConditions: {}
+    variablesModification: {}
+recognitions: []
+attributes:
+  attribute1:
+    attribute: GENERIC_MOVEMENT_SPEED
+    operation: ADD_NUMBER
+    amount: 0.5
+    slot: HAND
+    uuid: 91bed46e-0715-49ef-8c84-3915707c4314
+config_5: true
+config_update: true

@@ -1,0 +1,587 @@
+# Do not modify this value
+config-version: '60'
+# Enables or disables metrics collection via BStats
+metrics: true
+# Enables automatic update checks
+update-checker: true
+# Forces a specific locale (e.g., zh_cn)
+forced-locale: ''
+# Filter configuration phase player disconnection logs
+filter-configuration-phase-disconnect: false
+# This option delays CraftEngine's config reading until after all plugins start.
+# Don't disable this setting unless you need datapack-generated spawn chunks.
+delay-configuration-load: true
+
+resource-pack:
+  # This option determines the location of the generated resource pack
+  # You can use either an absolute path or a relative path here
+  path: "./generated/resource_pack.zip"
+  # Allowed values:
+  # - 1.20.1, 1.21, 1.21.8, etc.
+  # - latest: the latest client version
+  # - server: the current server version
+  supported-version:
+    min: server
+    max: latest
+  # Remove 1.21.5+ tinted_leaves particles
+  remove-tinted-leaves-particle: true
+  # Define the name of the overlay folders
+  overlay-format: "ce_overlay_{version}"
+  # Should those images in minecraft:default font also work in minecraft:uniform
+  override-uniform-font: true
+  # Generate assets for CraftEngine fabric mod
+  # Note: fabric mod is used for clientside Axiom/WorldEdit mod
+  generate-mod-assets: false
+  # Exclude the shaders when generating the resource pack
+  exclude-core-shaders: false
+  # Merge other packs
+  merge-external-folders:
+    - "ModelEngine/resource pack"
+  merge-external-zip-files:
+    - "CustomNameplates/resourcepack.zip"
+    - "BetterModel/build.zip"
+  exclude-file-extensions: ["md", "psd", "bbmodel", "db", "ini", "DS_Store"]
+  # Provide the solution for when a file conflict is encountered
+  # https://xiao-momi.github.io/craft-engine-wiki/reference/file_conflict
+  duplicated-files-handler:
+    - term:
+        type: any_of
+        terms:
+          - type: parent_path_suffix
+            suffix: "minecraft/models/item"
+      resolution:
+        type: merge_legacy_model
+    - term:
+        type: any_of
+        terms:
+          - type: parent_path_suffix
+            suffix: "minecraft/items"
+      resolution:
+        type: merge_json
+        deeply: true
+    - term:
+        type: exact
+        path: "pack.mcmeta"
+      resolution:
+        type: merge_pack_mcmeta
+        description: "<gray>CraftEngine ResourcePack</gray>"
+    - term:
+        type: exact
+        path: "pack.png"
+      resolution:
+        type: retain_matching
+        term:
+          type: contains
+          path: "resources/default/resourcepack"
+    - term:
+        type: filename
+        name: "sounds.json"
+      resolution:
+        type: merge_json
+        deeply: false
+    - term:
+        type: parent_path_suffix
+        suffix: "minecraft/atlases"
+      resolution:
+        type: merge_atlas
+    - term:
+        type: any_of
+        terms:
+          - type: exact
+            path: "assets/minecraft/font/default.json"
+          - type: exact
+            path: "assets/minecraft/font/uniform.json"
+      resolution:
+        type: merge_font
+  # Validate if there is any error in the resource pack, such as missing textures or models
+  # If your resource pack is compliant with the standard, you can disable validation to improve the resource pack generation speed.
+  validation:
+    enable: true
+    # Fix images that are not within the texture atlas. It is unreasonable to always rely on plugins to fix your mistakes.
+    # You should strive to make your resource pack more standardized after gaining some experience with resource packs.
+    fix-atlas: true
+  # Optimize your resource pack by reducing its size without any quality loss.
+  optimization:
+    enable: false
+    # .png
+    texture:
+      enable: true
+      # Use Zopfli for PNG compression (very slow). More iterations = smaller files.
+      # In fact, setting the number of iterations between 4 and 8 is generally sufficient. Increasing it further rarely leads to significant optimization in size.
+      zopfli-iterations: 0 # 0 = disable
+      # If your image is special, for example, containing color pixels that need to be specifically recognized by a shader, the optimization might break it. You can add exclusions here.
+      exclude:
+        - assets/minecraft/textures/block/do_not_optimize.png
+    # .json / .mcmeta
+    json:
+      enable: true
+      exclude: []
+  # [Premium Exclusive]
+  # Protect your resource pack from being cracked by others
+  protection:
+    # Prevent thieves from extracting your resource pack. These options will crash their software.
+    # Some of these options may impact your resource pack size.
+    crash-tools:
+      method-1: false
+      method-2: false # This will increase the resource pack size by 64KB
+      method-3: false # This will increase the resource pack size by 0.67MB
+      method-4: false
+      method-5: true # This will reduce the resource pack size, also it prevents some software from extracting it
+      method-6: false # This will increase the resource pack size by a certain percentage
+      method-7: false
+    # Create incorrect crc data
+    incorrect-crc: false
+    # Spoof huge files
+    fake-file-size: false
+    # Escape the JSON to make it human-unreadable
+    escape-json: false
+    # Create fake folders to hide original files
+    fake-directory: false
+    # Break the texture file to prevent thieves from opening it
+    break-texture: false
+    # Obfuscate your resource pack to prevent thieves from restoring its original structure
+    obfuscation:
+      enable: false
+      seed: 0 # 0 = random seed
+      # Determines the number and length of obfuscated namespaces.
+      namespace:
+        amount: 32  # 0 = disable
+        length: 2
+      # Determines the depth of the obfuscated path.
+      path:
+        source: obf
+        depth: 4
+        length: 2
+        # Prevent straightforward unzip
+        anti-unzip: false
+      # A larger atlas will result in slower generation speed, but it will also lead to a smaller resource pack size.
+      atlas:
+        prefix: atlas # The prefix of the folder where the generated atlas will be located
+        images-per-canvas: 256
+      # Sometimes, some vanilla files that have been overwritten might be mistakenly obfuscated
+      # Please add the ignored textures/models/sounds here if that happens
+      bypass-textures:
+        - minecraft:block/farmland  # bypass a specified resource location
+        - "@vanilla_textures"       # bypass vanilla textures
+      bypass-models:
+        - custom:item/do_not_obfuscate
+        - "@vanilla_models"         # bypass vanilla models
+      bypass-sounds:
+        - "@vanilla_sounds"         # bypass vanilla sounds
+      bypass-equipments: []
+  # This section controls how to send the resource pack to players
+  delivery:
+    # Send the resource pack on joining the server
+    send-on-join: true
+    kick-if-declined: true
+    kick-if-failed-to-apply: false
+    prompt: "<yellow>To fully experience our server,<newline>please accept our custom resource pack.</yellow>"
+    # Whether a verified player UUID is required to download the resource pack
+    strict-player-uuid-validation: true
+    # Upload the resource pack automatically on generation
+    # When disabled, you must manually trigger uploads using the /ce upload command
+    auto-upload: true
+    # Resend the resource pack to players upon successful upload
+    resend-on-upload: true
+    # The file to upload
+    file-to-upload: "./generated/resource_pack.zip"
+    # If you are hosting the resource pack by yourself, replace `localhost` with your server ip otherwise it would only work on your local pc
+    # If using BungeeCord or Velocity, consider using a proxy-side plugin to handle resource pack delivery.
+    # Read this page for more host types: https://xiao-momi.github.io/craft-engine-wiki/getting_start/set_up_host
+    hosting:
+      - type: "self"
+        ip: "localhost"
+        port: 8163
+        protocol: "http"
+        # Blocks all requests from non-Minecraft clients.
+        deny-non-minecraft-request: true
+        # Generates a single-use, time-limited download link for each player.
+        one-time-token: true
+        # Improved validation for deny-non-minecraft-request and one-time-token; do not enable on offline servers or validation will fail.
+        strict-validation: false
+        rate-limiting:
+          # Maximum bandwidth per second to prevent server instability for other players during resource pack downloads
+          max-bandwidth-per-second: 5_000_000 # 5MB/s
+          # Minimum guaranteed download speed per player to ensure acceptable download performance during concurrent downloads
+          min-download-speed-per-player: 50_000 # 50KB/s
+          # Prevent a single IP from sending too many resource pack download requests in a short time period
+          qps-per-ip: 5/60 #  5 requests per 60 seconds
+
+item:
+  # [Premium Exclusive]
+  # Makes custom-model-data and item-model client-side by default.
+  #
+  # This provides several benefits. For example, you can update model values
+  # dynamically without causing inconsistencies for players' existing items.
+  #
+  # The main drawback is that plugins relying on custom-model-data for item
+  # identification will not work correctly, as this data is not present in
+  # the server-side item stack.
+  #
+  # You can override this global setting per item using the
+  # client-bound-model option.
+  client-bound-model: true
+  # When enabled (recommended), this option adds both custom-model-data
+  # and an item-model to optimize client-side rendering.
+  #
+  # If disabled, the system falls back to using only custom-model-data.
+  # You can override this behavior by setting the item-model option
+  # on a per-item basis.
+  #
+  # This option only works if your resource pack supports 1.21.1 or below
+  always-use-item-model: true
+  # Since Minecraft renders lore text in italics by default, you can
+  # optionally prefix any lore with <!i> to remove the italic formatting.
+  non-italic-tag: false
+  # The default material to use as base item if not specified
+  default-material: nether_brick
+  # Defines the trigger condition for the item updater.
+  #
+  # Warning: This operation is performance-intensive. Enable only if needed.
+  #
+  # Purpose: Reserved for correcting faults on existing player items.
+  # Not intended for updating names/lore; use 'client-bound-data' for those changes.
+  update-triggers:
+    click-in-inventory: false # this option won't work for players in creative mode
+    drop: false
+    pick-up: false
+  # Decided the starting value for automatic custom model data assignment.
+  custom-model-data-starting-value:
+    default: 10000
+    overrides:
+      paper: 20000
+  # Toggle whether to display the names of dropped items by default and configure the display format. This setting can be overridden for individual items.
+  default-drop-display:
+    enable: false
+    format: "<arg:count>x <name>"
+
+equipment:
+  # The sacrificed-vanilla-armor argument determines which vanilla armor gets completely removed (loses all its trims)
+  # when you create new armor using trim types, freeing up a slot for your custom armor.
+  sacrificed-vanilla-armor:
+    type: chainmail
+    # CraftEngine repurposes a vanilla armor's texture slot for custom armor trims.
+    # To preserve the original look, it uses trim configurations to reconstruct the default appearance.
+    asset-id: minecraft:chainmail
+    humanoid: minecraft:trims/entity/humanoid/chainmail
+    humanoid-leggings: minecraft:trims/entity/humanoid_leggings/chainmail
+
+block:
+  # This decides the amount of real blocks on serverside. You should only consider increasing this value when your server state is insufficient.
+  # It is recommended to increase it by 1000 each time. This option requires a restart to apply.
+  serverside-blocks: 2000
+  # Enables the sound system, which prevents the client from hearing some non-custom block sounds and improves the client experience.
+  sound-system:
+    enable: true
+    # Should we process events that were canceled by other plugins to restore sounds?
+    process-cancelled-events:
+      step: true
+      break: true
+  # Adventure mode requires correct tools to break custom blocks.
+  # Vanilla clients cannot recognize custom block IDs (e.g., craftengine:custom_100).
+  #
+  # ENABLED:
+  # - Tools that can break vanilla equivalents also break custom variants.
+  #   Example: A "note_block" tool breaks custom blocks based on note blocks
+  #
+  # DISABLED:
+  # ⚠️  Server MUST specify SERVERSIDE CUSTOM BLOCK IDs in item's `can_break`.
+  # ⚠️  Sending custom block IDs to vanilla clients WILL CAUSE CRASHES!
+  # ✅  Recommended: Use `client-bound-data` for safe client synchronization.
+  simplify-adventure-break-check: false
+  # Similar to the option above, but designed for block placement
+  simplify-adventure-place-check: false
+  # Uses raycasting to predict the player's next block break,
+  # enabling pre-calculation of mining speed attributes.
+
+  # Enables block break prediction.
+  # Enhances mining responsiveness with moderate performance cost.
+  predict-breaking:
+    enable: false
+    interval: 10
+    extended-interaction-range: 0.5
+  # Defines the value returned by Bukkit block.getMaterial()
+  # If another plugin causes incompatibility due to its reliance on this method, try changing this option to a different vanilla block.
+  deceive-bukkit-material:
+    default: bricks
+    # The numbers here represent the internal real IDs of the blocks.
+    # This means that overriding certain blocks needs to be done under the condition of forcibly assigning internal IDs.
+    # A restart is required to apply the changes.
+    overrides:
+      0: bricks
+      1~8: bricks
+
+furniture:
+  # Hide technical entities used for storing furniture metadata.
+  # NOTE:
+  # - These are INVISIBLE entities used internally for tracking furniture states
+  # - Recommended to keep enabled for better performance
+  hide-base-entity: true
+  # Requires a restart to apply
+  # interaction (the best performance)
+  # boat (better compatibility with some anti-cheat plugin)
+  collision-entity-type: interaction
+
+emoji:
+  # Contexts where emoji parsing is enabled
+  contexts:
+    chat: true
+    book: true
+    anvil: true
+    sign: true
+  # Prevent lag or oversized packet when processing emoji-heavy content
+  max-emojis-per-parse: 16
+
+image:
+  # Block image tags using minecraft:default font in these interfaces
+  # Permission bypass: craftengine.filter.bypass.xxx (replace xxx with context: anvil/book/chat/etc)
+  illegal-characters-filter:
+    anvil: true
+    book: true
+    chat: true
+    command: true
+    sign: true
+  # Decided the starting value for automatic codepoint assignment.
+  codepoint-starting-value:
+    default: 19968
+    overrides:
+      minecraft:default: 57344  # 57344 ~ 63743 (U+E000 ~ U+F8FF)
+
+  # Defines Unicode characters used for <shift:xxx> positioning
+  # - Must match the font defined in resource packs
+  # - Do NOT modify unless you understand text rendering mechanics
+  offset-characters:
+    enable: true
+    font: minecraft:default
+    -1: ''
+    -2: ''
+    -3: ''
+    -4: ''
+    -5: ''
+    -6: ''
+    -7: ''
+    -8: ''
+    -9: ''
+    -10: ''
+    -11: ''
+    -12: ''
+    -13: ''
+    -14: ''
+    -15: ''
+    -16: ''
+    -24: ''
+    -32: ''
+    -48: ''
+    -64: ''
+    -128: ''
+    -256: ''
+    1: ''
+    2: ''
+    3: ''
+    4: ''
+    5: ''
+    6: ''
+    7: ''
+    8: ''
+    9: ''
+    10: ''
+    11: ''
+    12: ''
+    13: ''
+    14: ''
+    15: ''
+    16: ''
+    24: ''
+    32: ''
+    48: ''
+    64: ''
+    128: ''
+    256: ''
+
+# Only consider modifying the options below if you need to optimize Netty performance.
+# In most cases, you can improve load handling by increasing the number of Netty threads.
+network:
+  # Disable network operations related to items.
+  # This option will disable client-bound-data/material and the functionality of replacing tags in item name and lore.
+  disable-item-operations: false
+  # Allow <image> <shift> <global> tags in third-party plugins via packet manipulation
+  # ⚠️ Disable unused handlers to reduce async thread workload
+  intercept-packets:
+    system-chat: true
+    tab-list: true     # Tab list header and footer
+    player-info: true  # Player list in tab
+    set-score: true
+    actionbar: true
+    title: true
+    bossbar: true
+    container: true     # GUI
+    team: true          # Team prefix, suffix and display name
+    scoreboard: true
+    entity-name: false
+    armor-stand: true   # Legacy Holograms
+    text-display: true  # Modern Holograms
+    item: true
+    advancement: true
+    player-chat: true
+
+recipe:
+  # Master switch for custom recipes
+  # NOTE: When enabled, plugin recipes will OVERRIDE vanilla recipes
+  enable: true
+  # Manage Minecraft's default recipe behavior
+  disable-vanilla-recipes:
+    # ⚠️ WARNING: When true, DISABLES ALL VANILLA RECIPES
+    # - Conflicts with 'list' option (list will be ignored)
+    all: false
+    # Selective recipe disabling (safer alternative to 'all: true')
+    # Example: ["minecraft:wooden_sword", "minecraft:stone_hoe"]
+    list: []
+  # You can use items from other plugins by adding the supported plugin names here
+  ingredient-sources: []
+
+gui:
+  browser:
+    sounds:
+      change-page: "minecraft:ui.loom.take_result"
+      return-page: "minecraft:ui.button.click"
+      pick-item: "minecraft:entity.item.pickup"
+      click-button: "minecraft:ui.hud.bubble_pop"
+    main:
+      title: "<white><shift:-11><image:internal:item_browser>"
+      page-navigation:
+        next:
+          available: "internal:next_page_0"
+          not-available: "internal:next_page_1"
+        previous:
+          available: "internal:previous_page_0"
+          not-available: "internal:previous_page_1"
+    category:
+      title: "<white><shift:-11><image:internal:category>"
+      page-navigation:
+        next:
+          available: "internal:next_page_0"
+          not-available: "internal:next_page_1"
+        previous:
+          available: "internal:previous_page_0"
+          not-available: "internal:previous_page_1"
+        return: "internal:return"
+        exit: "internal:exit"
+    recipe:
+      get-item-icon: internal:get_item
+      cooking-information-icon: internal:cooking_info
+      page-navigation:
+        next:
+          available: "internal:next_recipe_0"
+          not-available: "internal:next_recipe_1"
+        previous:
+          available: "internal:previous_recipe_0"
+          not-available: "internal:previous_recipe_1"
+        return: "internal:return"
+        exit: "internal:exit"
+      none:
+        title: "<white><shift:-11><image:internal:no_recipe>"
+      blasting:
+        title: "<white><shift:-11><image:internal:cooking_recipe><shift:-136><image:internal:blasting>"
+      smelting:
+        title: "<white><shift:-11><image:internal:cooking_recipe><shift:-136><image:internal:smelting>"
+      smoking:
+        title: "<white><shift:-11><image:internal:cooking_recipe><shift:-136><image:internal:smoking>"
+      campfire-cooking:
+        title: "<white><shift:-11><image:internal:cooking_recipe><shift:-136><image:internal:campfire>"
+      crafting:
+        title: "<white><shift:-11><image:internal:crafting_recipe>"
+      stonecutting:
+        title: "<white><shift:-11><image:internal:stonecutting_recipe>"
+      smithing-transform:
+        title: "<white><shift:-11><image:internal:smithing_transform_recipe>"
+      brewing:
+        title: "<white><shift:-11><image:internal:brewing_recipe>"
+
+light-system:
+  # Required for custom light-emitting blocks
+  enable: true
+  # Async light update
+  async-update: true
+
+chunk-system:
+  # With cache system, those frequently load/unload chunks would consume fewer resources on serialization
+  # Enabling this option will increase memory consumption to a certain extent
+  cache-system: true
+  # 1 = NONE      |  Compression Speed | Decompress Speed | Compression Ratio | Memory Usage   |
+  # 2 = DEFLATE   |     Medium-Slow           Medium          Moderate              Low        |
+  # 3 = GZIP      |     Medium-Slow           Medium          Moderate              Low        |
+  # 4 = LZ4       |     Blazing-Fast        Blazing-Fast        Low                 Low        |
+  # 5 = ZSTD      |     Medium-Fast            Fast             High               Medium      |
+  compression-method: 4
+  # Settings for injection
+  injection:
+    # Requires a restart to apply.
+    # section: Inject the LevelChunkSection (Use this if you have installed both FastAsyncWorldEdit and Axiom)
+    # palette: Inject the PalettedContainer
+    target: palette
+    # Enables faster injection method
+    # Note: May not work with certain server forks that alter chunk class structure (In most cases it won't conflict)
+    use-fast-method: true
+  # Auto-convert custom blocks -> vanilla blocks when unloading chunks
+  #
+  # - When ENABLED (true):
+  #   - Prevents custom blocks becoming AIR if plugin is uninstalled
+  #   - Ensures world portability for vanilla environments
+  #
+  # - When DISABLED (false):
+  #   ⚠️ IRREVERSIBLE DATA LOSS WARNING:
+  #   - Custom blocks permanently turn to AIR without plugin
+  #   - Recommended for temporary/test worlds only
+  restore-vanilla-blocks-on-chunk-unload: true
+  # Convert vanilla blocks -> custom blocks when loading chunks
+  #
+  # - Performance Mode (false):
+  #   ⚠️ REQUIRED CONDITIONS:
+  #     1. Must disable restore-vanilla-blocks-on-chunk-unload
+  #     2. Accept risk of custom block data loss on plugin removal
+  #
+  # - Compatibility Mode (true):
+  #   - Full state recovery with minor performance cost
+  restore-custom-blocks-on-chunk-load: true
+  # When you edit a map locally using CraftEngine fabric mod, the custom block data is not immediately synchronized with the
+  # server's CraftEngine internal data. Enabling this option will synchronize the data when the chunk is loaded.
+  # (This option only slightly impacts performance, which has been fully optimized, so you don't need to worry too much.)
+  sync-custom-blocks-on-chunk-load: false
+  # This system processes any invalid block when a chunk is loaded.
+  process-invalid-blocks:
+    enable: false
+    remove: []
+    convert: {}
+  # This system processes any invalid furniture when a chunk is loaded.
+  process-invalid-furniture:
+    enable: false
+    remove: []
+    convert: {}
+
+# [Premium Exclusive]
+client-optimization:
+  # Requires a restart to fully apply.
+  entity-culling:
+    enable: true
+    # Using server-side ray tracing algorithms to hide block entities/furniture and reduce client-side rendering pressure.
+    ray-tracing: true
+    # Cull entities based on distance
+    view-distance: 64 # -1 = no limit
+    # Determining the number of threads to execute these raytrace operations
+    threads: 1
+    # Limit the maximum number of entities with visibility changes per tick for one player
+    # This helps mitigate client-side performance impacts and server-side bandwidth spikes caused by a large number of entities appearing.
+    rate-limiting:
+      enable: true
+      bucket-size: 1000
+      restore-per-tick: 25
+
+# Enables or disables debug mode
+debug:
+  common: false
+  packet: false
+  furniture: false
+  item: false
+  resource-pack: false
+  block: false
+  entity-culling: false

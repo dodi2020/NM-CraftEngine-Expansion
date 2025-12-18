@@ -1,0 +1,15 @@
+isEnabled: true
+name: Alaric Greystone
+role: <Hallowed Haunt Teleporter>
+spawnLocation: em_adventurers_guild,292.5,91.0,219.5,-90,0
+spawnLocations: []
+greetings:
+- ''
+dialog: []
+farewell: []
+canTalk: true
+activationRadius: 1.0
+interactionType: COMMAND
+disguise: custom:em_the_hallowed_haunt_alaric
+customDisguiseData: player em_the_hallowed_haunt_alaric setskin {"uuid":"899defd5-a0c9-4fa1-ac81-c24d597a2553","name":"Unknown","textureProperties":[{"name":"textures","value":"ewogICJ0aW1lc3RhbXAiIDogMTc1NDg4MjkzOTUzNiwKICAicHJvZmlsZUlkIiA6ICJkYjQwYmNjNWUzMDE0ZmZjOGVlOWQxNDU5MTcyYjdhNCIsCiAgInByb2ZpbGVOYW1lIiA6ICJhWGUxOCIsCiAgInNpZ25hdHVyZVJlcXVpcmVkIiA6IHRydWUsCiAgInRleHR1cmVzIiA6IHsKICAgICJTS0lOIiA6IHsKICAgICAgInVybCIgOiAiaHR0cDovL3RleHR1cmVzLm1pbmVjcmFmdC5uZXQvdGV4dHVyZS8xODQ5NTI1NmZiZWViYjBkY2M3MTI4Mjg2MTljMzBjNTBmNjM1MGZjOWZlM2E4ZGQ4YjI5YWY2YmJkNTEyMDU0IgogICAgfQogIH0KfQ==","signature":"FLLx/2pMyQYHZlHWR33WttxatUO9su4sUJ/NO0xFXLEla"}]}
+command: em dungeontp the_hallowed_haunt_dynamic_dungeon.yml

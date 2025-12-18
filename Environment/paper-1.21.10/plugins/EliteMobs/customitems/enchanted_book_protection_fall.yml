@@ -1,0 +1,12 @@
+isEnabled: true
+material: BOOK
+name: '&5Elite Feather Falling Enchanted Book'
+lore:
+- '&2Used to enchant items at the enchanter!'
+enchantments:
+- FEATHER_FALLING,1
+- ENCHANTED_SOURCE,1
+potionEffects: []
+scalability: FIXED
+itemType: UNIQUE
+soulbound: false

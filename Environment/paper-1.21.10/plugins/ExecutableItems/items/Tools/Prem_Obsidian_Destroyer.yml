@@ -1,0 +1,149 @@
+name: '&8✦ &7Obsidian DESTROYER &8✦'
+lore:
+- '&8&l---&7&l>>&e&l-----&7&l<<&8&l---'
+- '&f'
+- '&7Left Click: &fInstant Obsidian breaker'
+- '&7Right Click: &fObsidian placer'
+- '&f'
+- '&7Obsidian stored: &e%var_obsi_int%'
+- '&f'
+- '&7Owned by: &e%player%'
+- '&f'
+- '&8&l---&7&l>>&e&l-----&7&l<<&8&l---'
+material: PLAYER_HEAD
+glow: false
+disableStack: false
+keepItemOnDeath: false
+canBeUsedOnlyByTheOwner: false
+storeItemInfo: false
+unbreakable: false
+usage: -1
+usageLimit: -1
+dropFeatures:
+  glowDrop: false
+  glowDropColor: WHITE
+  displayNameDrop: false
+hiders:
+  hideEnchantments: false
+  hideUnbreakable: false
+  hideAttributes: false
+  hidePotionEffects: false
+  hideUsage: false
+enchantments: {}
+giveFirstJoinFeatures:
+  giveFirstJoin: false
+  giveFirstJoinAmount: 1
+  giveFirstJoinSlot: 0
+restrictions:
+  cancel-item-place: true
+cancelEventIfNoPerm: false
+cancelEventIfNotOwner: false
+disabledWorlds: []
+variables:
+  obsi:
+    variableName: obsi
+    type: NUMBER
+    default: 0.0
+activators:
+  activator1:
+    name: '&eActivator'
+    option: PLAYER_LEFT_CLICK
+    typeTarget: ONLY_BLOCK
+    usageModification: 0
+    cancelEvent: false
+    silenceOutput: false
+    autoUpdateItem: false
+    cooldownFeatures:
+      cooldown: 0
+      isCooldownInTicks: false
+      cooldownMsg: '&cYou are in cooldown ! &7(&e%time_H%&6H &e%time_M%&6M &e%time_S%&6S&7)'
+      displayCooldownMessage: true
+      cancelEventIfInCooldown: false
+    globalCooldownFeatures:
+      cooldown: 0
+      isCooldownInTicks: false
+      cooldownMsg: '&cYou are in cooldown ! &7(&e%time_H%&6H &e%time_M%&6M &e%time_S%&6S&7)'
+      displayCooldownMessage: true
+      cancelEventIfInCooldown: false
+    otherEICooldowns: {}
+    requiredItems: {}
+    requiredExecutableItems: {}
+    detailedSlots:
+    - -1
+    - 40
+    playerCommands: []
+    playerConditions: {}
+    worldConditions: {}
+    itemConditions: {}
+    customConditions: {}
+    placeholdersConditions: {}
+    detailedBlocks:
+      blocks:
+      - OBSIDIAN
+      cancelEventIfNotValid: false
+      messageIfNotValid: ''
+    blockCommands:
+    - SETBLOCK AIR
+    blockConditions: {}
+    variablesModification:
+      varModif0:
+        variableName: obsi
+        type: MODIFICATION
+        modification: 1.0
+  activator2:
+    name: '&eActivator'
+    option: PLAYER_RIGHT_CLICK
+    typeTarget: ONLY_BLOCK
+    usageModification: 0
+    cancelEvent: false
+    silenceOutput: false
+    autoUpdateItem: false
+    cooldownFeatures:
+      cooldown: 0
+      isCooldownInTicks: false
+      cooldownMsg: '&cYou are in cooldown ! &7(&e%time_H%&6H &e%time_M%&6M &e%time_S%&6S&7)'
+      displayCooldownMessage: false
+      cancelEventIfInCooldown: false
+    globalCooldownFeatures:
+      cooldown: 0
+      isCooldownInTicks: false
+      cooldownMsg: '&cYou are in cooldown ! &7(&e%time_H%&6H &e%time_M%&6M &e%time_S%&6S&7)'
+      displayCooldownMessage: true
+      cancelEventIfInCooldown: false
+    otherEICooldowns: {}
+    requiredItems: {}
+    requiredExecutableItems: {}
+    detailedSlots:
+    - -1
+    playerCommands:
+    - SETBLOCK OBSIDIAN
+    playerConditions: {}
+    worldConditions: {}
+    itemConditions: {}
+    customConditions: {}
+    placeholdersConditions:
+      plchC1:
+        type: PLAYER_NUMBER
+        comparator: SUPERIOR
+        part1: '%var_obsi_int%'
+        part2: '0.0'
+        cancelEventIfNotValid: false
+        messageIfNotValid: '&4&l&oExecutableItems &cYou must first break some &6Obsidians
+          &c!'
+    detailedBlocks:
+      blocks: []
+      cancelEventIfNotValid: false
+      messageIfNotValid: ''
+    blockCommands: []
+    blockConditions: {}
+    variablesModification:
+      varModif0:
+        variableName: obsi
+        type: MODIFICATION
+        modification: -1.0
+recognitions: []
+headValue: eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZDFjODc0NTRmMWVlNTg1YjkwZmRiM2EzZTQwOTUyYTVjMmY4MGMwYTQ5ZGZlYzYyODcwZmRmZjE4Mzk2N2E4NCJ9fX0=
+headDBID: ''
+attributes: {}
+config_5: true
+config_update: true

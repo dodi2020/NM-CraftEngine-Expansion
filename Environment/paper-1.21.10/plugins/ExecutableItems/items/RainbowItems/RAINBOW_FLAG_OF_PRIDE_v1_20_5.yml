@@ -1,0 +1,246 @@
+name: '#FB7777O#F58C76u#F0A174t#EAB673s#E5CC71t#DFE170a#DAF66En#C8F87Cd#B0EF91i#98E7A6n#80DFBCg
+  #68D7D1P#50CEE6r#48C0F2i#5EA5EDd#758AE8e #8B6FE3F#A254DDl#B839D8a#CF1ED3g'
+lore:
+- '&7Colours of the World'
+- '&8————————————————————'
+- '&f'
+- '&fThis flag empowers the pride of'
+- '&fthose who are near it, making them'
+- '&fperform better for themselves and'
+- '&fthose around them towards a'
+- '&fbetter world.'
+- '&f'
+- '&8» &7Grants:'
+- ' &f &f Right-Click to spawn a totem'
+- ' &f &f that grants those who are near'
+- ' &f &f the totem in a 12 block radius'
+- ' &f &f several buffs for 30s'
+- '&f'
+- '&8» &7Cooldown: 30 Seconds'
+- '&f'
+- '&8—————— #FF97D6P#FFAEDFr#FFC5E8i#FFDCF1d#FFF3FAe #F4FDFFC#DEF9FFr#C9F5FFa#B3F1FFt#9DEDFFe
+  &8——————'
+material: WHITE_BANNER
+glow: false
+disableStack: false
+keepItemOnDeath: false
+canBeUsedOnlyByTheOwner: false
+storeItemInfo: false
+unbreakable: false
+usage: 0
+usageLimit: -1
+dropFeatures:
+  glowDrop: false
+  glowDropColor: WHITE
+  displayNameDrop: false
+hiders:
+  hideEnchantments: false
+  hideUnbreakable: false
+  hideAttributes: false
+  hidePotionEffects: true
+  hideUsage: false
+enchantments: {}
+giveFirstJoinFeatures:
+  giveFirstJoin: false
+  giveFirstJoinAmount: 1
+  giveFirstJoinSlot: 0
+restrictions:
+  cancel-item-place: true
+cancelEventIfNoPerm: false
+cancelEventIfNotOwner: false
+disabledWorlds: []
+variables: {}
+activators:
+  activator1:
+    name: '&eActivator'
+    option: PLAYER_RIGHT_CLICK
+    typeTarget: NO_TYPE_TARGET
+    usageModification: 0
+    cancelEvent: false
+    silenceOutput: false
+    autoUpdateItem: false
+    cooldownFeatures:
+      cooldown: 60
+      isCooldownInTicks: false
+      cooldownMsg: ''
+      displayCooldownMessage: false
+      cancelEventIfInCooldown: false
+    globalCooldownFeatures:
+      cooldown: 0
+      isCooldownInTicks: false
+      cooldownMsg: '&cYou are in cooldown ! &7(&e%time_H%&6H &e%time_M%&6M &e%time_S%&6S&7)'
+      displayCooldownMessage: true
+      cancelEventIfInCooldown: false
+    otherEICooldowns: {}
+    requiredItems:
+      errorMessage: ''
+    requiredExecutableItems:
+      errorMessage: ''
+    detailedSlots:
+    - -1
+    playerCommands:
+    - LAUNCH ARROW_MODULE
+    playerConditions: {}
+    worldConditions: {}
+    itemConditions: {}
+    customConditions: {}
+    placeholdersConditions: {}
+    variablesModification: {}
+  activator2:
+    name: '&eActivator'
+    option: PLAYER_CUSTOM_LAUNCH
+    usageModification: 0
+    cancelEvent: false
+    silenceOutput: false
+    autoUpdateItem: false
+    cooldownFeatures:
+      cooldown: 0
+      isCooldownInTicks: false
+      cooldownMsg: '&cYou are in cooldown ! &7(&e%time_H%&6H &e%time_M%&6M &e%time_S%&6S&7)'
+      displayCooldownMessage: true
+      cancelEventIfInCooldown: false
+    globalCooldownFeatures:
+      cooldown: 0
+      isCooldownInTicks: false
+      cooldownMsg: '&cYou are in cooldown ! &7(&e%time_H%&6H &e%time_M%&6M &e%time_S%&6S&7)'
+      displayCooldownMessage: true
+      cancelEventIfInCooldown: false
+    otherEICooldowns: {}
+    requiredItems:
+      errorMessage: ''
+    requiredExecutableItems:
+      errorMessage: ''
+    detailedSlots:
+    - -1
+    playerCommands:
+    - minecraft:execute at %projectile_uuid% run minecraft:playsound entity.ender_dragon.growl
+      ambient @a[distance=..20]
+    - minecraft:execute at %player% as %projectile_uuid% run minecraft:tp %projectile_uuid%
+      %x% %y% %z% ~ ~
+    - minecraft:execute at %projectile_uuid% run minecraft:summon armor_stand ~ ~
+      ~ {DisabledSlots:4144959,Invulnerable:1b,NoGravity:1b,Invisible:1b,Tags:["%projectile_uuid%1","%projectile_uuid%"],ArmorItems:[{},{},{},{id:"minecraft:beacon",Count:1b}]}
+    - minecraft:execute at %projectile_uuid% run minecraft:summon armor_stand ~ ~-1
+      ~ {DisabledSlots:4144959,NoGravity:1b,Invulnerable:1b,Tags:["%projectile_uuid%2","%projectile_uuid%"],Invisible:1b,ArmorItems:[{},{},{},{id:"minecraft:white_banner",Count:1b,tag:{BlockEntityTag:{Patterns:[{Color:1,Pattern:"hh"},{Color:14,Pattern:"ts"},{Color:5,Pattern:"hhb"},{Color:11,Pattern:"bs"},{Color:4,Pattern:"ms"}]}}}]}
+    - minecraft:execute at %projectile_uuid% run minecraft:summon armor_stand ~ ~
+      ~ {DisabledSlots:4144959,Invulnerable:1b,NoGravity:1b,Invisible:1b,Tags:["%projectile_uuid%3","%projectile_uuid%"],ArmorItems:[{},{},{},{id:"minecraft:beacon",Count:1b}]}
+    - minecraft:execute at %projectile_uuid% run minecraft:summon armor_stand ~ ~-1
+      ~ {DisabledSlots:4144959,NoGravity:1b,Invulnerable:1b,Tags:["%projectile_uuid%4","%projectile_uuid%"],Invisible:1b,ArmorItems:[{},{},{},{id:"minecraft:white_banner",Count:1b,tag:{BlockEntityTag:{Patterns:[{Color:1,Pattern:"hh"},{Color:14,Pattern:"ts"},{Color:5,Pattern:"hhb"},{Color:11,Pattern:"bs"},{Color:4,Pattern:"ms"}]}}}]}
+    - minecraft:execute at %projectile_uuid% run minecraft:summon armor_stand ~ ~
+      ~ {DisabledSlots:4144959,Invulnerable:1b,NoGravity:1b,Invisible:1b,Tags:["%projectile_uuid%5","%projectile_uuid%"],ArmorItems:[{},{},{},{id:"minecraft:beacon",Count:1b}]}
+    - minecraft:execute at %projectile_uuid% run minecraft:summon armor_stand ~ ~-1
+      ~ {DisabledSlots:4144959,NoGravity:1b,Invulnerable:1b,Tags:["%projectile_uuid%6","%projectile_uuid%"],Invisible:1b,ArmorItems:[{},{},{},{id:"minecraft:white_banner",Count:1b,tag:{BlockEntityTag:{Patterns:[{Color:1,Pattern:"hh"},{Color:14,Pattern:"ts"},{Color:5,Pattern:"hhb"},{Color:11,Pattern:"bs"},{Color:4,Pattern:"ms"}]}}}]}
+    - minecraft:execute at %projectile_uuid% run minecraft:summon armor_stand ~ ~
+      ~ {DisabledSlots:4144959,Invulnerable:1b,NoGravity:1b,Invisible:1b,Tags:["%projectile_uuid%7","%projectile_uuid%"],ArmorItems:[{},{},{},{id:"minecraft:beacon",Count:1b}]}
+    - minecraft:execute at %projectile_uuid% run minecraft:summon armor_stand ~ ~-1
+      ~ {DisabledSlots:4144959,NoGravity:1b,Invulnerable:1b,Tags:["%projectile_uuid%8","%projectile_uuid%"],Invisible:1b,ArmorItems:[{},{},{},{id:"minecraft:white_banner",Count:1b,tag:{BlockEntityTag:{Patterns:[{Color:1,Pattern:"hh"},{Color:14,Pattern:"ts"},{Color:5,Pattern:"hhb"},{Color:11,Pattern:"bs"},{Color:4,Pattern:"ms"}]}}}]}
+    - minecraft:execute at %player% as @e[type=armor_stand,tag=%projectile_uuid%1]
+      run minecraft:tp @e[type=armor_stand,tag=%projectile_uuid%1] %projectile_x%
+      %projectile_y%-3 %projectile_z%-1 180 0
+    - minecraft:execute at %player% as @e[type=armor_stand,tag=%projectile_uuid%2]
+      run minecraft:tp @e[type=armor_stand,tag=%projectile_uuid%2] %projectile_x%
+      %projectile_y%-3 %projectile_z%-1.25 180 0
+    - minecraft:execute at %player% as @e[type=armor_stand,tag=%projectile_uuid%3]
+      run minecraft:tp @e[type=armor_stand,tag=%projectile_uuid%3] %projectile_x%+1
+      %projectile_y%-3 %projectile_z% 270 0
+    - minecraft:execute at %player% as @e[type=armor_stand,tag=%projectile_uuid%4]
+      run minecraft:tp @e[type=armor_stand,tag=%projectile_uuid%4] %projectile_x%+1.25
+      %projectile_y%-3 %projectile_z% 270 0
+    - minecraft:execute at %player% as @e[type=armor_stand,tag=%projectile_uuid%5]
+      run minecraft:tp @e[type=armor_stand,tag=%projectile_uuid%5] %projectile_x%
+      %projectile_y%-3 %projectile_z%+1 0 0
+    - minecraft:execute at %player% as @e[type=armor_stand,tag=%projectile_uuid%6]
+      run minecraft:tp @e[type=armor_stand,tag=%projectile_uuid%6] %projectile_x%
+      %projectile_y%-3 %projectile_z%+1.25 0 0
+    - minecraft:execute at %player% as @e[type=armor_stand,tag=%projectile_uuid%7]
+      run minecraft:tp @e[type=armor_stand,tag=%projectile_uuid%7] %projectile_x%-1
+      %projectile_y%-3 %projectile_z% 90 0
+    - minecraft:execute at %player% as @e[type=armor_stand,tag=%projectile_uuid%8]
+      run minecraft:tp @e[type=armor_stand,tag=%projectile_uuid%8] %projectile_x%-1.25
+      %projectile_y%-3 %projectile_z% 90 0
+    playerConditions: {}
+    worldConditions: {}
+    itemConditions: {}
+    customConditions: {}
+    placeholdersConditions: {}
+    detailedEntities: []
+    entityCommands:
+    - minecraft:execute at %projectile_uuid% run minecraft:summon armor_stand ~ ~
+      ~ {DisabledSlots:4144959,Invulnerable:1b,NoGravity:1b,Invisible:1b,Tags:["%projectile_uuid%9","%projectile_uuid%"]}
+    - minecraft:execute at %player% as @e[type=armor_stand,tag=%projectile_uuid%9]
+      run minecraft:tp @e[type=armor_stand,tag=%projectile_uuid%9] %projectile_x%
+      %projectile_y% %projectile_z%
+    - 'LOOP START: 600'
+    - minecraft:execute at @e[type=armor_stand,tag=%projectile_uuid%9] as @e[type=armor_stand,tag=%projectile_uuid%9]
+      run minecraft:tp @e[type=armor_stand,tag=%projectile_uuid%9] ~ ~ ~ ~10 0
+    - minecraft:execute at @e[type=armor_stand,tag=%projectile_uuid%9] run minecraft:particle
+      firework ^ ^1 ^1 .01 .01 .01 0 1
+    - minecraft:execute at @e[type=armor_stand,tag=%projectile_uuid%9] run minecraft:particle
+      firework ^ ^1 ^-1 .01 .01 .01 0 1
+    - minecraft:execute at @e[type=armor_stand,tag=%projectile_uuid%9] run minecraft:particle
+      firework ^1 ^1 ^ .01 .01 .01 0 1
+    - minecraft:execute at @e[type=armor_stand,tag=%projectile_uuid%9] run minecraft:particle
+      firework ^-1 ^1 ^ .01 .01 .01 0 1
+    - minecraft:execute at %projectile_uuid% run minecraft:particle firework ~ ~5
+      ~ .1 5 .1 0.2 10
+    - minecraft:execute at %projectile_uuid% run minecraft:effect give @a[distance=..12]
+      speed 2 0
+    - minecraft:execute at %projectile_uuid% run minecraft:effect give @a[distance=..12]
+      haste 2 0
+    - minecraft:execute at %projectile_uuid% run minecraft:effect give @a[distance=..12]
+      regeneration 2 0
+    - minecraft:execute at %projectile_uuid% run minecraft:effect give @a[distance=..12]
+      resistance 2 0
+    - minecraft:execute at %projectile_uuid% run minecraft:effect give @a[distance=..12]
+      strength 2 0
+    - DELAYTICK 2
+    - LOOP END
+    - minecraft:kill @e[tag=%projectile_uuid%]
+    - minecraft:kill %projectile_uuid%
+    entityConditions: {}
+    variablesModification: {}
+recognitions: []
+bannerSettings:
+  patterns:
+    pattern1:
+      '1':
+        string: color
+        object: ORANGE
+      '2':
+        string: pattern
+        object: hh
+    pattern2:
+      '1':
+        string: color
+        object: RED
+      '2':
+        string: pattern
+        object: ts
+    pattern3:
+      '1':
+        string: color
+        object: LIME
+      '2':
+        string: pattern
+        object: hhb
+    pattern4:
+      '1':
+        string: color
+        object: BLUE
+      '2':
+        string: pattern
+        object: bs
+    pattern5:
+      '1':
+        string: color
+        object: YELLOW
+      '2':
+        string: pattern
+        object: ms
+attributes: {}
+nbt:
+  '0':
+    key: BlockEntityTag
+    type: COMPOUND
+config_5: true
+config_update: true
+config_5_98: true

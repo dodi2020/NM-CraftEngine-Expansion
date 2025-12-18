@@ -1,0 +1,19 @@
+isEnabled: true
+name: '&2[lvl 120] &4The Vampire Manor'
+customInfo:
+- '&6Defeat the Vampire King!'
+dungeonSizeCategory: LAIR
+worldName: em_the_vampire_manor
+environment: NETHER
+protect: true
+playerInfo: |-
+  Difficulty: &cHard
+  $bossCount level $lowestTier Big Boss!
+  &6The Vampire King has arisen, stop his summoning!
+regionEnterMessage: '&8[EM] &aYou are now trespassing the sacred grove!'
+regionLeaveMessage: '&8[EM] &aYou have left the sacred grove!'
+teleportLocation: em_the_vampire_manor,281.5,31.0,1587.5,-180,0
+contentType: OPEN_DUNGEON
+dungeonConfigFolderName: vampire_manor
+setupMenuDescription:
+- '&2A Lair for players around level 120-140!'

@@ -1,0 +1,12 @@
+isEnabled: true
+entityType: RAVAGER
+name: $reinforcementLevel &cCaravan Beast
+level: dynamic
+dropsEliteMobsLoot: false
+dropsVanillaLoot: false
+powers:
+- attack_confusing.yml
+followDistance: 100
+onSpawnBlockStates: []
+onRemoveBlockStates: []
+bossType: NORMAL

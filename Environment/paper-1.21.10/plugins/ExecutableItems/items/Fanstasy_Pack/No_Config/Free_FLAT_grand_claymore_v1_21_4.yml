@@ -1,0 +1,7 @@
+material: STICK
+glow: true
+config_5: true
+config_update: true
+itemModel: ei:grand_claymore
+hiders:
+  hideUsage: true

@@ -1,0 +1,14 @@
+isEnabled: true
+name: Ancient Corpse
+role: <[50] The Nether Bell Teleporter>
+spawnLocation: em_adventurers_guild,293.5,78.18,196.5,-90,0
+spawnLocations: []
+greetings:
+- ''
+dialog: []
+farewell: []
+canTalk: true
+activationRadius: 1.0
+interactionType: COMMAND
+disguise: BOGGED
+command: em dungeontp the_nether_bell_sanctum.yml

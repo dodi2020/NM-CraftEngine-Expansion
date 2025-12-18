@@ -1,0 +1,11 @@
+isEnabled: true
+entityType: SKELETON
+name: $reinforcementLevel &7Summoned Skeleton
+level: dynamic
+healthMultiplier: 0.3
+damageMultiplier: 0.1
+dropsEliteMobsLoot: false
+dropsVanillaLoot: false
+onSpawnBlockStates: []
+onRemoveBlockStates: []
+bossType: NORMAL

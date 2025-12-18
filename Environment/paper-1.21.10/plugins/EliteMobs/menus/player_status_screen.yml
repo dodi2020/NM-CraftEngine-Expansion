@@ -1,0 +1,318 @@
+isEnabled: true
+doIndexPage: true
+doStatsPage: true
+doGearPage: true
+doTeleportsPage: true
+doCommandsPage: true
+doQuestTrackingPage: true
+doBossTrackingPage: true
+indexTexts0: '&0&m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯'
+indexHovers0: ''
+indexCommands0: ''
+indexTexts1: '&5&l/ag &7- &6EliteMobs Hub'
+indexHovers1: |-
+  CLICK TO USE
+  The place where you can find
+  NPCs that give quests, buy and
+  sell items, give advice and more!
+indexCommands1: /ag
+indexTexts2: '&0&m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯'
+indexHovers2: ''
+indexCommands2: ''
+indexTexts3: ''
+indexHovers3: ''
+indexCommands3: ''
+indexTexts4: '&6&lIndex'
+indexHovers4: ''
+indexCommands4: ''
+indexTexts5: ''
+indexHovers5: ''
+indexCommands5: ''
+indexTexts6: '&bp. $statsPage &8- &6Stats'
+indexHovers6: Click to go!
+indexCommands6: $statsPage
+indexTexts7: '&bp. $gearPage &8- &6Gear'
+indexHovers7: Click to go!
+indexCommands7: $gearPage
+indexTexts8: '&bp. $teleportsPage &8- &6Teleports'
+indexHovers8: Click to go!
+indexCommands8: $teleportsPage
+indexTexts9: '&bp. $commandsPage &8- &6Commands'
+indexHovers9: Click to go!
+indexCommands9: $commandsPage
+indexTexts10: '&bp. $questsPage &8- &6Quest Tracking'
+indexHovers10: Click to go!
+indexCommands10: $questsPage
+indexTexts11: '&bp. $bossTrackingPage &8- &6Boss Tracking'
+indexHovers11: Click to go!
+indexCommands11: $bossTrackingPage
+indexTexts12: ''
+indexHovers12: ''
+indexCommands12: ''
+statsText0: '&m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯'
+statsHover0: ''
+statsCommand0: ''
+statsText1: '&5&lPlayer Stats:'
+statsHover1: ''
+statsCommand1: ''
+statsText2: '&m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯'
+statsHover2: ''
+statsCommand2: ''
+statsText3: ''
+statsHover3: ''
+statsCommand3: ''
+statsText4: '&2Money: &a$money'
+statsHover4: |-
+  Kill Elite Mobs to loot currency or
+  sell their drops in /em shop or
+  complete quests!
+statsCommand4: ''
+statsText5: ''
+statsHover5: ''
+statsCommand5: ''
+statsText6: '&6Guild Tier: &3$guildtier'
+statsHover6: |-
+  Prestige Tier and Guild Rank:
+  Guild Rank determines how good your loot can be, sets your bonus from the Prestige Tier, among other things. The Prestige Tier unlocks extremely powerful rewards, like increased max health, chance to dodge/crit, increased currency rewards and more! You can unlock Guild Ranks and Prestige Tiers at /ag!
+  ⚜ = prestige rank, ✧ = guild rank!
+statsCommand6: ''
+statsText7: '&4Elite Kills: &c$kills'
+statsHover7: Amount of Elite Mobs killed.
+statsCommand7: ''
+statsText8: '&4Max Lvl Killed: &c$highestkill'
+statsHover8: |-
+  Level of the highest Elite Mob killed.
+  Elite Mob levels are based on the tier
+  of your gear! Higher tiers, higher
+  Elite Mob levels!
+  Note: only non-exploity kills get counted!
+statsCommand8: ''
+statsText9: '&4Elite Deaths: &c$deaths'
+statsHover9: Times killed by Elite Mobs.
+statsCommand9: ''
+statsText10: '&5Quests Completed: &d$quests'
+statsHover10: |-
+  Amount of EliteMobs quests completed.
+  You can accept quests by talking to NPCs!
+statsCommand10: ''
+statsText11: ''
+statsHover11: ''
+statsCommand11: ''
+statsText12: '&bScore: &3$score'
+statsHover12: |-
+  Your EliteMobs score. It goes up
+  when you kill and elite mob,
+  and it goes down when you die
+  to an elite. Higher level
+  elites give more score.
+statsCommand12: ''
+gearText0: '&m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯'
+gearHover0: ''
+gearCommand0: ''
+gearText1: '&7&lArmor & Weapons:'
+gearHover1: ''
+gearCommand1: ''
+gearText2: '&m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯'
+gearHover2: ''
+gearCommand2: ''
+gearText3: '&8&lGear Tiers:'
+gearHover3: ''
+gearCommand3: ''
+gearText4: '          ☠ - $helmettier'
+gearHover4: $helmet
+gearCommand4: ''
+gearText5: '          ▼ - $chestplatetier'
+gearHover5: $chestplate
+gearCommand5: ''
+gearText6: '          Π - $leggingstier'
+gearHover6: $leggings
+gearCommand6: ''
+gearText7: '          ╯╰ - $bootstier'
+gearHover7: $boots
+gearCommand7: ''
+gearText8: '{⚔ - $mainhandtier}    {⛨ - $offhandtier}'
+gearHover8: '{$mainhand}{$offhand}'
+gearCommand8: ''
+gearText9: ''
+gearHover9: ''
+gearCommand9: ''
+gearText10: '{dmg : $damage}    {armr: $armor}'
+gearHover10: '{Base damage dealt to Elite Mobs}{Damage reduction from Elite Mobs}'
+gearCommand10: ''
+gearText11: 'Threat level: $threat'
+gearHover11: |
+  This determines the level of the
+  Elite Mobs that spawns near you.
+  Takes armor, weapon in hand, guild
+  tier into account.
+gearCommand11: ''
+gearText12: ''
+gearHover12: ''
+gearCommand12: ''
+teleportText0: '&m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯'
+teleportHover0: ''
+teleportCommand0: ''
+teleportText1: '&2&lTeleports'
+teleportHover1: ''
+teleportCommand1: ''
+teleportText2: '&m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯'
+teleportHover2: ''
+teleportCommand2: ''
+teleportText3: Spawn
+teleportHover3: Teleport to spawn!
+teleportCommand3: /em spawntp
+teleportText4: §6§lAdventurer's Hub
+teleportHover4: Teleport to the Adventurer's Guild Hub!
+teleportCommand4: /ag
+onTeleportsHover: Click to teleport!
+commandsText0: '&m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯'
+commandsHover0: ''
+commandsCommand0: ''
+commandsText1: '&3&lCommands:'
+commandsHover1: ''
+commandsCommand1: ''
+commandsText2: '&m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯'
+commandsHover2: ''
+commandsCommand2: ''
+commandsText3: ''
+commandsHover3: ''
+commandsCommand3: ''
+commandsText4: '&5/ag'
+commandsHover4: |-
+  CLICK TO USE
+  The place where you can find
+  NPCs that give quests, buy and
+  sell items, give advice and more!
+commandsCommand4: /ag
+commandsText5: ''
+commandsHover5: ''
+commandsCommand5: ''
+commandsText6: '&5/shareitem'
+commandsHover6: |-
+  CLICK TO USE
+  Shares the item you're holding
+  on chat!
+commandsCommand6: /shareitem
+commandsText7: ''
+commandsHover7: ''
+commandsCommand7: ''
+commandsText8: ''
+commandsHover8: ''
+commandsCommand8: ''
+commandsText9: ''
+commandsHover9: ''
+commandsCommand9: ''
+commandsText10: ''
+commandsHover10: ''
+commandsCommand10: ''
+commandsText11: ''
+commandsHover11: ''
+commandsCommand11: ''
+commandsText12: ''
+commandsHover12: ''
+commandsCommand12: ''
+questTrackerText0: '&m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯'
+questTrackerHover0: ''
+questTrackerCommand0: ''
+questTrackerText1: '&6&lQuests:'
+questTrackerHover1: Talk to NPCs to accept quests!
+questTrackerCommand1: ''
+questTrackerText2: '&m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯'
+questTrackerHover2: ''
+questTrackerCommand2: ''
+onQuestTrackHover: Click to abandon!
+bossTrackerText0: '&m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯'
+bossTrackerHover0: ''
+bossTrackerCommand0: ''
+bossTrackerText1: '&4&lBoss Tracker:'
+bossTrackerHover1: Big bosses get displayed here!
+bossTrackerCommand1: ''
+bossTrackerText2: '&m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯'
+bossTrackerHover2: ''
+bossTrackerCommand2: ''
+onBossTrackHover: Click to track/untrack!
+teleportChestMenuName: '&2EliteMobs Teleports'
+bossTrackerChestMenuName: '&2EliteMobs Boss Tracking'
+indexChestMenuName: '&2EliteMobs Index'
+indexHeaderItem:
+  material: PAPER
+  name: §5§l/ag §7- §6EliteMobs Hub
+indexHeaderSlot: 4
+indexStatsItem:
+  material: MAP
+  name: §6Stats
+indexStatsSlot: 10
+indexGearItem:
+  material: DIAMOND_SWORD
+  name: §6Gear
+indexGearSlot: 12
+indexTeleportsItem:
+  material: END_PORTAL_FRAME
+  name: §6Teleports
+indexTeleportsSlot: 14
+indexCommandsItem:
+  material: JUKEBOX
+  name: §6Commands
+indexCommandsSlot: 16
+indexQuestTrackingItem:
+  material: WRITABLE_BOOK
+  name: §6Quest Tracking
+indexQuestTrackingSlot: 20
+indexBossTrackingItem:
+  material: TARGET
+  name: §6Boss Tracking
+indexBossTrackingSlot: 24
+backItem:
+  material: BARRIER
+  name: §cBack
+gearChestMenuName: '&2EliteMobs Gear'
+gearDamageItem:
+  material: DIAMOND_SWORD
+  name: '§4Damage: $damage'
+gearDamageSlot: 23
+gearArmorItem:
+  material: SHIELD
+  name: '§2Defense: $defense'
+gearArmorSlot: 24
+gearThreatItem:
+  material: TARGET
+  name: '§cThreat Level: $threat'
+gearThreatSlot: 25
+statsChestMenuName: '&2EliteMobs Stats'
+statsMoneyItem:
+  material: GOLD_INGOT
+  name: '§2Elite Coins: $money'
+statsMoneySlot: 10
+statsGuildTierItem:
+  material: TARGET
+  name: '§6Guild Tier: $tier'
+statsGuildTierSlot: 11
+statsEliteKillsItem:
+  material: DIAMOND_SWORD
+  name: '§4Elite Kills: §c$kills'
+statsEliteKillsSlot: 12
+statsMaxEliteLevelKilledItem:
+  material: GOLDEN_SWORD
+  name: '§4Max Lvl Killed: §c$maxKill'
+statsMaxEliteLevelKilledSlot: 13
+statsEliteDeathsItem:
+  material: TOTEM_OF_UNDYING
+  name: '§4Elite Deaths: $deaths'
+statsEliteDeathsSlot: 14
+statsQuestsCompletedItem:
+  material: LECTERN
+  name: '§5Quests Completed: §d$questsCompleted'
+statsQuestsCompletedSlot: 15
+statsScoreItem:
+  material: ITEM_FRAME
+  name: '§3Score: §b$score'
+statsScoreSlot: 16
+commandsChestMenuName: '&2EliteMobs Commands'
+commandsAGItem:
+  material: END_PORTAL_FRAME
+  name: §5/ag
+commandsAGSlot: 11
+commandsShareItemItem:
+  material: PAPER
+  name: §5/shareitem
+commandsShareItemSlot: 15

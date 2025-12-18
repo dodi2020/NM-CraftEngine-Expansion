@@ -1,0 +1,6 @@
+isEnabled: true
+name: Unbreaking
+maxLevelV2: 3
+value: 13.0
+isEnabledForProcedurallyGeneratedItems: true
+maxEnchantmentLevel: 10

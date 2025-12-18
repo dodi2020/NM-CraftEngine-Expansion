@@ -1,0 +1,13 @@
+isEnabled: true
+material: ANVIL
+name: '&bElephant Charm'
+lore:
+- '&aGain the power of an elephant'
+- '&astampede, for the cost of the'
+- '&aspeed of an elephant stampede!'
+enchantments:
+- VANISHING_CURSE,1
+potionEffects:
+- INCREASE_DAMAGE,1,self,onHit
+- SLOW,3,self,onHit
+dropWeight: '1'

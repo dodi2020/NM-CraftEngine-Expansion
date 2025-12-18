@@ -1,0 +1,7 @@
+isEnabled: true
+entityType: PIGLIN_BRUTE
+name: '&fLvl &2$level &fElite &cPiglin Brute'
+deathMessages:
+- $entity &ctenderized $player!
+- $entity &cbrutalized $player!
+baseDamageV2: 19.5

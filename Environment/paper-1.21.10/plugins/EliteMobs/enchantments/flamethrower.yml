@@ -1,0 +1,5 @@
+isEnabled: true
+name: Flamethrower
+maxLevelV2: 1
+value: 20.0
+isEnabledForProcedurallyGeneratedItems: false

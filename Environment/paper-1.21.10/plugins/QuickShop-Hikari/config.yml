@@ -1,0 +1,59 @@
+config-version: 1033
+server-uuid: 2d419de6-c73e-4928-a218-802f7306684d
+shop:
+  refund-from-tax-account: false
+  per-player-shop-sign: false
+  disable-max-size-check-for-size-command: false
+  cancel-protection-fake-event-before-reach-monitor-listeners: true
+  use-cache: true
+  display-type: 2
+  info-panel:
+    show-enchantments: true
+    show-effects: true
+    show-durability: true
+  control-panel:
+  - owner
+  - unlimited
+  - freeze
+  - shop_mode
+  - set_price
+  - set_amount
+  - refill
+  - empty
+  - display
+  - history
+  - remove
+  sign-wax: false
+  display-protocol: protocollib
+  display-coords:
+    x: '0.5'
+    y: '0.5'
+    z: '0.5'
+tax-free-for-unlimited-shop: false
+purge: {}
+debug:
+  delete-corrupt-shops: false
+custom-commands:
+- qs
+- shop
+- chestshop
+- cshop
+- qs
+backup-policy:
+  shops-auto-purge: false
+  database-upgrade: true
+  startup: false
+  recovery: true
+plugin: {}
+privacy:
+  type:
+    STATISTIC: true
+    RESEARCH: true
+    DIAGNOSTIC: true
+database:
+  properties:
+    allowPublicKeyRetrieval: true
+    connectionTimeout: 60000
+    maximumPoolSize: 10
+    minimumIdle: 10
+bungee-cross-server-msg: false

@@ -1,0 +1,59 @@
+name: "<gradient:#ff4500:#ffa500><bold>Wyrmcall</bold></gradient>"
+lore:
+  - "<red><italic>From the ashes of ancient tyrants,</italic></red>"
+  - "<red><italic>a single ember still breathes wrath into the world.</italic></red>"
+  - ""
+  - "<gold>▶ <bold>Right-click</bold> to summon the fury of a skyborn beast</gold>"
+  - "<gray>• Unleashes searing flame wings and vertical blaze</gray>"
+  - "<gray>• Calls down <yellow>three lightning bolts</yellow> amid circles of fire</gray>"
+  - ""
+  - "<dark_red><italic>“Its roar is heard in thunder. Its breath is flame.”</italic></dark_red>"
+config_5: true
+config_update: true
+itemModel: ei:dragon
+material: STICK
+hiders:
+  hideUsage: true
+activators:
+  activator0:
+    option: PLAYER_RIGHT_CLICK
+    typeTarget: NO_TYPE_TARGET
+    detailedSlots:
+    - -1
+    playerCommands:
+    - score particles shape:square location:%player_world_initial%,%player_x_initial%,%player_y_initial%,%player_z_initial%
+      color:RED,ORANGE height:1.2 length:15 time:30 density:4 offsetPitch:0
+      offsetYaw:%player_yaw_initial%+45 directionYaw:%player_yaw_initial%+45 verticalOrder:up
+      horizontalOrder:near offsetDistance:1.5
+    - score particles shape:square location:%player_world_initial%,%player_x_initial%,%player_y_initial%,%player_z_initial%
+      color:RED,ORANGE height:1.2 length:15 time:30 density:4 offsetPitch:0
+      offsetYaw:%player_yaw_initial%-45 directionYaw:%player_yaw_initial%-45 verticalOrder:up
+      horizontalOrder:near offsetDistance:1.5
+    - score particles shape:square location:%player_world_initial%,%player_x_initial%,%player_y_initial%,%player_z_initial%
+      color:RED,ORANGE height:15 length:2 density:4 offsetPitch:0 offsetYaw:%player_yaw_initial%
+      directionYaw:%player_yaw_initial% verticalOrder:down horizontalOrder:near offsetDistance:6
+      time:10
+    - DELAYTICK 10
+    - SPAWN_ENTITY entity:LIGHTNING_BOLT offsetPitch:0 offsetYaw:%player_yaw_initial%
+      offsetDistance:7 x:%player_x_initial% y:%player_y_initial% z:%player_z_initial%
+      world:%player_world_initial%
+    - score particles shape:circle location:%player_world_initial%,%player_x_initial%,%player_y_initial%,%player_z_initial%
+      color:RED,ORANGE radius:3 density:100 time:10 drawMode:clockwise plane:xz
+      offsetDistance:7 offsetPitch:0 offsetYaw:%player_yaw_initial%  directionYaw:%player_yaw_initial%
+      fillMode:disk directionPitch:-90 offsetY:-1
+    - DELAYTICK 10
+    - SPAWN_ENTITY entity:LIGHTNING_BOLT offsetPitch:0 offsetYaw:%player_yaw_initial%+20
+      offsetDistance:9 x:%player_x_initial% y:%player_y_initial% z:%player_z_initial%
+      world:%player_world_initial%
+    - score particles shape:circle location:%player_world_initial%,%player_x_initial%,%player_y_initial%,%player_z_initial%
+      color:RED,ORANGE radius:3 density:100 timeToDisplay:10 drawMode:clockwise plane:xz
+      offsetDistance:9 offsetPitch:0 offsetYaw:%player_yaw_initial%+20  directionYaw:%player_yaw_initial%+20
+      fillMode:disk directionPitch:-90 offsetY:-1
+    - DELAYTICK 10
+    - SPAWN_ENTITY entity:LIGHTNING_BOLT offsetPitch:0 offsetYaw:%player_yaw_initial%-20
+      offsetDistance:9 x:%player_x_initial% y:%player_y_initial% z:%player_z_initial%
+      world:%player_world_initial%
+    - score particles shape:circle location:%player_world_initial%,%player_x_initial%,%player_y_initial%,%player_z_initial%
+      color:RED,ORANGE radius:3 density:100 timeToDisplay:10 drawMode:clockwise plane:xz
+      offsetDistance:9 offsetPitch:0 offsetYaw:%player_yaw_initial%-20  directionYaw:%player_yaw_initial%-20
+      fillMode:disk directionPitch:-90 offsetY:-1

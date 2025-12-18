@@ -1,0 +1,11 @@
+isEnabled: true
+material: BONE
+name: '&6Werewolf Bone'
+lore:
+- '&aHaving killed the alpha,'
+- '&athis temporarily makes you!'
+- '&athe wolves'' new leader'
+enchantments:
+- SUMMON_WOLF,1
+potionEffects: []
+itemType: UNIQUE

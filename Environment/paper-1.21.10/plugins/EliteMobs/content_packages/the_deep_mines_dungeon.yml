@@ -1,0 +1,31 @@
+isEnabled: true
+name: '&2[lvl 045] &3The Deep Mines Dungeon'
+customInfo:
+- '&fBelow lies the deepest mine ever dug.'
+- '&6Credits: Dali, MagmaGuy, FrostCone'
+dungeonSizeCategory: SANCTUM
+worldName: em_id_the_deep_mines
+environment: NORMAL
+protect: true
+playerInfo: 'Difficulty: &45-man hard content!'
+regionEnterMessage: '&bVenture far down and find out how deep the deep mines are.'
+regionLeaveMessage: '&bYou have left The Deep Mines!'
+startLocation: em_id_the_deep_mines,-207.5,154,-68.5,0,0
+teleportLocation: em_id_the_deep_mines,-205.5,154,-85.5,0,0
+dungeonObjectives:
+- filename=em_id_the_deep_mines_tnt_box.yml
+- filename=em_id_the_deep_mines_boss_the_pursuer_p1.yml
+contentType: INSTANCED_DUNGEON
+dungeonConfigFolderName: em_id_the_deep_mines
+contentLevel: 45
+difficulties:
+- levelSync: 47
+  id: 0
+  name: normal
+- levelSync: 45
+  id: 1
+  name: hard
+- levelSync: 43
+  id: 2
+  name: mythic
+setupMenuDescription: []

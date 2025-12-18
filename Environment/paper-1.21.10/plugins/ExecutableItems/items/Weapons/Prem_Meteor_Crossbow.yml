@@ -1,0 +1,239 @@
+name: '&5&loo &fMeteor Crossbow &5&loo'
+lore:
+- '&7Shoots a frightening meteor'
+- '&7on the location'
+- ''
+- '&7&oCreated by: &fSpecial70'
+material: CROSSBOW
+glow: false
+disableStack: false
+keepItemOnDeath: false
+canBeUsedOnlyByTheOwner: false
+storeItemInfo: false
+unbreakable: false
+usage: -1
+usageLimit: -1
+durability: 465
+cancelEventIfNoPerm: false
+cancelEventIfNotOwner: false
+disabledWorlds: []
+recognitions: []
+config_5: true
+config_update: true
+onlyOwnerBlackListedActivators: []
+isDurabilityBasedOnUsage: false
+dropFeatures:
+  glowDrop: false
+  glowDropColor: WHITE
+  displayNameDrop: false
+hiders:
+  hideEnchantments: false
+  hideUnbreakable: false
+  hideAttributes: false
+  hidePotionEffects: false
+  hideUsage: false
+  hideDestroys: false
+  hidePlacedOn: false
+  hideDye: false
+  hideArmorTrim: false
+enchantments: {}
+giveFirstJoinFeatures:
+  giveFirstJoin: false
+  giveFirstJoinAmount: 1
+  giveFirstJoinSlot: 0
+restrictions: {}
+variables: {}
+activators:
+  activator1:
+    name: '&eActivator'
+    option: PROJECTILE_HIT_BLOCK
+    usageModification: 0
+    cancelEvent: false
+    noActivatorRunIfTheEventIsCancelled: false
+    silenceOutput: false
+    autoUpdateItem: false
+    updateName: true
+    updateLore: true
+    updateDurability: false
+    updateAttributes: false
+    updateEnchants: false
+    updateCustomModelData: false
+    cooldownFeatures:
+      cooldown: 0
+      isCooldownInTicks: false
+      cooldownMsg: '&cYou are in cooldown ! &7(&e%time_H%&6H &e%time_M%&6M &e%time_S%&6S&7)'
+      displayCooldownMessage: false
+      cancelEventIfInCooldown: false
+      pauseWhenOffline: false
+      pausePlaceholdersConditions: {}
+    globalCooldownFeatures:
+      cooldown: 0
+      isCooldownInTicks: false
+      cooldownMsg: '&cYou are in cooldown ! &7(&e%time_H%&6H &e%time_M%&6M &e%time_S%&6S&7)'
+      displayCooldownMessage: true
+      cancelEventIfInCooldown: false
+      pauseWhenOffline: false
+      pausePlaceholdersConditions: {}
+    otherEICooldowns: {}
+    requiredItems:
+      errorMessage: ''
+    requiredExecutableItems:
+      errorMessage: ''
+    requiredMagics: {}
+    detailedSlots: []
+    playerCommands:
+    - DELAYTICK 2
+    - execute at %projectile_uuid% run kill %projectile_uuid%
+    - DELAYTICK 98
+    - execute at %player% run particle explosion %block_x% %block_y%+20 %block_z%
+      .1 .1 .1 5 1
+    - DELAYTICK 2
+    - execute at %player% run particle explosion %block_x% %block_y%+16 %block_z%
+      .1 .1 .1 5 1
+    - DELAYTICK 2
+    - execute at %player% run particle explosion %block_x% %block_y%+12 %block_z%
+      .1 .1 .1 5 1
+    - DELAYTICK 2
+    - execute at %player% run particle explosion %block_x% %block_y%+8 %block_z% .1
+      .1 .1 5 1
+    - DELAYTICK 2
+    - execute at %player% run particle explosion %block_x% %block_y%+4 %block_z% .1
+      .1 .1 5 1
+    - DELAYTICK 2
+    - execute at %player% run particle explosion_emitter %block_x% %block_y% %block_z%
+      3 3 3 5 5
+    - execute at %player% run summon creeper %block_x% %block_y%+2 %block_z% {ExplosionRadius:5b,Fuse:0}
+    playerConditions: {}
+    worldConditions: {}
+    itemConditions: {}
+    customConditions: {}
+    placeholdersConditions: {}
+    mustBeAProjectileLaunchWithTheSameEI: true
+    detailedBlocks:
+      blocks: []
+      cancelEventIfNotValid: false
+      messageIfNotValid: ''
+    blockCommands:
+    - MINEINCUBE 3
+    blockConditions:
+      requiredItems: {}
+      requiredExecutableItems: {}
+    variablesModification: {}
+  activator2:
+    name: '&eActivator'
+    option: PLAYER_BLOCK_BREAK
+    usageModification: 0
+    cancelEvent: true
+    noActivatorRunIfTheEventIsCancelled: false
+    silenceOutput: false
+    autoUpdateItem: false
+    updateName: true
+    updateLore: true
+    updateDurability: false
+    updateAttributes: false
+    updateEnchants: false
+    updateCustomModelData: false
+    cooldownFeatures:
+      cooldown: 0
+      isCooldownInTicks: false
+      cooldownMsg: '&cYou are in cooldown ! &7(&e%time_H%&6H &e%time_M%&6M &e%time_S%&6S&7)'
+      displayCooldownMessage: false
+      cancelEventIfInCooldown: false
+      pauseWhenOffline: false
+      pausePlaceholdersConditions: {}
+    globalCooldownFeatures:
+      cooldown: 0
+      isCooldownInTicks: false
+      cooldownMsg: '&cYou are in cooldown ! &7(&e%time_H%&6H &e%time_M%&6M &e%time_S%&6S&7)'
+      displayCooldownMessage: true
+      cancelEventIfInCooldown: false
+      pauseWhenOffline: false
+      pausePlaceholdersConditions: {}
+    otherEICooldowns: {}
+    requiredItems:
+      errorMessage: ''
+    requiredExecutableItems:
+      errorMessage: ''
+    requiredMagics: {}
+    detailedSlots:
+    - -1
+    playerCommands:
+    - 'LOOP START: 10'
+    - execute at %player% run setblock %block_x_int% %block_y_int% %block_z_int% red_terracotta
+    - DELAYTICK 2
+    - execute at %player% run setblock %block_x_int% %block_y_int% %block_z_int% %block_lower%
+    - DELAYTICK 8
+    - LOOP END
+    playerConditions: {}
+    worldConditions: {}
+    itemConditions: {}
+    customConditions: {}
+    placeholdersConditions: {}
+    detailedBlocks:
+      blocks: []
+      cancelEventIfNotValid: false
+      messageIfNotValid: ''
+    blockCommands: []
+    blockConditions:
+      requiredItems: {}
+      requiredExecutableItems: {}
+    variablesModification: {}
+  activator0:
+    name: '&eActivator'
+    option: PLAYER_LAUNCH_PROJECTILE
+    usageModification: 0
+    cancelEvent: false
+    noActivatorRunIfTheEventIsCancelled: false
+    silenceOutput: false
+    autoUpdateItem: false
+    updateName: true
+    updateLore: true
+    updateDurability: false
+    updateAttributes: false
+    updateEnchants: false
+    updateCustomModelData: false
+    cooldownFeatures:
+      cooldown: 1
+      isCooldownInTicks: false
+      cooldownMsg: '&cYou are in cooldown ! &7(&e%time_H%&6H &e%time_M%&6M &e%time_S%&6S&7)'
+      displayCooldownMessage: true
+      cancelEventIfInCooldown: true
+      pauseWhenOffline: false
+      pausePlaceholdersConditions: {}
+    globalCooldownFeatures:
+      cooldown: 0
+      isCooldownInTicks: false
+      cooldownMsg: '&cYou are in cooldown ! &7(&e%time_H%&6H &e%time_M%&6M &e%time_S%&6S&7)'
+      displayCooldownMessage: true
+      cancelEventIfInCooldown: false
+      pauseWhenOffline: false
+      pausePlaceholdersConditions: {}
+    otherEICooldowns: {}
+    requiredItems: {}
+    requiredExecutableItems: {}
+    requiredMagics: {}
+    detailedSlots:
+    - -1
+    playerCommands: []
+    playerConditions: {}
+    worldConditions: {}
+    itemConditions: {}
+    customConditions: {}
+    placeholdersConditions: {}
+    detailedEntities: []
+    entityCommands: []
+    entityConditions: {}
+    variablesModification: {}
+displayConditions:
+  playerConditions: {}
+  worldConditions: {}
+  itemConditions: {}
+  placeholdersConditions: {}
+  enableFeature: false
+foodFeatures:
+  nutrition: 0
+  saturation: 0
+  isMeat: false
+  canAlwaysEat: false
+  eatSeconds: 0
+attributes: {}

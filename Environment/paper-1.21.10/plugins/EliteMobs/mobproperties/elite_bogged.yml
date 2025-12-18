@@ -1,0 +1,6 @@
+isEnabled: true
+entityType: BOGGED
+name: '&2Lvl &2$level &2Elite &eBogged'
+deathMessages:
+- $player &cwas poisoned by $entity!
+baseDamageV2: 5.0

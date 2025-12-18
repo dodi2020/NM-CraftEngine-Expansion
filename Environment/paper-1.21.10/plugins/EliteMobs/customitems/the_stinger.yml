@@ -1,0 +1,13 @@
+isEnabled: true
+material: GOLDEN_SWORD
+name: '&eThe Stinger'
+lore:
+- '&aFloat like a butterfly,'
+- '&asting like a bee!'
+enchantments:
+- SHARPNESS,1
+- UNBREAKING,1
+- VANISHING_CURSE,1
+potionEffects:
+- POISON,0,target,onHit
+itemType: UNIQUE

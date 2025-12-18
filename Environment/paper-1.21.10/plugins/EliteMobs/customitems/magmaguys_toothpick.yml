@@ -1,0 +1,9 @@
+isEnabled: true
+material: WOODEN_SWORD
+name: '&4Magmaguy&c''s &2Toothpick'
+lore:
+- '&aIn nearly mint condition!'
+enchantments:
+- VANISHING_CURSE,1
+potionEffects: []
+customModelV2: elitemobs:equipment/magmaguys_toothpick

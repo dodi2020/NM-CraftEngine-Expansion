@@ -1,0 +1,795 @@
+name: '#FB7777C#F39675o#EBB573l#E3D471o#DBF36Fr#C1F583s #9EE9A2o#7ADDC0f #57D1DFB#4BBCF1e#6C94EAa#8D6DE2u#AE45DBt#CF1ED3y'
+lore:
+- '&7Colours of the World'
+- '&8————————————————————'
+- '&f'
+- '&fThis sword is infused with the'
+- '&fpositive energy of the world,'
+- '&fupon using this sword allows the'
+- '&fuser to gracefully swing it and'
+- '&fcreate powerful vibrant colors'
+- '&f'
+- '&8» &7Grants:'
+- ' &f &f Sword swings create rainbow'
+- ' &f &f slashes that deals 5 damage'
+- ' &f &f that can possibly shred targets'
+- ' &f &f if the targets are too close'
+- '&f'
+- '&8—————— #FF97D6P#FFAEDFr#FFC5E8i#FFDCF1d#FFF3FAe #F4FDFFC#DEF9FFr#C9F5FFa#B3F1FFt#9DEDFFe
+  &8——————'
+material: IRON_SWORD
+glow: true
+disableStack: false
+keepItemOnDeath: false
+canBeUsedOnlyByTheOwner: false
+storeItemInfo: false
+unbreakable: false
+usage: 0
+usageLimit: -1
+durability: 250
+dropFeatures:
+  glowDrop: false
+  glowDropColor: WHITE
+  displayNameDrop: false
+hiders:
+  hideEnchantments: false
+  hideUnbreakable: false
+  hideAttributes: false
+  hidePotionEffects: false
+  hideUsage: false
+enchantments: {}
+giveFirstJoinFeatures:
+  giveFirstJoin: false
+  giveFirstJoinAmount: 1
+  giveFirstJoinSlot: 0
+restrictions:
+  cancel-anvil: true
+cancelEventIfNoPerm: false
+cancelEventIfNotOwner: false
+disabledWorlds: []
+variables:
+  rng:
+    variableName: rng
+    type: NUMBER
+    default: 0.0
+activators:
+  activator1:
+    name: '&eActivator'
+    option: PLAYER_LEFT_CLICK
+    typeTarget: NO_TYPE_TARGET
+    usageModification: 0
+    cancelEvent: false
+    silenceOutput: false
+    autoUpdateItem: false
+    cooldownFeatures:
+      cooldown: 0
+      isCooldownInTicks: false
+      cooldownMsg: '&cYou are in cooldown ! &7(&e%time_H%&6H &e%time_M%&6M &e%time_S%&6S&7)'
+      displayCooldownMessage: true
+      cancelEventIfInCooldown: false
+    globalCooldownFeatures:
+      cooldown: 0
+      isCooldownInTicks: false
+      cooldownMsg: '&cYou are in cooldown ! &7(&e%time_H%&6H &e%time_M%&6M &e%time_S%&6S&7)'
+      displayCooldownMessage: true
+      cancelEventIfInCooldown: false
+    otherEICooldowns: {}
+    requiredItems:
+      errorMessage: ''
+    requiredExecutableItems:
+      errorMessage: ''
+    detailedSlots:
+    - -1
+    playerCommands:
+    - LAUNCH ARROW_MODULE
+    playerConditions: {}
+    worldConditions: {}
+    itemConditions: {}
+    customConditions: {}
+    placeholdersConditions: {}
+    variablesModification:
+      varModif0:
+        variableName: rng
+        type: SET
+        modification: '%rand:1|6%'
+  activator8:
+    name: '&eActivator'
+    option: PLAYER_CLICK_ON_ENTITY
+    detailedClick: LEFT
+    usageModification: 0
+    cancelEvent: false
+    silenceOutput: false
+    autoUpdateItem: false
+    cooldownFeatures:
+      cooldown: 0
+      isCooldownInTicks: false
+      cooldownMsg: '&cYou are in cooldown ! &7(&e%time_H%&6H &e%time_M%&6M &e%time_S%&6S&7)'
+      displayCooldownMessage: true
+      cancelEventIfInCooldown: false
+    globalCooldownFeatures:
+      cooldown: 0
+      isCooldownInTicks: false
+      cooldownMsg: '&cYou are in cooldown ! &7(&e%time_H%&6H &e%time_M%&6M &e%time_S%&6S&7)'
+      displayCooldownMessage: true
+      cancelEventIfInCooldown: false
+    otherEICooldowns: {}
+    requiredItems:
+      errorMessage: ''
+    requiredExecutableItems:
+      errorMessage: ''
+    detailedSlots:
+    - -1
+    playerCommands:
+    - LAUNCH ARROW_MODULE
+    playerConditions: {}
+    worldConditions: {}
+    itemConditions: {}
+    customConditions: {}
+    placeholdersConditions: {}
+    detailedEntities: []
+    entityCommands: []
+    entityConditions: {}
+    variablesModification:
+      varModif0:
+        variableName: rng
+        type: SET
+        modification: '%rand:1|6%'
+  activator9:
+    name: '&eActivator'
+    option: PLAYER_CLICK_ON_PLAYER
+    detailedClick: LEFT
+    usageModification: 0
+    cancelEvent: false
+    silenceOutput: false
+    autoUpdateItem: false
+    cooldownFeatures:
+      cooldown: 0
+      isCooldownInTicks: false
+      cooldownMsg: '&cYou are in cooldown ! &7(&e%time_H%&6H &e%time_M%&6M &e%time_S%&6S&7)'
+      displayCooldownMessage: true
+      cancelEventIfInCooldown: false
+    globalCooldownFeatures:
+      cooldown: 0
+      isCooldownInTicks: false
+      cooldownMsg: '&cYou are in cooldown ! &7(&e%time_H%&6H &e%time_M%&6M &e%time_S%&6S&7)'
+      displayCooldownMessage: true
+      cancelEventIfInCooldown: false
+    otherEICooldowns: {}
+    requiredItems:
+      errorMessage: ''
+    requiredExecutableItems:
+      errorMessage: ''
+    detailedSlots:
+    - -1
+    playerCommands:
+    - LAUNCH ARROW_MODULE
+    playerConditions: {}
+    worldConditions: {}
+    itemConditions: {}
+    customConditions: {}
+    placeholdersConditions: {}
+    targetCommands: []
+    targetConditions: {}
+    variablesModification:
+      varModif0:
+        variableName: rng
+        type: SET
+        modification: '%rand:1|6%'
+  activator2:
+    name: '&eActivator'
+    option: PLAYER_CUSTOM_LAUNCH
+    usageModification: 0
+    cancelEvent: false
+    silenceOutput: false
+    autoUpdateItem: false
+    cooldownFeatures:
+      cooldown: 0
+      isCooldownInTicks: false
+      cooldownMsg: '&cYou are in cooldown ! &7(&e%time_H%&6H &e%time_M%&6M &e%time_S%&6S&7)'
+      displayCooldownMessage: true
+      cancelEventIfInCooldown: false
+    globalCooldownFeatures:
+      cooldown: 0
+      isCooldownInTicks: false
+      cooldownMsg: '&cYou are in cooldown ! &7(&e%time_H%&6H &e%time_M%&6M &e%time_S%&6S&7)'
+      displayCooldownMessage: true
+      cancelEventIfInCooldown: false
+    otherEICooldowns: {}
+    requiredItems:
+      errorMessage: ''
+    requiredExecutableItems:
+      errorMessage: ''
+    detailedSlots:
+    - -1
+    playerCommands:
+    - minecraft:execute at @e[type=armor_stand,tag=%projectile_uuid%] run minecraft:particle
+      minecraft:dust{color:[1.0,0.0,0.0],scale:2.0} ^ ^ ^3 0.1 0.2 0.1 1 10
+    - DELAYTICK 1
+    - minecraft:execute at @e[type=armor_stand,tag=%projectile_uuid%] run minecraft:particle
+      minecraft:dust{color:[1.0,0.5,0.0],scale:2.0} ^ ^ ^3 0.1 0.2 0.1 1 10
+    - DELAYTICK 1
+    - minecraft:execute at @e[type=armor_stand,tag=%projectile_uuid%] run minecraft:particle
+      minecraft:dust{color:[1.0,0.8,0.0],scale:2.0} ^ ^ ^3 0.1 0.2 0.1 1 10
+    - DELAYTICK 1
+    - minecraft:execute at @e[type=armor_stand,tag=%projectile_uuid%] run minecraft:particle
+      minecraft:dust{color:[1.0,1.0,0.0],scale:2.0} ^ ^ ^3 0.1 0.2 0.1 1 10
+    - DELAYTICK 1
+    - minecraft:execute at @e[type=armor_stand,tag=%projectile_uuid%] run minecraft:particle
+      minecraft:dust{color:[0.0,1.0,0.0],scale:2.0} ^ ^ ^3 0.1 0.2 0.1 1 10
+    - DELAYTICK 1
+    - minecraft:execute at @e[type=armor_stand,tag=%projectile_uuid%] run minecraft:particle
+      minecraft:dust{color:[0.0,2.0,0.0],scale:2.0} ^ ^ ^3 0.1 0.2 0.1 1 10
+    - DELAYTICK 1
+    - minecraft:execute at @e[type=armor_stand,tag=%projectile_uuid%] run minecraft:particle
+      minecraft:dust{color:[0.0,1.0,3.0],scale:2.0} ^ ^ ^3 0.1 0.2 0.1 1 10
+    - DELAYTICK 1
+    - minecraft:execute at @e[type=armor_stand,tag=%projectile_uuid%] run minecraft:particle
+      minecraft:dust{color:[0.0,1.0,2.0],scale:2.0} ^ ^ ^3 0.1 0.2 0.1 1 10
+    - DELAYTICK 1
+    - minecraft:execute at @e[type=armor_stand,tag=%projectile_uuid%] run minecraft:particle
+      minecraft:dust{color:[0.0,1.0,1.0],scale:2.0} ^ ^ ^3 0.1 0.2 0.1 1 10
+    - DELAYTICK 1
+    - minecraft:execute at @e[type=armor_stand,tag=%projectile_uuid%] run minecraft:particle
+      minecraft:dust{color:[0.0,0.0,1.0],scale:2.0} ^ ^ ^3 0.1 0.2 0.1 1 10
+    - DELAYTICK 1
+    - minecraft:execute at @e[type=armor_stand,tag=%projectile_uuid%] run minecraft:particle
+      minecraft:dust{color:[1.0,0.0,1.0],scale:2.0} ^ ^ ^3 0.1 0.2 0.1 1 10
+    - DELAYTICK 1
+    - minecraft:execute at @e[type=armor_stand,tag=%projectile_uuid%] run minecraft:particle
+      minecraft:dust{color:[1.0,0.0,2.0],scale:2.0} ^ ^ ^3 0.1 0.2 0.1 1 10
+    - DELAYTICK 1
+    - minecraft:execute at @e[type=armor_stand,tag=%projectile_uuid%] run minecraft:particle
+      minecraft:dust{color:[2.0,0.0,2.0],scale:2.0} ^ ^ ^3 0.1 0.2 0.1 1 10
+    - DELAYTICK 1
+    playerConditions: {}
+    worldConditions: {}
+    itemConditions: {}
+    customConditions: {}
+    placeholdersConditions:
+      plchC1:
+        type: PLAYER_STRING
+        comparator: EQUALS
+        part1: '%var_rng_int%'
+        part2: '1'
+        cancelEventIfNotValid: false
+        messageIfNotValid: ''
+    detailedEntities: []
+    entityCommands:
+    - minecraft:execute at %player% run minecraft:summon armor_stand ~ ~ ~ {NoGravity:1b,Invulnerable:1b,Marker:1b,Invisible:1b,Tags:["%projectile_uuid%"]}
+    - minecraft:execute at %player% as @e[type=armor_stand,tag=%projectile_uuid%]
+      run minecraft:tp @e[type=armor_stand,tag=%projectile_uuid%] ~ ~1 ~ ~-120 ~
+    - minecraft:execute at %player% positioned %x% %y% %z% run minecraft:playsound
+      entity.player.attack.sweep ambient @a[distance=..10]
+    - 'LOOP START: 12'
+    - minecraft:execute at @e[type=armor_stand,tag=%projectile_uuid%] as @e[type=armor_stand,tag=%projectile_uuid%]
+      run minecraft:tp @e[type=armor_stand,tag=%projectile_uuid%] ~ ~ ~ ~20 ~
+    - minecraft:execute at @e[type=armor_stand,tag=%projectile_uuid%] run minecraft:particle
+      sweep_attack ^ ^ ^3 .5 .5 .5 0 3
+    - minecraft:execute at @e[type=armor_stand,tag=%projectile_uuid%] as %projectile_uuid%
+      run minecraft:tp %projectile_uuid% ^ ^ ^3
+    - MOB_AROUND 1 DAMAGE 5
+    - AROUND 1 DAMAGE 5
+    - DELAYTICK 1
+    - LOOP END
+    - minecraft:execute at @e[type=armor_stand,tag=%projectile_uuid%] as @e[type=armor_stand,tag=%projectile_uuid%]
+      run minecraft:tp @e[type=armor_stand,tag=%projectile_uuid%] ~ 0 ~
+    - minecraft:kill @e[type=armor_stand,tag=%projectile_uuid%]
+    - minecraft:kill %projectile_uuid%
+    entityConditions: {}
+    variablesModification: {}
+  activator3:
+    name: '&eActivator'
+    option: PLAYER_CUSTOM_LAUNCH
+    usageModification: 0
+    cancelEvent: false
+    silenceOutput: false
+    autoUpdateItem: false
+    cooldownFeatures:
+      cooldown: 0
+      isCooldownInTicks: false
+      cooldownMsg: '&cYou are in cooldown ! &7(&e%time_H%&6H &e%time_M%&6M &e%time_S%&6S&7)'
+      displayCooldownMessage: true
+      cancelEventIfInCooldown: false
+    globalCooldownFeatures:
+      cooldown: 0
+      isCooldownInTicks: false
+      cooldownMsg: '&cYou are in cooldown ! &7(&e%time_H%&6H &e%time_M%&6M &e%time_S%&6S&7)'
+      displayCooldownMessage: true
+      cancelEventIfInCooldown: false
+    otherEICooldowns: {}
+    requiredItems:
+      errorMessage: ''
+    requiredExecutableItems:
+      errorMessage: ''
+    detailedSlots:
+    - -1
+    playerCommands:
+    - minecraft:execute at @e[type=armor_stand,tag=%projectile_uuid%] run minecraft:particle
+      minecraft:dust{color:[1.0,0.0,0.0],scale:2.0} ^ ^ ^3 0.1 0.2 0.1 1 10
+    - DELAYTICK 1
+    - minecraft:execute at @e[type=armor_stand,tag=%projectile_uuid%] run minecraft:particle
+      minecraft:dust{color:[1.0,0.5,0.0],scale:2.0} ^ ^ ^3 0.1 0.2 0.1 1 10
+    - DELAYTICK 1
+    - minecraft:execute at @e[type=armor_stand,tag=%projectile_uuid%] run minecraft:particle
+      minecraft:dust{color:[1.0,0.8,0.0],scale:2.0} ^ ^ ^3 0.1 0.2 0.1 1 10
+    - DELAYTICK 1
+    - minecraft:execute at @e[type=armor_stand,tag=%projectile_uuid%] run minecraft:particle
+      minecraft:dust{color:[1.0,1.0,0.0],scale:2.0} ^ ^ ^3 0.1 0.2 0.1 1 10
+    - DELAYTICK 1
+    - minecraft:execute at @e[type=armor_stand,tag=%projectile_uuid%] run minecraft:particle
+      minecraft:dust{color:[0.0,1.0,0.0],scale:2.0} ^ ^ ^3 0.1 0.2 0.1 1 10
+    - DELAYTICK 1
+    - minecraft:execute at @e[type=armor_stand,tag=%projectile_uuid%] run minecraft:particle
+      minecraft:dust{color:[0.0,2.0,0.0],scale:2.0} ^ ^ ^3 0.1 0.2 0.1 1 10
+    - DELAYTICK 1
+    - minecraft:execute at @e[type=armor_stand,tag=%projectile_uuid%] run minecraft:particle
+      minecraft:dust{color:[0.0,1.0,3.0],scale:2.0} ^ ^ ^3 0.1 0.2 0.1 1 10
+    - DELAYTICK 1
+    - minecraft:execute at @e[type=armor_stand,tag=%projectile_uuid%] run minecraft:particle
+      minecraft:dust{color:[0.0,1.0,2.0],scale:2.0} ^ ^ ^3 0.1 0.2 0.1 1 10
+    - DELAYTICK 1
+    - minecraft:execute at @e[type=armor_stand,tag=%projectile_uuid%] run minecraft:particle
+      minecraft:dust{color:[0.0,1.0,1.0],scale:2.0} ^ ^ ^3 0.1 0.2 0.1 1 10
+    - DELAYTICK 1
+    - minecraft:execute at @e[type=armor_stand,tag=%projectile_uuid%] run minecraft:particle
+      minecraft:dust{color:[0.0,0.0,1.0],scale:2.0} ^ ^ ^3 0.1 0.2 0.1 1 10
+    - DELAYTICK 1
+    - minecraft:execute at @e[type=armor_stand,tag=%projectile_uuid%] run minecraft:particle
+      minecraft:dust{color:[1.0,0.0,1.0],scale:2.0} ^ ^ ^3 0.1 0.2 0.1 1 10
+    - DELAYTICK 1
+    - minecraft:execute at @e[type=armor_stand,tag=%projectile_uuid%] run minecraft:particle
+      minecraft:dust{color:[1.0,0.0,2.0],scale:2.0} ^ ^ ^3 0.1 0.2 0.1 1 10
+    - DELAYTICK 1
+    - minecraft:execute at @e[type=armor_stand,tag=%projectile_uuid%] run minecraft:particle
+      minecraft:dust{color:[2.0,0.0,2.0],scale:2.0} ^ ^ ^3 0.1 0.2 0.1 1 10
+    - DELAYTICK 1
+    playerConditions: {}
+    worldConditions: {}
+    itemConditions: {}
+    customConditions: {}
+    placeholdersConditions:
+      plchC1:
+        type: PLAYER_STRING
+        comparator: EQUALS
+        part1: '%var_rng_int%'
+        part2: '2'
+        cancelEventIfNotValid: false
+        messageIfNotValid: ''
+    detailedEntities: []
+    entityCommands:
+    - minecraft:execute at %player% run minecraft:summon armor_stand ~ ~ ~ {NoGravity:1b,Invulnerable:1b,Marker:1b,Invisible:1b,Tags:["%projectile_uuid%"]}
+    - minecraft:execute at %player% as @e[type=armor_stand,tag=%projectile_uuid%]
+      run minecraft:tp @e[type=armor_stand,tag=%projectile_uuid%] ~ ~1 ~ ~120 ~
+    - minecraft:execute at %player% positioned %x% %y% %z% run minecraft:playsound
+      entity.player.attack.sweep ambient @a[distance=..10]
+    - 'LOOP START: 12'
+    - minecraft:execute at @e[type=armor_stand,tag=%projectile_uuid%] as @e[type=armor_stand,tag=%projectile_uuid%]
+      run minecraft:tp @e[type=armor_stand,tag=%projectile_uuid%] ~ ~ ~ ~-20 ~
+    - minecraft:execute at @e[type=armor_stand,tag=%projectile_uuid%] run minecraft:particle
+      sweep_attack ^ ^ ^3 .5 .5 .5 0 3
+    - minecraft:execute at @e[type=armor_stand,tag=%projectile_uuid%] as %projectile_uuid%
+      run minecraft:tp %projectile_uuid% ^ ^ ^3
+    - MOB_AROUND 1 DAMAGE 2
+    - DELAYTICK 1
+    - LOOP END
+    - minecraft:execute at @e[type=armor_stand,tag=%projectile_uuid%] as @e[type=armor_stand,tag=%projectile_uuid%]
+      run minecraft:tp @e[type=armor_stand,tag=%projectile_uuid%] ~ 0 ~
+    - minecraft:kill @e[type=armor_stand,tag=%projectile_uuid%]
+    - minecraft:kill %projectile_uuid%
+    entityConditions: {}
+    variablesModification: {}
+  activator4:
+    name: '&eActivator'
+    option: PLAYER_CUSTOM_LAUNCH
+    usageModification: 0
+    cancelEvent: false
+    silenceOutput: false
+    autoUpdateItem: false
+    cooldownFeatures:
+      cooldown: 0
+      isCooldownInTicks: false
+      cooldownMsg: '&cYou are in cooldown ! &7(&e%time_H%&6H &e%time_M%&6M &e%time_S%&6S&7)'
+      displayCooldownMessage: true
+      cancelEventIfInCooldown: false
+    globalCooldownFeatures:
+      cooldown: 0
+      isCooldownInTicks: false
+      cooldownMsg: '&cYou are in cooldown ! &7(&e%time_H%&6H &e%time_M%&6M &e%time_S%&6S&7)'
+      displayCooldownMessage: true
+      cancelEventIfInCooldown: false
+    otherEICooldowns: {}
+    requiredItems:
+      errorMessage: ''
+    requiredExecutableItems:
+      errorMessage: ''
+    detailedSlots:
+    - -1
+    playerCommands:
+    - minecraft:execute at @e[type=armor_stand,tag=%projectile_uuid%] run minecraft:particle
+      minecraft:dust{color:[1.0,0.0,0.0],scale:2.0} ^ ^ ^3 0.1 0.2 0.1 1 10
+    - DELAYTICK 1
+    - minecraft:execute at @e[type=armor_stand,tag=%projectile_uuid%] run minecraft:particle
+      minecraft:dust{color:[1.0,0.5,0.0],scale:2.0} ^ ^ ^3 0.1 0.2 0.1 1 10
+    - DELAYTICK 1
+    - minecraft:execute at @e[type=armor_stand,tag=%projectile_uuid%] run minecraft:particle
+      minecraft:dust{color:[1.0,0.8,0.0],scale:2.0} ^ ^ ^3 0.1 0.2 0.1 1 10
+    - DELAYTICK 1
+    - minecraft:execute at @e[type=armor_stand,tag=%projectile_uuid%] run minecraft:particle
+      minecraft:dust{color:[1.0,1.0,0.0],scale:2.0} ^ ^ ^3 0.1 0.2 0.1 1 10
+    - DELAYTICK 1
+    - minecraft:execute at @e[type=armor_stand,tag=%projectile_uuid%] run minecraft:particle
+      minecraft:dust{color:[0.0,1.0,0.0],scale:2.0} ^ ^ ^3 0.1 0.2 0.1 1 10
+    - DELAYTICK 1
+    - minecraft:execute at @e[type=armor_stand,tag=%projectile_uuid%] run minecraft:particle
+      minecraft:dust{color:[0.0,2.0,0.0],scale:2.0} ^ ^ ^3 0.1 0.2 0.1 1 10
+    - DELAYTICK 1
+    - minecraft:execute at @e[type=armor_stand,tag=%projectile_uuid%] run minecraft:particle
+      minecraft:dust{color:[0.0,1.0,3.0],scale:2.0} ^ ^ ^3 0.1 0.2 0.1 1 10
+    - DELAYTICK 1
+    - minecraft:execute at @e[type=armor_stand,tag=%projectile_uuid%] run minecraft:particle
+      minecraft:dust{color:[0.0,1.0,2.0],scale:2.0} ^ ^ ^3 0.1 0.2 0.1 1 10
+    - DELAYTICK 1
+    - minecraft:execute at @e[type=armor_stand,tag=%projectile_uuid%] run minecraft:particle
+      minecraft:dust{color:[0.0,1.0,1.0],scale:2.0} ^ ^ ^3 0.1 0.2 0.1 1 10
+    - DELAYTICK 1
+    - minecraft:execute at @e[type=armor_stand,tag=%projectile_uuid%] run minecraft:particle
+      minecraft:dust{color:[0.0,0.0,1.0],scale:2.0} ^ ^ ^3 0.1 0.2 0.1 1 10
+    - DELAYTICK 1
+    - minecraft:execute at @e[type=armor_stand,tag=%projectile_uuid%] run minecraft:particle
+      minecraft:dust{color:[1.0,0.0,1.0],scale:2.0} ^ ^ ^3 0.1 0.2 0.1 1 10
+    - DELAYTICK 1
+    - minecraft:execute at @e[type=armor_stand,tag=%projectile_uuid%] run minecraft:particle
+      minecraft:dust{color:[1.0,0.0,2.0],scale:2.0} ^ ^ ^3 0.1 0.2 0.1 1 10
+    - DELAYTICK 1
+    - minecraft:execute at @e[type=armor_stand,tag=%projectile_uuid%] run minecraft:particle
+      minecraft:dust{color:[2.0,0.0,2.0],scale:2.0} ^ ^ ^3 0.1 0.2 0.1 1 10
+    - DELAYTICK 1
+    playerConditions: {}
+    worldConditions: {}
+    itemConditions: {}
+    customConditions: {}
+    placeholdersConditions:
+      plchC1:
+        type: PLAYER_STRING
+        comparator: EQUALS
+        part1: '%var_rng_int%'
+        part2: '3'
+        cancelEventIfNotValid: false
+        messageIfNotValid: ''
+    detailedEntities: []
+    entityCommands:
+    - minecraft:execute at %player% run minecraft:summon armor_stand ~ ~ ~ {NoGravity:1b,Invulnerable:1b,Marker:1b,Invisible:1b,Tags:["%projectile_uuid%"]}
+    - minecraft:execute at %player% as @e[type=armor_stand,tag=%projectile_uuid%]
+      run minecraft:tp @e[type=armor_stand,tag=%projectile_uuid%] ~ ~1 ~ ~120 ~
+    - minecraft:execute at %player% positioned %x% %y% %z% run minecraft:playsound
+      entity.player.attack.sweep ambient @a[distance=..10]
+    - 'LOOP START: 12'
+    - minecraft:execute at @e[type=armor_stand,tag=%projectile_uuid%] as @e[type=armor_stand,tag=%projectile_uuid%]
+      run minecraft:tp @e[type=armor_stand,tag=%projectile_uuid%] ~ ~ ~ ~-20 ~-5
+    - minecraft:execute at @e[type=armor_stand,tag=%projectile_uuid%] run minecraft:particle
+      sweep_attack ^ ^ ^3 .5 .5 .5 0 3
+    - minecraft:execute at @e[type=armor_stand,tag=%projectile_uuid%] as %projectile_uuid%
+      run minecraft:tp %projectile_uuid% ^ ^ ^3
+    - MOB_AROUND 1 DAMAGE 2
+    - DELAYTICK 1
+    - LOOP END
+    - minecraft:execute at @e[type=armor_stand,tag=%projectile_uuid%] as @e[type=armor_stand,tag=%projectile_uuid%]
+      run minecraft:tp @e[type=armor_stand,tag=%projectile_uuid%] ~ 0 ~
+    - minecraft:kill @e[type=armor_stand,tag=%projectile_uuid%]
+    - minecraft:kill %projectile_uuid%
+    entityConditions: {}
+    variablesModification: {}
+  activator5:
+    name: '&eActivator'
+    option: PLAYER_CUSTOM_LAUNCH
+    usageModification: 0
+    cancelEvent: false
+    silenceOutput: false
+    autoUpdateItem: false
+    cooldownFeatures:
+      cooldown: 0
+      isCooldownInTicks: false
+      cooldownMsg: '&cYou are in cooldown ! &7(&e%time_H%&6H &e%time_M%&6M &e%time_S%&6S&7)'
+      displayCooldownMessage: true
+      cancelEventIfInCooldown: false
+    globalCooldownFeatures:
+      cooldown: 0
+      isCooldownInTicks: false
+      cooldownMsg: '&cYou are in cooldown ! &7(&e%time_H%&6H &e%time_M%&6M &e%time_S%&6S&7)'
+      displayCooldownMessage: true
+      cancelEventIfInCooldown: false
+    otherEICooldowns: {}
+    requiredItems:
+      errorMessage: ''
+    requiredExecutableItems:
+      errorMessage: ''
+    detailedSlots:
+    - -1
+    playerCommands:
+    - minecraft:execute at @e[type=armor_stand,tag=%projectile_uuid%] run minecraft:particle
+      minecraft:dust{color:[1.0,0.0,0.0],scale:2.0} ^ ^ ^3 0.1 0.2 0.1 1 10
+    - DELAYTICK 1
+    - minecraft:execute at @e[type=armor_stand,tag=%projectile_uuid%] run minecraft:particle
+      minecraft:dust{color:[1.0,0.5,0.0],scale:2.0} ^ ^ ^3 0.1 0.2 0.1 1 10
+    - DELAYTICK 1
+    - minecraft:execute at @e[type=armor_stand,tag=%projectile_uuid%] run minecraft:particle
+      minecraft:dust{color:[1.0,0.8,0.0],scale:2.0} ^ ^ ^3 0.1 0.2 0.1 1 10
+    - DELAYTICK 1
+    - minecraft:execute at @e[type=armor_stand,tag=%projectile_uuid%] run minecraft:particle
+      minecraft:dust{color:[1.0,1.0,0.0],scale:2.0} ^ ^ ^3 0.1 0.2 0.1 1 10
+    - DELAYTICK 1
+    - minecraft:execute at @e[type=armor_stand,tag=%projectile_uuid%] run minecraft:particle
+      minecraft:dust{color:[0.0,1.0,0.0],scale:2.0} ^ ^ ^3 0.1 0.2 0.1 1 10
+    - DELAYTICK 1
+    - minecraft:execute at @e[type=armor_stand,tag=%projectile_uuid%] run minecraft:particle
+      minecraft:dust{color:[0.0,2.0,0.0],scale:2.0} ^ ^ ^3 0.1 0.2 0.1 1 10
+    - DELAYTICK 1
+    - minecraft:execute at @e[type=armor_stand,tag=%projectile_uuid%] run minecraft:particle
+      minecraft:dust{color:[0.0,1.0,3.0],scale:2.0} ^ ^ ^3 0.1 0.2 0.1 1 10
+    - DELAYTICK 1
+    - minecraft:execute at @e[type=armor_stand,tag=%projectile_uuid%] run minecraft:particle
+      minecraft:dust{color:[0.0,1.0,2.0],scale:2.0} ^ ^ ^3 0.1 0.2 0.1 1 10
+    - DELAYTICK 1
+    - minecraft:execute at @e[type=armor_stand,tag=%projectile_uuid%] run minecraft:particle
+      minecraft:dust{color:[0.0,1.0,1.0],scale:2.0} ^ ^ ^3 0.1 0.2 0.1 1 10
+    - DELAYTICK 1
+    - minecraft:execute at @e[type=armor_stand,tag=%projectile_uuid%] run minecraft:particle
+      minecraft:dust{color:[0.0,0.0,1.0],scale:2.0} ^ ^ ^3 0.1 0.2 0.1 1 10
+    - DELAYTICK 1
+    - minecraft:execute at @e[type=armor_stand,tag=%projectile_uuid%] run minecraft:particle
+      minecraft:dust{color:[1.0,0.0,1.0],scale:2.0} ^ ^ ^3 0.1 0.2 0.1 1 10
+    - DELAYTICK 1
+    - minecraft:execute at @e[type=armor_stand,tag=%projectile_uuid%] run minecraft:particle
+      minecraft:dust{color:[1.0,0.0,2.0],scale:2.0} ^ ^ ^3 0.1 0.2 0.1 1 10
+    - DELAYTICK 1
+    - minecraft:execute at @e[type=armor_stand,tag=%projectile_uuid%] run minecraft:particle
+      minecraft:dust{color:[2.0,0.0,2.0],scale:2.0} ^ ^ ^3 0.1 0.2 0.1 1 10
+    - DELAYTICK 1
+    playerConditions: {}
+    worldConditions: {}
+    itemConditions: {}
+    customConditions: {}
+    placeholdersConditions:
+      plchC1:
+        type: PLAYER_STRING
+        comparator: EQUALS
+        part1: '%var_rng_int%'
+        part2: '4'
+        cancelEventIfNotValid: false
+        messageIfNotValid: ''
+    detailedEntities: []
+    entityCommands:
+    - minecraft:execute at %player% run minecraft:summon armor_stand ~ ~ ~ {NoGravity:1b,Invulnerable:1b,Marker:1b,Invisible:1b,Tags:["%projectile_uuid%"]}
+    - minecraft:execute at %player% as @e[type=armor_stand,tag=%projectile_uuid%]
+      run minecraft:tp @e[type=armor_stand,tag=%projectile_uuid%] ~ ~1 ~ ~-120 ~
+    - minecraft:execute at %player% positioned %x% %y% %z% run minecraft:playsound
+      entity.player.attack.sweep ambient @a[distance=..10]
+    - 'LOOP START: 12'
+    - minecraft:execute at @e[type=armor_stand,tag=%projectile_uuid%] as @e[type=armor_stand,tag=%projectile_uuid%]
+      run minecraft:tp @e[type=armor_stand,tag=%projectile_uuid%] ~ ~ ~ ~20 ~-5
+    - minecraft:execute at @e[type=armor_stand,tag=%projectile_uuid%] run minecraft:particle
+      sweep_attack ^ ^ ^3 .5 .5 .5 0 3
+    - minecraft:execute at @e[type=armor_stand,tag=%projectile_uuid%] as %projectile_uuid%
+      run minecraft:tp %projectile_uuid% ^ ^ ^3
+    - MOB_AROUND 1 DAMAGE 2
+    - DELAYTICK 1
+    - LOOP END
+    - minecraft:execute at @e[type=armor_stand,tag=%projectile_uuid%] as @e[type=armor_stand,tag=%projectile_uuid%]
+      run minecraft:tp @e[type=armor_stand,tag=%projectile_uuid%] ~ 0 ~
+    - minecraft:kill @e[type=armor_stand,tag=%projectile_uuid%]
+    - minecraft:kill %projectile_uuid%
+    entityConditions: {}
+    variablesModification: {}
+  activator6:
+    name: '&eActivator'
+    option: PLAYER_CUSTOM_LAUNCH
+    usageModification: 0
+    cancelEvent: false
+    silenceOutput: false
+    autoUpdateItem: false
+    cooldownFeatures:
+      cooldown: 0
+      isCooldownInTicks: false
+      cooldownMsg: '&cYou are in cooldown ! &7(&e%time_H%&6H &e%time_M%&6M &e%time_S%&6S&7)'
+      displayCooldownMessage: true
+      cancelEventIfInCooldown: false
+    globalCooldownFeatures:
+      cooldown: 0
+      isCooldownInTicks: false
+      cooldownMsg: '&cYou are in cooldown ! &7(&e%time_H%&6H &e%time_M%&6M &e%time_S%&6S&7)'
+      displayCooldownMessage: true
+      cancelEventIfInCooldown: false
+    otherEICooldowns: {}
+    requiredItems:
+      errorMessage: ''
+    requiredExecutableItems:
+      errorMessage: ''
+    detailedSlots:
+    - -1
+    playerCommands:
+    - minecraft:execute at @e[type=armor_stand,tag=%projectile_uuid%] run minecraft:particle
+      minecraft:dust{color:[1.0,0.0,0.0],scale:2.0} ^ ^ ^3 0.1 0.2 0.1 1 10
+    - DELAYTICK 1
+    - minecraft:execute at @e[type=armor_stand,tag=%projectile_uuid%] run minecraft:particle
+      minecraft:dust{color:[1.0,0.5,0.0],scale:2.0} ^ ^ ^3 0.1 0.2 0.1 1 10
+    - DELAYTICK 1
+    - minecraft:execute at @e[type=armor_stand,tag=%projectile_uuid%] run minecraft:particle
+      minecraft:dust{color:[1.0,0.8,0.0],scale:2.0} ^ ^ ^3 0.1 0.2 0.1 1 10
+    - DELAYTICK 1
+    - minecraft:execute at @e[type=armor_stand,tag=%projectile_uuid%] run minecraft:particle
+      minecraft:dust{color:[1.0,1.0,0.0],scale:2.0} ^ ^ ^3 0.1 0.2 0.1 1 10
+    - DELAYTICK 1
+    - minecraft:execute at @e[type=armor_stand,tag=%projectile_uuid%] run minecraft:particle
+      minecraft:dust{color:[0.0,1.0,0.0],scale:2.0} ^ ^ ^3 0.1 0.2 0.1 1 10
+    - DELAYTICK 1
+    - minecraft:execute at @e[type=armor_stand,tag=%projectile_uuid%] run minecraft:particle
+      minecraft:dust{color:[0.0,2.0,0.0],scale:2.0} ^ ^ ^3 0.1 0.2 0.1 1 10
+    - DELAYTICK 1
+    - minecraft:execute at @e[type=armor_stand,tag=%projectile_uuid%] run minecraft:particle
+      minecraft:dust{color:[0.0,1.0,3.0],scale:2.0} ^ ^ ^3 0.1 0.2 0.1 1 10
+    - DELAYTICK 1
+    - minecraft:execute at @e[type=armor_stand,tag=%projectile_uuid%] run minecraft:particle
+      minecraft:dust{color:[0.0,1.0,2.0],scale:2.0} ^ ^ ^3 0.1 0.2 0.1 1 10
+    - DELAYTICK 1
+    - minecraft:execute at @e[type=armor_stand,tag=%projectile_uuid%] run minecraft:particle
+      minecraft:dust{color:[0.0,1.0,1.0],scale:2.0} ^ ^ ^3 0.1 0.2 0.1 1 10
+    - DELAYTICK 1
+    - minecraft:execute at @e[type=armor_stand,tag=%projectile_uuid%] run minecraft:particle
+      minecraft:dust{color:[0.0,0.0,1.0],scale:2.0} ^ ^ ^3 0.1 0.2 0.1 1 10
+    - DELAYTICK 1
+    - minecraft:execute at @e[type=armor_stand,tag=%projectile_uuid%] run minecraft:particle
+      minecraft:dust{color:[1.0,0.0,1.0],scale:2.0} ^ ^ ^3 0.1 0.2 0.1 1 10
+    - DELAYTICK 1
+    - minecraft:execute at @e[type=armor_stand,tag=%projectile_uuid%] run minecraft:particle
+      minecraft:dust{color:[1.0,0.0,2.0],scale:2.0} ^ ^ ^3 0.1 0.2 0.1 1 10
+    - DELAYTICK 1
+    - minecraft:execute at @e[type=armor_stand,tag=%projectile_uuid%] run minecraft:particle
+      minecraft:dust{color:[2.0,0.0,2.0],scale:2.0} ^ ^ ^3 0.1 0.2 0.1 1 10
+    - DELAYTICK 1
+    playerConditions: {}
+    worldConditions: {}
+    itemConditions: {}
+    customConditions: {}
+    placeholdersConditions:
+      plchC1:
+        type: PLAYER_STRING
+        comparator: EQUALS
+        part1: '%var_rng_int%'
+        part2: '5'
+        cancelEventIfNotValid: false
+        messageIfNotValid: ''
+    detailedEntities: []
+    entityCommands:
+    - minecraft:execute at %player% run minecraft:summon armor_stand ~ ~ ~ {NoGravity:1b,Invulnerable:1b,Marker:1b,Invisible:1b,Tags:["%projectile_uuid%"]}
+    - minecraft:execute at %player% as @e[type=armor_stand,tag=%projectile_uuid%]
+      run minecraft:tp @e[type=armor_stand,tag=%projectile_uuid%] ~ ~1 ~ ~ ~45
+    - minecraft:execute at %player% positioned %x% %y% %z% run minecraft:playsound
+      entity.player.attack.sweep ambient @a[distance=..10]
+    - 'LOOP START: 12'
+    - minecraft:execute at @e[type=armor_stand,tag=%projectile_uuid%] as @e[type=armor_stand,tag=%projectile_uuid%]
+      run minecraft:tp @e[type=armor_stand,tag=%projectile_uuid%] ~ ~ ~ ~ ~-20
+    - minecraft:execute at @e[type=armor_stand,tag=%projectile_uuid%] run minecraft:particle
+      sweep_attack ^ ^ ^3 .5 .5 .5 0 3
+    - minecraft:execute at @e[type=armor_stand,tag=%projectile_uuid%] as %projectile_uuid%
+      run minecraft:tp %projectile_uuid% ^ ^ ^3
+    - MOB_AROUND 1 DAMAGE 2
+    - DELAYTICK 1
+    - LOOP END
+    - minecraft:execute at @e[type=armor_stand,tag=%projectile_uuid%] as @e[type=armor_stand,tag=%projectile_uuid%]
+      run minecraft:tp @e[type=armor_stand,tag=%projectile_uuid%] ~ 0 ~
+    - minecraft:kill @e[type=armor_stand,tag=%projectile_uuid%]
+    - minecraft:kill %projectile_uuid%
+    entityConditions: {}
+    variablesModification: {}
+  activator7:
+    name: '&eActivator'
+    option: PLAYER_CUSTOM_LAUNCH
+    usageModification: 0
+    cancelEvent: false
+    silenceOutput: false
+    autoUpdateItem: false
+    cooldownFeatures:
+      cooldown: 0
+      isCooldownInTicks: false
+      cooldownMsg: '&cYou are in cooldown ! &7(&e%time_H%&6H &e%time_M%&6M &e%time_S%&6S&7)'
+      displayCooldownMessage: true
+      cancelEventIfInCooldown: false
+    globalCooldownFeatures:
+      cooldown: 0
+      isCooldownInTicks: false
+      cooldownMsg: '&cYou are in cooldown ! &7(&e%time_H%&6H &e%time_M%&6M &e%time_S%&6S&7)'
+      displayCooldownMessage: true
+      cancelEventIfInCooldown: false
+    otherEICooldowns: {}
+    requiredItems:
+      errorMessage: ''
+    requiredExecutableItems:
+      errorMessage: ''
+    detailedSlots:
+    - -1
+    playerCommands:
+    - minecraft:execute at @e[type=armor_stand,tag=%projectile_uuid%] run minecraft:particle
+      minecraft:dust{color:[1.0,0.0,0.0],scale:2.0} ^ ^ ^3 0.1 0.2 0.1 1 10
+    - DELAYTICK 1
+    - minecraft:execute at @e[type=armor_stand,tag=%projectile_uuid%] run minecraft:particle
+      minecraft:dust{color:[1.0,0.5,0.0],scale:2.0} ^ ^ ^3 0.1 0.2 0.1 1 10
+    - DELAYTICK 1
+    - minecraft:execute at @e[type=armor_stand,tag=%projectile_uuid%] run minecraft:particle
+      minecraft:dust{color:[1.0,0.8,0.0],scale:2.0} ^ ^ ^3 0.1 0.2 0.1 1 10
+    - DELAYTICK 1
+    - minecraft:execute at @e[type=armor_stand,tag=%projectile_uuid%] run minecraft:particle
+      minecraft:dust{color:[1.0,1.0,0.0],scale:2.0} ^ ^ ^3 0.1 0.2 0.1 1 10
+    - DELAYTICK 1
+    - minecraft:execute at @e[type=armor_stand,tag=%projectile_uuid%] run minecraft:particle
+      minecraft:dust{color:[0.0,1.0,0.0],scale:2.0} ^ ^ ^3 0.1 0.2 0.1 1 10
+    - DELAYTICK 1
+    - minecraft:execute at @e[type=armor_stand,tag=%projectile_uuid%] run minecraft:particle
+      minecraft:dust{color:[0.0,2.0,0.0],scale:2.0} ^ ^ ^3 0.1 0.2 0.1 1 10
+    - DELAYTICK 1
+    - minecraft:execute at @e[type=armor_stand,tag=%projectile_uuid%] run minecraft:particle
+      minecraft:dust{color:[0.0,1.0,3.0],scale:2.0} ^ ^ ^3 0.1 0.2 0.1 1 10
+    - DELAYTICK 1
+    - minecraft:execute at @e[type=armor_stand,tag=%projectile_uuid%] run minecraft:particle
+      minecraft:dust{color:[0.0,1.0,2.0],scale:2.0} ^ ^ ^3 0.1 0.2 0.1 1 10
+    - DELAYTICK 1
+    - minecraft:execute at @e[type=armor_stand,tag=%projectile_uuid%] run minecraft:particle
+      minecraft:dust{color:[0.0,1.0,1.0],scale:2.0} ^ ^ ^3 0.1 0.2 0.1 1 10
+    - DELAYTICK 1
+    - minecraft:execute at @e[type=armor_stand,tag=%projectile_uuid%] run minecraft:particle
+      minecraft:dust{color:[0.0,0.0,1.0],scale:2.0} ^ ^ ^3 0.1 0.2 0.1 1 10
+    - DELAYTICK 1
+    - minecraft:execute at @e[type=armor_stand,tag=%projectile_uuid%] run minecraft:particle
+      minecraft:dust{color:[1.0,0.0,1.0],scale:2.0} ^ ^ ^3 0.1 0.2 0.1 1 10
+    - DELAYTICK 1
+    - minecraft:execute at @e[type=armor_stand,tag=%projectile_uuid%] run minecraft:particle
+      minecraft:dust{color:[1.0,0.0,2.0],scale:2.0} ^ ^ ^3 0.1 0.2 0.1 1 10
+    - DELAYTICK 1
+    - minecraft:execute at @e[type=armor_stand,tag=%projectile_uuid%] run minecraft:particle
+      minecraft:dust{color:[2.0,0.0,2.0],scale:2.0} ^ ^ ^3 0.1 0.2 0.1 1 10
+    - DELAYTICK 1
+    playerConditions: {}
+    worldConditions: {}
+    itemConditions: {}
+    customConditions: {}
+    placeholdersConditions:
+      plchC1:
+        type: PLAYER_STRING
+        comparator: EQUALS
+        part1: '%var_rng_int%'
+        part2: '6'
+        cancelEventIfNotValid: false
+        messageIfNotValid: ''
+    detailedEntities: []
+    entityCommands:
+    - minecraft:execute at %player% run minecraft:summon armor_stand ~ ~ ~ {NoGravity:1b,Invulnerable:1b,Marker:1b,Invisible:1b,Tags:["%projectile_uuid%"]}
+    - minecraft:execute at %player% as @e[type=armor_stand,tag=%projectile_uuid%]
+      run minecraft:tp @e[type=armor_stand,tag=%projectile_uuid%] ~ ~1 ~ ~ ~-90
+    - minecraft:execute at %player% positioned %x% %y% %z% run minecraft:playsound
+      entity.player.attack.sweep ambient @a[distance=..10]
+    - 'LOOP START: 12'
+    - minecraft:execute at @e[type=armor_stand,tag=%projectile_uuid%] as @e[type=armor_stand,tag=%projectile_uuid%]
+      run minecraft:tp @e[type=armor_stand,tag=%projectile_uuid%] ~ ~ ~ ~ ~10
+    - minecraft:execute at @e[type=armor_stand,tag=%projectile_uuid%] run minecraft:particle
+      sweep_attack ^ ^ ^3 .5 .5 .5 0 3
+    - minecraft:execute at @e[type=armor_stand,tag=%projectile_uuid%] as %projectile_uuid%
+      run minecraft:tp %projectile_uuid% ^ ^ ^3
+    - MOB_AROUND 1 DAMAGE 2
+    - DELAYTICK 1
+    - LOOP END
+    - minecraft:kill %projectile_uuid%
+    - minecraft:execute at @e[type=armor_stand,tag=%projectile_uuid%] as @e[type=armor_stand,tag=%projectile_uuid%]
+      run minecraft:tp @e[type=armor_stand,tag=%projectile_uuid%] ~ 0 ~
+    - minecraft:kill @e[type=armor_stand,tag=%projectile_uuid%]
+    - minecraft:kill %projectile_uuid%
+    entityConditions: {}
+    variablesModification: {}
+recognitions: []
+attributes: {}
+nbt:
+  '0':
+    key: Damage
+    type: INT
+    value: 0
+config_5: true
+config_update: true
+config_5_98: true

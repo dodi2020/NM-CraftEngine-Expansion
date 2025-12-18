@@ -1,0 +1,8 @@
+isEnabled: true
+entityType: GHAST
+name: '&fLvl &2$level &fElite &fGhast'
+deathMessages:
+- $player &cdidn't dodge $entity&c &cfireballs!
+- $player &cwas blown to bits $entity&c!
+- $entity &cgot $player's &cbacon!
+baseDamageV2: 22.5

@@ -1,0 +1,10 @@
+isEnabled: true
+material: SPECTRAL_ARROW
+name: '&6Grappling Arrow'
+lore:
+- '&eFire at a TARGET BLOCK to grapple!'
+enchantments:
+- GRAPPLING_HOOK,1
+potionEffects: []
+dropWeight: '1'
+scalability: FIXED

@@ -1,0 +1,13 @@
+isEnabled: true
+material: IRON_LEGGINGS
+name: '&fGrunt''s Leggings'
+lore:
+- '&2Awarded to those who challenge the'
+- '&2Wood League Arena!'
+enchantments:
+- PROTECTION,5
+- PROJECTILE_PROTECTION,4
+- UNBREAKING,5
+potionEffects: []
+itemType: UNIQUE
+level: 20

@@ -1,0 +1,4 @@
+isEnabled: true
+name: Strength
+onHitDuration: 30
+value: 100.0

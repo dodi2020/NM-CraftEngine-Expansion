@@ -1,0 +1,13 @@
+isEnabled: true
+material: CROSSBOW
+name: '&8Goblin Ballista'
+lore:
+- '&8A treasure among goblins!'
+enchantments:
+- POWER,1
+- UNBREAKING,1
+- QUICK_CHARGE,3
+- MULTISHOT,1
+potionEffects:
+- HEAL,0,self,onHit
+itemType: UNIQUE

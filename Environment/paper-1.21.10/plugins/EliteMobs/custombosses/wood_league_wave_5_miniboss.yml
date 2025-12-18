@@ -1,0 +1,16 @@
+isEnabled: true
+entityType: RAVAGER
+name: $minibossLevel &cWeird Cow
+level: '5'
+healthMultiplier: 3.0
+damageMultiplier: 2.0
+powers:
+- attack_push.yml
+- attack_gravity.yml
+onDamagedMessages:
+- Woof!
+followDistance: 60
+onSpawnBlockStates: []
+onRemoveBlockStates: []
+movementSpeedAttribute: 0.6
+bossType: NORMAL

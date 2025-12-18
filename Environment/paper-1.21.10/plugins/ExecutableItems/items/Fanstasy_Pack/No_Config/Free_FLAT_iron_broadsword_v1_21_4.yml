@@ -1,0 +1,6 @@
+material: STICK
+config_5: true
+config_update: true
+itemModel: ei:iron_broadsword
+hiders:
+  hideUsage: true

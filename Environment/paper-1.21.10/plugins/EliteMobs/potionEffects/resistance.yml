@@ -1,0 +1,4 @@
+isEnabled: true
+name: Resistance
+onHitDuration: 30
+value: 100.0

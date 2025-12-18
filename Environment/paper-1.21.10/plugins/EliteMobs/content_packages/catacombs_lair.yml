@@ -1,0 +1,21 @@
+isEnabled: true
+name: '&2[lvl 010] &8The Catacombs'
+customInfo:
+- '&fA great starter lair for players!'
+- '&6Credits: Realm of Lotheridon, MagmaGuy, Dali, Frost'
+dungeonSizeCategory: LAIR
+worldName: em_the_catacombs
+environment: NORMAL
+protect: true
+playerInfo: |-
+  Difficulty: &cHard
+  $bossCount bosses, from tier $lowestTier to $highestTier
+  &2A great Lair challenge for groups of beginners!
+regionEnterMessage: '&8[EM] &8Now entering the Catacombs. Be careful with what dwells
+  below...'
+regionLeaveMessage: '&8[EM] &8You have left the Catacombs. Was it worth it?'
+teleportLocation: em_the_catacombs,41.5,65.0,82.5,176,0
+contentType: OPEN_DUNGEON
+dungeonConfigFolderName: the_catacombs
+setupMenuDescription:
+- '&2A level 10 lair for new players!'

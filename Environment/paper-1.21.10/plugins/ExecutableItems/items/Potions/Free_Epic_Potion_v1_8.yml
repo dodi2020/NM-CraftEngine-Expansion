@@ -1,0 +1,101 @@
+name: '&d֎ &5&lEpic potion &d֎'
+lore:
+- '&d&l---&7&l>>&d&l-----&7&l<<&d&l---'
+- '&7Tier: &dRare'
+- '&7Effects:'
+- ' &5• &dSpeed 3 (30 secs)'
+- ' &5• &dStrength 5 (10 secs)'
+- '&7Epic:'
+- ' &5• &dEpic particles ❁'
+- '&d&l---&7&l>>&d&l-----&7&l<<&d&l---'
+- '&8Signed by: &5%player%'
+material: POTION
+glow: true
+disableStack: false
+keepItemOnDeath: false
+canBeUsedOnlyByTheOwner: false
+storeItemInfo: false
+unbreakable: false
+usage: 0
+usageLimit: -1
+dropFeatures:
+  glowDrop: false
+  glowDropColor: WHITE
+  displayNameDrop: false
+hiders:
+  hideEnchantments: false
+  hideUnbreakable: false
+  hideAttributes: false
+  hidePotionEffects: true
+  hideUsage: false
+enchantments: {}
+giveFirstJoinFeatures:
+  giveFirstJoin: false
+  giveFirstJoinAmount: 1
+  giveFirstJoinSlot: 0
+restrictions:
+  cancel-item-drop: true
+  cancel-anvil: true
+  cancel-item-place: true
+  cancel-item-craft: true
+cancelEventIfNoPerm: false
+cancelEventIfNotOwner: false
+disabledWorlds: []
+variables: {}
+activators:
+  activator1:
+    name: '&eActivator'
+    option: PLAYER_CONSUME
+    usageModification: -1
+    cancelEvent: false
+    silenceOutput: false
+    autoUpdateItem: false
+    cooldownFeatures:
+      cooldown: 0
+      isCooldownInTicks: false
+      cooldownMsg: '&cYou are in cooldown ! &7(&e%time_H%&6H &e%time_M%&6M &e%time_S%&6S&7)'
+      displayCooldownMessage: false
+      cancelEventIfInCooldown: false
+    globalCooldownFeatures:
+      cooldown: 0
+      isCooldownInTicks: false
+      cooldownMsg: '&cYou are in cooldown ! &7(&e%time_H%&6H &e%time_M%&6M &e%time_S%&6S&7)'
+      displayCooldownMessage: true
+      cancelEventIfInCooldown: false
+    otherEICooldowns: {}
+    requiredItems: {}
+    requiredExecutableItems: {}
+    detailedSlots:
+    - -1
+    - 40
+    playerCommands:
+    - PARTICLE DRAGON_BREATH 200 1.5 0.12
+    playerConditions: {}
+    worldConditions: {}
+    itemConditions: {}
+    customConditions: {}
+    placeholdersConditions: {}
+    variablesModification: {}
+recognitions: []
+potionFeatures:
+  potionColor: 16776960
+  potionType: WATER
+  potionExtended: false
+  potionUpgraded: false
+  potionEffects:
+    '1':
+      isAmbient: false
+      duration: 400
+      potionEffectType: SPEED
+      amplifier: 2
+      hasParticles: false
+      hasIcon: false
+    '2':
+      isAmbient: false
+      duration: 200
+      potionEffectType: INCREASE_DAMAGE
+      amplifier: 4
+      hasParticles: false
+      hasIcon: false
+attributes: {}
+config_5: true

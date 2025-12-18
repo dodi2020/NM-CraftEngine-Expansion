@@ -1,0 +1,5 @@
+isEnabled: true
+name: Meteor Shower
+maxLevelV2: 1
+value: 130.0
+isEnabledForProcedurallyGeneratedItems: false

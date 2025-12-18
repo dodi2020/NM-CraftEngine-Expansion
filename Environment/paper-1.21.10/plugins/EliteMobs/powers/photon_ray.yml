@@ -1,0 +1,4 @@
+isEnabled: true
+powerCooldown: 60
+globalCooldown: 20
+powerType: UNIQUE

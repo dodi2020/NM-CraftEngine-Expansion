@@ -1,0 +1,12 @@
+isEnabled: true
+eventType: TIMED
+bossFilenames:
+- treasure_goblin.yml
+eventStartCommands: []
+eventEndCommands: []
+breakableMaterials: []
+localCooldown: 120.0
+globalCooldown: 25.0
+weight: 100.0
+eventDuration: 30.0
+spawnType: normal_surface_spawn.yml

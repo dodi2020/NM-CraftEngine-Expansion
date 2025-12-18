@@ -1,0 +1,15 @@
+isEnabled: true
+effect: BONE_BLOCK
+powerType: MISCELLANEOUS
+eliteScript:
+  SpawnBoneBlock:
+    Events:
+    - EliteMobDeathEvent
+    Actions:
+    - duration: 2400
+      action: PLACE_BLOCK
+      Target:
+        targetType: SELF
+      material: BONE_BLOCK
+      conditions:
+        locationIsAir: true

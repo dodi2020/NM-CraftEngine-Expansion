@@ -1,0 +1,7 @@
+isEnabled: true
+location1: em_adventurers_guild,296.5,103,308.5,-175,0
+location1Text: '&6『Colosseum Minidungeon』 &6Lvl 70'
+location2: the_colosseum_lair.yml
+style: CRYSTAL
+particleColor: 16756736
+blindPlayer: true

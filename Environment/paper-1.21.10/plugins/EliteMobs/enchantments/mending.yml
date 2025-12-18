@@ -1,0 +1,5 @@
+isEnabled: false
+name: Mending
+maxLevelV2: 1
+value: 13.0
+isEnabledForProcedurallyGeneratedItems: false

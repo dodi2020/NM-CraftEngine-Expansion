@@ -1,0 +1,6 @@
+isEnabled: true
+entityType: WARDEN
+name: '&fLvl &2$level &fElite &3Warden'
+deathMessages:
+- $entity &csensed $player &cwas nearby!
+baseDamageV2: 45.0

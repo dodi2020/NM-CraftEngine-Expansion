@@ -1,0 +1,249 @@
+name: '&d&lWither Lord Mask'
+lore:
+- ''
+- '&7Crafted by &6&l[&f&l%player%&6&l]'
+- '&7A Mythic Series Helmet by Special70'
+- '&f'
+- '&7To one who is wearing this mask will'
+- '&7gain immense power'
+- '&7When you wear this mask, purple smoke emits from you.'
+- '&f'
+- '&8This mask cannot be enchanted nor renamed...'
+- '&f'
+- '&7&l>&8&l>&7&l> &d&lABILITIES &7&l<&8&l<&7&l<'
+- ''
+- '&f&l >>> &d&lWither Impact'
+- '&7 - &fWhen you jump, you will get launched real high.'
+- '&fWhen you sneak midair, you will fall super fast and'
+- '&fupon impact, you will deal 8 damage to nearby players'
+- '&fand mobs in a 6 block radius while not receiving any'
+- '&ffall damage.'
+- ''
+- '&f&l >>> &d&lWither Rend'
+- '&7 - &fWhen you left-click,'
+- '&fyou will fly through in your direction and dealing'
+- '&f12 damage to targets that were near you while you'
+- '&fwere flying.'
+material: WITHER_SKELETON_SKULL
+glow: false
+disableStack: false
+keepItemOnDeath: false
+canBeUsedOnlyByTheOwner: false
+storeItemInfo: true
+unbreakable: false
+usage: 0
+usageLimit: -1
+dropFeatures:
+  glowDrop: false
+  glowDropColor: WHITE
+  displayNameDrop: false
+hiders:
+  hideEnchantments: false
+  hideUnbreakable: false
+  hideAttributes: false
+  hidePotionEffects: false
+  hideUsage: false
+enchantments: {}
+giveFirstJoinFeatures:
+  giveFirstJoin: false
+  giveFirstJoinAmount: 1
+  giveFirstJoinSlot: 0
+restrictions:
+  cancel-item-place: true
+cancelEventIfNoPerm: false
+cancelEventIfNotOwner: false
+disabledWorlds: []
+variables: {}
+activators:
+  PARTICLE_ACTIVATOR:
+    name: '&eActivator'
+    option: LOOP
+    usageModification: 0
+    cancelEvent: false
+    silenceOutput: true
+    autoUpdateItem: false
+    cooldownFeatures:
+      cooldown: 0
+      isCooldownInTicks: false
+      cooldownMsg: '&cYou are in cooldown ! &7(&e%time_H%&6H &e%time_M%&6M &e%time_S%&6S&7)'
+      displayCooldownMessage: true
+      cancelEventIfInCooldown: false
+    globalCooldownFeatures:
+      cooldown: 0
+      isCooldownInTicks: false
+      cooldownMsg: '&cYou are in cooldown ! &7(&e%time_H%&6H &e%time_M%&6M &e%time_S%&6S&7)'
+      displayCooldownMessage: true
+      cancelEventIfInCooldown: false
+    otherEICooldowns: {}
+    requiredItems: {}
+    requiredExecutableItems: {}
+    detailedSlots:
+    - 39
+    playerCommands:
+    - execute at %player% run particle dust{color:[1.0,0.0,1.0],scale:2} ~ ~ ~ 0.01 1 0.01 0 50
+    playerConditions: {}
+    worldConditions: {}
+    itemConditions: {}
+    customConditions: {}
+    placeholdersConditions: {}
+    delay: 1
+    delayInTick: true
+    variablesModification: {}
+  activator1:
+    name: '&eActivator'
+    option: PLAYER_JUMP
+    usageModification: 0
+    cancelEvent: false
+    silenceOutput: true
+    autoUpdateItem: false
+    cooldownFeatures:
+      cooldown: 0
+      isCooldownInTicks: false
+      cooldownMsg: '&cYou are in cooldown ! &7(&e%time_H%&6H &e%time_M%&6M &e%time_S%&6S&7)'
+      displayCooldownMessage: true
+      cancelEventIfInCooldown: false
+    globalCooldownFeatures:
+      cooldown: 0
+      isCooldownInTicks: false
+      cooldownMsg: '&cYou are in cooldown ! &7(&e%time_H%&6H &e%time_M%&6M &e%time_S%&6S&7)'
+      displayCooldownMessage: true
+      cancelEventIfInCooldown: false
+    otherEICooldowns: {}
+    requiredItems: {}
+    requiredExecutableItems: {}
+    detailedSlots:
+    - 39
+    playerCommands:
+    - CUSTOMDASH1 %x% %y%+5 %z%
+    - execute at %player% run particle dust{color:[1.0,0.0,1.0],scale:2} ~ ~ ~ 1 0.1 1 0 50
+    - execute at %player% run playsound entity.wither.shoot ambient %player%
+    playerConditions: {}
+    worldConditions: {}
+    itemConditions: {}
+    customConditions: {}
+    placeholdersConditions: {}
+    variablesModification: {}
+  activator2:
+    name: '&eActivator'
+    option: PLAYER_RECEIVE_HIT_GLOBAL
+    usageModification: 0
+    cancelEvent: true
+    silenceOutput: true
+    autoUpdateItem: false
+    cooldownFeatures:
+      cooldown: 0
+      isCooldownInTicks: false
+      cooldownMsg: '&cYou are in cooldown ! &7(&e%time_H%&6H &e%time_M%&6M &e%time_S%&6S&7)'
+      displayCooldownMessage: true
+      cancelEventIfInCooldown: false
+    globalCooldownFeatures:
+      cooldown: 0
+      isCooldownInTicks: false
+      cooldownMsg: '&cYou are in cooldown ! &7(&e%time_H%&6H &e%time_M%&6M &e%time_S%&6S&7)'
+      displayCooldownMessage: true
+      cancelEventIfInCooldown: false
+    otherEICooldowns: {}
+    requiredItems: {}
+    requiredExecutableItems: {}
+    detailedSlots:
+    - 39
+    playerCommands:
+    - execute at %player% run particle dust{color:[1.0,0.0,1.0],scale:2} ~ ~ ~ 2 2 2 0 50
+    - MOB_AROUND 6 false DAMAGE 8
+    - AROUND 6 false DAMAGE 8
+    - execute at %player% run playsound entity.generic.explode ambient %player%
+    - execute at %player% run particle explosion_emitter
+    - execute at %player% run particle dust{color:[1.0,0.0,1.0],scale:2} ~ ~ ~ 2 0.1 2 0 800
+    playerConditions:
+      ifSneaking: true
+      ifSneakingMsg: ''
+    worldConditions: {}
+    itemConditions: {}
+    customConditions: {}
+    placeholdersConditions: {}
+    detailedDamageCauses:
+    - FALL
+    variablesModification: {}
+  activator3:
+    name: '&eActivator'
+    option: PLAYER_ACTIVE_SNEAK
+    usageModification: 0
+    cancelEvent: false
+    silenceOutput: true
+    autoUpdateItem: false
+    cooldownFeatures:
+      cooldown: 0
+      isCooldownInTicks: false
+      cooldownMsg: '&cYou are in cooldown ! &7(&e%time_H%&6H &e%time_M%&6M &e%time_S%&6S&7)'
+      displayCooldownMessage: true
+      cancelEventIfInCooldown: false
+    globalCooldownFeatures:
+      cooldown: 0
+      isCooldownInTicks: false
+      cooldownMsg: '&cYou are in cooldown ! &7(&e%time_H%&6H &e%time_M%&6M &e%time_S%&6S&7)'
+      displayCooldownMessage: true
+      cancelEventIfInCooldown: false
+    otherEICooldowns: {}
+    requiredItems: {}
+    requiredExecutableItems: {}
+    detailedSlots:
+    - 39
+    playerCommands:
+    - CUSTOMDASH1 %x% %y%-5 %z%
+    - 'LOOP START: 5'
+    - execute at %player% run particle firework ~ ~ ~ 0.01 0.01 0.01 0 1
+    - DELAYTICK 1
+    - LOOP END
+    playerConditions: {}
+    worldConditions: {}
+    itemConditions: {}
+    customConditions: {}
+    placeholdersConditions: {}
+    variablesModification: {}
+  activator4:
+    name: '&eActivator'
+    option: PLAYER_LEFT_CLICK
+    typeTarget: NO_TYPE_TARGET
+    usageModification: 0
+    cancelEvent: false
+    silenceOutput: true
+    autoUpdateItem: false
+    cooldownFeatures:
+      cooldown: 0
+      isCooldownInTicks: false
+      cooldownMsg: '&cYou are in cooldown ! &7(&e%time_H%&6H &e%time_M%&6M &e%time_S%&6S&7)'
+      displayCooldownMessage: true
+      cancelEventIfInCooldown: false
+    globalCooldownFeatures:
+      cooldown: 0
+      isCooldownInTicks: false
+      cooldownMsg: '&cYou are in cooldown ! &7(&e%time_H%&6H &e%time_M%&6M &e%time_S%&6S&7)'
+      displayCooldownMessage: true
+      cancelEventIfInCooldown: false
+    otherEICooldowns: {}
+    requiredItems: {}
+    requiredExecutableItems: {}
+    detailedSlots:
+    - 39
+    playerCommands:
+    - execute at %player% run playsound entity.wither.shoot ambient %player%
+    - GRAVITY_DISABLE
+    - FRONTDASH 3
+    - 'LOOP START: 5'
+    - execute at %player% run particle explosion ~ ~ ~ 0.01 0.01 0.01 0 1
+    - MOB_AROUND 1 false DAMAGE 12
+    - AROUND 1 false DAMAGE 12
+    - DELAYTICK 1
+    - LOOP END
+    - DELAYTICK 10
+    - GRAVITY_ENABLE
+    playerConditions: {}
+    worldConditions: {}
+    itemConditions: {}
+    customConditions: {}
+    placeholdersConditions: {}
+    variablesModification: {}
+recognitions: []
+attributes: {}
+config_5: true
+config_update: true

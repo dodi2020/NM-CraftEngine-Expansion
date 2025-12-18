@@ -1,0 +1,6 @@
+isEnabled: true
+location1: em_adventurers_guild,290.5, 102.5, 312.5, -180.0, 0.0
+location1Text: '&6『Yggdrasil Realm』 &5Lvls 75-85'
+location2: yggdrasil_realm.yml
+particleColor: 6946816
+blindPlayer: true

@@ -1,0 +1,12 @@
+items:
+  _internal:gui-invisible-item:
+    material: paper
+    model:
+      path: _internal:item/gui-invisible-item
+      generation:
+        parent: item/handheld
+        textures:
+          layer0: _internal:item/gui-invisible-item
+    data:
+      item-name: GUI Invisible Item
+      custom-model-data: 777

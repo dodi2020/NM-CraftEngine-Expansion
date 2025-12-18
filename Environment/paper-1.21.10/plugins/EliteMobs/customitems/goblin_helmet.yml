@@ -1,0 +1,13 @@
+isEnabled: true
+material: NETHERITE_HELMET
+name: '&8Goblin Helmet'
+lore:
+- '&8A treasure among goblins!'
+enchantments:
+- PROTECTION,1
+- BLAST_PROTECTION,1
+- PROJECTILE_PROTECTION,1
+- UNBREAKING,1
+potionEffects:
+- NIGHT_VISION,0,self,continuous
+itemType: UNIQUE

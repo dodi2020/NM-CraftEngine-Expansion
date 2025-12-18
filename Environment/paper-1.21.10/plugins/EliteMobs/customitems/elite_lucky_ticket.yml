@@ -1,0 +1,12 @@
+isEnabled: true
+material: PAPER
+name: '&6Elite Lucky Ticket'
+lore:
+- '&2Doubles the chance of successfully'
+- '&2enchanting an item!'
+enchantments:
+- LUCKY_SOURCE,1
+potionEffects: []
+scalability: FIXED
+itemType: UNIQUE
+soulbound: false

@@ -1,0 +1,148 @@
+name: '&7&l(&e&l❖&7&l)>> &7&oEpic box'
+lore:
+- '&f'
+- '&8&l»&7&l&m----------------&8&l«'
+- '&e     Click to open !'
+- '&f'
+- '&7&oLoots:'
+- '&a   20% &e20 gold ingots'
+- '&a   15% &215 emeralds'
+- '&a   40% &810 coal'
+- '&a   25% &b5 diamonds'
+- '&8&l»&7&l&m----------------&8&l«'
+- '&f'
+material: CHEST
+glow: false
+disableStack: false
+keepItemOnDeath: false
+canBeUsedOnlyByTheOwner: false
+storeItemInfo: false
+unbreakable: false
+usage: 1
+usageLimit: -1
+cancelEventIfNoPerm: false
+cancelEventIfNotOwner: false
+disabledWorlds: []
+recognitions: []
+config_5: true
+onlyOwnerBlackListedActivators: []
+isDurabilityBasedOnUsage: false
+dropFeatures:
+  glowDrop: false
+  glowDropColor: WHITE
+  displayNameDrop: false
+hiders:
+  hideEnchantments: false
+  hideUnbreakable: false
+  hideAttributes: false
+  hidePotionEffects: false
+  hideUsage: false
+  hideDestroys: false
+  hidePlacedOn: false
+  hideDye: false
+  hideArmorTrim: false
+enchantments: {}
+giveFirstJoinFeatures:
+  giveFirstJoin: false
+  giveFirstJoinAmount: 1
+  giveFirstJoinSlot: 0
+restrictions:
+  cancel-item-place: true
+variables: {}
+activators:
+  activator1:
+    name: '&eActivator'
+    option: PLAYER_ALL_CLICK
+    typeTarget: NO_TYPE_TARGET
+    usageModification: -1
+    cancelEvent: false
+    noActivatorRunIfTheEventIsCancelled: false
+    silenceOutput: true
+    autoUpdateItem: false
+    updateName: true
+    updateLore: true
+    updateDurability: false
+    updateAttributes: false
+    updateEnchants: false
+    updateCustomModelData: false
+    cooldownFeatures:
+      cooldown: 0
+      isCooldownInTicks: false
+      cooldownMsg: '&cYou are in cooldown ! &7(&e%time_H%&6H &e%time_M%&6M &e%time_S%&6S&7)'
+      displayCooldownMessage: true
+      cancelEventIfInCooldown: false
+      pauseWhenOffline: false
+      pausePlaceholdersConditions: {}
+    globalCooldownFeatures:
+      cooldown: 0
+      isCooldownInTicks: false
+      cooldownMsg: '&cYou are in cooldown ! &7(&e%time_H%&6H &e%time_M%&6M &e%time_S%&6S&7)'
+      displayCooldownMessage: true
+      cancelEventIfInCooldown: false
+      pauseWhenOffline: false
+      pausePlaceholdersConditions: {}
+    otherEICooldowns: {}
+    requiredItems: {}
+    requiredExecutableItems: {}
+    requiredMagics: {}
+    detailedSlots:
+    - -1
+    playerCommands:
+    - SENDMESSAGE You have executed %item%
+    - execute at %player% run playsound minecraft:entity.firework_rocket.launch voice
+      %player%
+    - title %player% times 0 60 0
+    - title %player% title {"text":"&e&l\"You have executed"}
+    - title %player% subtitle {"text":"&e&lMoney Pouch - Tier I"}
+    - DELAY 2
+    - title %player% title {"text":"&c&lRolling"}
+    - title %player% subtitle {"text":"&2&l$ &k&l2 3 4 5 6 7"}
+    - execute at %player% run playsound minecraft:entity.experience_orb.pickup voice
+      %player%
+    - 'LOOP START: 30'
+    - DELAYTICK 2
+    - execute at %player% run playsound minecraft:block.note_block.bass ambient %player%
+    - LOOP END
+    - 'RANDOM RUN: 1'
+    - 'LOOP START: 20'
+    - title %player% times 0 60 0 +++ title %player% title {"text":"20 GOLD INGOTS
+      ","color":"gold"}+++ title %player% subtitle {"text":""} +++ execute at %player%
+      run playsound minecraft:entity.villager.yes voice %player% +++ give %player%
+      gold_ingot 20
+    - LOOP END
+    - 'LOOP START: 15'
+    - title %player% times 0 60 0 +++ title %player% title {"text":"15 EMERALDS ","color":"green"}+++
+      title %player% subtitle {"text":""} +++ execute at %player% run playsound minecraft:entity.villager.yes
+      voice %player% +++ give %player% emerald 15
+    - LOOP END
+    - 'LOOP START: 40'
+    - title %player% times 0 60 0 +++ title %player% title {"text":"10 COAL ","color":"gray"}+++
+      title %player% subtitle {"text":""} +++ execute at %player% run playsound minecraft:entity.villager.no
+      voice %player% +++ give %player% coal 10
+    - LOOP END
+    - 'LOOP START: 25'
+    - title %player% times 0 60 0 +++ title %player% title {"text":"5 DIAMONDS ","color":"blue"}+++
+      title %player% subtitle {"text":""} +++ execute at %player% run playsound minecraft:entity.villager.yes
+      voice %player% +++ give %player% diamond 5
+    - LOOP END
+    - RANDOM END
+    playerConditions: {}
+    worldConditions: {}
+    itemConditions: {}
+    customConditions: {}
+    placeholdersConditions: {}
+    variablesModification: {}
+displayConditions:
+  playerConditions: {}
+  worldConditions: {}
+  itemConditions: {}
+  placeholdersConditions: {}
+  enableFeature: false
+foodFeatures:
+  nutrition: 0
+  saturation: 0
+  isMeat: false
+  canAlwaysEat: false
+  eatSeconds: 0
+attributes: {}
+config_update: true

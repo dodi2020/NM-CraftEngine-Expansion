@@ -1,0 +1,21 @@
+isEnabled: true
+name: '&2[lvl 020] &aThe Fireworks'
+customInfo:
+- '&fThe 2021 4th of July map!'
+- '&6Credits: MagmaGuy'
+dungeonSizeCategory: LAIR
+worldName: em_fireworks
+environment: NORMAL
+protect: true
+playerInfo: |-
+  Difficulty: &cHard
+  $bossCount level $lowestTier Big Boss!
+  &6An encounter full of explosions!
+regionEnterMessage: '&8[EM] &eWelcome to the fireworks show!'
+regionLeaveMessage: '&8[EM] &eYou''ve left the party!'
+teleportLocation: em_fireworks,29.5,66.2,-32.5,45,0
+contentType: OPEN_DUNGEON
+dungeonConfigFolderName: the_fireworks
+allowExplosionBlockDamage: true
+setupMenuDescription:
+- '&2A Lair for players around level 20!'

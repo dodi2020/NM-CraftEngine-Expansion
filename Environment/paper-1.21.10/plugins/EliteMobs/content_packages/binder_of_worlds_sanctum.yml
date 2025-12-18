@@ -1,0 +1,37 @@
+isEnabled: true
+name: '&2[lvl 200] &5The Binder Of Worlds'
+customInfo:
+- '&5The ultimate challenge. Be prepared!'
+- '&6Credits: MagmaGuy, 69OzCanOfBepis & Frostcone'
+dungeonSizeCategory: SANCTUM
+worldName: em_id_binder_of_worlds
+environment: THE_END
+protect: true
+playerInfo: |-
+  Difficulty: &6Nightmare
+  $bossCount level $highestTier final boss!
+  &5This is the hardest fight in EliteMobs!
+regionEnterMessage: '&8[EM] &5Reality unravels around you. You face the final challenge.
+  &4You are not prepared!'
+regionLeaveMessage: '&8[EM] &5You have left the unravelling. Did you find what you
+  sought? Was it worth it?'
+startLocation: em_id_binder_of_worlds,-40,62,24,-130,-11
+teleportLocation: em_id_binder_of_worlds,-40.5,74,87.5,-155.0,0.0
+dungeonObjectives:
+- filename=em_id_binder_of_worlds_phase_1.yml
+contentType: INSTANCED_DUNGEON
+dungeonConfigFolderName: the_binder_of_worlds
+contentLevel: 50
+difficulties:
+- levelSync: 205
+  id: 0
+  name: normal
+- levelSync: 200
+  id: 1
+  name: hard
+- levelSync: 195
+  id: 2
+  name: mythic
+allowExplosionBlockDamage: true
+setupMenuDescription:
+- '&2Basically the final boss of EliteMobs!'

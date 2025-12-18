@@ -1,0 +1,24 @@
+isEnabled: true
+name: '&2[lvl 010-020] &6The Pirate Ship'
+customInfo:
+- '&fA fun, challenging minidungeon full of'
+- '&fbosses made for players starting to get good,'
+- '&fat EliteMobs!'
+- '&6Credits: MagmaGuy & Realm of Lotheridon'
+dungeonSizeCategory: MINIDUNGEON
+worldName: em_the_pirate_ship
+environment: NORMAL
+protect: true
+playerInfo: |-
+  Difficulty: &6Medium
+  $bossCount bosses, from level $lowestTier to $highestTier
+  &6One of the best hunting grounds for&6aspiring adventurers!
+regionEnterMessage: '&8[EM] &3Now boarding the Pirate Ship! &bPillage and plunder
+  to yer'' hearts content!'
+regionLeaveMessage: '&8[EM] &3Player overboard! &bReturn when you''ve earned your
+  sea-legs ye'' landlubber!'
+teleportLocation: em_the_pirate_ship,-85.5,64.0,236.5,180,0
+contentType: OPEN_DUNGEON
+dungeonConfigFolderName: the_pirate_ship
+setupMenuDescription:
+- '&2A Minidungeon for players around level 15!'

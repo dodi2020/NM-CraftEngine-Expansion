@@ -1,0 +1,12 @@
+isEnabled: true
+material: BOOK
+name: '&5Elite Depth Strider Enchanted Book'
+lore:
+- '&2Used to enchant items at the enchanter!'
+enchantments:
+- DEPTH_STRIDER,1
+- ENCHANTED_SOURCE,1
+potionEffects: []
+scalability: FIXED
+itemType: UNIQUE
+soulbound: false

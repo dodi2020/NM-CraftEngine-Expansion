@@ -1,0 +1,24 @@
+isEnabled: true
+entityType: SKELETON
+name: $bossLevel &cCrucio the Bearer of Curses
+level: '40'
+healthMultiplier: 5.0
+damageMultiplier: 2.0
+powers:
+- attack_wither.yml
+- attack_poison.yml
+- shield_wall.yml
+- bullet_hell.yml
+- skeleton_tracking_arrow.yml
+- flame_pyre.yml
+followDistance: 60
+helmet: DIAMOND_HELMET
+chestplate: DIAMOND_CHESTPLATE
+leggings: DIAMOND_LEGGINGS
+boots: DIAMOND_BOOTS
+mainHand: DIAMOND_SWORD
+offHand: SHIELD
+onSpawnBlockStates: []
+onRemoveBlockStates: []
+movementSpeedAttribute: 0.6
+bossType: NORMAL

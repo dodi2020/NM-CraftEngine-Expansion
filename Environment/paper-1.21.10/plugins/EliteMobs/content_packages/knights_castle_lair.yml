@@ -1,0 +1,19 @@
+isEnabled: true
+name: '&2[lvl 095] &fThe Knight''s Castle'
+customInfo:
+- '&fChallenge the knights of the castle!'
+dungeonSizeCategory: LAIR
+worldName: em_knight_castle
+environment: NORMAL
+protect: true
+playerInfo: |-
+  Difficulty: &chard
+  $bossCount level $lowestTier Big Boss!
+  &6Face an honorable duel!
+regionEnterMessage: '&fAssault the castle!'
+regionLeaveMessage: '&fNow leaving the castle!'
+teleportLocation: em_knight_castle,-20.5,6.2,55.5,-120,0
+contentType: OPEN_DUNGEON
+dungeonConfigFolderName: the_knight_castle
+setupMenuDescription:
+- '&2A Lair for players around level 95!'

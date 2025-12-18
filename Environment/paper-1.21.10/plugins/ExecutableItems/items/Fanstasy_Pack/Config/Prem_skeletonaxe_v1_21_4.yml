@@ -1,0 +1,54 @@
+name: "<gradient:#aaaaaa:#ffffff><bold>Wail of the Hollow</bold></gradient>"
+lore:
+  - "<gray><italic>Not all axes cleave flesh—some shatter spirit.</italic></gray>"
+  - "<white><italic>Each strike echoes with the screams of the buried.</italic></white>"
+  - ""
+  - "<gold>▶ <bold>Left-click</bold> to mark a soul within 25 blocks</gold>"
+  - "<gray>• Bombards the target with <white>haunting sounds</white> and <red>burning torment</red></gray>"
+  - "<gray>• Cone, flames, and spike explosions follow</gray>"
+  - ""
+  - "<dark_gray><italic>“The axe never misses. The echo never fades.”</italic></dark_gray>"
+itemModel: ei:skeletonaxe
+material: STICK
+blockAttacksFeatures:
+  disableCooldownScale: 1.0
+activators:
+  activator0:
+    option: PLAYER_LEFT_CLICK
+    typeTarget: NO_TYPE_TARGET
+    detailedSlots:
+      - -1
+    playerCommands:
+      - >
+        HITSCAN_ENTITIES range:25 radius:3 throughBlocks:false throughEntities:false
+        DELAYTICK 5
+        <+> execute at %around_target_uuid% run playsound minecraft:block.barrel.open master @a ~ ~ ~ 04 .2
+        <+> DELAYTICK 2
+        <+> execute at %around_target_uuid% run playsound minecraft:block.barrel.open master @a ~ ~ ~ 04 .2
+        <+> DELAYTICK 2
+        <+> execute at %around_target_uuid% run playsound minecraft:block.barrel.open master @a ~ ~ ~ 04 .2
+        <+> DELAYTICK 2
+        <+> execute at %around_target_uuid% run playsound minecraft:block.barrel.open master @a ~ ~ ~ 04 .2
+        <+> DELAYTICK 1
+        <+> execute at %around_target_uuid% run playsound minecraft:block.barrel.open master @a ~ ~ ~ 04 .2
+        <+> DELAYTICK 1
+        <+> execute at %around_target_uuid% run playsound minecraft:block.barrel.open master @a ~ ~ ~ 04 .2
+        <+> DELAYTICK 1
+        <+> execute at %around_target_uuid% run playsound minecraft:block.barrel.open master @a ~ ~ ~ 04 .2
+        <+> DELAYTICK 5
+        <+> execute at %around_target_uuid% run playsound minecraft:block.glass.break ambient @a ~ ~ ~ 5 0.1 1
+        <+> DELAYTICK 5
+        <+> execute at %around_target_uuid% run playsound minecraft:entity.ghast.shoot master @a ~ ~ ~ 4 0.4
+        <+> score particles target:%around_target_uuid% shape:cylinder particle:LAVA radius:0.6 height:12 density:6 timeToDisplay:10 drawMode:counterClockWise directionPitch:-90 offsetY:-1
+        <+> score particles target:%around_target_uuid% shape:cylinder particle:FLAME radius:0.6 height:12 density:6 timeToDisplay:10 drawMode:counterClockWise directionPitch:-90 offsetY:-1
+        <+> DAMAGE 2
+        <+> DELAYTICK 2
+        <+> score particles target:%around_target_uuid% shape:cone height:1.5 radius:4 rate:0.5 circleRate:10 fillMode:disk particle:LAVA
+        <+> DELAYTICK 10
+        <+> score particles target:%around_target_uuid% particle:LAVA shape:spikeSphere radius:2 rate:10 chance:30 minRandomDistance:1 maxRandomDistance:2
+        <+> JUMP 0.7
+        <+> DELAYTICK 2
+        <+> DAMAGE 5
+        <+> execute at %around_target_uuid% run playsound minecraft:entity.dragon_fireball.explode master @a ~ ~ ~ 2 2
+hiders:
+  hideUsage: true

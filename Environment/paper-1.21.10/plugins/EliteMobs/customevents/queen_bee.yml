@@ -1,0 +1,11 @@
+isEnabled: true
+eventType: BREAK_BLOCK
+bossFilenames:
+- queen_bee.yml
+eventStartCommands: []
+eventEndCommands: []
+chance: 0.001
+breakableMaterials:
+- BEE_NEST
+weight: 0.0
+eventDuration: 20.0

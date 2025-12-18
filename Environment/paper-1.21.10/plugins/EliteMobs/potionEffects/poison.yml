@@ -1,0 +1,4 @@
+isEnabled: true
+name: Poison
+onHitDuration: 20
+value: 50.0

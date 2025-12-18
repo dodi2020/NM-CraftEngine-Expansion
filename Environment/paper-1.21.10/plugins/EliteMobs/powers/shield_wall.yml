@@ -1,0 +1,5 @@
+isEnabled: true
+effect: SHIELD
+powerCooldown: 60
+globalCooldown: 7
+powerType: DEFENSIVE

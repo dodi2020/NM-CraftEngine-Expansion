@@ -1,0 +1,314 @@
+name: ''
+lore: []
+material: SHIELD
+glow: false
+disableStack: false
+keepItemOnDeath: false
+canBeUsedOnlyByTheOwner: false
+storeItemInfo: false
+unbreakable: false
+usage: 1
+usageLimit: -1
+cancelEventIfNoPerm: false
+cancelEventIfNotOwner: false
+disabledWorlds: []
+recognitions: []
+config_5: true
+config_update: true
+dropFeatures:
+  glowDrop: false
+  glowDropColor: WHITE
+  displayNameDrop: false
+hiders:
+  hideEnchantments: false
+  hideUnbreakable: false
+  hideAttributes: false
+  hidePotionEffects: false
+  hideUsage: true
+  hideDye: false
+enchantments: {}
+giveFirstJoinFeatures:
+  giveFirstJoin: false
+  giveFirstJoinAmount: 1
+  giveFirstJoinSlot: 0
+restrictions: {}
+variables: {}
+activators:
+  activator1:
+    name: '&eActivator'
+    option: PLAYER_SELECT_THE_EI
+    usageModification: 0
+    cancelEvent: false
+    silenceOutput: true
+    autoUpdateItem: false
+    cooldownFeatures:
+      cooldown: 0
+      isCooldownInTicks: false
+      cooldownMsg: '&cYou are in cooldown ! &7(&e%time_H%&6H &e%time_M%&6M &e%time_S%&6S&7)'
+      displayCooldownMessage: false
+      cancelEventIfInCooldown: false
+    globalCooldownFeatures:
+      cooldown: 0
+      isCooldownInTicks: false
+      cooldownMsg: '&cYou are in cooldown ! &7(&e%time_H%&6H &e%time_M%&6M &e%time_S%&6S&7)'
+      displayCooldownMessage: true
+      cancelEventIfInCooldown: false
+    otherEICooldowns: {}
+    requiredItems: {}
+    requiredExecutableItems: {}
+    detailedSlots: []
+    playerCommands:
+    - SENDMESSAGE &a select
+    - execute at %player% run summon armor_stand ~ ~ ~ {DisabledSlots:4144959,Invulnerable:1b,ShowArms:1b,Marker:1b,Invisible:1b,Tags:["%player_uuid%"]}
+    - execute at %player% run summon armor_stand ~ ~ ~ {DisabledSlots:4144959,Invulnerable:1b,ShowArms:1b,Invisible:1b,Tags:["%player_uuid%1"],Pose:{RightArm:[90f,270f,0f]},HandItems:[{id:"minecraft:shield",Count:1b},{}]}
+    - execute at %player% run summon armor_stand ~ ~ ~ {DisabledSlots:4144959,Invulnerable:1b,ShowArms:1b,Invisible:1b,Tags:["%player_uuid%2"],Pose:{RightArm:[90f,90f,0f]},HandItems:[{id:"minecraft:shield",Count:1b},{}]}
+    - execute at %player% run summon armor_stand ~ ~ ~ {DisabledSlots:4144959,Invulnerable:1b,ShowArms:1b,Invisible:1b,Tags:["%player_uuid%3"],Pose:{RightArm:[90f,180f,0f]},HandItems:[{id:"minecraft:shield",Count:1b},{}]}
+    - execute at %player% run summon armor_stand ~ ~ ~ {DisabledSlots:4144959,Invulnerable:1b,ShowArms:1b,Invisible:1b,Tags:["%player_uuid%4"],Pose:{RightArm:[90f,0f,0f]},HandItems:[{id:"minecraft:shield",Count:1b},{}]}
+    - 'LOOP START: 20'
+    - execute at @e[type=armor_stand,tag=%player_uuid%] as @e[type=armor_stand,tag=%player_uuid%]
+      run minecraft:tp @e[type=armor_stand,tag=%player_uuid%] %x% %y% %z% ~18 0
+    - execute at @e[type=armor_stand,tag=%player_uuid%] as @e[type=armor_stand,tag=%player_uuid%1]
+      run minecraft:tp @e[type=armor_stand,tag=%player_uuid%1] ^ ^ ^1 ~ ~
+    - execute at @e[type=armor_stand,tag=%player_uuid%] as @e[type=armor_stand,tag=%player_uuid%2]
+      run minecraft:tp @e[type=armor_stand,tag=%player_uuid%2] ^ ^ ^-1 ~ ~
+    - execute at @e[type=armor_stand,tag=%player_uuid%] as @e[type=armor_stand,tag=%player_uuid%3]
+      run minecraft:tp @e[type=armor_stand,tag=%player_uuid%3] ^1 ^ ^ ~ ~
+    - execute at @e[type=armor_stand,tag=%player_uuid%] as @e[type=armor_stand,tag=%player_uuid%4]
+      run minecraft:tp @e[type=armor_stand,tag=%player_uuid%4] ^-1 ^ ^ ~ ~
+    - DELAYTICK 1
+    - LOOP END
+    playerConditions: {}
+    worldConditions: {}
+    itemConditions: {}
+    customConditions: {}
+    placeholdersConditions: {}
+    variablesModification: {}
+  activator2:
+    name: '&eActivator'
+    option: LOOP
+    usageModification: 0
+    cancelEvent: false
+    silenceOutput: true
+    autoUpdateItem: false
+    cooldownFeatures:
+      cooldown: 0
+      isCooldownInTicks: false
+      cooldownMsg: '&cYou are in cooldown ! &7(&e%time_H%&6H &e%time_M%&6M &e%time_S%&6S&7)'
+      displayCooldownMessage: false
+      cancelEventIfInCooldown: false
+    globalCooldownFeatures:
+      cooldown: 0
+      isCooldownInTicks: false
+      cooldownMsg: '&cYou are in cooldown ! &7(&e%time_H%&6H &e%time_M%&6M &e%time_S%&6S&7)'
+      displayCooldownMessage: true
+      cancelEventIfInCooldown: false
+    otherEICooldowns: {}
+    requiredItems: {}
+    requiredExecutableItems: {}
+    detailedSlots:
+    - 40
+    - -1
+    playerCommands:
+    - 'LOOP START: 20'
+    - execute at @e[type=armor_stand,tag=%player_uuid%] as @e[type=armor_stand,tag=%player_uuid%]
+      run minecraft:tp @e[type=armor_stand,tag=%player_uuid%] %x% %y% %z% ~18 0
+    - execute at @e[type=armor_stand,tag=%player_uuid%] as @e[type=armor_stand,tag=%player_uuid%1]
+      run minecraft:tp @e[type=armor_stand,tag=%player_uuid%1] ^ ^ ^1 ~ ~
+    - execute at @e[type=armor_stand,tag=%player_uuid%] as @e[type=armor_stand,tag=%player_uuid%2]
+      run minecraft:tp @e[type=armor_stand,tag=%player_uuid%2] ^ ^ ^-1 ~ ~
+    - execute at @e[type=armor_stand,tag=%player_uuid%] as @e[type=armor_stand,tag=%player_uuid%3]
+      run minecraft:tp @e[type=armor_stand,tag=%player_uuid%3] ^1 ^ ^ ~ ~
+    - execute at @e[type=armor_stand,tag=%player_uuid%] as @e[type=armor_stand,tag=%player_uuid%4]
+      run minecraft:tp @e[type=armor_stand,tag=%player_uuid%4] ^-1 ^ ^ ~ ~
+    - DELAYTICK 1
+    - LOOP END
+    playerConditions: {}
+    worldConditions: {}
+    itemConditions: {}
+    customConditions: {}
+    placeholdersConditions: {}
+    delay: 15
+    delayInTick: true
+    variablesModification: {}
+  activator3:
+    name: '&eActivator'
+    option: PLAYER_DESELECT_THE_EI
+    usageModification: 0
+    cancelEvent: false
+    silenceOutput: true
+    autoUpdateItem: false
+    cooldownFeatures:
+      cooldown: 0
+      isCooldownInTicks: false
+      cooldownMsg: '&cYou are in cooldown ! &7(&e%time_H%&6H &e%time_M%&6M &e%time_S%&6S&7)'
+      displayCooldownMessage: false
+      cancelEventIfInCooldown: false
+    globalCooldownFeatures:
+      cooldown: 0
+      isCooldownInTicks: false
+      cooldownMsg: '&cYou are in cooldown ! &7(&e%time_H%&6H &e%time_M%&6M &e%time_S%&6S&7)'
+      displayCooldownMessage: true
+      cancelEventIfInCooldown: false
+    otherEICooldowns: {}
+    requiredItems: {}
+    requiredExecutableItems: {}
+    detailedSlots:
+    - -1
+    playerCommands:
+    - minecraft:kill @e[type=armor_stand,tag=%player_uuid%]
+    - minecraft:kill @e[type=armor_stand,tag=%player_uuid%1]
+    - minecraft:kill @e[type=armor_stand,tag=%player_uuid%2]
+    - minecraft:kill @e[type=armor_stand,tag=%player_uuid%3]
+    - minecraft:kill @e[type=armor_stand,tag=%player_uuid%4]
+    playerConditions: {}
+    worldConditions: {}
+    itemConditions: {}
+    customConditions: {}
+    placeholdersConditions: {}
+    variablesModification: {}
+  activator4:
+    name: '&eActivator'
+    option: PLAYER_DESELECT_THE_EI
+    usageModification: 0
+    cancelEvent: false
+    silenceOutput: true
+    autoUpdateItem: false
+    cooldownFeatures:
+      cooldown: 0
+      isCooldownInTicks: false
+      cooldownMsg: '&cYou are in cooldown ! &7(&e%time_H%&6H &e%time_M%&6M &e%time_S%&6S&7)'
+      displayCooldownMessage: false
+      cancelEventIfInCooldown: false
+    globalCooldownFeatures:
+      cooldown: 0
+      isCooldownInTicks: false
+      cooldownMsg: '&cYou are in cooldown ! &7(&e%time_H%&6H &e%time_M%&6M &e%time_S%&6S&7)'
+      displayCooldownMessage: true
+      cancelEventIfInCooldown: false
+    otherEICooldowns: {}
+    requiredItems: {}
+    requiredExecutableItems: {}
+    detailedSlots:
+    - -1
+    playerCommands:
+    - minecraft:kill @e[type=armor_stand,tag=%player_uuid%]
+    - minecraft:kill @e[type=armor_stand,tag=%player_uuid%1]
+    - minecraft:kill @e[type=armor_stand,tag=%player_uuid%2]
+    - minecraft:kill @e[type=armor_stand,tag=%player_uuid%3]
+    - minecraft:kill @e[type=armor_stand,tag=%player_uuid%4]
+    playerConditions: {}
+    worldConditions: {}
+    itemConditions: {}
+    customConditions: {}
+    placeholdersConditions: {}
+    variablesModification: {}
+  activator5:
+    name: '&eActivator'
+    option: PLAYER_DEATH
+    usageModification: 0
+    cancelEvent: false
+    silenceOutput: true
+    autoUpdateItem: false
+    cooldownFeatures:
+      cooldown: 0
+      isCooldownInTicks: false
+      cooldownMsg: '&cYou are in cooldown ! &7(&e%time_H%&6H &e%time_M%&6M &e%time_S%&6S&7)'
+      displayCooldownMessage: false
+      cancelEventIfInCooldown: false
+    globalCooldownFeatures:
+      cooldown: 0
+      isCooldownInTicks: false
+      cooldownMsg: '&cYou are in cooldown ! &7(&e%time_H%&6H &e%time_M%&6M &e%time_S%&6S&7)'
+      displayCooldownMessage: true
+      cancelEventIfInCooldown: false
+    otherEICooldowns: {}
+    requiredItems: {}
+    requiredExecutableItems: {}
+    detailedSlots:
+    - -1
+    playerCommands:
+    - minecraft:kill @e[type=armor_stand,tag=%player_uuid%]
+    - minecraft:kill @e[type=armor_stand,tag=%player_uuid%1]
+    - minecraft:kill @e[type=armor_stand,tag=%player_uuid%2]
+    - minecraft:kill @e[type=armor_stand,tag=%player_uuid%3]
+    - minecraft:kill @e[type=armor_stand,tag=%player_uuid%4]
+    playerConditions: {}
+    worldConditions: {}
+    itemConditions: {}
+    customConditions: {}
+    placeholdersConditions: {}
+    detailedDamageCauses: []
+    variablesModification: {}
+  activator6:
+    name: '&eActivator'
+    option: INVENTORY_CLICK
+    detailedClick: RIGHT_OR_LEFT
+    usageModification: 0
+    cancelEvent: false
+    silenceOutput: true
+    autoUpdateItem: false
+    cooldownFeatures:
+      cooldown: 0
+      isCooldownInTicks: false
+      cooldownMsg: '&cYou are in cooldown ! &7(&e%time_H%&6H &e%time_M%&6M &e%time_S%&6S&7)'
+      displayCooldownMessage: false
+      cancelEventIfInCooldown: false
+    globalCooldownFeatures:
+      cooldown: 0
+      isCooldownInTicks: false
+      cooldownMsg: '&cYou are in cooldown ! &7(&e%time_H%&6H &e%time_M%&6M &e%time_S%&6S&7)'
+      displayCooldownMessage: true
+      cancelEventIfInCooldown: false
+    otherEICooldowns: {}
+    requiredItems: {}
+    requiredExecutableItems: {}
+    detailedSlots: []
+    playerCommands:
+    - minecraft:kill @e[type=armor_stand,tag=%player_uuid%]
+    - minecraft:kill @e[type=armor_stand,tag=%player_uuid%1]
+    - minecraft:kill @e[type=armor_stand,tag=%player_uuid%2]
+    - minecraft:kill @e[type=armor_stand,tag=%player_uuid%3]
+    - minecraft:kill @e[type=armor_stand,tag=%player_uuid%4]
+    playerConditions: {}
+    worldConditions: {}
+    itemConditions: {}
+    customConditions: {}
+    placeholdersConditions: {}
+    variablesModification: {}
+  activator0:
+    name: '&eActivator'
+    option: PLAYER_DROP_THE_EI
+    usageModification: 0
+    cancelEvent: false
+    silenceOutput: true
+    autoUpdateItem: false
+    cooldownFeatures:
+      cooldown: 0
+      isCooldownInTicks: false
+      cooldownMsg: '&cYou are in cooldown ! &7(&e%time_H%&6H &e%time_M%&6M &e%time_S%&6S&7)'
+      displayCooldownMessage: true
+      cancelEventIfInCooldown: false
+    globalCooldownFeatures:
+      cooldown: 0
+      isCooldownInTicks: false
+      cooldownMsg: '&cYou are in cooldown ! &7(&e%time_H%&6H &e%time_M%&6M &e%time_S%&6S&7)'
+      displayCooldownMessage: true
+      cancelEventIfInCooldown: false
+    otherEICooldowns: {}
+    requiredItems: {}
+    requiredExecutableItems: {}
+    playerCommands:
+    - minecraft:kill @e[type=armor_stand,tag=%player_uuid%]
+    - minecraft:kill @e[type=armor_stand,tag=%player_uuid%1]
+    - minecraft:kill @e[type=armor_stand,tag=%player_uuid%2]
+    - minecraft:kill @e[type=armor_stand,tag=%player_uuid%3]
+    - minecraft:kill @e[type=armor_stand,tag=%player_uuid%4]
+    playerConditions: {}
+    worldConditions: {}
+    itemConditions: {}
+    customConditions: {}
+    placeholdersConditions: {}
+    variablesModification: {}
+bannerSettings:
+  patterns: {}
+attributes: {}

@@ -1,0 +1,8 @@
+isEnabled: true
+location1: em_adventurers_guild,296.5,107,308.5,-175,0
+location1Text: '&6『The Steamworks Lair』 &aLvl 140'
+location2: steamworks_lair.yml
+location2Text: '&f『Adventurers Guild』'
+style: ICOSAHEDRON
+particleColor: 0
+blindPlayer: true

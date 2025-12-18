@@ -1,0 +1,9 @@
+isEnabled: true
+entityType: GOAT
+name: '&fLvl &2$level &fElite &5Goat'
+deathMessages:
+- $player &cwas rammed by $entity&c!
+- $player &cwas run over by $entity&c!
+- $player &cwas trampled by $entity&c!
+- $player &cgot $entity&c horns!
+baseDamageV2: 3.0

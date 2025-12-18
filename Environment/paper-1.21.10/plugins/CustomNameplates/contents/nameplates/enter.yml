@@ -1,0 +1,13 @@
+display-name: Enter
+left:
+  image: enter_left
+  height: 16
+  ascent: 12
+middle:
+  image: enter_middle
+  height: 16
+  ascent: 12
+right:
+  image: enter_right
+  height: 16
+  ascent: 12

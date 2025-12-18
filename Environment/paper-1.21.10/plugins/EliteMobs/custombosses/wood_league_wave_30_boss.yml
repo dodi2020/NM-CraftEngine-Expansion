@@ -1,0 +1,23 @@
+isEnabled: true
+entityType: SKELETON
+name: $bossLevel &2The Southern Viper
+level: '30'
+healthMultiplier: 5.0
+damageMultiplier: 2.0
+powers:
+- attack_fire.yml
+- attack_poison.yml
+- shield_wall.yml
+- attack_wither.yml
+- skeleton_tracking_arrow.yml
+followDistance: 60
+helmet: LEATHER_HELMET
+chestplate: LEATHER_CHESTPLATE
+leggings: LEATHER_LEGGINGS
+boots: LEATHER_BOOTS
+mainHand: BOW
+offHand: TOTEM_OF_UNDYING
+onSpawnBlockStates: []
+onRemoveBlockStates: []
+movementSpeedAttribute: 0.6
+bossType: NORMAL

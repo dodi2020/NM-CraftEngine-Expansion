@@ -1,0 +1,7 @@
+gui_test_glyph:
+  texture: top-secret-nxm:gui/gui_test_glyph
+  ascent: 14
+  height: 256
+  placeholders:
+  - <gui_gui_test>
+  char: ꐐ

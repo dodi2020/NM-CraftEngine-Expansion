@@ -1,0 +1,12 @@
+isEnabled: true
+material: ORANGE_DYE
+name: '&9Medium Elite Scrap'
+lore:
+- '&fUsed to repair Elite items!'
+- '&fRepairs a large amount!'
+enchantments:
+- repair,3
+potionEffects: []
+scalability: FIXED
+itemType: UNIQUE
+soulbound: false

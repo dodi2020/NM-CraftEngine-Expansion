@@ -1,0 +1,31 @@
+isEnabled: true
+name: '&2[lvl 085] &cThe Bone Monastery'
+customInfo:
+- '&fSpooky skeletons await.'
+- '&6Credits: MagmaGuy, Matevagyok, Frostcone, 69OzCanOfBepis'
+dungeonSizeCategory: DUNGEON
+worldName: em_id_bone_monastery
+environment: NORMAL
+protect: true
+playerInfo: 'Difficulty: &45-man content!'
+regionEnterMessage: '&bWelcome to the bone monastery! Mind the skeletons.'
+regionLeaveMessage: '&bYou have left the bone monastery!'
+startLocation: em_id_bone_monastery,-171.5,5.0,54.5,-174.499999,18.499996
+teleportLocation: em_id_bone_monastery,-249.5,18.0,109.5,-174.499999,18.499996
+dungeonObjectives:
+- filename=bone_monastery_bone_saint_himiko_p1.yml
+contentType: INSTANCED_DUNGEON
+dungeonConfigFolderName: the_bone_monastery
+contentLevel: 85
+difficulties:
+- levelSync: 90
+  id: 0
+  name: normal
+- levelSync: 85
+  id: 1
+  name: hard
+- levelSync: 80
+  id: 2
+  name: mythic
+setupMenuDescription:
+- '&2A Dungeon for players around level 85!'

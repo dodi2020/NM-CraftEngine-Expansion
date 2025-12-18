@@ -1,0 +1,33 @@
+name: "<gradient:#00ffff:#4169e1><bold>Azure Scythe</bold></gradient>"
+lore:
+  - "<aqua><italic>A blade whispered into being by ocean winds</italic></aqua>"
+  - "<blue><italic>and forged beneath starlit storms.</italic></blue>"
+  - ""
+  - "<gold>▶ <bold>On hit:</bold> Dash forward and spiral strike</gold>"
+  - "<gray>• Surrounds your target with <blue>phantom arcs</blue></gray>"
+  - "<gray>• <aqua>Spirals of energy</aqua> echo your swift reaping</gray>"
+  - ""
+  - "<dark_gray><italic>“The reaping tide never hesitates.”</italic></dark_gray>"
+material: STICK
+config_5: true
+config_update: true
+itemModel: ei:azure_scythe
+hiders:
+  hideUsage: true
+activators:
+  activator0:
+    option: PLAYER_HIT_ENTITY
+    detailedSlots:
+    - -1
+    playerCommands:
+    - FRONTDASH 2
+    detailedEntities: []
+    entityCommands:
+    - score particles shape:circle location:%entity_world%,%entity_x%,%entity_y%,%entity_z%
+      color:BLUE,AQUA radius:3 density:20 time:10 drawMode:clockwise fillMode:spiral
+      directionYaw:%player_yaw_initial%-45
+    - score particles shape:circle location:%entity_world%,%entity_x%,%entity_y%,%entity_z%
+      color:BLUE,AQUA radius:3 density:20 time:10 drawMode:clockwise fillMode:spiral
+      directionYaw:%player_yaw_initial%+45
+    - score particles shape:circle target:%entity_uuid% color:BLUE,AQUA radius:3 density:100
+      time:10 drawMode:clockwise fillMode:disk directionPitch:-90 offsetY:-1

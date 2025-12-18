@@ -1,0 +1,16 @@
+isEnabled: true
+material: IRON_SWORD
+name: '&7Wolfsbane'
+lore:
+- '&aMade from the remains of'
+- '&aan alpha werewolf, all'
+- '&awolves cower at the sight of it.'
+enchantments:
+- SHARPNESS,1
+- FIRE_ASPECT,4
+- UNBREAKING,5
+- LOOTING,5
+potionEffects:
+- FAST_DIGGING,2,self,onHit
+- NIGHT_VISION,0,self,continuous
+itemType: UNIQUE

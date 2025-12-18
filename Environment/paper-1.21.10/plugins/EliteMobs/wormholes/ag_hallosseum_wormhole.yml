@@ -1,0 +1,7 @@
+isEnabled: true
+location1: em_adventurers_guild,281.5,100.5,302.5,-46,0
+location1Text: '&4『Hallosseum Lair』 &aLvl 30'
+location2: hallosseum_lair.yml
+style: CRYSTAL
+particleColor: 6815744
+blindPlayer: true

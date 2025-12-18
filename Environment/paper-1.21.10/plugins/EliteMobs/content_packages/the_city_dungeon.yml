@@ -1,0 +1,34 @@
+isEnabled: true
+name: '&2[lvl 030] &3The City Dungeon'
+customInfo:
+- '&fThe perfect intermediate instanced sanctum!'
+- '&6Credits: Dali_, MagmaGuy, Frostcone'
+dungeonSizeCategory: DUNGEON
+worldName: em_id_the_city
+environment: NORMAL
+protect: true
+playerInfo: 'Difficulty: &45-man hard content!'
+regionEnterMessage: '&bBefore being able to enter the city you must deal with the
+  guardian on the bridge!'
+regionLeaveMessage: '&bYou have left The City!'
+startLocation: em_id_the_city,-60.5,122,-12.5,-67,0
+teleportLocation: em_id_the_city,-87.5,119,-13.5,-90,0
+dungeonObjectives:
+- filename=em_id_the_city_mini_boss_one.yml
+- filename=em_id_the_city_mini_boss_two.yml
+- filename=em_id_the_city_mini_boss_three.yml
+- filename=em_id_the_city_royal_guard_p1.yml
+contentType: INSTANCED_DUNGEON
+dungeonConfigFolderName: em_id_the_city
+contentLevel: 30
+difficulties:
+- levelSync: 35
+  id: 0
+  name: normal
+- levelSync: 30
+  id: 1
+  name: hard
+- levelSync: 25
+  id: 2
+  name: mythic
+setupMenuDescription: []

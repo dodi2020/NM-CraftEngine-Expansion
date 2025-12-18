@@ -1,0 +1,26 @@
+isEnabled: true
+name: '&2[lvl 015] &8The Dark Cathedral'
+customInfo:
+- '&fThe first ever EliteMobs Lair!'
+- '&fA classic that all servers need!'
+- '&6Credits: MagmaGuy, 69OzCanOfBepis, Frost, Dali'
+dungeonSizeCategory: LAIR
+worldName: em_the_dark_cathedral
+environment: NETHER
+protect: true
+playerInfo: |-
+  Difficulty: &cHard
+  $bossCount level $highestTier Big Boss!
+  &cThe original minidungeon, a challenge for
+  &ca group of players or for veterans!
+regionEnterMessage: '&8[EM] &1An invasion is in progress. &9Stop the insurrection!'
+regionLeaveMessage: '&8[EM] &1You managed to hold them back. &9For now...'
+teleportLocation: em_the_dark_cathedral,47.5,85.2,199.5,163,0
+contentType: OPEN_DUNGEON
+dungeonConfigFolderName: the_dark_cathedral
+song: name=elitemobs:dark_cathedral.ambient length=93830
+setupMenuDescription:
+- '&2A Lair for players around level 15!'
+- '&2The perfect quick showcase for EliteMobs,'
+- '&2with custom models, a custom soundtrack'
+- '&2and custom powers, all for free!'

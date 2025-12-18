@@ -1,0 +1,6 @@
+isEnabled: true
+name: Loud Strikes
+maxLevelV2: 3
+value: 6.0
+isEnabledForProcedurallyGeneratedItems: false
+maxEnchantmentLevel: 10

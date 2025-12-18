@@ -1,0 +1,29 @@
+isEnabled: true
+Menu name: '[EM] Getloot menu'
+Info button:
+  material: PLAYER_HEAD
+  name: §4§lEliteMobs §cby §4§lMagmaGuy
+  lore:
+  - §8Support the plugins you enjoy!
+Left button:
+  material: PLAYER_HEAD
+  name: Previous Item Ranks
+  lore:
+  - ''
+Right button:
+  material: PLAYER_HEAD
+  name: Next Item Ranks
+  lore:
+  - ''
+tierTranslation: Level
+itemFilterTranslation: Filter by items of this level.
+previousLoot:
+  material: PLAYER_HEAD
+  name: Previous Loot Page
+  lore:
+  - ''
+nextLoot:
+  material: PLAYER_HEAD
+  name: Next Loot Page
+  lore:
+  - ''

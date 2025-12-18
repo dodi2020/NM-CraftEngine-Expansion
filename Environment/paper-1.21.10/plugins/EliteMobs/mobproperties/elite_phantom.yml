@@ -1,0 +1,8 @@
+isEnabled: true
+entityType: PHANTOM
+name: '&fLvl &2$level &fElite &9Phantom'
+deathMessages:
+- $player &cjust had a bad nightmare about $entity&c!
+- $player &cwill be having nightmares about $entity&c!
+- $entity &chas taught $player &cthe value of sleep!
+baseDamageV2: 9.0

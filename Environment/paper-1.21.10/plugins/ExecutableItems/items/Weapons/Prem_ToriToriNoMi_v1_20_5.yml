@@ -1,0 +1,636 @@
+name: '&eDefault name'
+lore:
+- '&fHold Right-Click to soar the skies'
+- '&f'
+- '&fShift-Right-Click while in the ground to create'
+- '&f &f a wall of flames for 3s'
+- '&f'
+- '&fLeft-Click to shoot a slow moving'
+- '&f &f fireball that magnets nearby targets'
+- '&f &f and deals heavy damage afterwards'
+material: DIAMOND_HOE
+glow: true
+disableStack: false
+keepItemOnDeath: false
+canBeUsedOnlyByTheOwner: false
+storeItemInfo: false
+unbreakable: true
+usage: 1
+usageLimit: -1
+durability: 0
+cancelEventIfNoPerm: false
+cancelEventIfNotOwner: false
+disabledWorlds: []
+recognitions: []
+config_5: true
+config_update: true
+dropFeatures:
+  glowDrop: false
+  glowDropColor: WHITE
+  displayNameDrop: false
+hiders:
+  hideEnchantments: false
+  hideUnbreakable: false
+  hideAttributes: false
+  hidePotionEffects: false
+  hideUsage: true
+enchantments: {}
+giveFirstJoinFeatures:
+  giveFirstJoin: false
+  giveFirstJoinAmount: 1
+  giveFirstJoinSlot: 0
+restrictions: {}
+variables: {}
+activators:
+  activator0:
+    name: '&eActivator'
+    option: PLAYER_RIGHT_CLICK
+    typeTarget: NO_TYPE_TARGET
+    usageModification: 0
+    cancelEvent: true
+    silenceOutput: true
+    autoUpdateItem: false
+    cooldownFeatures:
+      cooldown: 0
+      isCooldownInTicks: false
+      cooldownMsg: '&cYou are in cooldown ! &7(&e%time_H%&6H &e%time_M%&6M &e%time_S%&6S&7)'
+      displayCooldownMessage: true
+      cancelEventIfInCooldown: false
+    globalCooldownFeatures:
+      cooldown: 0
+      isCooldownInTicks: false
+      cooldownMsg: '&cYou are in cooldown ! &7(&e%time_H%&6H &e%time_M%&6M &e%time_S%&6S&7)'
+      displayCooldownMessage: true
+      cancelEventIfInCooldown: false
+    otherEICooldowns: {}
+    requiredItems: {}
+    requiredExecutableItems: {}
+    detailedSlots:
+    - -1
+    playerCommands:
+    - LAUNCH ONEPIECE_005_1_FLIGHT
+    playerConditions:
+      ifIsNotInTheBlock:
+        material0:
+          material: WATER
+      ifIsNotInTheBlockMsg: ''
+      ifIsNotOnTheBlock:
+        material0:
+          material: WATER
+      ifIsNotOnTheBlockMsg: ''
+    worldConditions: {}
+    itemConditions: {}
+    customConditions: {}
+    placeholdersConditions: {}
+    variablesModification: {}
+  activator1:
+    name: '&eActivator'
+    option: PLAYER_CUSTOM_LAUNCH
+    usageModification: 0
+    cancelEvent: false
+    silenceOutput: true
+    autoUpdateItem: false
+    cooldownFeatures:
+      cooldown: 0
+      isCooldownInTicks: false
+      cooldownMsg: '&cYou are in cooldown ! &7(&e%time_H%&6H &e%time_M%&6M &e%time_S%&6S&7)'
+      displayCooldownMessage: true
+      cancelEventIfInCooldown: false
+    globalCooldownFeatures:
+      cooldown: 0
+      isCooldownInTicks: false
+      cooldownMsg: '&cYou are in cooldown ! &7(&e%time_H%&6H &e%time_M%&6M &e%time_S%&6S&7)'
+      displayCooldownMessage: true
+      cancelEventIfInCooldown: false
+    otherEICooldowns: {}
+    requiredItems: {}
+    requiredExecutableItems: {}
+    detailedSlots:
+    - -1
+    playerCommands:
+    - execute at %projectile_uuid% run playsound entity.ender_dragon.flap ambient
+      @a[distance=..12]
+    - execute at %player% as %projectile_uuid% run minecraft:tp %projectile_uuid% ^ ^1 ^5
+    - execute at %projectile_uuid% run particle soul_fire_flame ^ ^ ^1 0.01 0.01 0.01
+      0.2 10
+    - execute at %projectile_uuid% run particle soul_fire_flame ^ ^ ^2 0.01 0.01 0.01
+      0.2 10
+    - execute at %projectile_uuid% run particle dust{color:[1.0,1.0,0.2],scale:2} ~ ~ ~ 3 3 3 0.5 20
+    - MOB_AROUND 3 BLACKLIST(ARMOR_STAND) true DAMAGE 15
+    - AROUND 3 false DAMAGE 15
+    - DELAYTICK 1
+    - CUSTOMDASH1 %projectile_x% %projectile_y% %projectile_z%
+    - minecraft:kill %projectile_uuid%
+    playerConditions:
+      ifIsNotInTheBlock:
+        material0:
+          material: WATER
+      ifIsNotInTheBlockMsg: ''
+      ifIsNotOnTheBlock:
+        material0:
+          material: WATER
+      ifIsNotOnTheBlockMsg: ''
+    worldConditions: {}
+    itemConditions: {}
+    customConditions: {}
+    placeholdersConditions:
+      plchCdt0:
+        type: PLAYER_STRING
+        comparator: EQUALS
+        part1: '%projectile_name%'
+        part2: ONEPIECE_005_1_FLIGHT
+        cancelEventIfNotValid: false
+        messageIfNotValid: ''
+    detailedEntities: []
+    entityCommands: []
+    entityConditions: {}
+    variablesModification: {}
+  activator2:
+    name: '&eActivator'
+    option: PLAYER_RIGHT_CLICK
+    typeTarget: NO_TYPE_TARGET
+    usageModification: 0
+    cancelEvent: false
+    silenceOutput: true
+    autoUpdateItem: false
+    cooldownFeatures:
+      cooldown: 1
+      isCooldownInTicks: false
+      cooldownMsg: '&cYou are in cooldown ! &7(&e%time_H%&6H &e%time_M%&6M &e%time_S%&6S&7)'
+      displayCooldownMessage: false
+      cancelEventIfInCooldown: false
+    globalCooldownFeatures:
+      cooldown: 0
+      isCooldownInTicks: false
+      cooldownMsg: '&cYou are in cooldown ! &7(&e%time_H%&6H &e%time_M%&6M &e%time_S%&6S&7)'
+      displayCooldownMessage: true
+      cancelEventIfInCooldown: false
+    otherEICooldowns: {}
+    requiredItems: {}
+    requiredExecutableItems: {}
+    detailedSlots:
+    - -1
+    playerCommands:
+    - LOCATED_LAUNCH ONEPIECE_005_2_FLAME_WALL 1 0 0 0
+    - LOCATED_LAUNCH ONEPIECE_005_2_FLAME_WALL 1 0.3 0 0
+    - LOCATED_LAUNCH ONEPIECE_005_2_FLAME_WALL 1 0.6 0 0
+    - LOCATED_LAUNCH ONEPIECE_005_2_FLAME_WALL 1 0.9 0 0
+    - LOCATED_LAUNCH ONEPIECE_005_2_FLAME_WALL 1 -0.3 0 0
+    - LOCATED_LAUNCH ONEPIECE_005_2_FLAME_WALL 1 -0.6 0 0
+    - LOCATED_LAUNCH ONEPIECE_005_2_FLAME_WALL 1 -0.9 0 0
+    - LOCATED_LAUNCH ONEPIECE_005_2_FLAME_WALL 1 0 2 0
+    - LOCATED_LAUNCH ONEPIECE_005_2_FLAME_WALL 1 0.3 2 0
+    - LOCATED_LAUNCH ONEPIECE_005_2_FLAME_WALL 1 0.6 2 0
+    - LOCATED_LAUNCH ONEPIECE_005_2_FLAME_WALL 1 0.9 2 0
+    - LOCATED_LAUNCH ONEPIECE_005_2_FLAME_WALL 1 -0.3 2 0
+    - LOCATED_LAUNCH ONEPIECE_005_2_FLAME_WALL 1 -0.6 2 0
+    - LOCATED_LAUNCH ONEPIECE_005_2_FLAME_WALL 1 -0.9 2 0
+    - LOCATED_LAUNCH ONEPIECE_005_2_FLAME_WALL 1 0 4 0
+    - LOCATED_LAUNCH ONEPIECE_005_2_FLAME_WALL 1 0.3 4 0
+    - LOCATED_LAUNCH ONEPIECE_005_2_FLAME_WALL 1 0.6 4 0
+    - LOCATED_LAUNCH ONEPIECE_005_2_FLAME_WALL 1 0.9 4 0
+    - LOCATED_LAUNCH ONEPIECE_005_2_FLAME_WALL 1 -0.3 4 0
+    - LOCATED_LAUNCH ONEPIECE_005_2_FLAME_WALL 1 -0.6 4 0
+    - LOCATED_LAUNCH ONEPIECE_005_2_FLAME_WALL 1 -0.9 4 0
+    playerConditions:
+      ifIsNotInTheBlock:
+        material0:
+          material: WATER
+      ifIsNotInTheBlockMsg: ''
+      ifIsNotOnTheBlock:
+        material0:
+          material: WATER
+      ifIsNotOnTheBlockMsg: ''
+      ifIsNotInTheAir: true
+      ifIsNotInTheAirMsg: ''
+      ifSneaking: true
+      ifSneakingMsg: ''
+    worldConditions: {}
+    itemConditions: {}
+    customConditions: {}
+    placeholdersConditions: {}
+    variablesModification: {}
+  activator3:
+    name: '&eActivator'
+    option: PLAYER_CUSTOM_LAUNCH
+    usageModification: 0
+    cancelEvent: false
+    silenceOutput: true
+    autoUpdateItem: false
+    cooldownFeatures:
+      cooldown: 0
+      isCooldownInTicks: false
+      cooldownMsg: '&cYou are in cooldown ! &7(&e%time_H%&6H &e%time_M%&6M &e%time_S%&6S&7)'
+      displayCooldownMessage: true
+      cancelEventIfInCooldown: false
+    globalCooldownFeatures:
+      cooldown: 0
+      isCooldownInTicks: false
+      cooldownMsg: '&cYou are in cooldown ! &7(&e%time_H%&6H &e%time_M%&6M &e%time_S%&6S&7)'
+      displayCooldownMessage: true
+      cancelEventIfInCooldown: false
+    otherEICooldowns: {}
+    requiredItems: {}
+    requiredExecutableItems: {}
+    detailedSlots:
+    - -1
+    playerCommands: []
+    playerConditions:
+      ifIsNotInTheBlock:
+        material0:
+          material: WATER
+      ifIsNotInTheBlockMsg: ''
+      ifIsNotOnTheBlock:
+        material0:
+          material: WATER
+      ifIsNotOnTheBlockMsg: ''
+    worldConditions: {}
+    itemConditions: {}
+    customConditions: {}
+    placeholdersConditions:
+      plchCdt0:
+        type: PLAYER_STRING
+        comparator: EQUALS
+        part1: '%projectile_name%'
+        part2: ONEPIECE_005_2_FLAME_WALL
+        cancelEventIfNotValid: false
+        messageIfNotValid: ''
+    detailedEntities: []
+    entityCommands:
+    - 'LOOP START: 20'
+    - execute at %projectile_uuid% run particle soul_fire_flame ^ ^ ^ 0 0.%rand:5|99%
+      0 0.%rand:5|99% 0
+    - DELAYTICK 1
+    - execute at %projectile_uuid% run particle soul_fire_flame ^ ^ ^ 0 0.%rand:5|99%
+      0 0.%rand:5|99% 0
+    - DELAYTICK 1
+    - execute at %projectile_uuid% run particle soul_fire_flame ^ ^ ^ 0 0.%rand:5|99%
+      0 0.%rand:5|99% 0
+    - DELAYTICK 1
+    - execute at %projectile_uuid% run particle soul_fire_flame ^ ^ ^ 0 0.%rand:5|99%
+      0 0.%rand:5|99% 0
+    - DELAYTICK 1
+    - 'RANDOM RUN: 1'
+    - NOTHING*4
+    - execute at %projectile_uuid% run playsound block.fire.ambient ambient @a[distance=..7]
+      +++ execute at %projectile_uuid% run particle dust{color:[1.0,1.0,0.2],scale:2} ~ ~ ~ 1 1 1 0.5
+      5
+    - RANDOM END
+    - MOB_AROUND 1 BLACKLIST(ARMOR_STAND) DAMAGE 1
+    - AROUND 1 CONDITIONS(%::player_name::%!=%player%) DAMAGE 1
+    - LOOP END
+    - minecraft:kill %projectile_uuid%
+    entityConditions: {}
+    variablesModification: {}
+  activator4:
+    name: '&eActivator'
+    option: PLAYER_LEFT_CLICK
+    typeTarget: NO_TYPE_TARGET
+    usageModification: 0
+    cancelEvent: false
+    silenceOutput: true
+    autoUpdateItem: false
+    cooldownFeatures:
+      cooldown: 1
+      isCooldownInTicks: false
+      cooldownMsg: '&cYou are in cooldown ! &7(&e%time_H%&6H &e%time_M%&6M &e%time_S%&6S&7)'
+      displayCooldownMessage: true
+      cancelEventIfInCooldown: false
+    globalCooldownFeatures:
+      cooldown: 0
+      isCooldownInTicks: false
+      cooldownMsg: '&cYou are in cooldown ! &7(&e%time_H%&6H &e%time_M%&6M &e%time_S%&6S&7)'
+      displayCooldownMessage: true
+      cancelEventIfInCooldown: false
+    otherEICooldowns: {}
+    requiredItems: {}
+    requiredExecutableItems: {}
+    detailedSlots:
+    - -1
+    playerCommands:
+    - execute at %player% run playsound entity.blaze.shoot ambient @a[distance=..7]
+    - LOCATED_LAUNCH ONEPIECE_005_3_FIREBALL 3 0 1.6 0
+    playerConditions:
+      ifIsNotInTheBlock:
+        material0:
+          material: WATER
+      ifIsNotInTheBlockMsg: ''
+      ifIsNotOnTheBlock:
+        material0:
+          material: WATER
+      ifIsNotOnTheBlockMsg: ''
+      ifNotSneaking: true
+      ifNotSneakingMsg: ''
+    worldConditions: {}
+    itemConditions: {}
+    customConditions: {}
+    placeholdersConditions: {}
+    variablesModification: {}
+  activator5:
+    name: '&eActivator'
+    option: PLAYER_CUSTOM_LAUNCH
+    usageModification: 0
+    cancelEvent: false
+    silenceOutput: true
+    autoUpdateItem: false
+    cooldownFeatures:
+      cooldown: 0
+      isCooldownInTicks: false
+      cooldownMsg: '&cYou are in cooldown ! &7(&e%time_H%&6H &e%time_M%&6M &e%time_S%&6S&7)'
+      displayCooldownMessage: true
+      cancelEventIfInCooldown: false
+    globalCooldownFeatures:
+      cooldown: 0
+      isCooldownInTicks: false
+      cooldownMsg: '&cYou are in cooldown ! &7(&e%time_H%&6H &e%time_M%&6M &e%time_S%&6S&7)'
+      displayCooldownMessage: true
+      cancelEventIfInCooldown: false
+    otherEICooldowns: {}
+    requiredItems: {}
+    requiredExecutableItems: {}
+    detailedSlots:
+    - -1
+    playerCommands: []
+    playerConditions:
+      ifIsNotInTheBlock:
+        material0:
+          material: WATER
+      ifIsNotInTheBlockMsg: ''
+      ifIsNotOnTheBlock:
+        material0:
+          material: WATER
+      ifIsNotOnTheBlockMsg: ''
+    worldConditions: {}
+    itemConditions: {}
+    customConditions: {}
+    placeholdersConditions:
+      plchCdt0:
+        type: PLAYER_STRING
+        comparator: EQUALS
+        part1: '%projectile_name%'
+        part2: ONEPIECE_005_3_FIREBALL
+        cancelEventIfNotValid: false
+        messageIfNotValid: ''
+    detailedEntities: []
+    entityCommands:
+    - execute at %player% run summon armor_stand ^ ^ ^2.5 {DisabledSlots:786432,NoGravity:1b,Silent:1b,Invulnerable:1b,Marker:1b,Invisible:1b,Tags:["%projectile_uuid%","%projectile_uuid%f"],ArmorItems:[{},{},{},{id:"minecraft:player_head",Count:1b,tag:{display:{Name:"{\"text\":\"Orb
+      (Lime)\"}"},SkullOwner:{Id:[I;-1184607709,-2103752677,-1465363347,1565039543],Properties:{textures:[{Value:"eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNzA2NTAyY2Q2NGY3ZTIyYjZmYzBmZTZmNjI0YjZkNzM4ZTgyMTA0ZmNiMTYzZTJlNDQzZDA5MTZkMTMyYTIxZSJ9fX0="}]}}}}]}
+    - execute at %player% as @e[tag=%projectile_uuid%] run minecraft:tp @e[tag=%projectile_uuid%]
+      ~ ~ ~ ~ ~
+    - 'LOOP START: 50'
+    - execute at @e[tag=%projectile_uuid%] as @e[tag=%projectile_uuid%] run minecraft:tp ^ ^
+      ^0.5
+    - execute at @e[tag=%projectile_uuid%] run particle soul_fire_flame ~ ~1 ~ 0.01
+      0.01 0.01 0.5 20
+    - execute at @e[tag=%projectile_uuid%] run particle dust{color:[1.0,1.0,0.2],scale:1} ~ ~1 ~ 1 1
+      1 0.5 20
+    - execute at @e[tag=%projectile_uuid%] as %projectile_uuid% run minecraft:tp ~ ~ ~
+    - MOB_AROUND 2 BLACKLIST(ARMOR_STAND) CUSTOMDASH1 %projectile_x% %projectile_y%
+      %projectile_z% <+> DAMAGE 0.1
+    - AROUND 2 CONDITIONS(%::player_name::%!=%player%) CUSTOMDASH1 %projectile_x% %projectile_y% %projectile_z% <+> DAMAGE
+      0.1
+    - DELAYTICK 1
+    - LOOP END
+    - MOB_AROUND 2 BLACKLIST(ARMOR_STAND) CUSTOMDASH1 %projectile_x% %projectile_y%
+      %projectile_z% <+> DAMAGE 40
+    - AROUND 2 CONDITIONS(%::player_name::%!=%player%) CUSTOMDASH1 %projectile_x% %projectile_y% %projectile_z% <+> DAMAGE
+      40
+    - execute at %projectile_uuid% run particle explosion_emitter ~ ~ ~ 0.01 0.01
+      0.01 0 1
+    - execute at %projectile_uuid% run playsound entity.generic.explode ambient @a[distance=..15]
+    - minecraft:kill %projectile_uuid%
+    - minecraft:kill @e[tag=%projectile_uuid%]
+    entityConditions: {}
+    variablesModification: {}
+  activator6:
+    name: '&eActivator'
+    option: LOOP
+    usageModification: 0
+    cancelEvent: false
+    silenceOutput: true
+    autoUpdateItem: false
+    cooldownFeatures:
+      cooldown: 0
+      isCooldownInTicks: false
+      cooldownMsg: '&cYou are in cooldown ! &7(&e%time_H%&6H &e%time_M%&6M &e%time_S%&6S&7)'
+      displayCooldownMessage: true
+      cancelEventIfInCooldown: false
+    globalCooldownFeatures:
+      cooldown: 0
+      isCooldownInTicks: false
+      cooldownMsg: '&cYou are in cooldown ! &7(&e%time_H%&6H &e%time_M%&6M &e%time_S%&6S&7)'
+      displayCooldownMessage: true
+      cancelEventIfInCooldown: false
+    otherEICooldowns: {}
+    requiredItems: {}
+    requiredExecutableItems: {}
+    detailedSlots: []
+    playerCommands:
+    - 'LOOP START: 4'
+    - 'RANDOM RUN: 20'
+    - execute at %player% positioned ~ ~1 ~ run particle dust{color:[0.3,0.88,1.0],scale:1} ~0.000
+      ~1.000 ~1.000 0 1 0 0.5 0
+    - execute at %player% positioned ~ ~1 ~ run particle dust{color:[0.3,0.88,1.0],scale:1} ~0.421
+      ~0.907 ~0.907 0 1 0 0.5 0
+    - execute at %player% positioned ~ ~1 ~ run particle dust{color:[0.3,0.88,1.0],scale:1} ~0.764
+      ~0.645 ~0.645 0 1 0 0.5 0
+    - execute at %player% positioned ~ ~1 ~ run particle dust{color:[0.3,0.88,1.0],scale:1} ~0.965
+      ~0.263 ~0.263 0 1 0 0.5 0
+    - execute at %player% positioned ~ ~1 ~ run particle dust{color:[0.3,0.88,1.0],scale:1} ~0.986
+      ~-0.168 ~-0.168 0 1 0 0.5 0
+    - execute at %player% positioned ~ ~1 ~ run particle dust{color:[0.3,0.88,1.0],scale:1} ~0.824
+      ~-0.567 ~-0.567 0 1 0 0.5 0
+    - execute at %player% positioned ~ ~1 ~ run particle dust{color:[0.3,0.88,1.0],scale:1} ~0.508
+      ~-0.861 ~-0.861 0 1 0 0.5 0
+    - execute at %player% positioned ~ ~1 ~ run particle dust{color:[0.3,0.88,1.0],scale:1} ~0.098
+      ~-0.995 ~-0.995 0 1 0 0.5 0
+    - execute at %player% positioned ~ ~1 ~ run particle dust{color:[0.3,0.88,1.0],scale:1} ~-0.330
+      ~-0.944 ~-0.944 0 1 0 0.5 0
+    - execute at %player% positioned ~ ~1 ~ run particle dust{color:[0.3,0.88,1.0],scale:1} ~-0.697
+      ~-0.717 ~-0.717 0 1 0 0.5 0
+    - execute at %player% positioned ~ ~1 ~ run particle dust{color:[0.3,0.88,1.0],scale:1} ~-0.934
+      ~-0.357 ~-0.357 0 1 0 0.5 0
+    - execute at %player% positioned ~ ~1 ~ run particle dust{color:[0.3,0.88,1.0],scale:1} ~-0.998
+      ~0.070 ~0.070 0 1 0 0.5 0
+    - execute at %player% positioned ~ ~1 ~ run particle dust{color:[0.3,0.88,1.0],scale:1} ~-0.875
+      ~0.484 ~0.484 0 1 0 0.5 0
+    - execute at %player% positioned ~ ~1 ~ run particle dust{color:[0.3,0.88,1.0],scale:1} ~-0.590
+      ~0.807 ~0.807 0 1 0 0.5 0
+    - execute at %player% positioned ~ ~1 ~ run particle dust{color:[0.3,0.88,1.0],scale:1} ~-0.195
+      ~0.981 ~0.981 0 1 0 0.5 0
+    - execute at %player% positioned ~ ~1 ~ run particle dust{color:[0.3,0.88,1.0],scale:1} ~0.236
+      ~0.972 ~0.972 0 1 0 0.5 0
+    - execute at %player% positioned ~ ~1 ~ run particle dust{color:[0.3,0.88,1.0],scale:1} ~0.624
+      ~0.782 ~0.782 0 1 0 0.5 0
+    - execute at %player% positioned ~ ~1 ~ run particle dust{color:[0.3,0.88,1.0],scale:1} ~0.895
+      ~0.446 ~0.446 0 1 0 0.5 0
+    - execute at %player% positioned ~ ~1 ~ run particle dust{color:[0.3,0.88,1.0],scale:1} ~1.000
+      ~0.028 ~0.028 0 1 0 0.5 0
+    - execute at %player% positioned ~ ~1 ~ run particle dust{color:[0.3,0.88,1.0],scale:1} ~0.918
+      ~-0.396 ~-0.396 0 1 0 0.5 0
+    - execute at %player% positioned ~ ~1 ~ run particle dust{color:[0.3,0.88,1.0],scale:1} ~0.666
+      ~-0.746 ~-0.746 0 1 0 0.5 0
+    - execute at %player% positioned ~ ~1 ~ run particle dust{color:[0.3,0.88,1.0],scale:1} ~0.290
+      ~-0.957 ~-0.957 0 1 0 0.5 0
+    - execute at %player% positioned ~ ~1 ~ run particle dust{color:[0.3,0.88,1.0],scale:1} ~-0.140
+      ~-0.990 ~-0.990 0 1 0 0.5 0
+    - execute at %player% positioned ~ ~1 ~ run particle dust{color:[0.3,0.88,1.0],scale:1} ~-0.544
+      ~-0.839 ~-0.839 0 1 0 0.5 0
+    - execute at %player% positioned ~ ~1 ~ run particle dust{color:[0.3,0.88,1.0],scale:1} ~-0.847
+      ~-0.532 ~-0.532 0 1 0 0.5 0
+    - execute at %player% positioned ~ ~1 ~ run particle dust{color:[0.3,0.88,1.0],scale:1} ~-0.992
+      ~-0.126 ~-0.126 0 1 0 0.5 0
+    - execute at %player% positioned ~ ~1 ~ run particle dust{color:[0.3,0.88,1.0],scale:1} ~-0.953
+      ~0.304 ~0.304 0 1 0 0.5 0
+    - execute at %player% positioned ~ ~1 ~ run particle dust{color:[0.3,0.88,1.0],scale:1} ~-0.736
+      ~0.677 ~0.677 0 1 0 0.5 0
+    - execute at %player% positioned ~ ~1 ~ run particle dust{color:[0.3,0.88,1.0],scale:1} ~-0.382
+      ~0.924 ~0.924 0 1 0 0.5 0
+    - execute at %player% positioned ~ ~1 ~ run particle dust{color:[0.3,0.88,1.0],scale:1} ~0.042
+      ~0.999 ~0.999 0 1 0 0.5 0
+    - execute at %player% positioned ~ ~1 ~ run particle dust{color:[0.3,0.88,1.0],scale:1} ~0.459
+      ~0.888 ~0.888 0 1 0 0.5 0
+    - execute at %player% positioned ~ ~1 ~ run particle dust{color:[0.3,0.88,1.0],scale:1} ~0.791
+      ~0.612 ~0.612 0 1 0 0.5 0
+    - execute at %player% positioned ~ ~1 ~ run particle dust{color:[0.3,0.88,1.0],scale:1} ~0.975
+      ~0.222 ~0.222 0 1 0 0.5 0
+    - execute at %player% positioned ~ ~1 ~ run particle dust{color:[0.3,0.88,1.0],scale:1} ~0.978
+      ~-0.209 ~-0.209 0 1 0 0.5 0
+    - execute at %player% positioned ~ ~1 ~ run particle dust{color:[0.3,0.88,1.0],scale:1} ~0.799
+      ~-0.602 ~-0.602 0 1 0 0.5 0
+    - execute at %player% positioned ~ ~1 ~ run particle dust{color:[0.3,0.88,1.0],scale:1} ~0.471
+      ~-0.882 ~-0.882 0 1 0 0.5 0
+    - execute at %player% positioned ~ ~1 ~ run particle dust{color:[0.3,0.88,1.0],scale:1} ~0.056
+      ~-0.998 ~-0.998 0 1 0 0.5 0
+    - execute at %player% positioned ~ ~1 ~ run particle dust{color:[0.3,0.88,1.0],scale:1} ~-0.370
+      ~-0.929 ~-0.929 0 1 0 0.5 0
+    - execute at %player% positioned ~ ~1 ~ run particle dust{color:[0.3,0.88,1.0],scale:1} ~-0.727
+      ~-0.687 ~-0.687 0 1 0 0.5 0
+    - execute at %player% positioned ~ ~1 ~ run particle dust{color:[0.3,0.88,1.0],scale:1} ~-0.949
+      ~-0.317 ~-0.317 0 1 0 0.5 0
+    - execute at %player% positioned ~ ~1 ~ run particle dust{color:[0.3,0.88,1.0],scale:1} ~-0.994
+      ~0.112 ~0.112 0 1 0 0.5 0
+    - execute at %player% positioned ~ ~1 ~ run particle dust{color:[0.3,0.88,1.0],scale:1} ~-0.854
+      ~0.520 ~0.520 0 1 0 0.5 0
+    - execute at %player% positioned ~ ~1 ~ run particle dust{color:[0.3,0.88,1.0],scale:1} ~-0.555
+      ~0.832 ~0.832 0 1 0 0.5 0
+    - execute at %player% positioned ~ ~1 ~ run particle dust{color:[0.3,0.88,1.0],scale:1} ~-0.153
+      ~0.988 ~0.988 0 1 0 0.5 0
+    - execute at %player% positioned ~ ~1 ~ run particle dust{color:[0.3,0.88,1.0],scale:1} ~0.277
+      ~0.961 ~0.961 0 1 0 0.5 0
+    - execute at %player% positioned ~ ~1 ~ run particle dust{color:[0.3,0.88,1.0],scale:1} ~0.656
+      ~0.755 ~0.755 0 1 0 0.5 0
+    - RANDOM END
+    - 'RANDOM RUN: 20'
+    - execute at %player% positioned ~ ~1 ~ run particle dust{color:[1.0,1.0,0.2],scale:1} ~1.000 ~1.000
+      ~0.000 0 1 0 0.5 0
+    - execute at %player% positioned ~ ~1 ~ run particle dust{color:[1.0,1.0,0.2],scale:1} ~0.907 ~0.907
+      ~0.421 0 1 0 0.5 0
+    - execute at %player% positioned ~ ~1 ~ run particle dust{color:[1.0,1.0,0.2],scale:1} ~0.645 ~0.645
+      ~0.764 0 1 0 0.5 0
+    - execute at %player% positioned ~ ~1 ~ run particle dust{color:[1.0,1.0,0.2],scale:1} ~0.263 ~0.263
+      ~0.965 0 1 0 0.5 0
+    - execute at %player% positioned ~ ~1 ~ run particle dust{color:[1.0,1.0,0.2],scale:1} ~-0.168 ~-0.168
+      ~0.986 0 1 0 0.5 0
+    - execute at %player% positioned ~ ~1 ~ run particle dust{color:[1.0,1.0,0.2],scale:1} ~-0.567 ~-0.567
+      ~0.824 0 1 0 0.5 0
+    - execute at %player% positioned ~ ~1 ~ run particle dust{color:[1.0,1.0,0.2],scale:1} ~-0.861 ~-0.861
+      ~0.508 0 1 0 0.5 0
+    - execute at %player% positioned ~ ~1 ~ run particle dust{color:[1.0,1.0,0.2],scale:1} ~-0.995 ~-0.995
+      ~0.098 0 1 0 0.5 0
+    - execute at %player% positioned ~ ~1 ~ run particle dust{color:[1.0,1.0,0.2],scale:1} ~-0.944 ~-0.944
+      ~-0.330 0 1 0 0.5 0
+    - execute at %player% positioned ~ ~1 ~ run particle dust{color:[1.0,1.0,0.2],scale:1} ~-0.717 ~-0.717
+      ~-0.697 0 1 0 0.5 0
+    - execute at %player% positioned ~ ~1 ~ run particle dust{color:[1.0,1.0,0.2],scale:1} ~-0.357 ~-0.357
+      ~-0.934 0 1 0 0.5 0
+    - execute at %player% positioned ~ ~1 ~ run particle dust{color:[1.0,1.0,0.2],scale:1} ~0.070 ~0.070
+      ~-0.998 0 1 0 0.5 0
+    - execute at %player% positioned ~ ~1 ~ run particle dust{color:[1.0,1.0,0.2],scale:1} ~0.484 ~0.484
+      ~-0.875 0 1 0 0.5 0
+    - execute at %player% positioned ~ ~1 ~ run particle dust{color:[1.0,1.0,0.2],scale:1} ~0.807 ~0.807
+      ~-0.590 0 1 0 0.5 0
+    - execute at %player% positioned ~ ~1 ~ run particle dust{color:[1.0,1.0,0.2],scale:1} ~0.981 ~0.981
+      ~-0.195 0 1 0 0.5 0
+    - execute at %player% positioned ~ ~1 ~ run particle dust{color:[1.0,1.0,0.2],scale:1} ~0.972 ~0.972
+      ~0.236 0 1 0 0.5 0
+    - execute at %player% positioned ~ ~1 ~ run particle dust{color:[1.0,1.0,0.2],scale:1} ~0.782 ~0.782
+      ~0.624 0 1 0 0.5 0
+    - execute at %player% positioned ~ ~1 ~ run particle dust{color:[1.0,1.0,0.2],scale:1} ~0.446 ~0.446
+      ~0.895 0 1 0 0.5 0
+    - execute at %player% positioned ~ ~1 ~ run particle dust{color:[1.0,1.0,0.2],scale:1} ~0.028 ~0.028
+      ~1.000 0 1 0 0.5 0
+    - execute at %player% positioned ~ ~1 ~ run particle dust{color:[1.0,1.0,0.2],scale:1} ~-0.396 ~-0.396
+      ~0.918 0 1 0 0.5 0
+    - execute at %player% positioned ~ ~1 ~ run particle dust{color:[1.0,1.0,0.2],scale:1} ~-0.746 ~-0.746
+      ~0.666 0 1 0 0.5 0
+    - execute at %player% positioned ~ ~1 ~ run particle dust{color:[1.0,1.0,0.2],scale:1} ~-0.957 ~-0.957
+      ~0.290 0 1 0 0.5 0
+    - execute at %player% positioned ~ ~1 ~ run particle dust{color:[1.0,1.0,0.2],scale:1} ~-0.990 ~-0.990
+      ~-0.140 0 1 0 0.5 0
+    - execute at %player% positioned ~ ~1 ~ run particle dust{color:[1.0,1.0,0.2],scale:1} ~-0.839 ~-0.839
+      ~-0.544 0 1 0 0.5 0
+    - execute at %player% positioned ~ ~1 ~ run particle dust{color:[1.0,1.0,0.2],scale:1} ~-0.532 ~-0.532
+      ~-0.847 0 1 0 0.5 0
+    - execute at %player% positioned ~ ~1 ~ run particle dust{color:[1.0,1.0,0.2],scale:1} ~-0.126 ~-0.126
+      ~-0.992 0 1 0 0.5 0
+    - execute at %player% positioned ~ ~1 ~ run particle dust{color:[1.0,1.0,0.2],scale:1} ~0.304 ~0.304
+      ~-0.953 0 1 0 0.5 0
+    - execute at %player% positioned ~ ~1 ~ run particle dust{color:[1.0,1.0,0.2],scale:1} ~0.677 ~0.677
+      ~-0.736 0 1 0 0.5 0
+    - execute at %player% positioned ~ ~1 ~ run particle dust{color:[1.0,1.0,0.2],scale:1} ~0.924 ~0.924
+      ~-0.382 0 1 0 0.5 0
+    - execute at %player% positioned ~ ~1 ~ run particle dust{color:[1.0,1.0,0.2],scale:1} ~0.999 ~0.999
+      ~0.042 0 1 0 0.5 0
+    - execute at %player% positioned ~ ~1 ~ run particle dust{color:[1.0,1.0,0.2],scale:1} ~0.888 ~0.888
+      ~0.459 0 1 0 0.5 0
+    - execute at %player% positioned ~ ~1 ~ run particle dust{color:[1.0,1.0,0.2],scale:1} ~0.612 ~0.612
+      ~0.791 0 1 0 0.5 0
+    - execute at %player% positioned ~ ~1 ~ run particle dust{color:[1.0,1.0,0.2],scale:1} ~0.222 ~0.222
+      ~0.975 0 1 0 0.5 0
+    - execute at %player% positioned ~ ~1 ~ run particle dust{color:[1.0,1.0,0.2],scale:1} ~-0.209 ~-0.209
+      ~0.978 0 1 0 0.5 0
+    - execute at %player% positioned ~ ~1 ~ run particle dust{color:[1.0,1.0,0.2],scale:1} ~-0.602 ~-0.602
+      ~0.799 0 1 0 0.5 0
+    - execute at %player% positioned ~ ~1 ~ run particle dust{color:[1.0,1.0,0.2],scale:1} ~-0.882 ~-0.882
+      ~0.471 0 1 0 0.5 0
+    - execute at %player% positioned ~ ~1 ~ run particle dust{color:[1.0,1.0,0.2],scale:1} ~-0.998 ~-0.998
+      ~0.056 0 1 0 0.5 0
+    - execute at %player% positioned ~ ~1 ~ run particle dust{color:[1.0,1.0,0.2],scale:1} ~-0.929 ~-0.929
+      ~-0.370 0 1 0 0.5 0
+    - execute at %player% positioned ~ ~1 ~ run particle dust{color:[1.0,1.0,0.2],scale:1} ~-0.687 ~-0.687
+      ~-0.727 0 1 0 0.5 0
+    - execute at %player% positioned ~ ~1 ~ run particle dust{color:[1.0,1.0,0.2],scale:1} ~-0.317 ~-0.317
+      ~-0.949 0 1 0 0.5 0
+    - execute at %player% positioned ~ ~1 ~ run particle dust{color:[1.0,1.0,0.2],scale:1} ~0.112 ~0.112
+      ~-0.994 0 1 0 0.5 0
+    - execute at %player% positioned ~ ~1 ~ run particle dust{color:[1.0,1.0,0.2],scale:1} ~0.520 ~0.520
+      ~-0.854 0 1 0 0.5 0
+    - execute at %player% positioned ~ ~1 ~ run particle dust{color:[1.0,1.0,0.2],scale:1} ~0.832 ~0.832
+      ~-0.555 0 1 0 0.5 0
+    - execute at %player% positioned ~ ~1 ~ run particle dust{color:[1.0,1.0,0.2],scale:1} ~0.988 ~0.988
+      ~-0.153 0 1 0 0.5 0
+    - execute at %player% positioned ~ ~1 ~ run particle dust{color:[1.0,1.0,0.2],scale:1} ~0.961 ~0.961
+      ~0.277 0 1 0 0.5 0
+    - execute at %player% positioned ~ ~1 ~ run particle dust{color:[1.0,1.0,0.2],scale:1} ~0.755 ~0.755
+      ~0.656 0 1 0 0.5 0
+    - RANDOM END
+    - DELAYTICK 5
+    - LOOP END
+    playerConditions:
+      ifIsNotInTheBlock:
+        material0:
+          material: WATER
+      ifIsNotInTheBlockMsg: ''
+      ifIsNotOnTheBlock:
+        material0:
+          material: WATER
+      ifIsNotOnTheBlockMsg: ''
+    worldConditions: {}
+    itemConditions: {}
+    customConditions: {}
+    placeholdersConditions: {}
+    delay: 1
+    delayInTick: false
+    variablesModification: {}
+attributes: {}

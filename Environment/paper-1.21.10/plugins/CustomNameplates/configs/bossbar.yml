@@ -1,0 +1,25 @@
+# https://mo-mi.gitbook.io/xiaomomi-plugins/plugin-wiki/customnameplates/config/bossbar.yml
+bossbar_1:
+  color: YELLOW
+  overlay: PROGRESS
+  conditions:
+    condition_1:
+      type: permission
+      refresh-interval: 20
+      value:
+        - bossbar.show
+  text-display-order:
+    1:
+      duration: 100
+      text: '%np_background_hello%'
+    2:
+      duration: 200
+      text: '%np_background_time%  %np_background_location%  %np_background_weather%'
+    3:
+      duration: 100
+      text: '%np_background_update%'
+      conditions:
+        permission: nameplates.admin
+        equals:
+          value1: '%np_is-latest%'
+          value2: 'false'

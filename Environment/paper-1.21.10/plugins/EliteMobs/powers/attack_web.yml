@@ -1,0 +1,18 @@
+isEnabled: true
+effect: COBWEB
+powerType: MISCELLANEOUS
+eliteScript:
+  WebPlayer:
+    Events:
+    - PlayerDamagedByEliteMobEvent
+    Cooldowns:
+      local: 60
+      global: 20
+    Actions:
+    - duration: 120
+      action: PLACE_BLOCK
+      Target:
+        targetType: DIRECT_TARGET
+      material: COBWEB
+      conditions:
+        locationIsAir: true

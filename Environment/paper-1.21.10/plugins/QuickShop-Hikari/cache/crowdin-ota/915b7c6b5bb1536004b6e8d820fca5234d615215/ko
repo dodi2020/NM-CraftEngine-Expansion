@@ -1,0 +1,1573 @@
+break-shop-use-supertool: <yellow> 당신은 SuperTool을 이용해 상점을 파괴할 수 있습니다.
+fee-charged-for-price-change: <green>가격 변경비<red>{0} 원을 <green>지불 하였습니다.
+not-allowed-to-create: <red> 당신은 이곳에 상점을 만들수 없습니다.
+disabled-in-this-world: <red>QuickShop은 이 월드에서 비활성화되어 있습니다.
+how-much-to-trade-for: <green>채팅에 {0}의 {1}개당 가격을 얼마로 할건지 입력해주세요.
+client-language-changed: <green>퀵샵이 당신의 클라이언트의 언어설정이 변경된것을 확인했습니다, 지금부터 저희는 당신을 위해 {0} 를 적용합니다.
+shops-backingup: 상점백업을 데이터베이스에 만들고 있습니다
+_comment: 안녕하세요 번역가님! 만약 당신이 깃헙이나 소스코드에서 번역 중이라면 다음 사이트를 가보시기 바래요! https://crowdin.com/project/quickshop-hikari
+unlimited-shop-owner-changed: <yellow>무제한 상점의 주인이 {0}으로 변경되었습니다.
+bad-command-usage-detailed: '<red>Bad command arguments! Accepts the following parameters: <gray>{0}'
+thats-not-a-number: <red>잘못된 숫자입니다.
+shop-name-disallowed: <red>The shop name <yellow>{0} <red>is disallowed. Pick another one!
+console-only-danger: <red>이 명령어는 위험하기에 콘솔에서만 실행할 수 있습니다.
+not-a-number: <red>당신은 숫자만 입력해야하지만 {0} 을(를) 입력하였습니다.
+not-looking-at-valid-shop-block: <red>상점을 만들수 잇는 블럭을 찾을수 없습니다. 상점으로 만들 블럭을 봐야합니다.
+shop-removed-cause-ongoing-fee: <red>{0} 위치에 있는 당신의 상점이 유지 비용이 없어 제거되었습니다!
+tabcomplete:
+  amount: '[갯수]'
+  item: '[물품]'
+  price: '[가격]'
+  name: '[이름]'
+  range: '[range]'
+  currency: '[통화명]'
+  percentage: '[퍼센트%]'
+taxaccount-unset: <green>서버 전역 설정을 따르는 이 상점의 세금 계정
+blacklisted-item: <red>당신은 이아이템을 판매할수 없습니다. 블랙리스트에 등록되어있는 아이템입니다.
+command-type-mismatch: <red>이 명령어는 <aqua>{0}<red>에서만 사용할 수 있습니다.
+server-crash-warning: '<red>QuickShop 플러그인의 자바파일을 지운/이동후 /qs reload를 사용하면 서버가 오류를 내뿜으며 꺼질수 있습니다'
+you-cant-afford-to-change-price: <red>상점 물품의 가격을 변경할때 {0} 원이 소모됩니다.
+safe-mode: 이 서버의 QuickShop은 현재 안전 모드로 실행 중이므로 기능이 작동하지 않습니다. 오류를 확인하려면 관리자에게 연락하세요
+forbidden-vanilla-behavior: <red>바닐라 동작과 일치하지 않기 때문에 작업이 금지됩니다.
+shop-out-of-space-name: <dark_purple> 유저님의 상점중 {0} 의 상자가 가득 찼습니다!
+paste-disabled: |-
+  <red>붙여 넣기 기능이 비활성화되었습니다! 기술 지원은 요청할 수 없습니다.
+  사유: {0}
+quick-fill:
+  entry-own: ' <yellow>- <red>[소유자] <aqua>{0} <light_purple>{1}'
+  hover:
+    - '<yellow>이름: <aqua>{0}'
+    - '<yellow>상점 주인: <aqua>{0}'
+    - '<yellow>상점 타입: <aqua>{0}'
+    - '<yellow>가격: <aqua>{0}'
+    - '<yellow>아이템 : <aqua>{0}'
+    - '<yellow>위치: <aqua>{0}'
+  hover-arg-filled:
+    - '<yellow>이름: <aqua>{name}'
+    - '<yellow>상점 주인: <aqua>{owner}'
+    - '<yellow>상점 타입: <aqua>{type}'
+    - '<yellow>가격: <aqua>{price}'
+    - '<yellow>아이템 : <aqua>{item}'
+    - '<yellow>위치: <aqua>{location}'
+  header: '<yellow> "<green>{0}</green>" 이라는 이름의 상점이 여러 개 있습니다. 계속하려면 하나를 선택하십시오.'
+  entry-normal: ' <yellow>- <aqua>{0} <light_purple>{1}'
+  entry-cooperation: ' <yellow>- <red>[협력자] <aqua>{0} <light_purple>{1}'
+3rd-plugin-build-check-failed-admin: '<gray>(관리자 전용 안내 메시지 입니다.) <light_purple>{0}<dark_gray> 이(가) 권한 확인을 거부했습니다. 이 사항을 관리자 분깨서 유도하신 사항이 아니라면 <light_purple>{1} <gray> 을(를)리스너 블랙리스트에 추가하시기 바랍니다. 설정 가이드 : https://ghost-chu.github.io/QuickShop-Hikari-Documents/docs/modules/shops/protection-checkerㅣ'
+average-price-nearby: '<green>근처 평균 가격: <yellow>{0} 원'
+inventory-check-global-alert: "<red>[인벤토리 확인] <gray>경고! 상점의 아이템 <gold>{2}</gold> 을 <aqua>{0}</aqua> <dark_gray>[{1}]</dark_gray> 에서 발견했습니다!,  이는 발생해서는 안 되는 일입니다. 이는 일반적으로 누군가 악의적으로 이 익스플로잇을 악용하여 디스플레이 아이템을 복제하고 있다는 것을 의미합니다."
+digits-reach-the-limit: <red>가격에서 소수점 제한에 도달하셨습니다.
+currency-unset: <green>통화 설정을 삭제했습니다 기본설정으로 돌아갑니다
+you-cant-create-shop-in-there: <red>당신은 이 위치에 상점을 설치할 수 있는 권한이 없습니다.
+no-pending-action: <red>처리 대기중인 내역이 없습니다.
+refill-success: <green>리필 완료
+failed-to-paste: <red>Pastebin에 데이터 업로드에 실패했습니다. 인터넷을 확인한 후 다시 시도하십시오. (자세한 내용은 콘솔을 참조하세요.)
+shop-out-of-stock-name: <dark_purple>유저님의 상점 {0} 의 {1} 상품이 모두 품절되었습니다!
+shop-name-invalid: <red>The shop name <yellow>{0} <red>is invalid. Pick another one!
+how-many-buy-stack: <yellow>채팅에 입력하세요, 묶음을 얼마나 <aqua>구매<green>할것인지 <yellow>{0}<green> 개의 아이템의 하나의 묶음마다 들어있으며 당신은 <yellow>{1}<green>개의 묶음을 구매할수 있습니다 <aqua>{2}<green>을 입력하여 모두 구매할수 있습니다
+exceeded-maximum: <red>자바에서 허용하는 최대 값을 초과했습니다.
+unlimited-shop-owner-keeped: '<yellow>주의: 상점 주인은 여전히 무제한 상점의 주인입니다, 상점을 소유하려면 상점을 초기화해야합니다.'
+no-enough-money-to-keep-shops: <red>당신은 당신의 상점유지에 필요한 돈이 없습니다! 모든상점이 제거 됩니다...
+3rd-plugin-build-check-failed: <red>플러그인 <bold>{0}<reset><red>가 권한 검사를 거부하였습니다., 권한 설정을 하셨나요?
+not-a-integer: <red>당신은 숫자만 입력해야하지만 {0} 을(를) 입력하였습니다.
+translation-country: '언어 지역: 한국어 (ko_KR)'
+buying-more-than-selling: '<red>주의: 당신이 구매하려는 수량이 판매하는 수량보다 많습니다!'
+purchase-failed: '<red>구매 실패: 내부 오류. 서버의 관리자에게 문의하세요'
+denied-put-in-item: <red>당신은 이아이템을 당신에 상점에 넣을수 없습니다!!
+shop-has-changed: <red>유저님이 사용하려고 했던 상점이 유저님이 클릭한 이후로 변경되었습니다! 상점을 다시 클릭해주세요!
+flush-finished: <green>성공적으로 거래 기록을 제거하였습니다.
+no-price-given: <red>유효한 가격을 입력해주세요.
+shop-already-owned: <red>이것은 이미 상점입니다.
+backup-success: <green>백업 완료.
+not-looking-at-shop: <red>상점을 찾을수 없습니다. 상점을 보고있어야만 합니다.
+you-cant-afford-a-new-shop: <red>새 상점 생성에 {0} 원이 소모됩니다!
+success-created-shop: <red>상점이 생성되었습니다.
+shop-creation-cancelled: <red>상점 생성이 취소되었습니다.
+shop-owner-self-trade: <yellow>당신은 당신의 상점과 거래중이며 얼마의 돈도 얻지 못합니다.
+purchase-out-of-space: <red>이 상점은 공간이 부족하니 주인에게 문의하여 상자를 비우라고 요청해주세요.
+reloading-status:
+  success: <green>아무 오류도없이 리로드를 완료했습니다.
+  scheduled: <green>리로드를 완료했습니다. <gray>(일부 변경사항이 적용되려면 시간이 필요합니다.)
+  require-restart: <green>리로드를 완료했습니다. <yellow>(일부 변경사항은 서버를 재부팅해야 적용됩니다.)
+  failed: <red>리로드를 하지 못했습니다, 콘솔을 확인해주세요.
+player-bought-from-your-store-tax: '<red>{0} 님이 상점 에서 {2} 을(를) {1}개 구입했으며 {3} 원 을(를) 얻으셨습니다! (세금 : {4}원)'
+not-enough-space: <red>이 중 {0} 개를 더 사용할 수 있는 공간만 있습니다!
+shop-name-success: <green>Successfully set the shop name to <yellow>{0}<green>.
+shop-staff-added: <green>{0} 님을(를) 상점 관리자로 추가했습니다.
+shop-staff-empty: <yellow>이 상점엔 종업원이 없습니다!
+shops-recovering: 상점을 백업본으로부터 복구하는 중입니다...
+virtual-player-component-hover: "<gray>이것은 가상의 플레이어입니다.\n<gray>동일한 이름의 계정을 참조합니다.</gray>\n<green>UUID (유저 고유아이디) : <yellow>{0}</yellow></green>\n<green>아이디 : <yellow>{1}</yellow></green>\n<green>닉네임 : <yellow>{2}</yellow></green>"
+real-player-component-hover: "<gray>이것은 실제 존재하는 플레이어입니다.\n<green>UUID: <yellow>{0}</yellow></green>\n<green>사용자 이름: <yellow>{1}</yellow></green>\n<green>닉네임: <yellow>{2}</yellow></green>\n<gray>동일한 이름의 가상 시스템 계정을 사용하려면  <dark_gray>\"[]\"</dark_gray> 을(를) 아이디 양쪽으로 추가하세요 현재 아이디: <dark_gray>[{1}]</dark_gray>."
+menu:
+  sell-tax: <green>당신은 세금으로 <yellow>{0}원<green>을 지불했습니다.
+  owner: '<green>주인 : {0}'
+  preview: <aqua>[아이템 미리보기]
+  enchants: <dark_purple>인첸트
+  sell-tax-self: <green>당신은 이 가게를 가지고 있기 때문에 세금을 내지 않았어요.
+  shop-information: '<green>상점 정보 :'
+  item: '<green>아이템 : <yellow>{0}'
+  price-per: <yellow>{0}<green>의 개당 가격 <green>- <yellow>{1}
+  item-name-and-price: <yellow>{0}개<green>의 <yellow>{1} <green>(총 <yellow>{2}<green>)
+  item-name-and-price-tax: <yellow>{0} {1} <green>for</green> {2} <gray>(<green>{3}</green> in taxes)</gray>
+  successful-purchase: '<green>성공적으로 구매했습니다:'
+  price-per-stack: '{0}의 {2}개당 가격 - {1}'
+  stored-enchants: <dark_purple>인첸트 저장
+  item-holochat-error: <red>[오류]
+  this-shop-is-selling: <green>이 상점은 아이템을 <light_purple>판매<green>중인 상점입니다.
+  shop-stack: '<green>묶음의 갯수: <yellow>{0}'
+  space: '<green>빈 공간 : <yellow>{0}'
+  effects: <green>효과
+  damage-percent-remaining: '<green>남은 내구도 : <yellow>{0}%'
+  item-holochat-data-too-large: <red>[오류] 아이템 NBT가 너무 커 표시할수 없습니다!
+  stock: '<green>재고품: <yellow>{0}'
+  this-shop-is-buying: <green>이 상점은 아이템을 <light_purple>구매<green>중인 상점입니다.
+  successfully-sold: '<green>성공적으로 판매했습니다:'
+  total-value-of-chest: '<green>상자의 총 가격: <yellow>{0}원'
+currency-not-exists: <red>설정할 통화를 찾을 수 없습니다. 아마 철자가 틀렸거나 그 화폐는 이 세상에서 구할 수 없을 거예요.
+no-nearby-shop: <red>근처에서는 {0} 상점이 없습니다.
+translation-author: '치키'
+integrations-check-failed-trade: 통합 {0} 이(가) 상점 거래를 거부(취소)시켰습니다.
+shop-transaction-failed: <red>Sorry, but an internal error occurred while processing your purchase. The purchase has been cancelled and any operation has been rollback. Please contact the server administrators if it keeping occurred.
+success-change-owner-to-server: <green>성공적으로 상점 소유자를 서버로 설정했습니다.
+shop-name-not-found: <red><yellow>{0} <red> 이라는 상점은 존재하지 않습니다.
+shop-name-too-long: <red>이 상점이름의 길이가 너무 깁니다.(최대 {0} 글자), 다른 상점 이름을 선택하세요!
+metric:
+  header-player: '<yellow>{0}의 {1} {2} 거래:'
+  action-hover: <yellow>{0}
+  price-hover: '<yellow>세금 {1} 을 포함한 총 금액 : {0}.'
+  unknown: <gray>(알 수 없음)
+  undefined: <gray>(이름 지정 안됨)
+  no-results: <red>거래내역을 찾을 수 없습니다.
+  action-description:
+    DELETE: <yellow>유저가 상점을 삭제했습니다. 가능한경우 상점 생성 수수료를 소유자에게 환불하였습니다.
+    ONGOING_FEE: <yellow>유저는 지불 기간으로 인해 지속적인 수수료를 지불했습니다.
+    PURCHASE_BUYING_SHOP: <yellow>유저가 상점에 아이템을 판매 하였습니다.
+    CREATE: <yellow>유저가 상점을 만들었습니다.
+    PURCHASE_SELLING_SHOP: <yellow>유저가 상점에서 아이템을 구매 하였습니다.
+    PURCHASE: <yellow>상점에서 구매한 상품
+  query-argument: '입력 인자: {0}'
+  amount-hover: <yellow>{0} 개
+  header-shop: '<yellow>{0} 상점의 {1} {2} 거래:'
+  player-hover: |-
+    <yellow>{0}<newline><gold>UUID: <gray>{1}
+  looking-up: <yellow>메트릭 조회중 입니다, 잠시만 기다려 주십시오...
+  tax-hover: '<yellow>세금 : {0} '
+  header-global: '<yellow>{0} 서버의 {1}  거래:'
+  na: <gray>해당 사항 없음
+  transaction-count: <yellow>합계 {0}
+  shop-hover: |-
+    <yellow>{0}<newline><gold>위치: <gray>{1} {2} {3}, 월드: {4}<newline><gold>소유자: <gray>{5}<newline><gold>상점 타입: <gray>{6}<newline><gold>물품: <gray>{7}<newline><gold>가격: <gray>{8}
+  time-hover: '<yellow>시간: {0}'
+  amount-stack-hover: <yellow>묶음 {0}개
+permission-denied-3rd-party: '<red>액세스가 거부되었습니다: 플러그인 [{0}].'
+you-dont-have-that-many-items: <red>{1} 개를 판매하기엔 갯수가 모자랍니다. 소유중 갯수 {0}
+complete: <green>완료!
+translate-not-completed-yet-url: '{0} 언어의 번역이 {1} 완료되었습니다, 번역을 향상시키고 싶으신가요? 다음 사이트를 방문하세요: {2}'
+success-removed-shop: <green>상점을 제거했습니다.
+currency-set: <green>상점의 통화를 {0}으로 설정하셨습니다.
+shop-purged-start: <green>상점 정리가 시작되었습니다. 자세한 내용은 콘솔을 확인하십시오.
+economy-transaction-failed: <red>Sorry, but an internal error occurred while processing your transaction. The transaction has been cancelled and any economy operation has been rollback. Please contact the server administrators if it keeping occurred.
+nothing-to-flush: <green>새로운 상점 메세지가 없습니다.
+no-price-change: <red>입력한 금액이 이전 가격과 똑같습니다. 금액을 변경 하려면 다른 금액을 입력해주세요.
+edition-confilct: QuicShop-Hikari with QuickShop-Reremake installed may conflict each other, uninstall one of them.
+inventory-unavailable: |-
+  <red>This shop InventoryWrapper not exists or invalid. Did you using addon to re-binding the shop Inventory? Information: InventoryWrapper={0}, WrapperProvider={1}, SymbolLink={2}. Please contact the server administrators.
+file-test: 이것은텍스트파일일까요? 한국어 일까yo? :)
+unknown-player: <red>대상 플레이어가 없습니다. 유저이름을 확인해주세요.
+player-offline: <red>The target player currently is offline.
+player-profile-format: <aqua>{0}</aqua><gold>(<yellow>{1}</yellow>)</gold>
+shop-type:
+  selling: 판매중
+  buying: 구매중
+language:
+  qa-issues: '<yellow>품질 보증문제: <aqua>{0}%'
+  code: '<yellow>코드: <gold>{0}'
+  approval-progress: '<yellow>승인 진행률: <aqua>{0}%'
+  translate-progress: '<yellow>번역률: <aqua>{0}%'
+  name: '<yellow>이름: <gold>{0}'
+  help-us: <green>[번역 품질을 향상시킬 수 있도록 도와주세요.]
+warn-to-paste: |-
+  <yellow>데이터를 수집하고 Pastebin에 업로드하는 데 시간이 걸릴 수 있습니다. <red><bold>주의!<red>. 데이터는 일주일 동안 공개되며 서버 구성이 유출될 수 있으므로 신뢰할 수 있는 운영자/관리자 에게만 전송해야 합니다.
+how-many-sell-stack: <light_purple>판매<green>하고 싶은 묶음을 채팅에 입력 하세요. <yellow>{0}<green>개의 아이템이 한 묶음 입니다. <yellow>{1}<green> 묶음을 소유 중 입니다. <aqua>{2}<green>로 모두 판매할 수 있습니다
+updatenotify:
+  buttontitle: '[지금 업데이트]'
+  onekeybuttontitle: '[즉시 업데이트]'
+  label:
+    github: '[깃헙(GitHub)] [GitHub]'
+    ore: '[Ore]'
+    lts: '[장기 지원 버전] [LTS]'
+    nbtapi: '[+NBTAPI]'
+    qualityverifyed: '[품질] [Quality]'
+    master: '[Master]'
+    unstable: '[불안정함]'
+    paper: '[+페이퍼 버킷 최적화]'
+    stable: '[안정됨]'
+    spigotmc: '[SpigotMC]'
+    papermc: '[PaperMC]'
+    bukkitdev: '[BukkitDev]'
+    polymart: '[Polymart]'
+    modrinth: '[변조]'
+    basic: '[기본]'
+  list:
+    - '{0} 이/가 출시되었습니다, 하지만 당신은 현재 {1} 을/를 사용중입니다.'
+    - 짠! {0} 출시! 업데이트하세요!
+    - 짜잔! {0} 출시! 당신은 아직 {1} 을 사용중이네요!
+    - 보아하니 당신은 업데이트가 필요한 것처럼 보이네요 {0} 가 공개됐어요!
+    - 저런! {0} 가 출시됐어요! 당신은 {1} 인데!
+    - 내가 약속하는데 퀵샵은 {0} 으로 업데이트 되었습니다 왜 아직 업데이트 안해요?
+    - 수정 후 재로ㄷ... 죄송합니다 하지만 {0}이 출시했습니다!
+    - 에러! 가 아니라 {0} 이제 출시!
+    - 세상에! {0}가 출시됐어요! 왜 아직도 {1}을 사용하죠?
+    - '오늘의 뉴스: 퀵샵이 {0} 으로 업데이트 되었습니다!'
+    - 플러그인 사망.. 당신은 {0}으로 업데이트 해야해요!
+    - 업데이트 {0} 이(가) 점화됨 업데이트를 구하세요!
+    - 업데이트가 있습니다, 사령관님! {0} 이 출시했습니다!
+    - 내 스타일좀 봐! {0} 업데이트! 넌 아직 {1} 을 쓰는중!
+    - ㅋㅋㅋㅋㅋㅋㅋㅋ 새로운 {0} 업데이트!
+    - 무슨 생각이세요? {0} 버전이 출시됐는데! 업데이트하세요!
+    - 닥터, QuickShop에 새로운 업데이트 {0} 이(가) 있어! 업데이트 해야죠~
+    - Ko~ko~da~yo~ QuickShop에 새로운 업데이트 {0} ~
+    - Palmon이 당신에게 Quickshop이 최신버전이 나왔다고 말하고 싶데요! {0}
+  remote-disable-warning: '이 버전의 QuickShop은 원격 서버에 의해 비활성화되어 있습니다. 이 버전에는 심각한 문제가 있을 수 있습니다. SpigotMC 페이지에서 자세한 내용을 확인하십시오 : {0}.이 경고는 당신이 안정된 버전을 사용할 때까지 뜰 것입니다. 서버 구동에는 영향을 주지 않습니다.'
+purchase-out-of-stock: <red>이 상점은 재고가 다 떨어졌으니 주인에게 재고보충을 문의해주세요.
+nearby-shop-entry: '<green>- 정보:{0} <green>가격:<aqua>{1} <green>x:<aqua>{2} <green>y:<aqua>{3} <green>z:<aqua>{4} <green>거리: <aqua>{5} <green>블럭'
+chest-title: 퀵샵 상점
+console-only: <red>이 명령어는 콘솔에서만 사용할 수 있습니다.
+failed-to-put-sign: <red>상점정보 팻말을 설치하기 위한 충분한 공간이 없습니다.
+shop-name-unset: <red>이 상점의 이름을 삭제하였습니다.
+shop-nolonger-freezed: <green>당신은 상점을 녹였습니다. 보통상태로 돌아왔습니다
+no-permission-build: <red>당신은 이 위치에 상점을 만들 수 없습니다.
+tableformat:
+  left_half_line: +--------------------
+  right_half_line: <dark_purple>--------------------+
+  full_line: +---------------------------------------------------+
+  left_begin: '<dark_purple>l '
+quickshop-gui-preview: QuickShop GUI 아이템 미리보기
+translate-not-completed-yet-click: '{0} 언어의 번역이 {1} 완료되었습니다, 번역을 향상시키고 싶으신가요? 여기를 클릭하세요!'
+taxaccount-invalid: <red>대상 계정이 올바르지 않습니다. 올바른 플레이어 이름 또는 UUID(대시 포함)를 입력하십시오.
+player-bought-from-your-store: <red>{0} 님이 당신의 상점 에서 {1} {2} 을(를) 구입했으며 당신은 {3} 원 을(를) 얻으셨습니다!
+reached-maximum-can-create: <red>당신은 이미 최대 {0}/{1} 개의 상점을 생성했습니다!
+reached-maximum-create-limit: <red>생성할 수 있는 상점의 최대 수에 도달했습니다.
+translation-version: '지원 버전: Hikari'
+no-double-chests: <red>당신은 큰상자(일반 상자를 두개붙인)를 이용한 상점을 만들 수 없습니다. (권한 부족입니다.)
+price-too-cheap: <red>가격은 반드시 <yellow>${0} 원 <red>보다 높아야만 합니다.
+shop-not-exist: <red>그곳에는 상점이 없습니다.
+bad-command-usage: <red>명령어가 올바르지 않습니다. 확인후 다시 시도해주세요.
+cleanghost-warning: <yellow>This command will purge <red>all</red> shops if the shop is corrupted, was created in not allowed worlds, is selling/buying not allowed items or <red><bold>EXISTS IN A UNLOADED WORLD</bold></red>. Make sure to create a full backup of your shop data first and use <aqua>/qs cleanghost confirm</aqua> to continue.
+cleanghost-starting: <green>상자가 파괴된 상점을 조회하고 있습니다. 해당 상점들은 삭제될 예정입니다.
+cleanghost-deleting: <yellow>손상된 상점 <aqua>{0}</aqua> 을 찾았습니다. 사유 {1}, 삭제 대상으로 추가합니다...
+cleanghost-deleted: <green>합계 <yellow>{0}</yellow> 개의 상점이 삭제되었습니다.
+shop-purchase-cancelled: <red>구입이 취소되었습니다.
+bypassing-lock: <green> QuickShop의 잠금을 무시합니다!
+bungee-cross-server-msg: '<yellow>QuickShop CSM: <green>{0}'
+saved-to-path: 백업이 {0} 에 저장되었습니다.
+shop-now-freezed: <green>당신은 상점을 얼렸습니다. 누구도 거래할 수 없습니다
+price-is-now: <green>새로운 상점의 가격은 <yellow>{0}<green>입니다.
+shops-arent-locked: <red>기억하세요, 상점은 도둑질로부터 보호되지 <dark_red><bold>않습니다!!! <red>도둑질로부터 보호하고 싶으면 잠금 플러그인을 이용하여 상자를 잠궈주세요!
+that-is-locked: <red>이 상점은 잠겨있습니다.
+shop-has-no-space: <red>{1} 의 공간은  {0} 칸만 있습니다.
+safe-mode-admin: '<red><bold>경고: <red>이 서버의 QuickShop은 현재 안전 모드로 실행 중이므로 기능이 작동하지 않습니다. 오류를 확인하려면 <yellow>/qs <red> 명령을 입력하십시오.'
+shop-stock-too-low: <red>상점에는 오직 {0} 개의 {1} 만 남아 있습니다!
+world-not-exists: <yellow>{0}<red>이란 월드는 존재하지 않습니다.
+how-many-sell: <light_purple>판매<green>하고 싶은 개수를 채팅에 입력 하세요. <yellow>{0}<green> 개를 판매할수 있습니다. <aqua>{1}<green>로 모두 판매할 수 있습니다.
+shop-freezed-at-location: <yellow>당신의 상점 {1} 에 있는 {0} 이 얼었습니다!
+translation-contributors: '기여자: Timtower, Netherfoam, KaiNoMood, Mgazul, JackTheChicken and Andre_601'
+empty-success: <green>상점 비우기 성공
+taxaccount-set: <green>이 상점의 세금 계좌는 <yellow>{0} 로 <green>설정되었습니다.
+support-disable-reason:
+  hot-reload: <yellow>Unsupported hot reloaded, restart the server and check again.
+  outdated: <yellow>This version of QuickShop already outdated, up-to-date before requesting support!
+  bad-hosts: |-
+    <yellow>This server HOSTS has been modified and QuickShop some functions require connect to Mojang API correctly. Fix the HOSTS before asking support, Windows at C:\windows\system32\drivers\etc\hosts, Linux at /etc/hosts.
+  privacy: <yellow>This server running under cracked (offline) mode. If you are running bukkit server under proxy and online-mode=true on proxy, please configure the proxy related settings correctly.
+  modified: <yellow>File integrity check failed, this QuickShop build has been modified by others.
+  consolespamfix-installed: <yellow>ConsoleSpamFix installed, it will hidden exception details, temporarily disable it during asking support.
+  authlib-injector-detected: <yellow>This server running under 3rd-party authlib provider like authlib-injector.
+  unsupported-server-software: <yellow>Unsupported server software, Any modded hybrid server software is unsupported including MCPC, Cauldron, CatServer, Mohist, Magma, Fukkit, Cardboard etc.
+supertool-is-disabled: <red>슈퍼툴이 비활성화 되어있습니다. 어느 상점도 부술 수 없습니다.
+unknown-owner: 알 수 없음
+restricted-prices: '<red>{0} 에 대한 가격이 제한되었습니다. 최소 {1} 원, 최대 {2} 원'
+nearby-shop-this-way: <green>그 상점은 당신을 기준으로 {0}블록 떨어진 곳에 있습니다.
+owner-bypass-check: <yellow>모든 조사를 통과하여, 거래를 완료했습니다! (당신은 상점 주인입니다.)
+april-rick-and-roll-easter-egg: "<hover:show_text:'Click to open in browser for time limited rewards!'><click:open_url:'https://www.youtube.com/watch?v=dQw4w9WgXcQ'><green>QuickShop-Hikari 개발자가 제공하는 시간 한정 보상을 받으려면 여기를 클릭하십시오!</green></click></hover>"
+signs:
+  item-right: ''
+  out-of-space: 공간 부족
+  unlimited: 무제한
+  stack-selling: '{0}<bold>개 판매중'
+  stack-price: '아이템 {2}, {1} 개당 {0}원'
+  status-unavailable: <red>
+  out-of-stock: 일시 품절
+  stack-buying: '{0}<bold>개 구매가능'
+  freeze: 거래 비활성화
+  price: '개당 {0}'
+  buying: '{0}<bold>개 구매가능'
+  header: '{1}{0}의 상점'
+  header-available: <green>{0}
+  header-unavailable: <red>{0}
+  selling: '{0}<bold>개 판매중'
+  status-available: <green>
+  item-left: ''
+negative-amount: <red>갯수는 음수(-)일수 없습니다. 양수로 입력해주세요. (숫자만 입력해주세요.)
+display-turn-on: <green>상점 디스플레이를 성공적으로 켰습니다.
+shop-staff-deleted: <green>{0} 님을(를) 상점 관리자에서 삭제했습니다.
+nearby-shop-header: '<green>근방의 {0}에 일치하는 상점:'
+backup-failed: 데이터베이스에 백업할 수 없습니다, 자세한 내용은 콘솔을 확인해주세요.
+shop-staff-cleared: <green>성공적으로 당신 상점의 모든 관리자를 해고하였습니다.
+price-too-high: <red>상점의 가격이 너무 높습니다! 당신은 {0} 원 이상의 상점을 만들수 없습니다!
+plugin-cancelled: '<red>Operation cancelled, Reason: {0}'
+player-sold-to-your-store: <green>{0} 님이 {2}  {1} 개을 (를) 유저님의 상점에 판매했습니다.
+shop-out-of-stock: <dark_purple>{0}, {1}, {2} 에 있는 당신의 가게의 물품 {3} 이 (가) 부족합니다.
+how-many-buy: <green>채팅으로 원하는 <aqua>구매<green> 개수를 입력해주세요. 당신은 <yellow>{0}<green>개를 구매할 수 있습니다. <aqua>{1}<green>을 입력해 전부 구매 가능합니다.
+language-info-panel:
+  help: '저희를 도와주세요: '
+  code: '코드: '
+  name: '언어: '
+  progress: '진행도: '
+  translate-on-crowdin: '[Crowdin에서 번역하기]'
+item-not-exist: <yellow>{0} <red>이란 아이템을 찾을수 없습니다. 스펠링을 확인하세요.
+shop-creation-failed: <red>상점을 만들지 못했습니다, 서버 관리자에게 문의해주세요.
+inventory-space-full: <red>Your inventory space remains can only put <green>{1}x <red>items into it, try empty the your inventory!
+no-creative-break: <red>크리에이티브 모드 상태론 다른 플레이어의 상점을 파괴할 수 없습니다, 서바이벌 모드로 전환하거나 슈퍼툴 {0} 을(를) 사용해주세요.
+booleanformat:
+  success: <green>✔
+  failed: <red>✘
+controlpanel:
+  stack: '<green>묶음 가격: <aqua>{0} <yellow>[<bold><light_purple>변경</light_purple>]'
+  price-hover: <yellow>물품의 새 가격을 설정하려면 클릭하세요.
+  remove: <red><bold>[상점 제거]
+  mode-buying-hover: <yellow>클릭하여 상점을 판매 모드로 전환합니다.
+  empty: '<green>제거: 상점의 모든 아이템을 제거하시겠습니까? <yellow>[<bold><light_purple>네</light_purple></bold>]'
+  stack-hover: 묶음당 항목 양을 설정하려면 클릭하십시오. 보통 동작의 경우 1로 설정하십시오.
+  alwayscounting-hover: <yellow>상시 카운트 할건지 설정합니다
+  alwayscounting: '<green>상시 카운트: {0} <yellow>[<bold><light_purple>변경</light_purple></bold>]'
+  setowner: '<green>소유자: <aqua>{0} <yellow>[<light_purple><bold>변경<yellow>]'
+  freeze: '<yellow>동결 상태: <aqua>{0} <yellow>[<bold><light_purple>전환</light_purple></bold>]'
+  price: '<green>가격: <aqua>{0} <yellow>[<bold><light_purple>바꾸기</light_purple></bold>]'
+  currency-hover: <yellow>클릭하여 이 상점이 사용중인 통화를 설정하거나 제거합니다.
+  lock: '<yellow>상점 잠금: <aqua>{0} <yellow>[<bold><light_purple>전환</light_purple></bold>]'
+  mode-selling: '<green>상점 모드: <aqua>판매중 <yellow>[<light_purple><bold>변경<yellow>]'
+  currency: '<green>Currency: <aqua>{0} <yellow>[<light_purple><bold>Set<yellow>]'
+  setowner-hover: <yellow>눌러서 주인 변경
+  mode-buying: '<green>상점 모드: <aqua>구매중 <yellow>[<bold><light_purple>변경</light_purple></bold>]'
+  item: '<green>상점 물품: {0} <yellow>[<bold><light_purple>변경</light_purple></bold>]'
+  unlimited: '<green>무제한:{0} <yellow>[<bold><light_purple>변경</light_purple></bold>]'
+  unlimited-hover: <yellow>상점 재고가 무제한일 경우 눌러서 전환
+  refill-hover: <yellow>눌러서 채우기
+  remove-hover: <yellow> 클릭해서 상점 삭제.
+  toggledisplay-hover: <yellow>상점 표시 항목 상태 전환
+  refill: '<green>채우기: 상점의 아이템을 채우시겠습니까? <yellow>[<bold><light_purple>네</light_purple></bold>]'
+  freeze-hover: <yellow>상점 동결 상태 전환.
+  lock-hover: <yellow>상점 잠금 보호를 활성화/비활성화 합니다.
+  item-hover: <yellow>클릭하여 상점의 아이템을 변경합니다
+  infomation: '<green>상점 컨트롤 패널:'
+  mode-selling-hover: <yellow>클릭하여 상점을 구매 모드로 전환합니다.
+  empty-hover: <yellow>눌러서 상점 비우기
+  toggledisplay: '<green>아이템 표시: <aqua>{0} <yellow>[<bold><light_purple>전환</light_purple></bold>]'
+  history: '<green>거래 기록: <yellow>[<bold><light_purple>보기</light_purple></bold>]</yellow>'
+  history-hover: <yellow>상점의 로그를 보려면 클릭하십시오.
+timeunit:
+  behind: 뒤에
+  week: "{0} 주"
+  weeks: "{0} 주"
+  year: "{0} 년"
+  before: 이전
+  scheduled: 예약됨
+  years: "{0} 년"
+  scheduled-in: '예정 날짜: {0}'
+  second: "{0} 초"
+  std-past-format: '{5}{4}{3}{2}{1}{0}전에'
+  std-time-format: HH:mm:ss
+  seconds: "{0} 초"
+  hour: "{0} 시간"
+  scheduled-at: '예정 일자: {0}'
+  after: 후에
+  day: "{0} 일"
+  recent: 최근
+  between: 사이
+  hours: "{0} 시간"
+  months: "{0} 개월"
+  longtimeago: 오래 전
+  between-format: '{0}과 {1} 사이'
+  minutes: "{0} 분"
+  justnow: 방금 전
+  minute: "{0} 분"
+  std-format: MM/dd/yyyy HH:mm:ss
+  future-plain-text: 미래
+  month: "{0} 개월"
+  future: '{0} 안에'
+  days: "{0} 일"
+command:
+  reloading: '<green>Configuration reloaded. <yellow>Some changes may require reboot to affect. <newline><gray>(Notice: Reloading behavior has been changed after 4.0.9.10, we now only reload configuration but not whole plugin to ensure the server won''t crashed.)'
+  description:
+    buy: <yellow>상점을 <light_purple>구매 모드<yellow>로 전환합니다
+    about: <yellow>QuickShop 의 정보를 보여줍니다.
+    language: <yellow>현재 사용되는 언어를 변경합니다.
+    purge: <green>백그라운드에서 상점 정리 작업을 시작합니다
+    paste: <yellow>서버 데이터를 Pastebin에 업로드합니다.
+    title: <green>Quickshop 도움말
+    remove: <yellow>보고 있는 상점을 제거합니다.
+    ban: <yellow>플레이어를 상점에서 거래하지 못하게 합니다.
+    empty: <yellow>상점의 모든 아이템을 제거합니다.
+    alwayscounting: <yellow>상점의 판매 갯수가 무제한인 경우에도 항상 컨테이너의 내용물을 계산해야 하는지 여부를 설정합니다.
+    setowner: <yellow>상점의 주인을 설정합니다.
+    reload: <yellow>Quickshop의 컨피그 파일을 다시 불러옵니다.
+    freeze: <yellow>상점 거래 비활성화 또는 활성화
+    price: <yellow>상점의 구매/판매 가격을 변경합니다.
+    find: <yellow>특정 유형의 가장 가까운 상점을 찾습니다.
+    create: <yellow>바라보는 상자에 새 상점을 만듭니다.
+    lock: 상점 잠금 상태 전환
+    currency: <green>상점의 통화 설정을 설정하거나 제거합니다.
+    removeworld: <yellow>지정된 월드의 모든 상점을 제거합니다.
+    info: <yellow>QuickShop의 통계를 표시합니다
+    owner: <yellow>상점의 주인을 설정합니다.
+    amount: <yellow>항목 금액을 설정합니다(대화 문제가 있을 때 유용함).
+    item: <yellow>상점의 상점 항목을 변경합니다.
+    debug: <yellow>개발자 모드 활성화
+    unlimited: <green>상점의 개수제한을 무제한으로 설정합니다.
+    sell: <yellow>상점을 <aqua>판매 모드<yellow>로 전환합니다
+    fetchmessage: <yellow>읽지 않은 상점 메시지를 보여줍니다.
+    staff: <yellow>당신의 상점 관리자를 관리합니다.
+    clean: <yellow>재고 없이 모든 (적재된) 상점을 제거합니다.
+    refill: <yellow>상점의 아이템을 입력한 숫자만큼 채웁니다.
+    help: <yellow>QuickShop 의 도움말을 보여줍니다.
+    removeall: <yellow>지정된 플레이어의 모든 상점을 제거합니다.
+    unban: <yellow>플레이어 차단헤제
+    transfer: <yellow>누군가의 모든 가게를 다른 곳으로 옮깁니다.
+    transferall: <yellow>누군가의 모든 가게를 다른 곳으로 옮깁니다.
+    transferownership: <yellow>보고 있는 상점을 다른 유저에게 양도
+    size: <yellow>상점의 묶음의 갯수를 변경합니다.
+    supercreate: <yellow>모든 보호를 무시하고 상점을 개설합니다.
+    taxaccount: <yellow>쇼핑에서 사용하는 세금 계정 설정
+    name: <yellow>특정 상점의 이름을 변경합니다.
+    toggledisplay: <yellow>상점 표시 항목 상태 전환
+    permission: <yellow>상점 권한 관리
+    lookup: <yellow>조회 가능한 항목 테이블 관리
+    database: <yellow>View and maintain QuickShop database
+    benefit: <yellow>상점 소유자와 다른 유저 간의 혜택 나누기 설정
+    tag: <yellow>상점의 태그 추가, 제거 또는 확인
+    suggestprice: <yellow>다른 상점의 가격을 보고 판매가를 결정해보세요.
+    history: <yellow>상점의 거래 내역 보기
+    sign: <yellow>상점의 표지판 변경
+  bulk-size-not-set: '<red>사용법: /qs size <amount>'
+  no-type-given: '<red>사용법: /qs find <item>'
+  feature-not-enabled: 이 기능은 config 파일에서 비활성화 되어있습니다.
+  now-debuging: <green>개발자 모드 활성화 완료. Quickshop 을 다시 불러오는중...
+  no-amount-given: <green><개수><red>가 지정되지 않았습니다. <green>/qs refill <개수><red>를 사용하여 물품을 보충하세요.
+  no-owner-given: <red>소유자가 지정되어있지 않습니다.
+  disabled: '<red>이 명령어는 비활성화 되어있습니다: <yellow>{0}'
+  bulk-size-now: <green>이제 {1}을 <yellow>{0}개씩 구매/판매중입니다.
+  toggle-always-counting:
+    counting: <green>이제 상점은 판매 갯수가 무제한으로 설정된 경우에도 항상 재고를 카운팅합니다.
+    not-counting: <green>이제 상점의 재고를 카운팅 하지 않습니다.
+  cleaning: <green>어떤 재고품도 없는 상점들을 제거하는중입니다...
+  now-nolonger-debuging: <green>개발자 모드 비활성화 완료. Quickshop 리로드 중...
+  toggle-unlimited:
+    limited: <green>상점의 재고를 제한으로 설정했습니다. (유저 상점으로 설정됩니다.)
+    unlimited: <green>상점의 재고를 무제한으로 설정했습니다. (관리자 상점으로 설정됩니다.)
+  transfer-success-other: <yellow>{0} {1}<green>의 상점(들) 의 소유권을(를) <yellow>{2} 님에 양도하였습니다.
+  no-trade-item: <green>변경할 거래 품목을 손에 들고 계십시오.
+  wrong-args: <red>명령어가 올바르지 않습니다. <bold>/qs help</bold>를 사용하여 명령어 목록을 확인해주세요.
+  some-shops-removed: <yellow>{0}의 <green>상점(들)이 제거되었습니다.
+  new-owner: '<green>새로운 소유자: <yellow>{0}'
+  format: <green>/{0} {1} <yellow>- {2}
+  transfer-success: 소유중인 상점 <yellow>{0}</yellow> 개의 소유권을(를) <yellow>{1}</yellow> 님에 양도하였습니다.
+  now-buying: <green>이제 {0}을(를) <light_purple>구매</light_purple>합니다.
+  now-selling: <green>이제 {0}을(를) <aqua>판매</aqua>합니다.
+  cleaned: <yellow>{0}개<green>의 상점을 제거했습니다.
+  trade-item-now: <green>이제 {1}을 <yellow>{0}개씩 구매/판매중입니다.
+  no-world-given: <red>월드이름을 입력해주세요.
+  format-disabled: <red>/{0} {1} <gray>- {2}
+  invalid-bulk-amount: <red>지정된 값 {0} 이(가) 최대 스택 크기보다 크거나 1보다 작습니다.
+currency-not-support: <red>이 이코노미 플러그인은 다중 통화 기능을 지원하지 않습니다.
+trading-in-creative-mode-is-disabled: <red>크리에이티브 모드 상태에서는 상점에서 거래할 수 없습니다.
+the-owner-cant-afford-to-buy-from-you: <red>비용은 {0} 이지만, 상점의 주인이 {1} 원을 가지고 있습니다. (상점 주인의 잔액이 부족합니다.)
+you-cant-afford-shop-naming: <red>상점 이름을 지을 여유가 없습니다. 이름을 짓는 데 {0} 이(가) 듭니다.
+inventory-error: |-
+  <red>InventoryWrapper를 처리하지 못했습니다. 상점 인벤토리를 재바인딩하기 위해 애드온을 사용하셨나요? 정보: Exception={0}, InventoryWrapper={1}, RapperType={2}, RapperProvider={3}, SymbolLink={4}. 서버 관리자에게 문의해 주세요.
+integrations-check-failed-create: 통합 {0} 이(가) 상점 생성을 거부(취소)시켰습니다.
+shop-out-of-space: <dark_purple>유저님의 {0}, {1}, {2} 에 있는 상점이 가득 찼습니다. 더 이상 구매할 수 없습니다! 계속 구매를 원하신다면 상자를 비워주세요!
+admin-shop: <bold>관리자 상점
+no-anythings-in-your-hand: <red>손에 아무것도 들고 있지 않습니다.
+no-permission: <red>이 행동을 수행할 권한이 없습니다.
+chest-was-removed: <red>상자가 제거되었습니다.
+you-cant-afford-to-buy: <red>가격은 {0} 이지만, 당신은 {1} 만 가지고 있습니다. (잔액이 모자랍니다.)
+shops-removed-in-world: <yellow>총 <aqua>{0}<yellow>개의 상점이 <aqua>{1}<yellow>월드에서 삭제되었습니다.
+display-turn-off: <green>상점 디스플레이를 성공적으로 껏습니다.
+client-language-unsupported: <yellow>QuickShop이 당신의 언어를 지원하지 않습니다, {0} 언어로 돌아갑니다...
+language-version: '63'
+not-managed-shop: <red>당신은 상점의 주인이나 관리자가 아닙니다
+shop-cannot-trade-when-freezing: <red>이 상점의 거래가 비활성화 되어있습니다.
+invalid-container: <red>사용할 수 없는 블럭입니다, 인벤토리가 있는 블럭만을 사용할 수 있습니다.
+permission:
+  header: <green>상점 세부 권한
+  header-player: <green>{0} 상점의 권한 정보
+  header-group: <green>{0} 그룹의 상점 권한 정보
+  table: <gold><b>{0}</b>:</gold> <gray>{1}</gray>
+  item:
+    purchase: <yellow>이 권한이 있는 사용자가 상점에서 구매할 수 있도록 허용하는 권한입니다. (매매 포함)
+    show-information: <yellow>이 권한이 있는 유저가 상점의 정보를 볼 수 있도록 허용하는 권한입니다. (상점 정보 패널 열기)
+    preview-shop: <yellow>이 권한을 가지고있는 유저가 상점을 미리 볼 수 있도록 하는 권한입니다. (아이템 미리보기)
+    search: <yellow>Permission to allow users who have this to search the target shop. (remove permission will hide shop from search result)
+    delete: <yellow>이 권한을 가지고있는 유저가 상점을 삭제 할 수 있도록 하는 권한입니다.
+    receive-alert: <yellow>Permission to allow users who have this to receive alert message (e.g out-of-stock or new trade).
+    access-inventory: <yellow>이 권한을 가지고있는 유저가 상점의 상자를 열 수 있도록 하는 권한입니다.
+    ownership-transfer: <yellow>이 권한이 있는 유저가 상점 소유권을 이전할 수 있도록 허용하는 권한입니다.
+    management-permission: <yellow>Permission to allow users who have this to manage the groups permissions and edit user's group.
+    toggle-display: <yellow>이 권한이 있는 유저가 상점 표시 항목을 전환할 수 있도록 허용하는 권한입니다.
+    set-shoptype: <yellow>Permission to allow users who have this to set the shop type (switch buying or selling).
+    set-price: <yellow>이 권한이 있는 유저가 상점 가격을 설정할 수 있도록 허용하는 권한입니다.
+    set-item: <yellow>이 권한이 있는 유저가 상점의 항목을 설정할 수 있도록 허용하는 권한입니다.
+    set-stack-amount: <yellow>이 권한이 있는 사용자가 상점의 묶음 금액을 설정할 수 있도록 허용하는 권한입니다.
+    set-currency: <yellow>이 권한이 있는 유저가 상점 통화를 설정할 수 있도록 허용하는 권한입니다.
+    set-name: <yellow>이 권한이 있는 유저가 상점 이름을 설정할 수 있도록 허용하는 권한입니다.
+    set-sign-type: <yellow>상점의 표지판을 다른거로 변경합니다.
+    view-purchase-logs: <yellow>상점의 구매 로그를 볼 수 있는 권한입니다.
+  group:
+    everyone: <yellow>상점 소유자를 제외한 모든 사용자를 위한 기본 그룹입니다.
+    staff: <yellow>종업원의 그룹입니다.
+    administrator: <red>서버 관리자의 경우 해당 유저는 상점 소유자와 거의 동일한 권한을 갖습니다.
+invalid-group: <red>그룹 이름이 올바르지 않습니다.
+invalid-permission: <red>권한이 올바르지 않습니다.
+invalid-operation: <red>유효하지 않은 작업입니다. {0} 작업만 수행할 수 있습니다.
+player-no-group: <yellow>유저 {0} 은(는) 상점의 어느 그룹에도 소속되어 있지 않습니다.
+player-in-group: <green>유저 {0} 은(는) 해당 상점의 <aqua>{1}</aqua> 그룹에 소속되어 있습니다.
+permission-required: <red>해당 상점에서 그 행동을 수행하려면 {0} 권한이 필요합니다.
+no-permission-detailed: <red>해당 상점에서 그 행동을 수행하려면 <yellow>{0}</yellow> 권한이 필요합니다.
+paste-notice: "<yellow>참고: 문제 해결을 위해 붙여넣기를 만드는 경우 가능한 한 빨리 붙여넣기를 만들기 전에 오류를 재현해야 합니다. 문제를 해결하려면 로그를 버퍼에 잠시 보관해야 합니다. 너무 느리거나 오류를 먼저 재현하지 않거나 서버를 다시 시작하지 않고 붙여 넣기를 만들면 붙여 넣기는 아무 것도 기록하지 않고 쓸모가 없습니다."
+paste-uploading: <aqua>pastebin 에 복사된 로그를 업로드 하고있습니다.
+paste-created: '<green>업로드가 완료되었습니다, 클릭하여 브라우저에서 열 수 잇습니다: <yellow>{0}</yellow><br><red>주의: <gray>절대 신뢰대는 사람 외에 해당링크를 전송하지 마세요.'
+paste-created-local: |-
+  <green>업로그가 완료되었으며 컴퓨터에도 저장하였습니다. 저장 경로: {0}
+  <red>주의: <gray>절대 신뢰대는 사람 외에게 해당링크를 전송하지 마세요.
+paste-created-local-failed: <red>로컬 디스크에 붙여넣기를 저장하지 못했습니다. 디스크를 확인하십시오.
+paste-451: |-
+  <gray><bold>TIPs: </bold> 현재 국가 또는 지역에서 CloudFlare Workers 서비스를 차단한 것 같고 QuickShop Paste가 제대로 로드되지 않을 수 있습니다.
+  다음 작업에 실패하면 --file 추가 매개변수를 추가하여 로컬 Paste를 생성해 보세요: <dark_gray>/qs paste --file
+paste-upload-failed: <red>붙여넣기를 업로드하지 못했습니다. {0}, 다른 pastebin 제공 업체 시도 중 ...
+paste-upload-failed-local: <red>붙여넣기를 업로드하지 못했습니다. 이제 로컬 붙여 넣기를 생성하려고합니다 ...
+command-incorrect: '<red>명령어가 잘못되었습니다, /qs help 를 사용하여 사용법을 확인하세요. 사용법: {0}.'
+successfully-set-player-group: <green>성공적으로 유저 {0} 을(를) <aqua>{1}</aqua> 그룹에 소속시켰습니다.
+successfully-unset-player-group: <green>성공적으로 해당 유저를 그룹에서 제외시켰습니다.
+successfully-set-player-permission: <green>성공적으로<aqua>{2}</aqua> 상점에서의 {0} 유저의 권한을 <aqua>{1}</aqua> 로 설정했습니다.
+lookup-item-created: <green>An item named <aqua>{0}</aqua> has been created in the lookup table. You can refer this item in configurations now.
+lookup-item-exists: <red>조회 테이블에 이미 <yellow>{0}</yellow>라는 항목이 존재하여 삭제하거나 다른 이름을 선택해야만합니다.
+lookup-item-not-found: <red>An item named <yellow>{0}</yellow> not exists.
+lookup-item-name-illegal: <red>지원되지 않는 항목 이름입니다. 영숫자와 밑줄만 사용할 수 있습니다.
+lookup-item-name-regex: '<red>이름은 다음 정규식과 일치해야 합니다. <aqua>{0}</aqua>.'
+lookup-item-test-not-found: '<gold>테스트: <yellow>손에 있는 항목이 조회 테이블에 등록되어 있지 않습니다.'
+lookup-item-test-found: '<gold>테스트: <green>당신의 손에 있는 아이템이 조회 테이블에서 <aqua>{0}</aqua> 로 등록되었습니다.'
+lookup-item-removed: <green>지정된 항목 <aqua>{0}</aqua> 이(가) 조회 테이블에서 성공적으로 제거되었습니다.
+internal-error: <red>상점을 만들지 못했습니다, 서버 관리자에게 문의해주세요.
+argument-cannot-be: <red>인수 <aqua>{0}</aqua>은(는)  <yellow>{1}</yellow> 이(가) 될 수 없습니다.
+argument-must-between: <red>인수 <aqua>{0}</aqua> 값은 <yellow>{1}</yellow> 그리고 <yellow>{2}</yellow> 사이에 있어야 합니다. 
+invalid-percentage: <red>유효하지 않은 퍼센트입니다. 숫자 뒤에 '%'를 추가해야 합니다.
+display-fallback: |-
+  <red>내부 오류로 인해 대체 메시지가 표시됩니다.
+  이 항목의 값이 지역화되지 않았거나 올바르게 처리되지 않았을 수 있습니다.
+  서버 관리자에게 문의하십시오.
+not-a-valid-time: |-
+  <red>문자열 <yellow>{0}</yellow> 은(는) 유효한 타임스탬프가 아닙니다. <aqua>Zulu 표준시 (ISO 8601)</aqua> 또는 <aqua>Unix Epoch 시간(초)</aqua>.
+  <gold>유효한 타임스탬프 예: (2022년 12월 17일 토요일 10:31:37 GMT)</gold><br><aqua>- <yellow>2022-12-17T10:31:37Z</yellow> <gray>(Zulu 시간)</gray>
+  - <yellow>1671273097</yellow> <gray>(Unix Epoch 시간(초))</gray><br>
+invalid-past-time: <red>과거의 시간은 지정할 수 없습니다.
+debug:
+  arguments-invalid: <red>Provided arguments <yellow>{0}</yellow> invalid.
+  sign-located: '<green>유효한 표지판: <yellow>{0}</yellow>.'
+  operation-missing: <red>작업을 지정해야 합니다.
+  operation-invalid: <red>유효한 작업을 지정해야 합니다.
+  invalid-base64-encoded-sql: <red>제공된 SQL 작업은 Base64로 인코딩되어야 합니다.
+  warning-sql: |-
+    <bold><red>경고:</red></bold> <yellow>SQL 문을 실행하고 있습니다. 이로 인해 데이터베이스가 손상되거나 다른 플러그인에 속한 경우에도 데이터베이스의 데이터가 손상될 수 있습니다.
+    <red>누가 이것을 보내는지 신뢰할 수 없다면 이것을 확인하지 마십시오.
+  warning-sql-confirm: <yellow>이 위험한 작업을 확인하려면  <aqua>/quickshopdebug database sql confirm {0}</aqua> 을(를) 60초 안에 입력하십시오.
+  warning-sql-confirm-hover: <yellow>이 위험한 작업을 계속하려면 클릭하십시오.
+  sql-confirm-not-found: <yellow>제공한 작업을 찾을 수 없습니다. 유효하지 않거나 만료되었을 수 있습니다.
+  sql-executing: '<yellow>SQL문 실행: <aqua>{0}'
+  sql-completed: <green>작업 완료! {0} 줄이 영향을 받았습니다.
+  sql-exception: <red>SQL 쿼리를 실행하는 동안 오류가 발생했습니다. 자세한 내용은 콘솔을 확인하세요!
+  sql-disabled: '<red>보안상의 이유로 이 서버에서는 SQL 쿼리를 사용할 수 없습니다. 이 기능이 정말로 필요한 경우 시작 인수에 다음 플래그를 추가할 수 있습니다. <aqua>{0}</aqua> 를 ''true'' 값으로 설정하여 활성화합니다.'
+  force-shop-reload: <yellow>모든 상점을 강제로 다시 불러오는 중입니다.
+  force-shop-reload-complete: <green>강제로 <aqua>{0}</aqua> 싱점들을 다시 불러왔습니다.
+  force-shop-loader-reload: <yellow>강제로 shop-loader 을(를) 다시 불러오는 중입니다.
+  force-shop-loader-reload-unloading-shops: <yellow> <aqua>{0}</aqua> 개의 활성된 상점들을 비활성화 하고있습니다.
+  force-shop-loader-reload-unloading-shops-from-memory: <yellow>메모리에서 <aqua>{0}</aqua> 개의 상점을 삭제하고 있습니다.
+  force-shop-loader-reload-reloading-shop-loader: <yellow>데이터베이스에서 모든 상점을 다시 불러오기 위해 shop-loader를 다시 호출합니다.
+  force-shop-loader-reload-complete: <green>모든 상점의 shop-loader 을(를) 성공적으로 다시 불러왔습니다.
+  toggle-shop-loaded-status: <aqua>이 상점의 로드 상태를 다음으로 전환합니다. <gold>{0}
+  shop-internal-data: '<yellow>이 상점의 내부 데이터: </yellow>{0}'
+  handler-list-not-valid-bukkit-event-class: <red>제공된 클래스 <yellow>{0}</yellow> 은(는) 유효한 Bukkit 이벤트 클래스가 아닙니다.
+  update-player-shops-signs-no-username-given: <red>유효한 플레이어 닉네임을 제공해야 합니다.
+  update-player-shops-signs-create-async-task: <yellow>표지판을 강제로 업데이트하기 위한 비동기 작업 생성 중...
+  update-player-shops-player-selected: '<yellow>유저 선택됨: <gold>{0}</gold>'
+  update-player-shops-player-shops: <yellow>총 <gold>{0}</gold> 개의 상점이 업데이트를 위해 대기중입니다.
+  update-player-shops-per-tick-threshold: '<yellow>Max shops can be update per tick: <gold>{0}</gold>'
+  update-player-shops-complete: <green>작업이 완료되었습니다, 업데이트 작업에 <yellow>{0}ms</yellow> 초를 소모하였습니다.
+  update-player-shops-task-started: <gold>작업이 시작되었으므로 완료될 때까지 기다려 주십시오.
+  item-info-store-as-string: "<green>당신이 보고있는 상점 : <gold>{0}</gold> 해시: <white>{1}</white>"
+  item-info-hand-as-string: "<green>손에 들고 있는 아이템: <gold>{0}</gold> 해시: <white>{1}</white>"
+  item-matching-result: "<green>손에서 상점으로: <aqua>{0}</aqua>, 상점에서 손으로: <aqua>{1}</aqua>"
+  hikari-cp-size-tweak: "<green>HikariCP MaximumPoolSize 와 MinimumIdle 가 <white>{0}</white> 로 설정되었습니다."
+  hikari-cp-testing: "<green>잠시만 기다려 주세요, HikariCP 연결 테스트 중입니다..."
+  hikari-cp-working: "<green>성공! HikariCP 가 정상 작동중입니다!"
+  hikari-cp-not-working: "<red>실패! HikariCP 와의 연결이 끊어졌습니다! (1초 안에 테스트를 통과하지 못함)"
+  hikari-cp-timeout: "<red>HikariCP가 유효한 연결을 가져오는 동안 시간 초과되었습니다. 연결 리소스를 해제하려면 모든 활성 쿼리를 정리하십시오."
+  queries-stopped: "<green> <white>{0}</white> 개의 활성 쿼리를 중지했습니다."
+  queries-dumping: "<yellow>활성된 쿼리 덤프 중..."
+  restart-database-manager: "<yellow>SQLManager 다시 시작 중..."
+  restart-database-manager-clear-executors: "<yellow>실행 프로그램 정리중..."
+  restart-database-manager-unfinished-task: "<yellow>완료되지 않은 작업: <white>{0}</white>"
+  restart-database-manager-unfinished-task-history-query: "<yellow>완료되지 않은 작업(기록 쿼리): <white>{0}</white>"
+  restart-database-manager-reconnect: "<yellow>초기 시퀀스를 통해 SQLManager 다시 시작중입니다 (비동기 작업)"
+  restart-database-manager-done: "<green>완료!"
+  property-incorrect: "<yellow>당신은 오직 하나의 속성만 입력해야합니다 예: aaa=bbb"
+  property-security-block: "<red>보안상의 이유로 요청이 거부되었습니다. startsWith 속성만 변경할 수 있습니다. <aqua>com.ghostchu.quickshop</aqua> 또는 <aqua>quickshop</aqua>."
+  property-removed: "<green>속성 키 <white>{0}</white> 를 제거했습니다."
+  property-changed: "<green>속성 키 <white>{0}</white> 가 <white>{1}</white> 에서 <white>{2}</white> 로 변경되었습니다."
+  marked-as-dirty: "<green>모든 상점을 더티 상태로 표시하면 다음 자동 저장 작업에서 강제 저장됩니다. (저장소 저장 작업을 강제로 실행하려면 서버를 다시 시작하십시오)"
+  display-removed: "<green>성공적으로 해당 월드의 <yellow>{0}</yellow> QuickShop에서 표시하는  아이템/엔티티를 삭제 했습니다."
+database:
+  scanning: <green>Scanning the isolated data in QuickShop databases, the database load may increase in scan progress, this might need a while...
+  scanning-async: <yellow>Scanning the isolated data in QuickShop databases on async task thread, the database load may increase in scan progress, this might need a while, try again later.
+  already-scanning: <red>An scan task has been started, please wait until it finished.
+  trim-warning: '<yellow><red><bold>Warning: </red>Backup your database before continue database trim to avoid the data loss. Once you get ready, execute <aqua>/qs database trim confirm</aqua> to continue.'
+  status: '<yellow>상태: {0}'
+  status-good: <green>좋음
+  status-bad: <yellow>Maintenance Required
+  isolated: '<yellow>고립된 데이터:'
+  isolated-data-ids: '<yellow><aqua>└</aqua> Data Records: <gold>{0}</gold>'
+  isolated-shop-ids: '<yellow><aqua>└</aqua> Shop Indexes: <gold>{0}</gold>'
+  isolated-logs: '<yellow><aqua>└</aqua> Logs: <gold>{0}</gold>'
+  isolated-external-caches: '<yellow><aqua>└</aqua> External Caches: <gold>{0}</gold>'
+  last-purge-time: '<yellow>마지막 정리 일자 : {0}'
+  report-time: '<yellow>마지막 스캔 일자 : {0}'
+  auto-scan-alert: <yellow>The QuickShop database on this server require a maintenance. Found <gold>{0}</gold> isolated data wait for trimming.
+  auto-trim: <green>Auto trim has been enabled on this server, no manually trim required.
+  trim-complete: <green>Database trim completed, <yellow>{0}</yellow> isolated trimmed.
+  auto-trim-started: <green>Auto trim has been started, please wait...
+  trim-start: <green>Database trim started, please wait...
+  trim-exception: <red>Database trim failed, an exception raised during database trimming, check the server console.
+  generated-at: '<yellow>Generated at: <gold>{0}</gold>'
+  purge-date: <red>날짜를 지정해야 합니다.
+  purge-warning: <노란색>이 작업은 상점 생성/변경/삭제, 구매, 거래 및 시스템 로그를 포함하여 데이터베이스에 저장된 기록을 삭제합니다. 해당 데이터를 삭제하면 디스크 공간이 확보되지만 모든 기록 메트릭이 손실되고 메트릭에 의존하는 다른 플러그인이 작동을 중지합니다. 이 작업을 계속 실행하려면 `/quickshop database purgelogs \<before-days> confirm`을 사용하세요.
+  purge-task-created: <green>작업이 생성되었습니다! 데이터베이스는 백그라운드에서 기록을 자동으로 제거합니다.
+  purge-done-with-line: <green>제거 작업 완료, 합계 <gold>{0}</gold> 개의 라인이 데이터베이스에서 제거되었습니다.
+  purge-done-with-error: <red>제거 작업이 실패했습니다. 자세한 내용은 서버 콘솔을 확인하십시오.
+  purge-players-cache: <yellow>잠시만 기다려 주세요, 플레이어 캐시 제거 중...
+  purge-players-completed: |-
+    <green>Successfully purged {0} players caches from both memory and database.<newline><aqua>Note: You server performance may impact by this operation.
+  purge-players-error: <red>플레이어 캐시를 제거하지 못했습니다. 서버 콘솔을 확인하십시오.
+  suggestion:
+    trim: <yellow>This database require a isolated data trim, execute command <aqua>/qs database trim</aqua> to trim the database.
+always-counting-removal-early-warning: <red>Always Counting feature is scheduled for removal, you shouldn't use it anymore and will stop work in future.
+exporting-database: <green>데이터베이스를 내보내는 중, 잠시만 기다려 주십시오...
+exporting-failed: <red>데이터베이스 내보내기에 실패했습니다. 서버 콘솔을 확인하십시오.
+exported-database: '<green>데이터베이스 내보내짐 위치 : <yellow>{0}</yellow>.'
+importing-not-found: <red>The <yellow>{0}</yellow> file not found, please check the file path.
+importing-early-warning: |-
+  <yellow><red><bold>Warning: </bold></red>The backup will be imported to the current database, any exists data will be purged and permanently lost if you don't have a backup.<newline><red>Are you sure to continue the import progress?</red><yellow>Type <aqua>/qs recovery confirm</aqua> to continue.
+importing-database: <green>백업에서 데이터베이스를 불러오는중, 잠시만 기다려 주십시오...
+importing-failed: <red>데이터베이스 불러오지 못했습니다. 서버 콘솔을 확인하십시오.
+imported-database: <green>데이터베이스를 <yellow>{0}</yellow>에서 불러왔습니다.
+transfer-sent: <green>Shops transfer request sent to <yellow>{0}</yellow>.
+transfer-request: <yellow>Player <aqua>{0}</aqua> requested to transfer their shops to you. Did you want accept the transfer?
+transfer-single-request: <yellow>유저 <aqua>{0}</aqua> 님이 상점을 당신에게 양도 하려고 합니다. 요청을 수락하시겠습니까?
+transfer-ask: |-
+  <gold>Type <red>/qs transfer accept</red> to accept.</gold><newline><gold>Type <red>/qs transfer deny</red> to deny.</gold><newline><gold>Request will expire after <red>{0}</red> seconds.
+transferall-ask: |-
+  <gold> <red>/quickshop transferall accept</red> 로 수락하거나 <red>/quickshop transferall deny</red> 로 거절할 수 있습니다.
+  이요청은 <red>{0}</red> 초 후에 만료됩니다.
+transfer-single-ask: |-
+  <gold><red>/quickshop transferownership accept</red> 로 수락하거나 <red>/quickshop transferownership deny</red> 로 거절할 수 있습니다.
+  이 요청은 <red>{0}</red> 초 후에 만료됩니다.
+transfer-accepted-fromside: <green>유저 <aqua>{0}</aqua> 님이 상점 양도 요청을 수락했습니다.
+transfer-accepted-toside: <green>당신은 <aqua>{0}</aqua> 님의 상점 양도 요청을 수락했습니다.
+transfer-rejected-fromside: <red>유저 <aqua>{0}</aqua> 님이 상점 양도 요청을 거절했습니다.
+transfer-rejected-toside: <red>당신은 <aqua>{0}</aqua> 님의 상점 양도 요청을 거절했습니다.
+transfer-no-pending-operation: <red>보류 중인 양도 요청이 없습니다.
+transfer-no-self: <red>상점을 자신에게 양도할 수 없습니다.
+benefit-overflow: <red>모든 혜택의 합계는 100%보다 크거나 같을 수 없습니다.
+benefit-exists: <red>해당 유저는 이미 이 상점의 혜택 대상입니다.
+benefit-removed: <red>해당 유저를 이 상점의 혜택 대상에서 제외했습니다.
+benefit-added: <green>유저 <aqua>{0}</aqua> 님을 상점 혜택 대상에 추가했습니다.
+benefit-updated: <green>유저 <aqua>{0}</aqua>님의 혜택이 업데이트 되었습니다!
+benefit-query: <green>이 상점은 <yellow>{0}</yellow> 명의 유저가 혜택 대상으로 등록되어있습니다!
+benefit-query-list: <yellow> - </yellow><white>Player <gold>{0}</gold>, Benefit <gold>{1}%</gold></white>
+tag-added: '<green>성공적으로 이 상점에 <aqua>#{0}</aqua> 태그를 추가했습니다!'
+tag-add-duplicate: '<red>태그 <aqua>#{0}</aqua> 은(는) 이미 이 상점에서 사용중인 태그입니다!'
+tag-removed: '<green>성공적으로 <aqua>#{0}</aqua> 태그를 상점에서 제거했습니다!'
+tag-remove-not-exists: '태그 <aqua>#{0}</aqua> 은(는) 이미 이 상점에서 사용하지 않는 태그입니다!'
+tag-cleared: <green>성공적으로 모든 태그를 상점에서 제거했습니다!
+tag-shops-cleared: '<green>성공적으로 <aqua>#{0}</aqua> 태그를 소유중인 모든 상점에서 제거했습니다!'
+tag-query: '<green>이 상점은 <yellow>{0}</yellow> 개의 태그를 사용 하고 있습니다. :'
+tag-query-listing: '<yellow> - <aqua>#{0}</aqua>'
+tag-query-no-tag: <red>이 상점엔 어느 태그도 없습니다.
+tag-query-shops: '<green> <yellow>{0}</yellow> 태그를 사용중인 상점목록:'
+tag-query-shops-listing: <yellow> - <aqua>{0}</aqua>
+batch-operations-based-on-tags-no-failure: <green>성공적으로 일괄 처리되었습니다. <yellow>{0}</yellow> 개의 상점
+batch-operations-based-on-tags-have-failure: <yellow>Total <yellow>{0}</yellow> shops in batch processing successfully completed, but <red>{1}</red> requests not completed.
+batch-operations-based-on-tags-have-failure-with-reason: '<yellow>Total <yellow>{0}</yellow> shops in batch processing successfully completed, but <red>{1}</red> requests not completed. Reason: <gold>{2}</gold>'
+batch-operations-based-on-tags-have-failure-error-messages-may-appears-above: <gray>오류 메시지는 채팅에서 이 메시지 위로 전송됩니다.
+addon:
+  towny:
+    commands:
+      town: <yellow>상점을 마을 상점으로 설정 또는 설정 해제
+      nation: <yellow>상점을 국가 상점으로 설정 또는 설정 해제
+    make-shop-owned-by-town: <green>상점을 <yellow>{0}</yellow> 마을 소유로 만들었습니다.
+    make-shop-no-longer-owned-by-town: <green>상점 소유권을 초기화했으며, 기존 상점 소유자에게 소유권이 이전됩니다.
+    make-shop-owned-by-nation: <green>당신은 상점을 국가의 소유로 만들었습니다. <yellow>{0}</yellow> 
+    make-shop-no-longer-owned-by-nation: <green>상점 소유권을 초기화했으며, 기존 상점 소유자에게 소유권이 이전됩니다.
+    shop-owning-changing-notice: <grey>This shop now owned by a town/nation, original shop owner has been automatically added into administrator list, modify or add any new owner / staff by using command /qs permission
+    target-shop-already-is-town-shop: <red>대상 상점은 이미 마을이 소유하고 있습니다.
+    target-shop-already-is-nation-shop: <red>대상 상점은 이미 한 국가가 소유하고 있습니다.
+    target-shop-not-in-town-region: <red>대상 상점이 마을에 없습니다.
+    target-shop-not-in-nation-region: <red>대상 상점이 국내에 없습니다.
+    item-not-allowed: <red>이 상점의 품목은 도시 / 국가 상점에서 사용할 수 없으므로 다른 것을 선택하십시오!
+    operation-disabled-due-shop-status: <red>이 상점 운영은 이미 마을 / 국가 상점이기 때문에 비활성화되었습니다.
+    plot-type-disallowed: <red>이 유형의 플롯에는 마을/국가 상점을 만들 수 없습니다.
+    flags:
+      own: <red>소유한 상점 유형의 마을이 있는 플롯에서만 상점을 만들 수 있습니다.
+      modify: <red>당신의 이 마을의 해당 부지에 대한 건축 권한이 없습니다.
+      shop-type: <red>상점 유형의 마을이 있는 부지에 상점을 만들어야 합니다.
+  residence:
+    creation-flag-denied: <red>당신은 이 거주지에 상점을 만들 수 있는 권한이 없습니다.
+    trade-flag-denied: <red>당신은 이 거주지에 있는 상점에서 구매할 수 있는 권한이 없습니다.
+    you-cannot-create-shop-in-wildness: <red>야생에서 상점을 만들 수는 없습니다.
+  griefprevention:
+    creation-denied: <red>당신은 이땅에서 상점을 만들 수 업습니다.
+    trade-denied: <red>당신은 이땅에 있는 상점의 물품을 구매 하실수 없습니다.
+  lands:
+    world-not-enabled: <red>당신은 이 월드에서 상점을 만들거나 물품을 구매 할 수 없습니다.
+    creation-denied: <red>당신은 이 땅에서 상점을 만들 수 업습니다.
+  plotsquared:
+    no-plot-whitelist-creation: <red>부지 외부에 상점을 만들 수 없습니다.
+    no-plot-whitelist-trade: <red>부지 외부에 있는 상점의 물품을 구매할 수 없습니다.
+    creation-denied: <red>이 부지에서 상점을 만들 수 없습니다.
+    trade-denied: <red>이 부지에 있는 상점에서 물품을 구매할 수 없습니다.
+    flag:
+      create: QuickShop-Hikari 상점 만들기
+      trade: QuickShop-Hikari 상점을 구매하기
+  superiorskyblock:
+    owner-create-only: <red>해당 섬의 소유자만 상점을 만들 수 있습니다.
+    owner-member-create-only: <red>해당 섬의 소유자 혹은 거주인만 상점을 만들 수 있습니다.
+  worldguard:
+    creation-flag-test-failed: <red>이 월드가드의 범위 안에선 상점을 만들 수 없습니다.
+    trade-flag-test-failed: <red>이 월드가드의 범위 안에 있는 상점과 거래가 불가합니다.
+    reached-per-region-amount-limit: "<red>이 지역에서 만들수 있는 상점의 최대치에 도달했습니다."
+  discord:
+    __to_translators: 'To translators: `addon.discord.discord-messages` use a special variable in strings, %%LANG_KEY%% instead of QuickShop''s style {LANG_INDEX}, do not translate anything inside double ''%'' section. BUT for any other section texts, it respect the normal QuickShop Text System syntax ({0},{1} etc.) This may be difficult to understand because two different variable forms are used in the same program at the same time, but trust me, it is reasonable. (you don''t need translate this string, it''s a comment)'
+    __to_users: QuickShop 텍스트 시스템과 마찬가지로 Discord 애드온도 사용자 언어를 자동으로 감지하고 사용자의 언어를 사용하여 QuickShop-Hikari의 언어 시스템 설정에 따라 Discord 메시지를 보냅니다.
+    __to_message_designer: 'GUI로 디스코드 메시지를 디자인하세요: https://glitchii.github.io/embedbuilder/, JSON 코드를 복사하여 번역에 붙여넣기 하면 됩니다!'
+    discord-enabled: <aqua>QuickShop 디스코드 메시지를 <green>활성화 했습니다</green>, 이제 디스코드에서 상점 메시지를 받을 수 있습니다.
+    discord-disabled: <aqua>QuickShop 디스코드 메시지를 <red>비활성화 했습니다</red>, 이제 디스코드에서 상점 메시지를 받을 수 없습니다.
+    discord-not-integrated: <red>디스코드 계정이 연동되지 않았습니다! 먼저 계정을 연동해주세요!
+    feature-enabled-for-user: <aqua><gold>{0}</gold> 개의 <green>활성</green> 알림이 있습니다.
+    feature-disabled-for-user: <aqua><gold>{0}</gold> 개의 <red>비활성</red> 알림이 있습니다.
+    link-help: <yellow> 이서버는  <gold>{0}</gold> 플러그인을 사용하고 있습니다,  <green>{0}</green> 를 사용하여 계정을 연동하세요.
+    save-notifaction-exception: <red>디스코드 알림 설정을 저장하는 동안 오류가 발생했습니다. 서버 관리자에게 문의하시기 바랍니다.
+    feature-status-changed: <green>Successfully set the notifaction <aqua>{0}</aqua> status to <gold>{1}</gold>
+    commands:
+      discord:
+        description: <yellow>QuickShop 디스코드 설정 관리
+    discord-messages:
+      sold-to-your-shop: |
+        {
+         "embed":
+           {
+             "title": ":inbox_tray: 누군가 물품을 상점에 판매했습니다",
+             "description": "유저 %%purchase.name%% 이(가) %%shop.item.name%%을(를) %%purchase.amount%%  개 상점에 판매하였습니다..",
+             "color": 52084,
+             "author": {
+               "name": "QuickShop-Hikari",
+               "icon_url": ""
+             },
+             "thumbnail": {
+               "url": ""
+             },
+             "image": {
+               "url": ""
+             },
+             "footer": {
+               "text": "QuickShop-Hikari 디스코드 알림",
+               "icon_url": ""
+             },
+             "fields": [
+               {
+                 "name": "상점",
+                 "value": "%%shop.display-name%%",
+                 "inline": false
+               },
+               {
+                 "name": "구매자",
+                 "value": "%%purchase.name%%",
+                 "inline": true
+               },
+               {
+                 "name": "물품",
+                 "value": "%%shop.item.name%%",
+                 "inline": true
+               },
+               {
+                 "name": "갯수",
+                 "value": "%%purchase.amount%% (x%%shop.stacking-amount%%)",
+                 "inline": true
+               },
+               {
+                 "name": "지불한 가격",
+                 "value": "%%purchase.balance-formatted%%",
+                 "inline": true
+               },
+               {
+                 "name": "세금",
+                 "value": "%%purchase.taxes-formatted%%",
+                 "inline": true
+               }
+             ]
+           }
+        }
+      bought-from-your-shop: |
+        {
+           "embed":
+             {
+               "title": ":outbox_tray: 누군가 물품을 구매했습니다.",
+               "description": "유저 %%purchase.name%% 이(가) %%shop.item.name%% 을(를) %%purchase.amount%% 개 구매했습니다.",
+               "color": 52084,
+               "author": {
+                   "name": "QuickShop-Hikari",
+                   "icon_url": ""
+               },
+               "thumbnail": {
+                   "url": ""
+               },
+               "image": {
+                   "url": ""
+               },
+               "footer": {
+                   "text": "QuickShop-Hikari Discord Notification",
+                   "icon_url": ""
+               },
+               "fields": [
+                   {
+                       "name": "상점",
+                       "value": "%%shop.display-name%%",
+                       "inline": false
+                   },
+                   {
+                       "name": "구매자",
+                       "value": "%%purchase.name%%",
+                       "inline": true
+                   },
+                   {
+                       "name": "물품",
+                       "value": "%%shop.item.name%%",
+                       "inline": true
+                   },
+                   {
+                       "name": "갯수",
+                       "value": "%%purchase.amount%%(x%%shop.stacking-amount%%)",
+                       "inline": true
+                   },
+                   {
+                       "name": "얻은 금액",
+                       "value": "%%purchase.balance-formatted%%",
+                       "inline": true
+                   },
+                   {
+                       "name": "세금",
+                       "value": "%%purchase.taxes-formatted%%",
+                       "inline": true
+                   }
+               ]
+           }
+         }
+      mod-shop-purchase: |
+        {
+        "embed":
+          {
+              "title": ":dollar: 누군가 물품을 구매했습니다.",
+              "description": "유저 %%purchase.name%% 이(가) %%shop.item.name%% 을(를) %%purchase.amount%% 개 구매했습니다.",
+              "color": 6061450,
+              "author": {
+                  "name": "QuickShop-Hikari",
+                  "icon_url": ""
+              },
+              "thumbnail": {
+                  "url": ""
+              },
+              "image": {
+                  "url": ""
+              },
+              "footer": {
+                  "text": "QuickShop-Hikari Discord Notification",
+                  "icon_url": ""
+              },
+              "fields": [
+                  {
+                      "name": "상점",
+                      "value": "%%shop.display-name%%",
+                      "inline": false
+                  },
+                  {
+                      "name": "구매자",
+                      "value": "%%purchase.name%%",
+                      "inline": true
+                  },
+                  {
+                      "name": "물품",
+                      "value": "%%shop.item.name%%",
+                      "inline": true
+                  },
+                  {
+                      "name": "갯수",
+                      "value": "%%purchase.amount%% (x%%shop.stacking-amount%%)",
+                      "inline": true
+                  },
+                  {
+                      "name": "가격",
+                      "value": "%%purchase.balance-formatted%%",
+                      "inline": true
+                  },
+                  {
+                      "name": "세금",
+                      "value": "%%purchase.taxes-formatted%%",
+                      "inline": true
+                  }
+              ]
+          }
+        }
+      out-of-space: |
+        {
+        "embed":
+          {
+              "title": ":mailbox_with_mail: Your shop has run out of space",
+              "description": "Your shop inventory is full of items!\nYou need empty your shop container to free the space then you can continue to accept new items.",
+              "color": 16065893,
+              "author": {
+                  "name": "QuickShop-Hikari",
+                  "icon_url": ""
+              },
+              "thumbnail": {
+                  "url": ""
+              },
+              "image": {
+                  "url": ""
+              },
+              "footer": {
+                  "text": "QuickShop-Hikari Discord Notification",
+                  "icon_url": ""
+              },
+              "fields": [
+                  {
+                      "name": "Shop",
+                      "value": "%%shop.display-name%%",
+                      "inline": false
+                  }
+              ]
+          }
+        }
+      out-of-stock: |
+        {
+            "embed":
+                {
+                    "title": ":mailbox_with_no_mail: Your shop has run out of stock",
+                    "description": "Your shop inventory is empty now!\nYou need to refill the shop container with items to continue selling items!",
+                    "color": 16065893,
+                    "author": {
+                        "name": "QuickShop-Hikari",
+                        "icon_url": ""
+                    },
+                    "thumbnail": {
+                        "url": ""
+                    },
+                    "image": {
+                        "url": ""
+                    },
+                    "footer": {
+                        "text": "QuickShop-Hikari Discord Notification",
+                        "icon_url": ""
+                    },
+                    "fields": [
+                        {
+                            "name": "Shop",
+                            "value": "%%shop.display-name%%",
+                            "inline": false
+                        }
+                    ]
+                }
+        }
+      mod-shop-created: |
+        {
+          "embed": {
+            "title": ":classical_building: 상점이 생성되었습니다.",
+            "description": "유저가 서버에서 상점을 만들었습니다!",
+            "color": 6061450,
+            "author": {
+              "name": "QuickShop-Hikari",
+              "icon_url": ""
+            },
+            "thumbnail": {
+              "url": ""
+            },
+            "image": {
+              "url": ""
+            },
+            "footer": {
+              "text": "QuickShop-Hikari Discord Notification",
+              "icon_url": ""
+            },
+            "fields": [
+              {
+                "name": "상점",
+                "value": "%%shop.display-name%%",
+                "inline": false
+              },
+              {
+                "name": "소유자",
+                "value": "%%shop.owner.name%%",
+                "inline": true
+              },
+              {
+                "name": "물품",
+                "value": "%%shop.item.name%%",
+                "inline": true
+              },
+              {
+                "name": "갯수",
+                "value": "%%shop.stacking-amount%%",
+                "inline": true
+              },
+              {
+                "name": "타입",
+                "value": "%%shop.type%%",
+                "inline": true
+              }
+            ]
+          }
+        }
+      mod-remove-shop: |
+        {
+            "embed": {
+                "title": ":recycle: 상점이 삭제되었습니다.",
+                "description": "헤당 서버에서 상점이 삭제되었습니다.",
+                "color": 6061450,
+                "author": {
+                    "name": "QuickShop-Hikari",
+                    "icon_url": ""
+                },
+                "thumbnail": {
+                    "url": ""
+                },
+                "image": {
+                    "url": ""
+                },
+                "footer": {
+                    "text": "QuickShop-Hikari Discord Notification",
+                    "icon_url": ""
+                },
+                "fields": [
+                    {
+                        "name": "상점",
+                        "value": "%%shop.display-name%%",
+                        "inline": false
+                    },
+                    {
+                        "name": "사유",
+                        "value": "%%delete.reason%%",
+                        "inline": false
+                    }
+                ]
+            }
+        }
+      shop-transfer-to-you: |
+        {
+            "embed": {
+                "title": ":placard: 상점의 소유권을 흭득했습니다.",
+                "description": "다른 유저가 상점의 소유권을 당신에게 이전했습니다.",
+                "color": 16172079,
+                "author": {
+                    "name": "QuickShop-Hikari",
+                    "icon_url": ""
+                },
+                "thumbnail": {
+                    "url": ""
+                },
+                "image": {
+                    "url": ""
+                },
+                "footer": {
+                    "text": "QuickShop-Hikari Discord Notification",
+                    "icon_url": ""
+                },
+                "fields": [
+                    {
+                        "name": "상점",
+                        "value": "%%shop.display-name%%",
+                        "inline": false
+                    },
+                    {
+                        "name": "보낸 사람",
+                        "value": "%%transfer.from%%",
+                        "inline": false
+                    }
+                ]
+            }
+        }
+      mod-shop-transfer: |
+        {
+            "embed": {
+                "title": ":placard: 상점의 소유권이 이전되었습니다",
+                "description": "유저가 상점의 소유권을 다른 유저에게 이전했습니다.",
+                "color": 6061450,
+                "author": {
+                    "name": "QuickShop-Hikari",
+                    "icon_url": ""
+                },
+                "thumbnail": {
+                    "url": ""
+                },
+                "image": {
+                    "url": ""
+                },
+                "footer": {
+                    "text": "QuickShop-Hikari Discord Notification",
+                    "icon_url": ""
+                },
+                "fields": [
+                    {
+                        "name": "상점",
+                        "value": "%%shop.display-name%%",
+                        "inline": false
+                    },
+                    {
+                        "name": "보낸 사람",
+                        "value": "%%transfer.from%%",
+                        "inline": true
+                    },
+                    {
+                        "name": "받는 사람",
+                        "value": "%%transfer.to%%",
+                        "inline": true
+                    }
+                ]
+            }
+        }
+      shop-price-changed: |
+        {
+            "embed": {
+                "title": ":money_with_wings: 물품의 가격이 변경되었습니다.",
+                "description": "당신이 소유중인 상점의 물품 가격이 변경되었습니다.",
+                "color": 16172079,
+                "author": {
+                    "name": "QuickShop-Hikari",
+                    "icon_url": ""
+                },
+                "thumbnail": {
+                    "url": ""
+                },
+                "image": {
+                    "url": ""
+                },
+                "footer": {
+                    "text": "QuickShop-Hikari Discord Notification",
+                    "icon_url": ""
+                },
+                "fields": [
+                    {
+                        "name": "상점",
+                        "value": "%%shop.display-name%%",
+                        "inline": false
+                    },
+                    {
+                        "name": "원래 가격",
+                        "value": "%%change-price.from%%",
+                        "inline": true
+                    },
+                    {
+                        "name": "변경 가격",
+                        "value": "%%change-price.to%%",
+                        "inline": true
+                    }
+                ]
+            }
+        }
+      mod-shop-price-changed: |
+        {
+            "embed": {
+                "title": ":money_with_wings: 물품의 가격이 변경되었습니다",
+                "description": "상점의 물품 가격이 변경되었습니다",
+                "color": 6061450,
+                "author": {
+                    "name": "QuickShop-Hikari",
+                    "icon_url": ""
+                },
+                "thumbnail": {
+                    "url": ""
+                },
+                "image": {
+                    "url": ""
+                },
+                "footer": {
+                    "text": "QuickShop-Hikari Discord Notification",
+                    "icon_url": ""
+                },
+                "fields": [
+                    {
+                        "name": "상점",
+                        "value": "%%shop.display-name%%",
+                        "inline": true
+                    },
+                    {
+                        "name": "소유자",
+                        "value": "%%shop.owner.name%%",
+                        "inline": true
+                    },
+                    {
+                        "name": "",
+                        "value": "",
+                        "inline": true
+                    },
+                    {
+                        "name": "기존 금액",
+                        "value": "%%change-price.from%%",
+                        "inline": true
+                    },
+                    {
+                        "name": "변경 금액",
+                        "value": "%%change-price.to%%",
+                        "inline": true
+                    }
+                ]
+            }
+        }
+      shop-permission-changed: |
+        {
+            "embed": {
+                "title": ":closed_lock_with_key: Your shop permission settings has been changed",
+                "description": "One of your shop's permission setting has been changed.",
+                "color": 15879747,
+                "author": {
+                    "name": "QuickShop-Hikari",
+                    "icon_url": ""
+                },
+                "thumbnail": {
+                    "url": ""
+                },
+                "image": {
+                    "url": ""
+                },
+                "footer": {
+                    "text": "QuickShop-Hikari Discord Notification",
+                    "icon_url": ""
+                },
+                "fields": [
+                    {
+                        "name": "Shop",
+                        "value": "%%shop.display-name%%",
+                        "inline": false
+                    },
+                    {
+                        "name": "Player",
+                        "value": "%%change-permission.player%%",
+                        "inline": true
+                    },
+                    {
+                        "name": "Assign to group",
+                        "value": "%%change-permission.to-group%%",
+                        "inline": true
+                    },
+                    {
+                        "name": "",
+                        "value": "",
+                        "inline": true
+                    },
+                    {
+                        "name": "Permission granted (Inherit from group)",
+                        "value": "```\n%%change-permission.perms-list%%\n```",
+                        "inline": false
+                    }
+                ]
+            }
+        }
+    field:
+      player: 유저
+      item: 물품
+      amount: 갯수
+      balance: 금액
+      balance-after-tax: 금액 (세후)
+      account: 계정 잔액
+      taxes: 세금
+      cost: 비용
+  discount:
+    commands:
+      discount:
+        description: <yellow>할인 코드를 적용하거나 할인 코드를 관리하십시오.
+    tab-complete:
+      discount:
+        general:
+          code: <code>
+        create:
+          rate: |
+            Command Hint:
+            Argument: <rate>
+            Description: The actual percentage or money you will earn
+            Input `30%` = price * 0.3
+            Input `50` = price - 50
+          max-usage: |
+            명령 힌트:
+            인수: [max-usage]
+            설명: 코드를 사용할 수 있는 시간
+            '-1'은 무제한입니다.
+          threshold: |
+            명령 힌트:
+            인수: [threshold]
+            설명: 코드를 적용할 수 있는 최소 가격입니다.
+            '-1': 무제한
+          expired: |
+            명령 힌트
+            인수: [만료됨]
+            설명: 코드가 만료될 시간입니다.
+            '-1'은 지속 시간 무제한입니다.
+            Zulu 시간과 UNIX 타임스탬프를 모두 초 단위로 허용합니다.
+            줄루어 예: 2022-12-17T10:31:37Z
+            UNIX 예제: 1671273097
+    discount-code-already-exists: <red>죄송합니다. 이미 사용 중인 할인 코드의 이름입니다.
+    invalid-discount-code-regex: '<red>The discount code must matches the regex: <yellow>{0}</yellow>'
+    invalid-discount-code: <red>이 할인 코드는 유효하지 않습니다.
+    discount-code-added: <green>Your discount code <yellow>{0}</yellow> has been added into shop <aqua>{1}</aqua>
+    discount-code-removed: <green>Your discount code <yellow>{0}</yellow> has been removed from shop <aqua>{1}</aqua>
+    invalid-code-type: <red>해당 코드의 유형 <yellow>{0}</yellow> 은(는) 유효하지 않습니다.
+    invalid-usage-restriction: <red>사용 제한 <yellow>{0}</yellow> 은(는) 유효하지 않습니다.
+    invalid-threshold-restriction: <red>최소 구매가 제한 <yellow>{0}</yellow> 은(는) 유효하지 않습니다.
+    invalid-effect-scope: <red>범위 <yellow>{0}</yellow> 유효하지 않습니다.
+    invalid-expire-time: <red>과거의 시간은 지정할 수 없습니다.
+    invalid-discount-rate: <red>할인율 <yellow>{0}</yellow> 이(가) 유효 하지않습니다, 할인율은 숫자 또는 백분율이어야 합니다.
+    discount-code-expired: <red>이런! 할인 코드 <yellow>{0}</yellow> 만료되었습니다!
+    discount-code-installed: <green>You have installed discount code <gold>{0}</gold>, the discount code will be automatically applied to the available purchase in all the following purchases during this session. To uninstall discount code, execute <aqua>/qs discount uninstall {0}</aqua>.
+    discount-code-uninstalled: <green>할인 코드를 제거했습니다.
+    discount-code-query-nothing: <red>아직 할인 코드를 적용하지 않았습니다!
+    discount-code-query: '<green>할인 코드를 사용하고 있습니다. <yellow>{0}</yellow>.'
+    discount-code-applicable: '<color:#bcef26>Your discount code <yellow><bold>{0}</bold></yellow> are <bold>applicable</bold> in this shop!'
+    discount-code-applicable-with-threshold: '<color:#bcef26>Your discount code <yellow><bold>{0}</bold></yellow> are <bold>applicable</bold> in this shop, but only your purchase cost over <yellow>{1}</yellow> in single transaction.'
+    discount-code-not-applicable: <red>Your discount code <yellow><bold>{0}</bold></yellow> are <bold>not applicable</bold> in this shop!
+    discount-code-reach-the-limit: <red>You have reach the usage limit of discount code <yellow><bold>{0}</bold></yellow>, discount are not applied.
+    discount-code-no-permission: <red>이 상점에서 할인 코드를 사용할 수 있는 권한이 없습니다!
+    discount-code-has-been-expired: <red>할인이 만료되었습니다!
+    discount-code-config-shop-added: <green>이 상점을 할인 코드 허용 목록에 성공적으로 추가하였습니다.
+    discount-code-config-shop-add-failure: <red>이 상점은 이미 할인 코드 허용 목록에 있습니다.
+    discount-code-config-shop-removed: <green>할인 코드 허용 목록에서 이 상점을 성공적으로 제거했습니다.
+    discount-code-config-shop-remove-failure: <red>이 상점은 할인 코드 허용 목록에 없습니다.
+    discount-code-config-expire: <green>코드 만료 시간을 성공적으로 변경했습니다.
+    discount-code-config-applied: <green>할인 코드를 성공적으로 구성하였습니다!
+    discount-code-created-successfully: |
+      <green>Your discount code <yellow>{0}</yellow> has been successfully created!
+      <gold>Scope: <aqua>{1}</aqua></gold>.
+      <gold>Share with others: <color:#bcef26>{2}</color:#bcef26></gold>.
+      <yellow>For <gray>Specific Shops</gray> scope only: To add shops to your discount code allow list, please looking an quickshop and execute <aqua>{3}</aqua> command.
+      <yellow>You can use <aqua>/qs discount config {0}</aqua> to edit your discount code anytime.
+    discount-code-under-threshold: <red>최소 적용 금액 미만의 총 금액이므로 구매에 적용되지 않는 할인입니다. <yellow>{0}</yellow>.
+    percentage-off: '<bold><color:#bcef26>-{0}%</color:#bcef26></bold>'
+    fixed-off: '<bold><color:#bcef26>-{0}</color:#bcef26></bold>'
+    discount-code-list: '<gold>Listing your discount codes:</gold>'
+    discount-code-applied-in-purchase: '<color:#bcef26>Your discount code <yellow>{0}</yellow> has been applied to this purchase and you saved <gold>{1}</gold>!'
+    scope:
+      this-shop: '{0}'
+      your-shops-owned: 모든 소유중인 상점
+      your-shops-managed: 모든 관리중인 상점
+      server: 모든 서버
+    code-type:
+      SERVER_ALL_SHOPS: 이 서버의 모든 상점
+      PLAYER_ALL_SHOPS: 코드 소유자가 만든 모든 상점
+      SPECIFIC_SHOPS: 특정 상점
+    discount-code-details: |-
+      <gold>Code: <yellow>{0}</yellow>
+      <gold>Creator: <yellow>{1}</yellow>
+      <gold>Applied to: <yellow>{2}</yellow>
+      <gold>Remaining usage: <yellow>{3}</yellow>
+      <gold>Expired on: <yellow>{4}</yellow>
+      <gold>Threshold: <yellow>{5}</yellow>
+      <gold>Discount: <yellow>{6}</yellow>
+  list:
+    commands:
+      list: <yellow>당신 혹은 특정 유저가 소유중인 상점 목록 표시
+    table-prefix: '<yellow><green>{0}</green>이 소유중인 상점 <gray>(합계 {1})</gray>: '
+    table-prefix-pageable: '<yellow><green>{0}</green>이 소유중인 상점 <gray>(페이지 {1}/{2})</gray>: '
+    entry: "<hover:show_text:'<yellow>{1}</yellow>\n<gray>{2} {3},{4},{5}</gray>\n<aqua>Price <yellow>{6}</yellow> - <light_purple>x{7}</light_purple> <yellow>{8}</yellow>\n<green>{9}'><yellow>{0}. <aqua>{1}</aqua></hover>"
+  shopitemonly:
+    message: <red>상점에서 사용중인 아닌 아이템은 상점에서 사용중인 상자에 넣을 수 없으며, 해당 상점에서 사용중이지 않은 아이템은 모드 해당 위치에 떨어집니다.
+  limited:
+    commands:
+      limit: <yellow>유저가 기간 내에 구매할 수 있는 한도를 설정합니다
+    titles:
+      title: <green>구매 성공
+      subtitle: <aqua>구매만 가능합니다.<gold>{0}</gold> 이 가게에서 더 보기
+    reach-the-limit: <red>이 상점의 한도에 도달했습니다. 당신은 <green>{0}</green> 만을 구매할수 있으나 <yellow>{1}</yellow> 을(를) 구매하려 하고 있습니다.
+    success-reset: <green>이 상점의 한도를 초기화 했습니다.
+    success-remove: <green>이 상점의 모든 한도를 제거했습니다.
+    success-setup: <green>이 상점에 대한 한도 설정이 성공적으로 저장되었습니다.
+    trade-limit-reached-cancel-reason: <red>이 가게의 한도에 도달했습니다
+    remains-limits: '<gold>Your remaining purchase quota in this shop: <yellow>{0}</yellow>'
+    remains-limits-before-reset-period-note: '<gold>This shop will reset their purchase quota every: <yellow>{0}</yellow>'
+  dynmap:
+    markerset-title: QuickShop-Hikari 상점
+    marker-name: '{0} @ {2} @ {3} for x{4} @ {5}'
+    marker-description: |
+      이름: {0}
+      소유자: {1}
+      물품: {2}
+      가격: {4} 개당 {3} 원
+      타입: {5}
+      무제한: {6}
+      위치: {7}
+  bluemap:
+    markerset-title: QuickShop-Hikari 상점
+    marker-name: '{0} @ {2} @ {3} for x{4} @ {5}'
+    marker-description: |
+      이름: {0}
+      소유자: {1}
+      물품: {2}
+      가격: {4} 개당 {3} 원
+      타입: {5}
+      무제한: {6}
+      위치: {7}
+  chestprotect:
+    protection-exists: <red>이 지역은 이미 ChestProtect에 의해 보호되고 있으며 여기에서 상점을 만들 수 있는 권한이 없습니다.
+    shops-exsts: <red>보호하려는 지역에 다른 플레이어의 상점이 포함되어 있으며 해당 상점에 액세스할 수 있는 권한이 없습니다.
+  displaycontrol:
+    toggle: |-
+      <green>QuickShop 디스플레이를 다음으로 성공적으로 전환합니다. <aqua>{0}</aqua>.
+      <yellow>적용하려면 재접속을 해야 할 수 있습니다.
+    toggle-exception: <red>내부 오류로 인해 디스플레이 쇼케이스 설정을 전환하지 못했습니다. 서버 관리자에게 문의하십시오.
+    command:
+      displaycontrol: <yellow>QuickShop 디스플레이 표시 전환
+  reremake-migrator:
+    commands:
+      migratefromreremake: QuickShop-Reremake의 데이터를 QuickShop-Hikari로 마이그레이션
+    server-not-empty: "<red>변환이 진행되는 동안 플레이어는 서버에서 온라인 상태가 될 수 없으므로 서버 화이트리스트 또는 유지 관리 모드를 활성화하십시오."
+    starting-convert-progress: "<gold>데이터 병합 작업을 시작중입니다,<red>서버를 종료하지 마십시오!</red>"
+    executing: "<gold>데이터 병합 작업중<aqua>{0}</aqua> <dark_gray>({1}/{2})</dark_gray>..."
+    completed: "<green>완료! 데이터 병합이 완료되었습니다. 서버를 재시작 하며 QuickShop-Reremake 플러그인을 삭제해주세요."
+    join_blocking_converting: "<red>[QuickShop-Hikari Migrator] 이 서버는 데이터 병합작업중이므로 서버에 접속할 수 없습니다. 나중에 다시 시도해 주세요!"
+    join_blocking_finished: "<red>[QuickShop-Hikari Migrator] 이 서버는 데이터 병합이 방금 완료되어 적용을 위해 재부팅 대기중입니다. 나중에 다시 시도하세요!"
+    failed: "<red>데이터 병합 작업중 오류가 발생하였습니다, 서버 콘솔을 확인하세요."
+    modules:
+      config:
+        copy-values: "<yellow>데이터 복사중 (전체 {0} 개)..."
+        copying-value: "<gray> -데이터 복사중 <aqua>{0}</aqua> <dark_gray>({1}/{2})</dark_gray>..."
+        migrate-price-restriction: "<yellow>가격 제한 관련 설정을 병합 하는 중..."
+        migrate-price-restriction-entry: "<gray> -데이터 병합중 <aqua>{0}</aqua> <dark_gray>({1}/{2})</dark_gray>..."
+      shop:
+        start-migrate: "<yellow>상점을 병합 하는중 (전체 {0} 개)..."
+        migrate-entry: "<gray> -데이터 병합중 <aqua>{0}</aqua> <dark_gray>({1}/{2})</dark_gray>..."
+        unloading-reremake: "<gold>데이터 덮어쓰기를 방지하기 위해 Reremake 비활성화..."
+        register-entry: "<gray> - 데이터 등록중 <aqua>{0}</aqua> <dark_gray>({1}/{2})</dark_gray>..."
+        save-entry: "<gray> - 데이터 저장중 <aqua>{0}</aqua> <dark_gray>({1}/{2})</dark_gray>..."
+        saving-shops: "<yellow><gold>{0}</gold> 개의 상점을 저장중, 이 작업은 시간이 많이 소요될수 있습니다.™ (상점 갯수에 따라 시간이 비례합니다)..."
+        conflict: "<gray> - 충돌 발생 > Reremake 플러그인의 상점과 HIkari 상점의 위치가 같아 충돌이 발생했습니다, 관련 정보: <dark_gray>{0}</dark_gray>"
+      translation:
+        start-migrate: "<yellow>번역 파일을 병합 하는중...</yellow>"
+        copy-values: "<yellow><gold>{0}</gold> 언어의 번역파일 내용 복사중 (전체 {1} 개)..."
+        migrate-entry: "<gray> -데이터 병합중 <aqua>{0}</aqua> <dark_gray>({1}/{2})</dark_gray>..."
+        copying-value: "<gray> -데이터 복사중 <aqua>{0}</aqua> <dark_gray>({1}/{2})</dark_gray>..."
+      shop-logs:
+        start-migrate: "<yellow>상점 로그(자세한 내용은 콘솔의 세부 정보)를 병합하는 중, 잠시만 기다려 주십시오...</yellow>"
+        extract-history-files: "<gray>압축을 풀고 기록 로그를 추가할 때까지 기다려 주십시오..."
+        filter-history-files: "<gray>기록 로그를 필터링할 때까지 기다려 주십시오..."
+        filtered-history-files: "<gray>대기열중 {0} 라인까지 필터링을 수행했습니다."
+        import-entry: "<gray> -데이터 병합중 <aqua>{0}</aqua> <dark_gray>({1}/{2})</dark_gray>..."
+compat:
+  advancedchests:
+    created: <green>AdvancedChests 상자를 사용하여 상점을 성공적으로 만들었습니다!
+    permission-denied: <red>죄송합니다! AdvancedChests 상자로 상점을 만들 수 있는 권한이 없습니다!
+suite:
+  dynmap:
+    title: '{0} - {1} - {2}'
+    description: |-
+      물품: {0}
+      소유자: {1}
+      타입: {2} {3}
+      사용: {4}
+      위치: {5} {6}, {7}, {8}
+      공간: {9}
+      재고량: {10}
+  limited:
+    command-description: <yellow>유저가 기간 내에 구매할 수 있는 한도를 설정합니다.
+    reach-the-quota-limit: <red>당신은 이 상점의 구매 한도에 도달했습니다. ({0}/{1})
+    quota-reset-countdown: <yellow>이 상점의 구매 한도는 {0} 후에 초기화됩니다.
+    quota-reset-player-successfully: <green>유저 {0} 에 대한 해당 상점의 구매 한도가 초기화되었습니다.
+    quota-reset-everybody-successfully: <green>모든 유저에 대한 해당 상점의 구매 한도가 초기화되었습니다.
+    quota-setup: <green>이제 이 상점에 구매 제한이 적용됩니다!
+    quota-remove: <green>이 상점의 구매 제한이 해제되었습니다!
+    subtitles:
+      title: <green>구매 성공
+      subtitle: <aqua>당신은 이 상점에서 <yellow>{0}</yellow> 개를 더 구매할 수 있습니다.
+  list:
+    command-description: <yellow>당신 혹은 특정 유저가 소유중인 상점 목록 표시.
+    table-prefix: <yellow>당신은 이 서버에서 <aqua>{0}</aqua> 개의 상점을 소유중입니다.
+    entry-syntax: <aqua>- <yellow>{0}
+    entry-syntax-fallback-name: '<yellow>물품:{0} X:{1}, Y:{2}, Z:{3}, 월드: {4}'
+    hover-text: |-
+      <yellow>{0}
+      <gray>{1} {2}, {3}, {4}
+      <aqua>{5} - <yellow>{6}
+      <yellow>{7} items each stack.
+  shopitemonly:
+    message: <red>상점에서 사용중인 아닌 아이템은 상점에서 사용중인 상자에 넣을 수 없으며, 해당 상점에서 사용중이지 않은 아이템은 모드 해당 위치에 떨어집니다.
+compatibility:
+  elitemobs:
+    soulbound-disallowed: EliteMobs Soulbound 인챈트가 있는 아이템은 거래할 수 없습니다.
+internet-paste-forbidden-privacy-reason: "<red>실패! 개인 정보 설정에 따라 QuickShop-Hikari는 붙여 넣기를 인터넷에 업로드하거나 config.yml의 개인 정보 설정에서 DIAGNOSTIC 권한을 켜거나 <aqua>/quickshop paste --file</aqua> 을 사용하세요."
+no-sign-type-given: "<red>사용할 표지판을 입력해야합니다. 사용가능한 표지판: {0}"
+sign-type-invalid: "<red> <yellow>{0}</yellow> 은(는) 표지판이 아닙니다."
+delete-controlpanel-button-confirm: "<red>이 상점을(를) 정말로 제거하시겠습니까?. <bold>[상점 제거]</bold> 버튼을 {0}초 안에 한번 더 클릭하세요."
+cannot-suggest-price: "<red>죄송합니다. 당분간은 더 이상 귀하와 동일한 품목을 거래하는 사람이 없으며 제안 가격을 생성하기에 충분한 데이터가 없습니다."
+price-suggest: "<green><aqua>{0}</aqua> 개의 점을 기반으로 하여, 최고가는 <light_purple>{1}</light_purple> 이고, 최저가는 <light_purple>{2}</light_purple>, 평균 가격은 <light_purple>{3}</light_purple>이며 보통값은 <light_purple>{4}</light_purple> 입니다. <newline><yellow>이것이 추천 가격입니다. <gold>{5}</gold>.</yellow>"
+suggest-wait: "<green>잠시만 기다려주세요... 권장 가격을 계산중입니다."
+history:
+  shop:
+    gui-title: "구매 내역 보기"
+    header-icon-multiple-shop: "<white>쿼리 결과 {0} 상점</white>"
+    header-icon-description:
+      - "<white>타입: <yellow>{0}</yellow></white>"
+      - "<white>소유자: <yellow>{1}</yellow></white>"
+      - "<white>물품: <yellow>{2}</yellow></white>"
+      - "<white>가격: <yellow>{3} <aqua>x{4}</aqua></yellow></white>"
+      - "<white>위치: <yellow>{5}</yellow></white>"
+    log-icon-title: "<reset><green>시간: {0}</green>"
+    log-icon-description:
+      - "<white>구매자: <yellow>{0}</yellow></white>"
+      - "<white>물품: <yellow>{1} <aqua>x{2}</aqua></yellow></white>"
+      - "<white>가격: <yellow>{3}</yellow></white>"
+      - "<white>세금: <yellow>{4}</yellow></white>"
+    log-icon-description-with-store-name:
+      - "<white>상점: <yellow>{0}</yellow></white>"
+      - "<white>구매자: <yellow>{1}</yellow></white>"
+      - "<white>물품: <yellow>{2} <aqua>x{3}</aqua></yellow></white>"
+      - "<white>가격: <yellow>{4}</yellow></white>"
+      - "<white>세금: <yellow>{5}</yellow></white>"
+    query-icon: "<gray>조회중입니다... 잠시만 기다려주십시오</gray>"
+    previous-page: "<white>< 이전 페이지</white>"
+    next-page: "<white>다음 페이지 >></white>"
+    current-page: "<white>페이지 {0}</white>"
+    summary-icon-title: "<green>상점 요약"
+    recent-purchases: "<white>최근 <aqua>{0}</aqua> 구매: <yellow>{1}</yellow></white>"
+    recent-purchase-balance: "<white>최근 <aqua>{0}</aqua> 회전율: <yellow>{1}</yellow></white>"
+    total-purchases: "<white>총 구매량: <yellow>{0}</yellow></white>"
+    total-balances: "<white>총 회전율: <yellow>{0}</yellow></white>"
+    total-unique-purchasers: "<white>총 고유 구매자: <yellow>{0}</yellow></white>"
+    top-n-valuable-customers-title: "<gold>상위 {0}위 소중한 고객</gold>"
+    top-n-valuable-customers-entry: "<white>- <yellow>{0}</yellow> <aqua>{1}</aqua></white>"
+    no-result: "<white>결과 없음</white>"
+about:
+  text:
+    - "<b><aqua>QuickShop <yellow>{0}</yellow></aqua></b>"
+    - "<aqua>버전 <yellow>>></yellow> <green>{1}</green></aqua>"
+    - "<aqua>Release <yellow>>></yellow> <green>{2}</green></aqua>"
+    - "<aqua>개발자 <yellow>>></yellow> <color:#218bff><hover:show_text:'<yellow>Click to check contributors'><click:open_url:'https://github.com/Ghost-chu/QuickShop-Hikari/graphs/contributors'>[View contributors on GitHub]</click></hover></color></aqua>"
+    - "<aqua>현지화 멤버 <gold>({4})</gold>: <yellow>>></yellow> <green>{5}</green></aqua>"
+    - "  <yellow>+ <color:#43A047><hover:show_text:'<yellow>Click to open Crowdin translate page'><click:open_url:'https://crowdin.com/project/quickshop-hikari'>[Help translate on Crowdin]</click></hover></color></yellow>"
+    - "<aqua>후원 키 <yellow>>></yellow> <green>{6}</green></aqua>"
+    - "<gold>Powered by community</gold> <red>Made with ❤</red>"
+  valid-donation-key: "<color:#00AFF1>Bound to <color:#F9C23C>{0}</color></color>"
+  invalid-donation-key: "<gray>올바르지 않은 후원 코드입니다.</gra>"
+  kofi-thanks: "<gold>Ko-fi :)에서 QuickShop을 지원해 주시는 분들께 특별히 감사드립니다.</gold>"
+history-command-leave-blank: "<Leave blank for seeing store>"
+shop-information-not-shown-due-an-internal-error: "<red>내부 오류가 발생했습니다. 스토어 정보 패널이 불완전하게 표시되는 경우가 있으니 서버 관리자에게 문의하시기 바랍니다."

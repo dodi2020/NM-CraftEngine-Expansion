@@ -1,0 +1,39 @@
+isEnabled: true
+entityType: VINDICATOR
+name: $eventBossLevel &7Enraged Vindicator
+level: dynamic
+isPersistent: true
+healthMultiplier: 4.0
+damageMultiplier: 1.25
+deathMessages:
+- '&e&l---------------------------------------------'
+- '&4The Alpha Wolf has been put down!'
+- '&c&l    1st Damager: $damager1name &cwith $damager1damage damage!'
+- '&6&l    2nd Damager: $damager2name &6with $damager2damage damage!'
+- '&e&l    3rd Damager: $damager3name &ewith $damager3damage damage!'
+- '&aSlayers: $players'
+- '&e&l---------------------------------------------'
+uniqueLootList:
+- werewolf_bone.yml:0.2
+- werewolf_bone.yml:0.2
+- werewolf_bone.yml:0.2
+- werewolf_bone.yml:0.2
+- werewolf_bone.yml:0.2
+- wolfsbane.yml:0.2
+powers:
+- spirit_walk.yml
+- summonable:summonType=GLOBAL:filename=gamma_werewolf.yml:amount=1:customSpawn=normal_surface_spawn.yml
+- summonable:summonType=GLOBAL:filename=omega_wolf.yml:amount=2:customSpawn=normal_surface_spawn.yml
+trails:
+- BONE
+phases:
+- alpha_werewolf_p2.yml:0.99
+locationMessage: '&7Enraged Vindicator: $distance blocks away!'
+spawnMessage: '&cThe howls of an Alpha Werewolf are heard!'
+deathMessage: '&aThe Alpha Werewolf has been stopped by $players!'
+escapeMessage: '&4Dawn breaks, the Alpha Wolf vanishes without a trace!'
+announcementPriority: 2
+followDistance: 100
+onSpawnBlockStates: []
+onRemoveBlockStates: []
+bossType: NORMAL

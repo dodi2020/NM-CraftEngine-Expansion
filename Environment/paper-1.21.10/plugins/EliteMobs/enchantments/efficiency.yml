@@ -1,0 +1,6 @@
+isEnabled: true
+name: Efficiency
+maxLevelV2: 5
+value: 13.0
+isEnabledForProcedurallyGeneratedItems: false
+maxEnchantmentLevel: 5

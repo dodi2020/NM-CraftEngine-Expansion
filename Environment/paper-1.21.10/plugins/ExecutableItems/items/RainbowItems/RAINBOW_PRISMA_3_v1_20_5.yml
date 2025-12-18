@@ -1,0 +1,150 @@
+name: '#FB7777P#F39675r#EBB573i#E3D471s#DBF36Fm#C1F583a #9EE9A2T#7ADDC0r#57D1DFo#4BBCF1u#6C94EAs#8D6DE2e#AE45DBr#CF1ED3s'
+lore:
+- '&7Colours of the World'
+- '&8————————————————————'
+- '&fMere color, unspoiled by meaning, and'
+- '&funallied with definite form, can speak'
+- '&fto the soul in a thousand different ways'
+- '&f'
+- '&8» &7Grants:'
+- ' &f &f The wearer of the full set'
+- ' &f &f will buff nearby players in'
+- ' &f &f a 7 block radius with +10%'
+- ' &f &f increase in damage and +2%'
+- ' &f &f increase in resistance.'
+- ''
+- ' &f &f If there are multiple players'
+- ' &f &f wearing the full set that are'
+- ' &f &f staying near to each other, the'
+- ' &f &f buff will stack.'
+- ''
+- ' &f &f Buffed players will have a rainbow'
+- ' &f &f halo on top of their heads.'
+- '&f'
+- '&8—————— #FF97D6P#FFAEDFr#FFC5E8i#FFDCF1d#FFF3FAe #F4FDFFC#DEF9FFr#C9F5FFa#B3F1FFt#9DEDFFe
+  &8——————'
+material: NETHERITE_LEGGINGS
+glow: true
+disableStack: false
+keepItemOnDeath: false
+canBeUsedOnlyByTheOwner: false
+storeItemInfo: false
+unbreakable: false
+usage: 0
+usageLimit: -1
+dropFeatures:
+  glowDrop: false
+  glowDropColor: WHITE
+  displayNameDrop: false
+hiders:
+  hideEnchantments: false
+  hideUnbreakable: false
+  hideAttributes: false
+  hidePotionEffects: false
+  hideUsage: false
+enchantments: {}
+giveFirstJoinFeatures:
+  giveFirstJoin: false
+  giveFirstJoinAmount: 1
+  giveFirstJoinSlot: 0
+restrictions:
+  cancel-anvil: true
+cancelEventIfNoPerm: false
+cancelEventIfNotOwner: false
+disabledWorlds: []
+variables: {}
+activators:
+  activator1:
+    name: '&eActivator'
+    option: PLAYER_EQUIP_THE_EI
+    usageModification: 0
+    cancelEvent: false
+    silenceOutput: false
+    autoUpdateItem: false
+    cooldownFeatures:
+      cooldown: 0
+      isCooldownInTicks: false
+      cooldownMsg: '&cYou are in cooldown ! &7(&e%time_H%&6H &e%time_M%&6M &e%time_S%&6S&7)'
+      displayCooldownMessage: true
+      cancelEventIfInCooldown: false
+    globalCooldownFeatures:
+      cooldown: 0
+      isCooldownInTicks: false
+      cooldownMsg: '&cYou are in cooldown ! &7(&e%time_H%&6H &e%time_M%&6M &e%time_S%&6S&7)'
+      displayCooldownMessage: true
+      cancelEventIfInCooldown: false
+    otherEICooldowns: {}
+    requiredItems:
+      errorMessage: ''
+    requiredExecutableItems:
+      errorMessage: ''
+    detailedSlots:
+    - -1
+    playerCommands:
+    - minecraft:execute at %player% run minecraft:summon armor_stand ~ ~ ~ {NoGravity:1b,Silent:1b,Invulnerable:1b,Marker:1b,Invisible:1b,Tags:["%player_uuid%"]}
+    playerConditions:
+      ifHasExecutableItems:
+        condition1:
+          executableItem: RAINBOW_PRISMA_2_v1_20_5
+          amount: 1
+          detailedSlots:
+          - 38
+        condition2:
+          executableItem: RAINBOW_PRISMA_1_v1_20_5
+          amount: 1
+          detailedSlots:
+          - 39
+        condition3:
+          executableItem: RAINBOW_PRISMA_4_v1_20_5
+          amount: 1
+          detailedSlots:
+          - 36
+    worldConditions: {}
+    itemConditions: {}
+    customConditions: {}
+    placeholdersConditions: {}
+    variablesModification: {}
+  activator3:
+    name: '&eActivator'
+    option: PLAYER_UNEQUIP_THE_EI
+    usageModification: 0
+    cancelEvent: false
+    silenceOutput: false
+    autoUpdateItem: false
+    cooldownFeatures:
+      cooldown: 0
+      isCooldownInTicks: false
+      cooldownMsg: '&cYou are in cooldown ! &7(&e%time_H%&6H &e%time_M%&6M &e%time_S%&6S&7)'
+      displayCooldownMessage: true
+      cancelEventIfInCooldown: false
+    globalCooldownFeatures:
+      cooldown: 0
+      isCooldownInTicks: false
+      cooldownMsg: '&cYou are in cooldown ! &7(&e%time_H%&6H &e%time_M%&6M &e%time_S%&6S&7)'
+      displayCooldownMessage: true
+      cancelEventIfInCooldown: false
+    otherEICooldowns: {}
+    requiredItems:
+      errorMessage: ''
+    requiredExecutableItems:
+      errorMessage: ''
+    detailedSlots:
+    - -1
+    playerCommands:
+    - minecraft:kill @e[type=armor_stand,tag=%player_uuid%]
+    playerConditions: {}
+    worldConditions: {}
+    itemConditions: {}
+    customConditions: {}
+    placeholdersConditions: {}
+    variablesModification: {}
+recognitions: []
+attributes: {}
+nbt:
+  '0':
+    key: Damage
+    type: INT
+    value: 0
+config_5: true
+config_update: true
+config_5_98: true

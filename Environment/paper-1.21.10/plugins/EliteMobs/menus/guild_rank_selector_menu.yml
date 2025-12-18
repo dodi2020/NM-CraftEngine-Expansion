@@ -1,0 +1,103 @@
+isEnabled: true
+questTierSelectorMenuTitle: '[EM] Guild Rank Selection'
+lowTierWarning: '&cElites can''t drop better loot!'
+normalTierWarning: '&aElite can drop better loot!'
+unlockedButtons:
+  material: GRAY_STAINED_GLASS_PANE
+  name: $rankName
+  lore:
+  - §f§m-------------------------------
+  - §aThis rank is unlocked!
+  - §fYou can select it.
+  - §f§m-------------------------------
+  - $lootTier
+  - $currencyBonusMessage
+  - $maxHealthIncrease
+  - $chanceToCrit
+  - $chanceToDodge
+  customModelID: 31173
+lockedButtons:
+  material: RED_STAINED_GLASS_PANE
+  name: $rankName
+  lore:
+  - §f§m-------------------------------
+  - §aThis rank is locked!
+  - §cYou need the $previousRank rank first!
+  - §f§m-------------------------------
+  - $lootTier
+  - $currencyBonusMessage
+  - $maxHealthIncrease
+  - $chanceToCrit
+  - $chanceToDodge
+  customModelID: 31173
+currentButtons:
+  material: GREEN_STAINED_GLASS_PANE
+  name: $rankName
+  lore:
+  - §f§m-------------------------------
+  - §aThis is your current rank!
+  - §f§m-------------------------------
+  - $lootTier
+  - $currencyBonusMessage
+  - $maxHealthIncrease
+  - $chanceToCrit
+  - $chanceToDodge
+  customModelID: 31173
+nextButtons:
+  material: YELLOW_STAINED_GLASS_PANE
+  name: Prestige $prestigeNumber
+  lore:
+  - §6This is the next rank you can unlock
+  - §aSelect it when you're ready!
+  - §6Costs $price §6$currencyName
+  - §fYou have §a$currentCurrency $currencyName
+  - §f§m-------------------------------
+  - $lootTier
+  - $currencyBonusMessage
+  - $maxHealthIncrease
+  - $chanceToCrit
+  - $chanceToDodge
+  customModelID: 31173
+prestigeLockedButtons:
+  material: RED_STAINED_GLASS
+  name: Prestige $rank
+  lore:
+  - §f§m-------------------------------
+  - §4You must unlock all guild ranks first!
+  - §f§m-------------------------------
+  customModelID: 31173
+prestigeNextUnlockButtons:
+  material: GOLD_BLOCK
+  name: Prestige $rank
+  lore:
+  - §f§m-------------------------------
+  - §2Prestige unlock is ready!
+  - §6Costs $price §6$currencyName
+  - §cBuying prestige will reset guild ranks
+  - '§abut will allow you to unlock:'
+  - §a- Access to higher guild tiers
+  - §a- Access to higher tier loot
+  - §a- More coins from kills and quests
+  - §a- Higher max health
+  - §a- Base chance to crit
+  - §a- Base chance to dodge
+  - '§4Warning: this resets you current'
+  - §4EliteMobs ITEMS AND CURRENCY!
+  - §f§m-------------------------------
+  customModelID: 31173
+notEnoughCurrencyMessages: '&7[EliteMobs] &4You don''t have enough Elite Coins ($neededAmount
+  $currencyName)! Sell some Elite Mob loot to [/em shop]! You have $currentAmount
+  $currencyName.'
+unlockMessages: "&7[EliteMobs] &aYou have unlocked the $rankName &arank for $price\
+  \ $currencyName. \n&6Happy hunting!"
+questCompleteBroadcastMessages: '&7[EliteMobs] &a$player &ahas reached the $rankName
+  &aguild rank!'
+failedMessages: '&7[EliteMobs] &cYou need to unlock other ranks first!'
+spawnRateModifierMessages: '&fElite Mob spawn rate modifier: &c$modifier%'
+lootModifierMessages: '&fElite Mob loot modifier: &a$modifier%'
+difficultyModifierMessages: '&fElite Mob difficulty modifier: &c$modifier%'
+lootTierMessages: '&2Elites can drop up to tier $tier loot!'
+currencyBonusMessages: '&a$amountx coins from drops and quests!'
+healthBonusMessages: '&cAdds $amount ❤ of max health'
+critBonusMessages: '&eAdds $amount% chance to crit'
+dodgeBonusMessages: '&8Adds $amount% chance to dodge'

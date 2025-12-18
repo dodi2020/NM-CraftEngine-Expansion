@@ -1,0 +1,21 @@
+isEnabled: true
+name: '&2[lvl 075-085] &5Yggdrasil'
+customInfo:
+- '&5A mythic Norse dungeon at the roots of Yggdrasil!'
+- '&5Credits: MagmaGuy, Dali, Frost'
+dungeonSizeCategory: REALM
+worldName: em_yggdrasil
+environment: NORMAL
+protect: true
+playerInfo: |-
+  Difficulty: &6Hard
+  $bossCount bosses, from level $lowestTier to $highestTier
+  &5A mythic journey through Yggdrasil''s roots
+  &5for brave warriors seeking glory!
+regionEnterMessage: '&8[EM] &5Yggdrasil awaits!'
+regionLeaveMessage: '&8[EM] &5You have left Yggdrasil'
+teleportLocation: em_yggdrasil,-321.5,-22.0,102.5,141.5,0.0
+contentType: OPEN_DUNGEON
+dungeonConfigFolderName: em_yggdrasil
+setupMenuDescription:
+- '&2A Realm for players around level 75!'

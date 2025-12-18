@@ -1,0 +1,11 @@
+isEnabled: true
+entityType: WOLF
+name: $reinforcementLevel &7Wild Wolf
+level: dynamic
+healthMultiplier: 0.2
+damageMultiplier: 0.2
+dropsEliteMobsLoot: false
+dropsVanillaLoot: false
+onSpawnBlockStates: []
+onRemoveBlockStates: []
+bossType: NORMAL

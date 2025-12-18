@@ -1,0 +1,13 @@
+isEnabled: true
+material: NETHERITE_SHOVEL
+name: '&4Invictus Shovel'
+lore:
+- '&2Awarded to the champions of the'
+- '&2Wood League Arena!'
+enchantments:
+- EFFICIENCY,6
+- DRILLING,3
+- UNBREAKING,5
+potionEffects:
+- FAST_DIGGING,0,self,continuous
+itemType: UNIQUE

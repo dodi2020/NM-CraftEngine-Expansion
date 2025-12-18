@@ -1,0 +1,16 @@
+isEnabled: true
+entityType: ZOGLIN
+name: $bossLevel &4Mr. Oinkers
+level: '15'
+healthMultiplier: 3.0
+damageMultiplier: 2.0
+powers:
+- gold_explosion.yml
+- gold_shotgun.yml
+onDamagedMessages:
+- Oink!?
+followDistance: 60
+onSpawnBlockStates: []
+onRemoveBlockStates: []
+movementSpeedAttribute: 0.6
+bossType: NORMAL

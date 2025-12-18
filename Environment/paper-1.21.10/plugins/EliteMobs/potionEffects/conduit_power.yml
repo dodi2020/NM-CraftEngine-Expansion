@@ -1,0 +1,4 @@
+isEnabled: true
+name: Conduit Power
+onHitDuration: 30
+value: 100.0

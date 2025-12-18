@@ -1,0 +1,44 @@
+isEnabled: true
+entityType: ZOMBIE
+name: $eventBossLevel &cWeapons Goblin
+level: dynamic
+isPersistent: true
+healthMultiplier: 4.0
+damageMultiplier: 1.25
+isBaby: true
+deathMessages:
+- '&e&l---------------------------------------------'
+- '&eThe Weapons Goblin has been pillaged!'
+- '&c&l    1st Damager: $damager1name &cwith $damager1damage damage!'
+- '&6&l    2nd Damager: $damager2name &6with $damager2damage damage!'
+- '&e&l    3rd Damager: $damager3name &ewith $damager3damage damage!'
+- '&aSlayers: $players'
+- '&e&l---------------------------------------------'
+uniqueLootList:
+- goblin_slasher.yml:0.2
+- goblin_cleaver.yml:0.2
+- goblin_poker.yml:0.2
+- goblin_shooter.yml:0.2
+- goblin_ballista.yml:0.2
+powers:
+- gold_explosion.yml
+- gold_shotgun.yml
+- spirit_walk.yml
+trails:
+- GOLD_NUGGET
+locationMessage: '&cWeapons Goblin: $distance blocks away!'
+spawnMessage: '&cA Weapons Goblin has been sighted!'
+deathMessage: '&aA Weapons Goblin has been slain by $players!'
+escapeMessage: '&4A Weapons Goblin has escaped!'
+customModel: em_goblin_weapon
+announcementPriority: 2
+followDistance: 100
+helmet: NETHERITE_HELMET
+chestplate: NETHERITE_CHESTPLATE
+leggings: NETHERITE_LEGGINGS
+boots: NETHERITE_BOOTS
+mainHand: NETHERITE_SWORD
+offHand: NETHERITE_AXE
+onSpawnBlockStates: []
+onRemoveBlockStates: []
+bossType: NORMAL

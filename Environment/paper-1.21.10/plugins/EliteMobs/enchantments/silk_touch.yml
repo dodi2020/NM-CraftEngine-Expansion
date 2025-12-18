@@ -1,0 +1,5 @@
+isEnabled: true
+name: Silk Touch
+maxLevelV2: 1
+value: 13.0
+isEnabledForProcedurallyGeneratedItems: true

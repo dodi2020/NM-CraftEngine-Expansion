@@ -1,0 +1,173 @@
+name: '&fRefill Bucket (Water Placement Mode)'
+lore:
+- '&7Shift-Left-Click to switch to "Collect'
+- '&7Mode"'
+- '&f'
+- '&7Storage: &f%var_water_int%x Water Buckets'
+material: WATER_BUCKET
+glow: true
+disableStack: false
+keepItemOnDeath: false
+canBeUsedOnlyByTheOwner: false
+storeItemInfo: false
+unbreakable: false
+usage: 1
+usageLimit: -1
+cancelEventIfNoPerm: false
+cancelEventIfNotOwner: false
+disabledWorlds: []
+config_5: true
+config_update: true
+disableEnchantGlide: false
+onlyOwnerBlackListedActivators: []
+isDurabilityBasedOnUsage: false
+cancelEventIfNoPermission: false
+whitelistedWorlds: []
+glider: false
+keepDefaultAttributes: false
+ignoreKeepDefaultAttributesFeature: true
+usageFeatures:
+  usage: 1
+  isRefreshableClean: true
+  usageLimit: -1
+dropFeatures:
+  glowDrop: false
+  glowDropColor: WHITE
+  displayNameDrop: false
+enchantments: {}
+hiders:
+  hideEnchantments: false
+  hideUnbreakable: false
+  hideAttributes: false
+  hideUsage: true
+  hideDestroys: false
+  hidePlacedOn: false
+  hideDye: false
+  hideArmorTrim: false
+  hideAdditionalTooltip: false
+  hideToolTip: false
+giveFirstJoinFeatures:
+  giveFirstJoin: false
+  giveFirstJoinAmount: 1
+  giveFirstJoinSlot: 0
+restrictions:
+  locked-in-inventory: false
+variables:
+  var0:
+    variableName: water
+    type: NUMBER
+    default: 0.0
+    isRefreshableClean: false
+    refreshTagDoNotEdit: ''
+activators:
+  activator0:
+    name: '&eActivator'
+    option: PLAYER_RIGHT_CLICK
+    typeTarget: ONLY_BLOCK
+    usageModification: 0
+    cancelEvent: false
+    noActivatorRunIfTheEventIsCancelled: false
+    autoUpdateItem: false
+    cooldownFeatures:
+      cooldown: 0
+      pausePlaceholdersConditions: {}
+    globalCooldownFeatures:
+      cooldown: 0
+    otherEICooldowns: {}
+    requiredItems: {}
+    requiredExecutableItems: {}
+    requiredMagics: {}
+    detailedSlots:
+    - -1
+    playerCommands:
+    - minecraft:item replace entity %player% weapon.mainhand with air
+    - ei giveslot %player% Prem_Refill_Bucket1{Variables:{water:%var_water_int%-1}}
+      1 %slot%
+    playerConditions: {}
+    worldConditions: {}
+    itemConditions: {}
+    customConditions: {}
+    placeholdersConditions:
+      plchCdt0:
+        type: PLAYER_NUMBER
+        comparator: SUPERIOR
+        part1: '%var_water_int%'
+        part2: '0'
+        cancelEventIfNotValid: true
+        messageIfNotValid: '&cThis refill bucket no longer has enough water. Please
+          refill this bucket.'
+        messageIfNotValidForTarget: ''
+        stopCheckingOtherConditionsIfNotValid: true
+    detailedBlocks:
+      blocks: []
+      cancelEventIfNotValid: false
+      messageIfNotValid: '&4&l[Error] &cthe block is not correct !'
+    blockCommands: []
+    blockConditions:
+      requiredItems: {}
+      requiredExecutableItems: {}
+    variablesModification: {}
+  activator1:
+    name: '&eActivator'
+    option: PLAYER_LEFT_CLICK
+    typeTarget: NO_TYPE_TARGET
+    usageModification: -1
+    cancelEvent: false
+    noActivatorRunIfTheEventIsCancelled: true
+    autoUpdateItem: false
+    cooldownFeatures:
+      cooldown: 0
+      pausePlaceholdersConditions: {}
+    globalCooldownFeatures:
+      cooldown: 0
+    otherEICooldowns: {}
+    requiredItems: {}
+    requiredExecutableItems: {}
+    requiredMagics: {}
+    detailedSlots:
+    - -1
+    - 40
+    playerCommands:
+    - ei giveslot %player% Prem_Refill_Bucket0{Variables:{water:%var_water_int%}}
+      1 %slot%
+    playerConditions:
+      ifSneaking: true
+      ifSneakingMsg: ''
+    worldConditions: {}
+    itemConditions: {}
+    customConditions: {}
+    placeholdersConditions: {}
+    variablesModification: {}
+displayConditions:
+  playerConditions: {}
+  worldConditions: {}
+  itemConditions: {}
+  placeholdersConditions: {}
+  enableFeature: false
+foodFeatures:
+  nutrition: 1
+  saturation: 1
+  isMeat: false
+  canAlwaysEat: false
+consumableFeatures:
+  enable: false
+  animation: EAT
+  hasConsumeParticles: false
+  consumeSeconds: 3
+itemRarity:
+  enableRarity: false
+  rarity: COMMON
+repairableFeatures:
+  enable: false
+  repairCost: 2
+equippableFeatures:
+  enable: false
+  slot: BODY
+  enableSound: false
+  sound: ITEM.ARMOR.EQUIP_DIAMOND
+  damageableOnHurt: false
+  dispensable: true
+  swappable: true
+  allowedEntities:
+  - PLAYER
+attributes: {}

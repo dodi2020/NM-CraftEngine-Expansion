@@ -1,0 +1,7 @@
+isEnabled: true
+entityType: WOLF
+name: '[$level] Elite Wolf'
+deathMessages:
+- $entity tore $player apart!
+- $player was torn to shreds by $entity!
+baseDamageV2: 6.0

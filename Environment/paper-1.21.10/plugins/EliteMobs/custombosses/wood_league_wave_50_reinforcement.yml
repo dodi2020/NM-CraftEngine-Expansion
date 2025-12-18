@@ -1,0 +1,18 @@
+isEnabled: true
+entityType: PILLAGER
+name: $reinforcementLevel &6Uther Stan
+level: '50'
+healthMultiplier: 0.25
+damageMultiplier: 0.8
+dropsEliteMobsLoot: false
+dropsVanillaLoot: false
+dropsRandomLoot: false
+powers:
+- channel_healing.yml
+followDistance: 60
+mainHand: CROSSBOW
+onSpawnBlockStates: []
+onRemoveBlockStates: []
+normalizedCombat: true
+movementSpeedAttribute: 0.6
+bossType: NORMAL

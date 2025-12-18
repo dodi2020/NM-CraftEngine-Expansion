@@ -1,0 +1,90 @@
+name: '&e>> &fUnknown Farm Egg &e<<'
+lore:
+- '&8&m------------------------'
+- '&f'
+- '&7Place down to randomly spawn'
+- '&7a farm animal'
+- '&f'
+- '&8&m------------------------'
+material: TURTLE_EGG
+glow: true
+disableStack: false
+keepItemOnDeath: false
+canBeUsedOnlyByTheOwner: false
+storeItemInfo: false
+unbreakable: false
+usage: 0
+usageLimit: -1
+dropFeatures:
+  glowDrop: false
+  glowDropColor: WHITE
+  displayNameDrop: false
+hiders:
+  hideEnchantments: false
+  hideUnbreakable: false
+  hideAttributes: false
+  hidePotionEffects: false
+  hideUsage: false
+enchantments: {}
+giveFirstJoinFeatures:
+  giveFirstJoin: false
+  giveFirstJoinAmount: 1
+  giveFirstJoinSlot: 0
+restrictions:
+  cancel-stone-cutter: true
+  cancel-anvil: true
+cancelEventIfNoPerm: false
+cancelEventIfNotOwner: false
+disabledWorlds: []
+variables: {}
+activators:
+  activator1:
+    name: '&eActivator'
+    option: PLAYER_BLOCK_PLACE
+    usageModification: -1
+    cancelEvent: true
+    silenceOutput: true
+    autoUpdateItem: false
+    cooldownFeatures:
+      cooldown: 0
+      isCooldownInTicks: false
+      cooldownMsg: '&cYou are in cooldown ! &7(&e%time_H%&6H &e%time_M%&6M &e%time_S%&6S&7)'
+      displayCooldownMessage: false
+      cancelEventIfInCooldown: false
+    globalCooldownFeatures:
+      cooldown: 0
+      isCooldownInTicks: false
+      cooldownMsg: '&cYou are in cooldown ! &7(&e%time_H%&6H &e%time_M%&6M &e%time_S%&6S&7)'
+      displayCooldownMessage: true
+      cancelEventIfInCooldown: false
+    otherEICooldowns: {}
+    requiredItems: {}
+    requiredExecutableItems: {}
+    detailedSlots:
+    - -1
+    playerCommands:
+    - 'RANDOM RUN: 1'
+    - execute at %player% run summon cow %block_x% %block_y% %block_z%
+    - execute at %player% run summon rabbit %block_x% %block_y% %block_z%
+    - execute at %player% run summon sheep %block_x% %block_y% %block_z%
+    - execute at %player% run summon pig %block_x% %block_y% %block_z%
+    - execute at %player% run summon chicken %block_x% %block_y% %block_z%
+    - RANDOM END
+    - execute at %player% run particle snowflake %block_x% %block_y% %block_z% 1 1
+      1 0 10
+    playerConditions: {}
+    worldConditions: {}
+    itemConditions: {}
+    customConditions: {}
+    placeholdersConditions: {}
+    detailedBlocks:
+      blocks: []
+      cancelEventIfNotValid: false
+      messageIfNotValid: ''
+    blockCommands: []
+    blockConditions: {}
+    variablesModification: {}
+recognitions: []
+attributes: {}
+config_5: true
+config_update: true

@@ -1,0 +1,19 @@
+isEnabled: true
+name: '&2[lvl 140] &6The Steamworks'
+customInfo:
+- '&fA steampunk inspired lair!'
+dungeonSizeCategory: LAIR
+worldName: em_steamworks_lair
+environment: NORMAL
+protect: true
+playerInfo: |-
+  Difficulty: &chard
+  $bossCount level $lowestTier Big Boss!
+  &6Get ready for a robot rumble!
+regionEnterMessage: '&6Reach the top and mind your step!'
+regionLeaveMessage: '&6Now leaving the clockwork dominion!'
+teleportLocation: em_steamworks_lair,-48.5,-47.8,-102.5,40,0
+contentType: OPEN_DUNGEON
+dungeonConfigFolderName: the_steamworks
+setupMenuDescription:
+- '&2A Lair for players around level 140!'

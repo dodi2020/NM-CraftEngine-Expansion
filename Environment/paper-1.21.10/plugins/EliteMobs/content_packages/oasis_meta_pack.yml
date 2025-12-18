@@ -1,0 +1,16 @@
+isEnabled: true
+name: '&2[025-055] The Oasis Adventure!'
+customInfo:
+- The tutorial adventure for players
+- new to EliteMobs!
+dungeonSizeCategory: LAIR
+environment: NORMAL
+protect: true
+contentType: META_PACKAGE
+containedPackages:
+- oasis_adventure.yml
+- oasis_pyramid_sanctum.yml
+setupMenuDescription:
+- '&2An adventure for players from level 20-55!'
+- '&2Adventures are massive maps with quests,'
+- '&2many bosses and npcs, among other things!'

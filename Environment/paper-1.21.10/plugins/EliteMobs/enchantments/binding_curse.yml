@@ -1,0 +1,5 @@
+isEnabled: true
+name: Curse of Binding
+maxLevelV2: 1
+value: -6.0
+isEnabledForProcedurallyGeneratedItems: true

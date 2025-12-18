@@ -1,0 +1,16 @@
+isEnabled: true
+entityType: PILLAGER
+name: $minibossLevel &bAgdluak
+level: '25'
+healthMultiplier: 3.0
+damageMultiplier: 2.0
+powers:
+- frost_cone.yml
+- attack_freeze.yml
+- arrow_rain.yml
+followDistance: 60
+mainHand: CROSSBOW
+onSpawnBlockStates: []
+onRemoveBlockStates: []
+movementSpeedAttribute: 0.6
+bossType: NORMAL

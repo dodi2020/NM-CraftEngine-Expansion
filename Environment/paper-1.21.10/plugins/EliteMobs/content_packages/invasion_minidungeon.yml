@@ -1,0 +1,21 @@
+isEnabled: true
+name: '&2[lvl 035-045] &2The Invasion'
+customInfo:
+- '&fThe Halloween Minidungeon!'
+- '&6Credits: MagmaGuy & 69OzCanOfBepis'
+dungeonSizeCategory: MINIDUNGEON
+worldName: em_invasion
+environment: NORMAL
+protect: true
+playerInfo: |-
+  Difficulty: &6Medium
+  $bossCount aliens, from level $lowestTier to $highestTier
+  &6Don't get abducted!
+regionEnterMessage: '&8[EM] &7Alien invasion in progress! Defeat the Mothership!'
+regionLeaveMessage: '&8[EM] &7You have escaped the alien abductions! No one will ever
+  believe you.'
+teleportLocation: em_invasion,-8.5,13.2,19.5,80,0
+contentType: OPEN_DUNGEON
+dungeonConfigFolderName: invasion
+setupMenuDescription:
+- '&2A Minidungeon for players around level 40!'

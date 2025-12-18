@@ -1,0 +1,37 @@
+isEnabled: true
+entityType: ZOMBIE
+name: $eventBossLevel &eCoins Goblin
+level: dynamic
+isPersistent: true
+healthMultiplier: 4.0
+damageMultiplier: 1.25
+isBaby: true
+deathMessages:
+- '&e&l---------------------------------------------'
+- '&eThe Coins Goblin has been pillaged!'
+- '&c&l    1st Damager: $damager1name &cwith $damager1damage damage!'
+- '&6&l    2nd Damager: $damager2name &6with $damager2damage damage!'
+- '&e&l    3rd Damager: $damager3name &ewith $damager3damage damage!'
+- '&aSlayers: $players'
+- '&e&l---------------------------------------------'
+powers:
+- gold_explosion.yml
+- gold_shotgun.yml
+- spirit_walk.yml
+- bonus_coins.yml:20
+trails:
+- GOLD_NUGGET
+locationMessage: '&cCoins Goblin: $distance blocks away!'
+spawnMessage: '&cA Coins Goblin has been sighted!'
+deathMessage: '&aA Coins Goblin has been slain by $players!'
+escapeMessage: '&4A Coins Goblin has escaped!'
+customModel: em_goblin_coins
+announcementPriority: 2
+followDistance: 100
+helmet: GOLDEN_HELMET
+chestplate: GOLDEN_CHESTPLATE
+leggings: GOLDEN_LEGGINGS
+boots: GOLDEN_BOOTS
+onSpawnBlockStates: []
+onRemoveBlockStates: []
+bossType: NORMAL

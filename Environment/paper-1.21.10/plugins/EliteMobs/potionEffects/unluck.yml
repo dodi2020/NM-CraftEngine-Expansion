@@ -1,0 +1,4 @@
+isEnabled: true
+name: Bad Luck
+onHitDuration: 30
+value: 10.0

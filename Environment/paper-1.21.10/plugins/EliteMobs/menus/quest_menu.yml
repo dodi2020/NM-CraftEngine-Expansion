@@ -1,0 +1,33 @@
+isEnabled: true
+menuName: '[EM] Quest Selection'
+validTierButton:
+  material: GREEN_STAINED_GLASS_PANE
+  name: §2Take on a $rank §2quest!
+  lore:
+  - §aAccept a $rank §aquest and
+  - §aget special rewards!
+  customModelID: 31173
+cancelQuestMessage1: '&c&l&m&o---------------------------------------------&cYou can
+  only have one quest at a time! Cancelling your ongoing quest will reset quest progress!'
+cancelQuestMessage2: '&2[Click here to cancel current quest!]'
+cancelQuestMessage3: '&7You can see your quest status with the command &a/em quest
+  status&c&l&m&o---------------------------------------------'
+killObjectiveButton:
+  material: YELLOW_STAINED_GLASS_PANE
+  name: §2Kill $objectiveAmount $objectiveName
+  lore:
+  - §aKill $objectiveAmount $objectiveName §amobs.
+  - '§fProgress: §a$currentAmount §f/§c $objectiveAmount'
+  - '§aReward: §e $rewardAmount'
+  customModelID: 31173
+questCancelMessage: '&7[EliteMobs] &cYour ongoing quest has been cancelled!'
+questStartTitle: You have accepted a quest!
+questStartSubtitle: Slay $objectiveAmount $objectiveName
+questCompleteTitle: Quest complete!
+questCompleteSubtitle: You have slain $objectiveAmount $objectiveName
+bossBarObjective: Slay $objectiveAmount $objectiveName
+questRewardMessage: '&7[EM] &aQuest completed! &6Your reward is &2$reward $currencyName'
+questCompleteBroadcastMessage: '&7[EM] $player &2has completed a $rank &2quest!'
+questStartBroadcastMessage: '&7[EM] $player &2has accepted a $rank &2quest!'
+questStatusMessage: '&7[EM] &aYou''ve slain &a$currentAmount &f/ &c$objectiveAmount
+  &a$objectiveName'

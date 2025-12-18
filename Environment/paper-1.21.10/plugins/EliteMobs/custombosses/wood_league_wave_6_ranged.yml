@@ -1,0 +1,11 @@
+isEnabled: true
+entityType: PILLAGER
+name: $normalLevel Arena Crossbowman
+level: '6'
+healthMultiplier: 0.75
+damageMultiplier: 0.5
+followDistance: 60
+mainHand: CROSSBOW
+onSpawnBlockStates: []
+onRemoveBlockStates: []
+bossType: NORMAL

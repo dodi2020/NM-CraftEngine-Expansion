@@ -1,0 +1,16 @@
+isEnabled: true
+entityType: ZOMBIE
+name: $eventBossLevel Totem Zombie
+level: dynamic
+healthMultiplier: 1.5
+damageMultiplier: 1.5
+isBaby: true
+powers:
+- attack_wither.yml
+- bonus_loot.yml
+followDistance: 100
+helmet: LEATHER_HELMET
+onSpawnBlockStates: []
+onRemoveBlockStates: []
+cullReinforcements: false
+bossType: NORMAL

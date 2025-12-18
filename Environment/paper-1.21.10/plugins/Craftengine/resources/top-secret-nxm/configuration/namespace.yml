@@ -1,0 +1,13 @@
+items:
+  namespace:itemnumone:
+    material: polished_diorite
+    model:
+      path: namespace:item/itemnumone
+      generation:
+        parent: item/handheld
+        textures:
+          layer0: namespace:item/itemnumone
+    data:
+      item-name: ITEMNUMONE
+    settings:
+      dyeable: true

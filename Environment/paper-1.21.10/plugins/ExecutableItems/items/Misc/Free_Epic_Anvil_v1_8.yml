@@ -1,0 +1,94 @@
+name: '&8◘ &7&lEPICANVIL &8◘'
+lore:
+- '&8&m-------------------------'
+- '&7'
+- '&8➤ &7&oClick to execute me !'
+- '&7'
+- '&7&oInfo:'
+- '&8» &7All your enemies in distance'
+- '&7  of 50 blocks will be slowed'
+- '&7  down for 15 secs'
+- '&7'
+- '&8&m-------------------------'
+material: ANVIL
+glow: true
+disableStack: false
+keepItemOnDeath: false
+canBeUsedOnlyByTheOwner: false
+storeItemInfo: false
+unbreakable: false
+usage: 0
+usageLimit: -1
+dropFeatures:
+  glowDrop: false
+  glowDropColor: WHITE
+  displayNameDrop: false
+hiders:
+  hideEnchantments: false
+  hideUnbreakable: false
+  hideAttributes: false
+  hidePotionEffects: false
+  hideUsage: false
+enchantments: {}
+giveFirstJoinFeatures:
+  giveFirstJoin: false
+  giveFirstJoinAmount: 1
+  giveFirstJoinSlot: 0
+restrictions:
+  cancel-item-drop: true
+  cancel-item-place: true
+  cancel-item-craft: true
+cancelEventIfNoPerm: false
+cancelEventIfNotOwner: false
+disabledWorlds: []
+variables: {}
+activators:
+  activator1:
+    name: '&eActivator'
+    option: PLAYER_ALL_CLICK
+    typeTarget: NO_TYPE_TARGET
+    usageModification: -1
+    cancelEvent: false
+    silenceOutput: true
+    autoUpdateItem: false
+    cooldownFeatures:
+      cooldown: 10
+      isCooldownInTicks: false
+      cooldownMsg: '&cYou are in cooldown ! &7(&e%time_H%&6H &e%time_M%&6M &e%time_S%&6S&7)'
+      displayCooldownMessage: true
+      cancelEventIfInCooldown: false
+    globalCooldownFeatures:
+      cooldown: 0
+      isCooldownInTicks: false
+      cooldownMsg: '&cYou are in cooldown ! &7(&e%time_H%&6H &e%time_M%&6M &e%time_S%&6S&7)'
+      displayCooldownMessage: true
+      cancelEventIfInCooldown: false
+    otherEICooldowns: {}
+    requiredItems: {}
+    requiredExecutableItems: {}
+    detailedSlots:
+    - -1
+    - 40
+    playerCommands:
+    - SENDMESSAGE §8◘ §7All your enemies are slow for 15 seconds !
+    - AROUND 50 true effect give %around_target% minecraft:slowness 15 3 <+> SENDMESSAGE
+      §8◘ §6§lUnlucky §eThe player §a%player% §ehave slow you with the item §a%item%
+    - execute at %player% run playsound minecraft:block.anvil.place ambient @a ~ ~ ~
+    - DELAYTICK 5
+    - execute at %player% run playsound minecraft:block.anvil.place ambient @a ~ ~ ~
+    - DELAYTICK 5
+    - execute at %player% run playsound minecraft:block.anvil.place ambient @a ~ ~ ~
+    - DELAYTICK 5
+    - execute at %player% run playsound minecraft:block.anvil.place ambient @a ~ ~ ~
+    - DELAYTICK 5
+    - execute at %player% run playsound minecraft:block.anvil.place ambient @a ~ ~ ~
+    playerConditions: {}
+    worldConditions: {}
+    itemConditions: {}
+    customConditions: {}
+    placeholdersConditions: {}
+    variablesModification: {}
+recognitions: []
+attributes: {}
+config_5: true
+config_update: true

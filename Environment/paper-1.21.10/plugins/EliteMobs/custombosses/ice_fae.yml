@@ -1,0 +1,15 @@
+isEnabled: true
+entityType: VEX
+name: $eventBossLevel &bIce Fae
+level: dynamic
+healthMultiplier: 0.3
+damageMultiplier: 0.3
+uniqueLootList:
+- the_feller.yml:0.3
+powers:
+- attack_freeze.yml
+trails:
+- DRIPPING_WATER
+onSpawnBlockStates: []
+onRemoveBlockStates: []
+bossType: NORMAL

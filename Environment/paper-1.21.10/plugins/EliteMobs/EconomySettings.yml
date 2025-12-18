@@ -1,0 +1,201 @@
+# Sets if the EliteMobs economy is enabled. This means elite coins, the ability to buy and sell gear and the ability to upgrade guild ranks
+# If disabled, players will not be able to progress in the plugin!
+enableEconomy: true
+# Sets the resale item of items, as a % of the original price. 5 is 5%
+itemResaleValue: 5.0
+# Sets the in-game name of the currency used.
+currencyName: Elite Coins
+# Sets the plugin to use Vault. THIS IS NOT RECOMMENDED! Read why here: https://github.com/MagmaGuy/EliteMobs/wiki/%5BThird-party-support%5D-Vault
+useVault - not recommended: false
+# Sets if elites will drop coins based on their level.
+enableCurrencyShower: true
+# Sets the multiplier for the currency dropped by elites.
+currencyShowerTierMultiplier: 1.0
+# Sets the message sent when players pick up elite currency.
+chatCurrencyShowerMessage: '&7[EM] You''ve picked up &a$amount $currency_name!'
+# Sets the action bar message sent when players pick up elite currency.
+actionbarCurrencyShowerMessage: '&7[EM] You''ve picked up &a$amount $currency_name!'
+lootShowerDataV2:
+  '1': elitemobs:coins/coin1
+  '5': elitemobs:coins/coin1
+  '10': elitemobs:coins/coin2
+  '20': elitemobs:coins/coin3
+  '50': elitemobs:coins/coin4
+  '100': elitemobs:coins/coin4
+  '500': elitemobs:coins/coin4
+  '1000': elitemobs:coins/coin4
+# Send the message players get after looting currency. Useful for tutorial purposes.
+adventurersGuildNotificationMessages: '&7[EM] Extra spending money? Try &a/ag !'
+# Sets the tax rate for transactions between players.
+# Strongly recommended for balance reasons, as high level players can gain up to 6x more currency and try to use other players to bypass prestige currency resets.
+playerToPlayerPaymentTaxes: 0.2
+# Message sent when sending elite currency to other players.
+Economy pay message v2: '&2You have paid &2$amount_sent $currency_name &2to $receiver&2,
+  who got $amount_received after taxes!'
+# Message sent after players send currency.
+Economy currency left message: You now have &2$amount_left $currency_name
+# Message received when receiving currency.
+Economy money from payment message: You have received &2$amount_received $currency_name
+  &ffrom $sender
+# Message sent when players try to send an amount of coins they do not have.
+Economy payment insufficient currency: '&cYou don''t have enough $currency_name to
+  do that!'
+# /em balance message
+Wallet command message: You have &2$balance $currency_name
+# Confirmation message sent when players try to send currency to another player.
+Tax confirmation message: '&cSending a payment will cost $percentage% in taxes. &aDo
+  &9$command &ato proceed!'
+# Message sent when a player buys from a shop.
+Shop buy message: '&aYou have bought $item_name &afor $item_value $currency_name!'
+# Message sent when a player interacts with a shop.
+Shop current balance message: '&aYou have $currency_amount $currency_name.'
+# Message sent when players don't have enough currency to purchase an item
+Shop insufficient funds message: '&cYou don''t have enough $currency_name!'
+# Second part of message sent when players try to purchase an item they can not afford.
+Shop item cost message: That item costs &c$item_value $currency_name.
+# Message sent upon selling an item to a shop.
+Shop sell message: '&aYou have sold $item_name &afor $currency_amount $currency_name!'
+# Message sent upon trying to sell an item that does not belong to that player.
+Shop sale player items warning: '&cYou can''t sell items that are not currently soulbound
+  to you! This includes items from other prestige tiers!'
+# Message sent upon trying to sell a non-EliteMobs item
+Shop sale instructions: '&cYou can only sell EliteMobs loot here! (Armor / weapons
+  dropped from elites showing a value on their lore)'
+# Message sent upon selling a batch of elite items.
+shopBatchSellItem: '&aYou have sold your items &afor $currency_amount $currency_name!'
+lootShowerMaterial:
+  # Sets the material type of 1 dropped elite coin.
+  '1': GOLD_NUGGET
+  '5': GOLD_INGOT
+  '10': GOLD_BLOCK
+  '20': EMERALD
+  '50': EMERALD_BLOCK
+  '100': DIAMOND
+  '500': DIAMOND_BLOCK
+  '1000': NETHER_STAR
+lootShowerData:
+  # Sets the custom model ID for 1 dropped elite coin. Used by the resource pack.
+  '1': 1
+materialWorth:
+  # Sets the worth of this material for the elitemobs currency system.
+  DIAMOND_AXE: 17.0
+  # Sets the worth of this material for the elitemobs currency system.
+  DIAMOND_BOOTS: 17.0
+  # Sets the worth of this material for the elitemobs currency system.
+  DIAMOND_CHESTPLATE: 17.0
+  # Sets the worth of this material for the elitemobs currency system.
+  DIAMOND_LEGGINGS: 17.0
+  # Sets the worth of this material for the elitemobs currency system.
+  DIAMOND_HELMET: 17.0
+  # Sets the worth of this material for the elitemobs currency system.
+  DIAMOND_PICKAXE: 17.0
+  # Sets the worth of this material for the elitemobs currency system.
+  DIAMOND_SHOVEL: 17.0
+  # Sets the worth of this material for the elitemobs currency system.
+  DIAMOND_SWORD: 17.0
+  # Sets the worth of this material for the elitemobs currency system.
+  DIAMOND_HOE: 17.0
+  # Sets the worth of this material for the elitemobs currency system.
+  IRON_AXE: 16.0
+  # Sets the worth of this material for the elitemobs currency system.
+  IRON_BOOTS: 16.0
+  # Sets the worth of this material for the elitemobs currency system.
+  IRON_LEGGINGS: 16.0
+  # Sets the worth of this material for the elitemobs currency system.
+  IRON_CHESTPLATE: 16.0
+  # Sets the worth of this material for the elitemobs currency system.
+  IRON_HELMET: 16.0
+  # Sets the worth of this material for the elitemobs currency system.
+  IRON_PICKAXE: 16.0
+  # Sets the worth of this material for the elitemobs currency system.
+  IRON_SHOVEL: 16.0
+  # Sets the worth of this material for the elitemobs currency system.
+  IRON_HOE: 16.0
+  # Sets the worth of this material for the elitemobs currency system.
+  IRON_SWORD: 16.0
+  # Sets the worth of this material for the elitemobs currency system.
+  SHIELD: 16.0
+  # Sets the worth of this material for the elitemobs currency system.
+  BOW: 16.0
+  # Sets the worth of this material for the elitemobs currency system.
+  CHAINMAIL_BOOTS: 15.0
+  # Sets the worth of this material for the elitemobs currency system.
+  CHAINMAIL_LEGGINGS: 15.0
+  # Sets the worth of this material for the elitemobs currency system.
+  CHAINMAIL_CHESTPLATE: 15.0
+  # Sets the worth of this material for the elitemobs currency system.
+  CHAINMAIL_HELMET: 15.0
+  # Sets the worth of this material for the elitemobs currency system.
+  STONE_SWORD: 15.0
+  # Sets the worth of this material for the elitemobs currency system.
+  STONE_AXE: 15.0
+  # Sets the worth of this material for the elitemobs currency system.
+  STONE_PICKAXE: 15.0
+  # Sets the worth of this material for the elitemobs currency system.
+  STONE_SHOVEL: 15.0
+  # Sets the worth of this material for the elitemobs currency system.
+  STONE_HOE: 15.0
+  # Sets the worth of this material for the elitemobs currency system.
+  GOLDEN_AXE: 13.0
+  # Sets the worth of this material for the elitemobs currency system.
+  GOLDEN_BOOTS: 13.0
+  # Sets the worth of this material for the elitemobs currency system.
+  GOLDEN_LEGGINGS: 13.0
+  # Sets the worth of this material for the elitemobs currency system.
+  GOLDEN_CHESTPLATE: 13.0
+  # Sets the worth of this material for the elitemobs currency system.
+  GOLDEN_HELMET: 13.0
+  # Sets the worth of this material for the elitemobs currency system.
+  GOLDEN_SWORD: 13.0
+  # Sets the worth of this material for the elitemobs currency system.
+  GOLDEN_SHOVEL: 13.0
+  # Sets the worth of this material for the elitemobs currency system.
+  GOLDEN_PICKAXE: 13.0
+  # Sets the worth of this material for the elitemobs currency system.
+  GOLDEN_HOE: 13.0
+  # Sets the worth of this material for the elitemobs currency system.
+  GOLDEN_APPLE: 17.0
+  # Sets the worth of this material for the elitemobs currency system.
+  ENCHANTED_GOLDEN_APPLE: 17.0
+  # Sets the worth of this material for the elitemobs currency system.
+  LEATHER_BOOTS: 13.0
+  # Sets the worth of this material for the elitemobs currency system.
+  LEATHER_LEGGINGS: 13.0
+  # Sets the worth of this material for the elitemobs currency system.
+  LEATHER_CHESTPLATE: 13.0
+  # Sets the worth of this material for the elitemobs currency system.
+  LEATHER_HELMET: 13.0
+  # Sets the worth of this material for the elitemobs currency system.
+  WOODEN_SWORD: 13.0
+  # Sets the worth of this material for the elitemobs currency system.
+  WOODEN_AXE: 13.0
+  # Sets the worth of this material for the elitemobs currency system.
+  WOODEN_HOE: 13.0
+  # Sets the worth of this material for the elitemobs currency system.
+  WOODEN_PICKAXE: 13.0
+  # Sets the worth of this material for the elitemobs currency system.
+  TRIDENT: 17.0
+  # Sets the worth of this material for the elitemobs currency system.
+  ELYTRA: 17.0
+  # Sets the worth of this material for the elitemobs currency system.
+  TURTLE_HELMET: 13.0
+  # Sets the worth of this material for the elitemobs currency system.
+  NETHERITE_AXE: 18.0
+  # Sets the worth of this material for the elitemobs currency system.
+  NETHERITE_PICKAXE: 18.0
+  # Sets the worth of this material for the elitemobs currency system.
+  NETHERITE_SHOVEL: 18.0
+  # Sets the worth of this material for the elitemobs currency system.
+  NETHERITE_HOE: 18.0
+  # Sets the worth of this material for the elitemobs currency system.
+  NETHERITE_SWORD: 18.0
+  # Sets the worth of this material for the elitemobs currency system.
+  NETHERITE_HELMET: 18.0
+  # Sets the worth of this material for the elitemobs currency system.
+  NETHERITE_CHESTPLATE: 18.0
+  # Sets the worth of this material for the elitemobs currency system.
+  NETHERITE_LEGGINGS: 18.0
+  # Sets the worth of this material for the elitemobs currency system.
+  NETHERITE_BOOTS: 18.0
+  # Sets the default material worth for items not specifically defined.
+  defaultMaterialWorth: 1.0

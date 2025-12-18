@@ -1,0 +1,12 @@
+isEnabled: true
+material: POISONOUS_POTATO
+name: '&bScorpion Charm'
+lore:
+- '&aFloat like a butterfly,'
+- '&asting like a bee,'
+- '&apoison like a potato!'
+enchantments:
+- VANISHING_CURSE,1
+potionEffects:
+- POISON,0,target,onHit
+dropWeight: '1'

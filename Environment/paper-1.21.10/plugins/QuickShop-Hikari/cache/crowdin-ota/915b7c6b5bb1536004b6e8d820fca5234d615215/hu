@@ -1,0 +1,1587 @@
+break-shop-use-supertool: <yellow>Ki tudod szedni a boltjaidat, ha használod a SuperToolt.
+fee-charged-for-price-change: <green>Neked fizetned kell <red>{0}<green>, hogy az ár megváltozzon.
+not-allowed-to-create: <red>Nem tudsz boltot létrehozni itt.
+disabled-in-this-world: <red>QuickShop ebben a világban le van tiltva.
+how-much-to-trade-for: <green>Írd be a chatbe, hogy mennyit szeretnél cserélni <yellow>{1}x {0}<green>-ért.
+client-language-changed: <green>A QuickShop észlelte, hogy megváltoztattad a kliens nyelvi beállításait, mostantól a {0} nyelvet használjuk.
+shops-backingup: Mentés betöltése az adatbázisból...
+_comment: Hi translator! If you editing this from Github or from code sources, you should go https://crowdin.com/project/quickshop-hikari
+unlimited-shop-owner-changed: <yellow>Ennek a korlátlan boltnak a tulajdonosa {0}-ra változott.
+bad-command-usage-detailed: '<red>Rossz parancsargumentumok! Az alábbi paramétereket fogadja el: <gray>{0}'
+thats-not-a-number: <red>Ismeretlen szám.
+shop-name-disallowed: <red>A bolt neve <yellow>{0} <red>nem megengedett. Válassz egy másikat!
+console-only-danger: <red>Ez egy veszélyes parancs, ezért csak a Konzol futtathatja.
+not-a-number: <red>Ennek egy számnak kell lennie! <gray><italic>({0})
+not-looking-at-valid-shop-block: <red>Nem tudtuk létrehozni a boltot, mert nem találtunk blokkot. Nézz egy blokkra.
+shop-removed-cause-ongoing-fee: <red>A boltodat {0} miatt töröltük, mert nem volt elég pénzed a fenntartásához!
+tabcomplete:
+  amount: '[mennyiség]'
+  item: '[tárgy]'
+  price: '[ár]'
+  name: '[név]'
+  range: '[hatótávolság]'
+  currency: '[pénznem]'
+  percentage: '[százalék%]'
+taxaccount-unset: <green>Ennek a boltnak az adószámlája mostantól a szerver globális beállításait követi.
+blacklisted-item: <red>Ez a tárgy feketelistán van! Nem tudod eladni!
+command-type-mismatch: <red>Ezt a parancsot csak a <aqua>{0} futtathatja.
+server-crash-warning: '<red>FIGYELEM: A /quickshop reload parancs használata a QuickShop Jar fájl cseréjéhez/törléséhez összeomlaszthatja a szervert működés közben.'
+you-cant-afford-to-change-price: <red>{0}-ba kerül az áralakítás.
+safe-mode: <red>A QuickShop most biztonsági módban van, nem tudod megnyitni ezt a bolt konténert, kérlek lépj kapcsolatba a szerver adminisztrátorával a hibák javításához.
+forbidden-vanilla-behavior: <red>A művelet tiltott, mert nem egyezik a vanília viselkedéssel.
+shop-out-of-space-name: <dark_purple>A boltod {0} megtelt!
+paste-disabled: |-
+  <red>A beillesztési funkció le van tiltva! Nem kérhetsz technikai támogatást.
+  Indok: {0}
+quick-fill:
+  entry-own: ' <yellow>- <red>[saját] <aqua>{0} <light_purple>{1}'
+  hover:
+    - '<green>Név: <aqua>{0}'
+    - '<yellow>Tulajdonos: <aqua>{0}'
+    - '<yellow>Típus: <aqua>{0}'
+    - '<yellow>Ár: <aqua>{0}'
+    - '<yellow>Tárgy: <aqua>{0}'
+    - '<yellow>Helyszín: <aqua>{0}'
+  hover-arg-filled:
+    - '<green>Név: <aqua>{name}'
+    - '<yellow>Tulajdonos: <aqua>{owner}'
+    - '<yellow>Típus: <aqua>{type}'
+    - '<yellow>Ár: <aqua>{price}'
+    - '<yellow>Tárgy: <aqua>{item}'
+    - '<yellow>Helyszín: <aqua>{location}'
+  header: '<yellow>Több boltot is találtunk ezzel a névvel: "<green>{0}<yellow>", válassz egyet a folytatáshoz:'
+  entry-normal: ' <yellow>- <aqua>{0} <light_purple>{1}'
+  entry-cooperation: ' <yellow>- <red>[együttműködés] <aqua>{0} <light_purple>{1}'
+3rd-plugin-build-check-failed-admin: '<gray>(AdminOnly) <light_purple>{0}<dark_gray> elutasította az engedélyek ellenőrzését. Ha ez nem várható, próbálj hozzáadni <light_purple>{1} <gray> a hallgatói feketelistához. Konfigurációs útmutató: https://ghost-chu.github.io/QuickShop-Hikari-Documents/docs/modules/shops/protection-checker'
+average-price-nearby: '<green>Átlagos ár a közeledben: <yellow>{0}'
+inventory-check-global-alert: "<red>[Inventory Check] <gray>Figyelem! Találtunk egy QuickShop kijelzőtárgyat <gold>{2}</gold> az inventoryban <aqua>{0}</aqua> <dark_gray>[{1}]</dark_gray> helyen, ami nem szokványos. Ez általában azt jelenti, hogy valaki rosszindulatúan kihasználja a kijelzőtárgyak másolására szolgáló hibát."
+digits-reach-the-limit: <red>Elérted a limitet az árban a tizedesvessző után.
+currency-unset: <green>A bolt pénzneme sikeresen eltávolítva. Mostantól az alapértelmezett beállításokat használjuk.
+you-cant-create-shop-in-there: <red>Nincs jogosultságod boltot létrehozni ezen a helyen!
+no-pending-action: <red>Nincs függőben lévő műveleted.
+refill-success: <green>Az újratöltés sikeres volt!
+failed-to-paste: <red>Az adatok Pastebinre történő másolása sikertelen volt! Próbáld újra később! (Nézd meg a konzolt a részletekért)
+shop-out-of-stock-name: <dark_purple>A boltod {0} kifogyott a(z) {1}-ból/ből!
+shop-name-invalid: <red>A bolt neve <yellow>{0} <red>érvénytelen. Válassz egy másikat!
+how-many-buy-stack: <yellow>Írd be a chatbe, hány csomagot szeretnél <aqua>VENNI<green>. Minden csomagban <yellow>{0}<green> tárgy van, és <yellow>{1}<green> csomagot vehetsz. Írd be <aqua>{2}<green> a chatbe, hogy az összeset megvedd.
+exceeded-maximum: <red>Az érték túllépte a Java maximális értékét.
+unlimited-shop-owner-keeped: '<yellow>Figyelem: A bolt tulajdonosa továbbra is korlátlan bolt tulajdonos, új tulajdonost kell beállítanod magadnak.'
+no-enough-money-to-keep-shops: <red>Nincs elég pénzed a boltjaid fenntartásához! Az összes bolt törölve lett...
+3rd-plugin-build-check-failed: <red>Harmadik fél plugin <bold>{0}<reset><red> elutasította az engedélyek ellenőrzését, van-e engedélyed beállítva?
+not-a-integer: '<red>Egész számot kell megadnod, a megadott érték: {0}.'
+translation-country: 'Nyelv Zóna: Magyar (hu_HU)'
+buying-more-than-selling: '<red>FIGYELEM: Többet veszel, mint amennyiért eladod!'
+purchase-failed: '<red>Sikertelen vásárlás: Belső hiba! Kérlek beszélj a tulajdonossal.'
+denied-put-in-item: <red>Ezt a tárgyat nem lehet ebbe a boltba helyezni!
+shop-has-changed: <red>A bolt, amit megpróbáltál használni, megváltozott mióta rákattintottál!
+flush-finished: <green>Üzeneteid sikeresen törölve!
+no-price-given: <red>Kérlek adj meg egy érvényes számot.
+shop-already-owned: <red>Ez már egy bolt.
+backup-success: <green>A mentés sikeres volt.
+not-looking-at-shop: <red>Ez nem egy bolt, amire nézel.
+you-cant-afford-a-new-shop: '<red>Nem tudsz új boltot készíteni, mert túl kevés pénzed van! Ára: <yellow>${0}'
+success-created-shop: <green>Sikeresen elkészítettél egy boltot!
+shop-creation-cancelled: <red>Boltkészítés visszavonva.
+shop-owner-self-trade: <yellow>Magaddal kereskedsz, így lehet, hogy nem szerzel egyenleget.
+purchase-out-of-space: <red>Nincs több tárgy készleten, egyeztess a bolt tulajdonosával.
+reloading-status:
+  success: <green>Újratöltés sikeresen befejezve.
+  scheduled: <green>Újratöltés befejezve. <gray>(Néhány változtatás időt vesz igénybe, hogy érvénybe lépjen)
+  require-restart: <green>Újratöltés befejezve. <yellow>(Néhány változtatás újraindítást igényel a szerveren)
+  failed: <red>Újratöltés sikertelen, ellenőrizd a szerver konzolját.
+player-bought-from-your-store-tax: <green>{0} vásárolt {1} {2} a boltodból, és te {3} keresetél ({4} adóval).
+not-enough-space: <red>Csak {0} több ilyen tárgynak van helye!
+shop-name-success: <green>A bolt neve sikeresen beállítva <yellow>{0}<green>-ra/re.
+shop-staff-added: <green>Sikeresen hozzáadtad a(z) {0}-t a boltodhoz!
+shop-staff-empty: <yellow>Ennek a boltnak nincs személyzeti tagja.
+shops-recovering: Mentés betöltése a boltokból...
+virtual-player-component-hover: "<gray>Ez egy virtuális játékos.\n<gray>Hivatkozik egy rendszerfiókra ezzel a névvel.\n<green>UUID: <yellow>{0}</yellow></green>\n<green>Felhasználónév: <yellow>{1}</yellow></green>\n<green>Megjelenítés: <yellow>{2}</yellow></green>"
+real-player-component-hover: "<gray>Ez egy valós játékos.\n<green>UUID: <yellow>{0}</yellow></green>\n<green>Felhasználónév: <yellow>{1}</yellow></green>\n<green>Megjelenítés: <yellow>{2}</yellow></green>\n<gray>Ha virtuális rendszerfiókot szeretnél használni ugyanazzal a névvel, adj hozzá <dark_gray>\"[]\"</dark_gray> jeleket a felhasználónév mindkét oldalához: <dark_gray>[{1}]</dark_gray>."
+menu:
+  sell-tax: <green>Te fizettél <yellow>{0} <green>adót.
+  owner: '<green>Tulajdonos: {0}'
+  preview: <aqua>[Előnézet Tárgy]
+  enchants: <dark_purple>Varázslatok
+  sell-tax-self: <green>Ez a te boltod, szóval nem kell fizetned adót!
+  shop-information: '<green>Boltinformáció:'
+  item: '<green>Tárgy: <yellow>{0}'
+  price-per: <green>Ár per <yellow>{0} <green>- <yellow>{1}
+  item-name-and-price: <yellow>{0} {1} <yellow>{2}-ért
+  item-name-and-price-tax: <yellow>{0} {1} <green>-ért</green> {2} <gray>(<green>{3}</green> adóval)
+  successful-purchase: '<green>Sikeres vásárlás'
+  price-per-stack: <green>Ár per <yellow>{2}x {0} - {1}
+  stored-enchants: <dark_purple>Eltárolt varázslatok
+  item-holochat-error: <red>[Hiba]
+  this-shop-is-selling: <green>Ez a bolt <aqua>TÁRGYAKAT<green> ad el.
+  shop-stack: '<green>Csomag Mennyiség: <yellow>{0}'
+  space: '<green>Hely: <yellow>{0}'
+  effects: <green>Hatások
+  damage-percent-remaining: <yellow>{0}% <green>maradt.
+  item-holochat-data-too-large: <red>[Hiba] Az tárgy NBT túl nagy a megjelenítéshez
+  stock: '<green>Raktáron <yellow>{0}'
+  this-shop-is-buying: <green>Ez a bolt <light_purple>TÁRGYAKAT<green> vesz.
+  successfully-sold: '<green>Sikeres eladás:'
+  total-value-of-chest: '<green>Teljes érték a ládában: <yellow>{0}'
+currency-not-exists: <red>Nem találjuk a beállítani kívánt pénznemet. Talán rosszul írtad be, vagy ez a pénznem nem elérhető ebben a világban.
+no-nearby-shop: <red>Nincs üzlet a {0} blokknál közelebb.
+translation-author: 'Ghost_chu, Andre_601'
+integrations-check-failed-trade: A {0} integráció elutasította a bolttal való kereskedelmet.
+shop-transaction-failed: <red>Sajnáljuk, de belső hiba történt a vásárlás feldolgozása közben. A vásárlást visszavontuk és minden művelet visszavonásra került. Kérlek lépj kapcsolatba a szerver adminisztrátoraival, ha ez továbbra is fennáll.
+success-change-owner-to-server: <green>Sikeresen megváltoztattad a boltod tulajdonosát szerverre!
+shop-name-not-found: <red>A bolt neve <yellow>{0} <red>nem létezik.
+shop-name-too-long: <red>Ez a bolt neve túl hosszú (max hossz {0}), kérlek válassz egy másikat!
+metric:
+  header-player: '<yellow>{0}''s {1} {2} tranzakciói:'
+  action-hover: <yellow>{0}
+  price-hover: <yellow>Összesen {0}, beleértve {1} adót.
+  unknown: <gray>(ismeretlen)
+  undefined: <gray>(név nélküli)
+  no-results: <red>Nincs találat.
+  action-description:
+    DELETE: <yellow>Játékos törölt egy boltot. Visszatérítette a bolt létrehozási díját, ha lehetséges.
+    ONGOING_FEE: <yellow>Játékos kifizette a folyamatban lévő díjat a fizetési időszak miatt.
+    PURCHASE_BUYING_SHOP: <yellow>Játékos eladott néhány tárgyat egy vásárló boltnak.
+    CREATE: <yellow>Játékos létrehozott egy boltot.
+    PURCHASE_SELLING_SHOP: <yellow>Játékos vásárolt néhány tárgyat egy eladó boltból.
+    PURCHASE: <yellow>Tárgyat vásárolt egy bolttal.
+  query-argument: 'Lekérdezési Argumentum: {0}'
+  amount-hover: <yellow>{0}x
+  header-shop: '<yellow>A bolt {0} {1} {2} tranzakciói:'
+  player-hover: |-
+    <yellow>{0}
+    <gold>UUID: <gray>{1}
+  looking-up: <yellow>Adatlekérés folyamatban, Kérlek várj...
+  tax-hover: <yellow>{0} adók
+  header-global: '<yellow>A szerver {0} {1} tranzakciói:'
+  na: <gray>N/A
+  transaction-count: <yellow>{0} összesen
+  shop-hover: |-
+    <yellow>{0}
+    <gold>Hely: <gray>{1} {2} {3}, Világ: {4}
+    <gold>Tulajdonos: <gray>{5}
+    <gold>Bolt Típus: <gray>{6}
+    <gold>Tárgy: <gray>{7}
+    <gold>Ár: <gray>{8}
+  time-hover: '<yellow>Idő: {0}'
+  amount-stack-hover: <yellow>{0}x csomag
+permission-denied-3rd-party: '<red>Hozzáférés megtagadva: harmadik fél plugin [{0}].'
+you-dont-have-that-many-items: '<red>Nincs elég tárgyad: <gray>{0} {1}.'
+complete: <green>Sikeres!
+translate-not-completed-yet-url: 'A fordítás {0} sikeres volt {1}. Szeretnél segíteni a fordításban? Link: {2}'
+success-removed-shop: <green>A boltodat törölted!
+currency-set: <green>A bolt pénzneme sikeresen beállítva {0}.
+shop-purged-start: <green>Bolt tisztítás elindítva, részletekért nézd meg a konzolt.
+economy-transaction-failed: <red>Sajnáljuk, de belső hiba történt a tranzakció feldolgozása közben. A tranzakciót visszavontuk és minden gazdasági művelet visszavonásra került. Kérlek lépj kapcsolatba a szerver adminisztrátoraival, ha ez továbbra is fennáll.
+nothing-to-flush: <green>Nincs új bolti üzeneted.
+no-price-change: <red>Az ár nem változott!
+edition-confilct: A QuickShop-Hikari és a QuickShop-Reremake telepítve lehet, hogy összeütközésbe kerülnek, távolítsd el az egyiket.
+inventory-unavailable: |-
+  <red>Nem létező vagy érvénytelen InventoryWrapper. Használsz valamilyen kiegészítőt a Bolt Inventory újra kötéséhez?
+  Információ: InventoryWrapper={0}, WrapperProvider={1}, SymbolLink={2}. Kérlek lépj kapcsolatba a szerver adminisztrátoraival.
+file-test: Ez egy teszt szövegfájl. Ezzel teszteljük, hogy a messages.json nem sérült. Itt bármilyen húsvéti tojást hozzáadhatsz :)
+unknown-player: <red>Nem létezik ilyen játékos a szerveren! Győződj meg róla, hogy helyesen írtad be a játékos nevét!
+player-offline: <red>A céljátékos jelenleg offline.
+player-profile-format: <aqua>{0}</aqua><gold>(<yellow>{1}</yellow>)
+shop-type:
+  selling: ELADÁS
+  buying: VÁSÁRLÁS
+language:
+  qa-issues: '<yellow>Minőségbiztosítási problémák: <aqua>{0}%'
+  code: '<yellow>Kód: <gold>{0}'
+  approval-progress: '<yellow>Jóváhagyási folyamat: <aqua>{0}%'
+  translate-progress: '<yellow>Fordítási folyamat: <aqua>{0}%'
+  name: '<green>Név: <gold>{0}'
+  help-us: <green>[Segíts nekünk javítani a fordítási minőséget]
+warn-to-paste: |-
+  <yellow>Adatok gyűjtése és feltöltése Pastebinre. Ez eltarthat egy ideig...
+  <red><bold>Figyelem:</bold> Az adatok egy hétig nyilvánosak maradnak! Szivároghatnak a szerver konfigurációi és más érzékeny információk. Győződj meg róla, hogy csak <bold>megbízható személyzetnek/fejlesztőknek</bold> küldöd el.
+how-many-sell-stack: <green>Írd be a chatbe, hány csomagot szeretnél <light_purple>ELADNI<green>. Minden csomagban <yellow>{0}<green> tárgy van, és <yellow>{1}<green> csomagot adhatsz el. Írd be <aqua>{2}<green> a chatbe, hogy az összeset eladd.
+updatenotify:
+  buttontitle: '[Frissítse most]'
+  onekeybuttontitle: '[OneKey frissítés]'
+  label:
+    github: '[Github]'
+    ore: '[Ore]'
+    lts: '[LTS]'
+    nbtapi: '[+NBTAPI]'
+    qualityverifyed: '[Minőség]'
+    master: '[Master]'
+    unstable: '[Megbízhatatlan]'
+    paper: '[+Paper Optimalizált]'
+    stable: '[Megbízható]'
+    spigotmc: '[SpigotMC]'
+    papermc: '[PaperMC]'
+    bukkitdev: '[BukkitDev]'
+    polymart: '[Polymart]'
+    modrinth: '[Modrinth]'
+    basic: '[Alap]'
+  list:
+    - '{0} kiadva, most {1} használod!'
+    - 'Boooooom! Új verzió elérhető: {0}. Frissítsd most!'
+    - Meglepetés! {0} kijött! Most {1}-t használsz!
+    - Úgy tűnik, hogy frissítened kellene a QuickShopot! {0} verzió elérhető számodra!
+    - Hoppá! {0} verzió kijött! Most {1}-t használod!
+    - Jelenlegi QS verzió frissítve lett {0}-ra! Miért nem frissítetted még?
+    - Kijavítás és újra... Bocsánat {0} verzió kijött!
+    - Hiba! Ja, hogy ez nem egy hiba! {0} éppen most jött ki!
+    - Úristen! {0} verzió kijött! Miért használod még a {1} verziót?
+    - 'Mai hírek: A QuickShop {0} verzió kijött!'
+    - K.I.A plugin. Frissítsd {0} verzióra!
+    - Figyelem! {0} verzió kijött!
+    - '{0} verzió éppen most jött ki!'
+    - Oda nézz! {0} verzió most jött ki! Még mindig {1} verziót használod.
+    - Uh! Új frissítés jelent meg {0} verzióra! Frissítsd most!
+    - Mire gondolsz? Csak nem arra, hogy a {0} verzió most jött ki? Frissítsd most!
+    - 'Doki, a QuickShopnak van egy új frissítése: {0}! Jó lenne frissíteni~'
+    - 'Ko~ko~da~yo~ a QuickShopnak van egy új frissítése: {0}~'
+    - 'Paimon szeretné elmondani, hogy a QuickShop új frissítése elérhető: {0}!'
+  remote-disable-warning: '<red>A QuickShop ezen verzióját a távoli szerver letiltotta, ami azt jelenti, hogy ez a verzió súlyos problémákat okozhat. Részletekért nézd meg a SpigotMC oldalunkat: {0}. Ez a figyelmeztetés folyamatosan megjelenik, amíg egy stabil verzióra nem váltasz, de nem befolyásolja a szerver teljesítményét.'
+purchase-out-of-stock: <red>Nincs több tárgy készleten, egyeztess a bolt tulajdonosával.
+nearby-shop-entry: '<green>- Információ: {0} Ár: <aqua>{1} <green>X: <aqua>{2} <green>Y: <aqua>{3} <green>Z: <aqua>{4} <green>Távolság: <aqua>{5} <green>blokk(ok)'
+chest-title: QuickShop Bolt
+console-only: <red>Ezt a parancsot csak a Konzol futtathatja.
+failed-to-put-sign: <red>Nincs elég hely a bolt körül, hogy le tud tenni az információs táblát.
+shop-name-unset: <red>Ennek a boltnak a neve most eltávolítva.
+shop-nolonger-freezed: <green>A boltod fel lett oldva, mostantól normálisan működik!
+no-permission-build: <red>Nincs jogosultságod boltot építeni ide!
+tableformat:
+  left_half_line: <dark_purple>+--------------------
+  right_half_line: <dark_purple>--------------------+
+  full_line: <dark_purple>+---------------------------------------------------+
+  left_begin: '<dark_purple>| '
+quickshop-gui-preview: QuickShop előnézet
+translate-not-completed-yet-click: A fordítás {0} sikeres volt {1}. Szeretnél segíteni a fordításban? Kattints ide!
+taxaccount-invalid: <red>A célfiók érvénytelen, kérlek adj meg egy érvényes játékosnevet vagy uuid-t (kötőjelekkel).
+player-bought-from-your-store: <red>{0} vásárolt {1} {2} a boltodból, és te {3}-t keresetél.
+reached-maximum-can-create: <red>Már van {0}/{1} boltod!
+reached-maximum-create-limit: <red>Elérted a maximum boltok számát, amit létrehozhatsz.
+translation-version: 'Támogatott Verzió: Hikari'
+no-double-chests: <red>Nem tudsz létrehozni egy duplaláda boltot.
+price-too-cheap: <red>Az árnak minimum <yellow>${0} <red>-nak/nek kell lennie!
+shop-not-exist: <red>Itt nincs egy üzlet sem.
+bad-command-usage: <red>Rossz parancsargumentumok!
+cleanghost-warning: <yellow>Ez a parancs megtisztítja az összes boltot, ha a bolt sérült, nem megengedett világokban jött létre, nem engedélyezett tárgyakat árul vagy NEM TÖLTÖTT VILÁGBAN LÉTEZIK. Először készíts teljes biztonsági másolatot a bolti adataidról, és használd a <aqua>/quickshop cleanghost confirm</aqua> parancsot a folytatáshoz.
+cleanghost-starting: <green>Kezdődik a szellemboltok (hiányzó konténerblokkok) ellenőrzése. Az összes nem létező bolt törlésre kerül...
+cleanghost-deleting: <yellow>Korrupciós boltot találtunk <aqua>{0}</aqua> miatt {1}, törlésre jelölve...
+cleanghost-deleted: <green>Összesen <yellow>{0}</yellow> bolt törölve.
+shop-purchase-cancelled: <red>Boltból vétel visszavonva.
+bypassing-lock: <red>A <green>gyorsbolt<red> zárva van.
+bungee-cross-server-msg: '<yellow>QuickShop CSM: <green>{0}'
+saved-to-path: A mentés elmentve a {0} helyre.
+shop-now-freezed: <green>A boltod most befagyasztva, és senki sem tud kereskedni ezzel a bolttal mostantól!
+price-is-now: <green>A boltok új ára <yellow>{0}.
+shops-arent-locked: <dark_red><bold>Figyelem!! <red>A boltok <red><bold>NINCSENEK <red>levédve! Védd le a területedet!
+that-is-locked: <red>Ez a bolt le van zárva.
+shop-has-no-space: <red>A boltban csak {0} több {1} számára van hely.
+safe-mode-admin: <red><bold>FIGYELEM:</bold> A szerveren futó QuickShop verziója jelenleg biztonsági módban van. A funkciók nem működnek. Kérlek használd a <yellow>/quickshop</yellow> parancsot az esetleges hibák ellenőrzéséhez.
+shop-stock-too-low: '<red>A boltban ennyi maradt: <gray>{0} {1}'
+world-not-exists: <red>A világ <yellow>{0}<red> nem létezik.
+how-many-sell: <green>Írd be a chatbe, hogy mennyit szeretnél eladni. Maximum <yellow>{0}<green> db-ot tudsz eladni. Ha az összeset eladnád, írd be, hogy <aqua>{1}<green>.
+shop-freezed-at-location: '<yellow>A boltod: {0}, itt: {1}, le lett fagyasztva!'
+translation-contributors: 'Közreműködők: Timtower, Netherfoam, KaiNoMood és Mgazul'
+empty-success: <green>Sikeresen kiürítetted!
+taxaccount-set: <green>Ennek a boltnak az adószámlája beállítva <yellow>{0}-ra/re.
+support-disable-reason:
+  hot-reload: <yellow>Nem támogatott hot reload, indítsd újra a szervert és ellenőrizd újra.
+  outdated: <yellow>A QuickShop ezen verziója már elavult, frissítsd a legújabbra mielőtt támogatást kérsz!
+  bad-hosts: |-
+    <yellow>A szerver HOSTS fájlja módosítva lett, és bizonyos QuickShop-funkciókhoz szükség van a Mojang API-hoz való csatlakozásra. Kérlek javítsd ki a HOSTS beállításokat mielőtt támogatást kérsz.
+    Windows: C:\\windows\\system32\\drivers\\etc\\hosts
+    Linux: /etc/hosts
+  privacy: <yellow>A szerver nem hivatalos (offline) módban fut. Ha egy bukkit szervert proxyval és online-mode=true beállítással futtatsz, kérlek konfiguráld helyesen a proxyval kapcsolatos beállításokat.
+  modified: <yellow>Fájl integritás ellenőrzés sikertelen, ezt a QuickShop buildet mások módosították.
+  consolespamfix-installed: <yellow>ConsoleSpamFix telepítve, elrejti a kivétel részleteit, ideiglenesen tiltsd le a támogatás kérése során.
+  authlib-injector-detected: <yellow>A szerver egy harmadik fél authlib szolgáltatót, például authlib-injectort használ.
+  unsupported-server-software: <yellow>Nem támogatott szerver szoftver, bármilyen modolt hibrid szerver szoftver nem támogatott, beleértve az MCPC-t, Cauldron-t, CatServer-t, Mohist-t, Magma-t, Fukkit-et, Cardboard-ot stb.
+supertool-is-disabled: <red>A Supertool le van tiltva, nem tudsz boltot törni.
+unknown-owner: Ismeretlen
+restricted-prices: '<red>Korlátozott ár van a(z) {0}n: min {1}, max {2}'
+nearby-shop-this-way: <green>A bolt {0} blokknyira van tőled.
+owner-bypass-check: <yellow>Sikeresen átmentél az összes ellenőrzésen! Üzlet sikeresen megtörtént! (Te vagy a bolt tulajdonosa)
+april-rick-and-roll-easter-egg: "<hover:show_text:'Click to open in browser for time limited rewards!'><click:open_url:'https://www.youtube.com/watch?v=dQw4w9WgXcQ'><green>Kattints ide, hogy megszerezd az időkorlátos jutalmakat, amelyeket a QuickShop-Hikari fejlesztője biztosít!</green></click></hover>"
+signs:
+  item-right: ''
+  out-of-space: Kifogyott a hely
+  unlimited: Korlátlan
+  stack-selling: 'Eladsz: {0}'
+  stack-price: '{0} per x{1} {2}'
+  status-unavailable: <red>
+  out-of-stock: Kifogyott a készlet
+  stack-buying: 'Veszel: {0}'
+  freeze: Kereskedés letiltva
+  price: '{0} egy darab'
+  buying: Vétel {0}
+  header: '{1}{0}'
+  header-available: <green>{0}
+  header-unavailable: <red>{0}
+  selling: Eladás {0}
+  status-available: <green>
+  item-left: ''
+negative-amount: <red>Nem adhatsz meg negatív mennyiséget.
+display-turn-on: <green>A bolt kijelzője sikeresen bekapcsolva.
+shop-staff-deleted: <green>Sikeresen eltávolítottad {0}-t a boltodból!
+nearby-shop-header: '<green>Közeli bolt, amely megfelel <aqua>{0}<green>-nek:'
+backup-failed: Nem sikerült elmenteni az adatbázist! Nézd meg a konzolt további információkért.
+shop-staff-cleared: <green>Sikeresen eltávolítottad az összes dolgot a boltodból!
+price-too-high: <red> A bolt ára túl magas! Nem hozhatsz létre olyan boltot, amelynek ára magasabb, mint {0}.
+plugin-cancelled: '<red>A művelet megszakítva, Indok: {0}'
+player-sold-to-your-store: <white>{0} <green>eladott <white>{1} {2} <green> a boltodba.
+shop-out-of-stock: '<dark_purple><bold>!!! <light_purple>A bolt itt: <white>{0}<light_purple>, <white>{1}<light_purple>, <white>{2}<light_purple>, kifogyott ebből: <white>{3}'
+how-many-buy: <green>Írd be a chatbe, hogy mennyit szeretnél vásárolni. Maximum <yellow>{0}<green> db-ot tudsz venni. Ha az összeset megvennéd, írd be, hogy <aqua>{1}<green>.
+language-info-panel:
+  help: 'Segítség: '
+  code: 'Kód: '
+  name: 'Nyelv: '
+  progress: 'Folyamat: '
+  translate-on-crowdin: '[Fordítás a Crowdin-en]'
+item-not-exist: <red>A tárgy <yellow>{0} <red>nem létezik, ellenőrizd a helyesírást.
+shop-creation-failed: <red>A bolt létrehozása sikertelen, kérlek lépj kapcsolatba a szerver adminisztrátorával.
+inventory-space-full: <red>A tárhelyedben már csak <green>{1}x <red>tárgy fér el, próbálj kiüríteni az inventorydat!
+no-creative-break: <red>Nem törheted más játékosok boltját kreatív módban, válts túlélő módba, vagy próbáld meg használni a supertoolt {0}.
+booleanformat:
+  success: <green>✔
+  failed: <red>✘
+controlpanel:
+  stack: '<green>Mennyiség csomagonként: <aqua>{0} <yellow>[<bold><light_purple>Változtatás</light_purple></bold>]'
+  price-hover: <yellow>Kattints ide, hogy beállítsd az új árát a boltnak.
+  remove: <bold><red>[Bolt törlése]
+  mode-buying-hover: <yellow>Kattints ide, hogy eladó módra váltsd a boltot.
+  empty: '<green>Üres: Távolítsd el az összes tárgyat <yellow>[<bold><light_purple>OK</light_purple></bold>]'
+  stack-hover: <yellow>Kattints ide, hogy beállítsd a csomagonkénti tárgymennyiséget. Normál működéshez állítsd 1-re.
+  alwayscounting-hover: <yellow>Kattints ide, hogy átváltsd, ha a bolt mindig számlálja a tárolót.
+  alwayscounting: '<green>Mindig számlál: {0} <yellow>[<bold><light_purple>Változtatás</light_purple></bold>]'
+  setowner: '<green>Tulajdonos: <aqua>{0} <yellow>[<bold><light_purple>Változtatás</light_purple></bold>]'
+  freeze: '<yellow>Fagyasztás mód: <aqua>{0} <yellow>[<bold><light_purple>Átváltás</light_purple></bold>]'
+  price: '<green>Ár: <aqua>{0} <yellow>[<bold><light_purple>Változtatás</light_purple></bold>]'
+  currency-hover: <yellow>Kattints ide, hogy beállítsd vagy eltávolítsd a bolt által használt pénznemet
+  lock: '<yellow>Bolt zár: <aqua>{0} <yellow>[<bold><light_purple>Átváltás</light_purple></bold>]'
+  mode-selling: '<green>Bolt mód: <aqua>Eladás <yellow>[<bold><light_purple>Változtatás</light_purple></bold>]'
+  currency: '<green>Pénznem: <aqua>{0} <yellow>[<bold><light_purple>Beállítás</light_purple></bold>]'
+  setowner-hover: <yellow>Kattints ide, hogy megváltoztasd a tulajdonost.
+  mode-buying: '<green>Bolt mód: <aqua>Vásárlás <yellow>[<bold><light_purple>Változtatás</light_purple></bold>]'
+  item: '<green>Bolt tárgy: {0} <yellow>[<bold><light_purple>Változtatás</light_purple></bold>]'
+  unlimited: '<green>Korlátlan: {0} <yellow>[<bold><light_purple>Változtatás</light_purple></bold>]'
+  unlimited-hover: <yellow>Kattints ide, hogy beállítsd, ha a bolt korlátlan.
+  refill-hover: <yellow>Kattints ide a bolt feltöltéséhez.
+  remove-hover: <yellow>Kattints ide, hogy kitöröld a boltot.
+  toggledisplay-hover: <yellow>Váltás a bolt kijelző tárgyának állapotára
+  refill: '<green>Feltöltés: Töltsd fel a tárgyakat <yellow>[<bold><light_purple>OK</light_purple></bold>]'
+  freeze-hover: <yellow>Váltás a bolt fagyasztási állapotára.
+  lock-hover: <yellow>A bolt zár védelmének engedélyezése/letiltása.
+  item-hover: <yellow>Klikk, hogy megváltoztasd a bolt tárgyát
+  infomation: '<green>Bolt vezérlőpult:'
+  mode-selling-hover: <yellow>Kattints ide, hogy átállítsd a boltodat eladási módra.
+  empty-hover: <yellow>Kattints ide, hogy eltávolítsd az összes tárgyat a boltodból.
+  toggledisplay: '<green>Kijelző tárgy: <aqua>{0} <yellow>[<bold><light_purple>Átváltás</light_purple></bold>]'
+  history: '<green>Előzmények: <yellow>[<bold><light_purple>Megtekintés</light_purple></bold>]</yellow>'
+  history-hover: <yellow>Kattints ide, hogy megtekintsd a bolt előzményeit
+timeunit:
+  behind: mögött
+  week: "{0} hét"
+  weeks: "{0} hetek"
+  year: "{0} év"
+  before: előtt
+  scheduled: ütemezett
+  years: "{0} évek"
+  scheduled-in: ütemezve {0}-ban
+  second: "{0} másodperc"
+  std-past-format: '{5}{4}{3}{2}{1}{0}ezelőtt'
+  std-time-format: HH:mm:ss
+  seconds: "{0} másodpercek"
+  hour: "{0} óra"
+  scheduled-at: ütemezve {0}-kor
+  after: után
+  day: "{0} nap"
+  recent: legutóbbi
+  between: között
+  hours: "{0} órák"
+  months: "{0} hónapok"
+  longtimeago: régen
+  between-format: között {0} és {1}
+  minutes: "{0} percek"
+  justnow: éppen most
+  minute: "{0} perc"
+  std-format: MM/dd/yyyy HH:mm:ss
+  future-plain-text: jövő
+  month: "{0} hónap"
+  future: '{0} múlva'
+  days: "{0} napok"
+command:
+  reloading: '<green>Konfiguráció újratöltve. <yellow>Néhány változás újraindítást igényelhet, hogy érvénybe lépjenek. <newline><gray>(Figyelem: Az újratöltési viselkedés megváltozott a 4.0.9.10 verzió után, most már csak a konfigurációt töltjük újra, hogy biztosítsuk, hogy a szerver ne omoljon össze.)'
+  description:
+    buy: <yellow>Átállítja a boltot <light_purple>VÁSÁRLÁS<yellow> módba
+    about: <yellow>Megmutatja a QuickShop információit
+    language: <yellow>Átváltja a QuickShop nyelvét
+    purge: <yellow>Elindítja a bolt tisztítási feladatot a háttérben
+    paste: <yellow>Automatikusan feltölti a szerver adatait a Pastebin-re
+    title: <green>QuickShop segítség
+    remove: <yellow>Eltávolítja a boltot, amire nézel
+    ban: <yellow>Kitilt egy játékost a boltból
+    empty: <yellow>Eltávolítja az összes tárgyat a boltodból
+    alwayscounting: <yellow>Beállítja, hogy a bolt mindig számlálja-e a tárolót még akkor is, ha korlátlan
+    setowner: <yellow>Megváltoztatja a bolt tulajdonosát
+    reload: <yellow>Újratölti a QuickShop config.yml fájlt
+    freeze: <yellow>Letiltja vagy engedélyezi a bolt kereskedését
+    price: <yellow>Megváltoztatja az eladási/vételi árat
+    find: <yellow>Megkeresi a legközelebbi boltot egy meghatározott típusban
+    create: <yellow>Létrehoz egy új boltot a megjelölt ládában
+    lock: <yellow>Átváltja a bolt zárolási állapotát
+    currency: <yellow>Beállítja vagy eltávolítja a bolt pénznemét
+    removeworld: <yellow>Eltávolítja az összes boltot egy meghatározott világból
+    info: <yellow>Megmutatja a QuickShop információkat
+    owner: <yellow>Megváltoztatja a bolt tulajdonosát
+    amount: <yellow>Végrehajtja a mennyiséget (Chat plugin problémák)
+    item: <yellow>Megváltoztatja a bolt tárgyát
+    debug: <yellow>Átvált fejlesztő módba
+    unlimited: <yellow>A bolt korlátlanná tétele
+    sell: <yellow>Átállítja a boltot <aqua>ELADÁS<yellow> módba
+    fetchmessage: <yellow>Lekéri az összes olvasatlan üzenetedet
+    staff: <yellow>Kezeli a bolt személyzetét
+    clean: <yellow>Eltávolítja az összes (betöltött) boltot 0 áruval
+    refill: <yellow>Adj meg egy meghatározott számot az újratöltéshez
+    help: <yellow>Megmutatja a QuickShop segítségét
+    removeall: <yellow>Eltávolítja az összes boltot egy meghatározott játékostól
+    unban: <yellow>Visszaállít egy játékost a boltból való kitiltásból
+    transfer: <yellow>Áthelyezi valakinek az ÖSSZES boltját másnak
+    transferall: <yellow>Áthelyezi valakinek az ÖSSZES boltját másnak
+    transferownership: <yellow>Áthelyezi az általad nézett boltot valaki másnak
+    size: <yellow>Megváltoztatja a bolt csomagolási mennyiségét
+    supercreate: <yellow>Létrehoz egy boltot az összes ellenőrzés kihagyásával
+    taxaccount: <yellow>Beállítja a bolt adószámláját
+    name: <yellow>Nevet ad egy boltnak
+    toggledisplay: <yellow>Átváltja a bolt kijelző tárgyának állapotát
+    permission: <yellow>Bolt jogosultságkezelés
+    lookup: <yellow>Kezeli a kereshető tárgyak táblázatát
+    database: <yellow>Megtekinti és karbantartja a QuickShop adatbázist
+    benefit: <yellow>Beállítja a bolt tulajdonos és más játékosok közötti előnyök megosztását
+    tag: <yellow>Hozzáad, eltávolít vagy lekérdez egy bolt címkéit
+    suggestprice: <yellow>Ajánl egy javasolt árat az aktuális bolt számára, más boltok alapján
+    history: <yellow>Megtekinti a bolt előzményeit
+    sign: <yellow>Megváltoztatja a bolt táblájának anyagát
+  bulk-size-not-set: '<red>Használat: /quickshop size \<mennyiség>'
+  no-type-given: '<red>Használat: /quickshop find \<tárgy>'
+  feature-not-enabled: Ez a funkció nincs engedélyezve a konfigurációs fájlban.
+  now-debuging: <green>Sikeresen átváltottál fejlesztő módba. QuickShop újratöltése...
+  no-amount-given: <red>Nincs megadva mennyiség. Használd <green>/quickshop refill \<mennyiség>
+  no-owner-given: <red>Nincs megadva tulajdonos
+  disabled: '<red>Ez a parancs le van tiltva: <yellow>{0}'
+  bulk-size-now: <green>Most kereskedsz <yellow>{0}x {1}
+  toggle-always-counting:
+    counting: <green>A bolt most mindig számlálja a tárolót, még akkor is, ha korlátlan
+    not-counting: <green>A bolt most figyelembe veszi, ha korlátlan
+  cleaning: <green>Boltok törlése 0 készlettel...
+  now-nolonger-debuging: <green>Sikeresen átváltottál gyártás módba. QuickShop újratöltése...
+  toggle-unlimited:
+    limited: <green>A bolt korlátozott
+    unlimited: <green>A bolt korlátlan
+  transfer-success-other: <green>Áthelyezve <yellow>{0} {1}<green> bolt(ok) <yellow>{2}
+  no-trade-item: <green>Kérlek, tarts egy kereskedelmi tárgyat a fő kezedben a változtatáshoz
+  wrong-args: <red>Érvénytelen argumentum. Használd <bold>/quickshop help</bold> a parancsok listájának megtekintéséhez.
+  some-shops-removed: <yellow>{0} <green>bolt eltávolítva
+  new-owner: '<green>Új tulajdonos: <yellow>{0}'
+  format: <green>/{0} {1} <yellow>- {2}
+  transfer-success: <green>Áthelyezve <yellow>{0} <green> bolt(ok) <yellow>{1}
+  now-buying: <green>Most <light_purple>VESZEL<green> <yellow>{0}
+  now-selling: <green>Most <aqua>ELADSZ <yellow>{0}
+  cleaned: <green><yellow>{0}<green> bolt eltávolítva.
+  trade-item-now: <green>Most kereskedsz <yellow>{0}x {1}
+  no-world-given: <red>Kérlek, add meg egy világ nevét
+  format-disabled: <red>/{0} {1} <gray>- {2}
+  invalid-bulk-amount: <red>A megadott érték {0} nagyobb, mint a maximális csomagméret vagy kisebb, mint egy
+currency-not-support: <red>A gazdasági plugin nem támogatja a több pénznem funkciót.
+trading-in-creative-mode-is-disabled: <red>Nem kereskedhetsz bolttal kreatív módban.
+the-owner-cant-afford-to-buy-from-you: <red>Ez <gray>{0} <red>-ba kerül, de a tulajdonosnak csak <gray>{1} van.
+you-cant-afford-shop-naming: <red>Nem engedheted meg magadnak a bolt elnevezését, ennek költsége {0}.
+inventory-error: |-
+  <red>Nem sikerült feldolgozni az InventoryWrapper-t. Használsz valamilyen kiegészítőt a bolt inventory újrakötéséhez?
+  Információ: Exception={0}, InventoryWrapper={1}, WrapperType={2}, WrapperProvider={3}, SymbolLink={4}. Kérlek, lépj kapcsolatba a szerver adminisztrátoraival.
+integrations-check-failed-create: A {0} integráció elutasította a bolt létrehozását.
+shop-out-of-space: <dark_purple>A boltod a {0}, {1}, {2} koordinátán tele van!
+admin-shop: Adminbolt
+no-anythings-in-your-hand: <red>Nincs semmi a kezedben.
+no-permission: <red>Nincs jogod ehhez!
+chest-was-removed: <red>Ez a láda törölve lett.
+you-cant-afford-to-buy: <red>Ez <gray>{0} <red>-ba kerül, de neked csak <gray>{1} van.
+shops-removed-in-world: <yellow>Összesen <aqua>{0}<yellow> bolt törölve a világban <aqua>{1}<yellow>.
+display-turn-off: <green>A bolt kijelzője sikeresen kikapcsolva.
+client-language-unsupported: <yellow>A QuickShop nem támogatja a kliens nyelvét, most visszaállunk a {0} nyelvi beállításra.
+language-version: '63'
+not-managed-shop: <red>Nem te vagy a tulajdonosa vagy a moderátora ennek a boltnak.
+shop-cannot-trade-when-freezing: <red>Nem kereskedhetsz ezzel a bolttal, mert le van fagyasztva.
+invalid-container: <red>Érvénytelen konténer, Csak azokat a blokkokat hozhatsz létre, amelyek rendelkeznek tárolóval.
+permission:
+  header: <green>Bolt Jogosultság Részletek
+  header-player: <green>Bolt Jogosultság Részletek {0} számára
+  header-group: <green>Bolt Jogosultság Részletek {0} csoport számára
+  table: <gold><bold>{0}</bold>:</gold> <gray>{1}
+  item:
+    purchase: <yellow>Jogosultság, amely lehetővé teszi a felhasználók számára a bolt vásárlását. (beleértve a vételt és az eladást)
+    show-information: <yellow>Jogosultság, amely lehetővé teszi a felhasználók számára a bolt információinak megtekintését. (bolt info panel megnyitása)
+    preview-shop: <yellow>Jogosultság, amely lehetővé teszi a felhasználók számára a bolt előnézetét. (előnézeti tárgy)
+    search: <yellow>Jogosultság, amely lehetővé teszi a felhasználók számára a bolt keresését. (jogosultság eltávolítása elrejti a boltot a keresési eredményből)
+    delete: <yellow>Jogosultság, amely lehetővé teszi a felhasználók számára a bolt törlését.
+    receive-alert: <yellow>Jogosultság, amely lehetővé teszi a felhasználók számára az értesítési üzenetek fogadását (pl. kifogyott készlet vagy új kereskedés).
+    access-inventory: <yellow>Jogosultság, amely lehetővé teszi a felhasználók számára a bolt inventory elérését.
+    ownership-transfer: <yellow>Jogosultság, amely lehetővé teszi a felhasználók számára a bolt tulajdonjogának átruházását.
+    management-permission: <yellow>Jogosultság, amely lehetővé teszi a felhasználók számára a csoport jogosultságainak kezelését és a felhasználók csoportjának szerkesztését.
+    toggle-display: <yellow>Jogosultság, amely lehetővé teszi a felhasználók számára a bolt kijelző tárgyának átváltását.
+    set-shoptype: <yellow>Jogosultság, amely lehetővé teszi a felhasználók számára a bolt típusának beállítását (váltás vásárlásra vagy eladásra).
+    set-price: <yellow>Jogosultság, amely lehetővé teszi a felhasználók számára a bolt árának beállítását.
+    set-item: <yellow>Jogosultság, amely lehetővé teszi a felhasználók számára a bolt tárgyának beállítását.
+    set-stack-amount: <yellow>Jogosultság, amely lehetővé teszi a felhasználók számára a bolt csomagolási mennyiségének beállítását.
+    set-currency: <yellow>Jogosultság, amely lehetővé teszi a felhasználók számára a bolt pénznemének beállítását.
+    set-name: <yellow>Jogosultság, amely lehetővé teszi a felhasználók számára a bolt nevének beállítását.
+    set-sign-type: <yellow>Jogosultság, amely lehetővé teszi a felhasználók számára a bolt táblájának anyagának megváltoztatását.
+    view-purchase-logs: <yellow>Jogosultság a bolt vásárlási naplóinak megtekintéséhez.
+  group:
+    everyone: <yellow>Alapértelmezett csoport minden felhasználó számára, kivéve a bolt tulajdonosát.
+    staff: <yellow>Rendszer csoport a bolt személyzetének.
+    administrator: <red>Rendszer csoport az adminisztrátorok számára, a felhasználók ebben a csoportban szinte ugyanazokkal a jogosultságokkal rendelkeznek, mint a bolt tulajdonosa.
+invalid-group: <red>Érvénytelen csoportnév.
+invalid-permission: <red>Érvénytelen jogosultság.
+invalid-operation: <red>Érvénytelen művelet, csak {0} engedélyezett.
+player-no-group: <yellow>A játékos {0} nincs csoportban ebben a boltban.
+player-in-group: <green>A játékos {0} a(z) <aqua>{1}</aqua> csoportban van ebben a boltban.
+permission-required: <red>Nincs jogosultságod {0} ehhez a művelethez ebben a boltban.
+no-permission-detailed: <red>Nincs jogosultságod <yellow>{0}</yellow> ehhez a művelethez.
+paste-notice: "<yellow>Megjegyzés: Ha hibakeresési célból hozol létre Paste-t, győződj meg róla, hogy a hibát a Paste létrehozása előtt reprodukálod a lehető leggyorsabban; szükségünk van a naplókra, amelyek rövid ideig a pufferben maradnak a hibakereséshez. Ha túl lassan vagy hiba reprodukálása nélkül, vagy a szerver újraindítása után hozol létre Paste-t, akkor a Paste semmit nem rögzít és haszontalan lesz."
+paste-uploading: <aqua>Kérlek várj... A paste feltöltése a Pastebin-re...
+paste-created: '<green>Paste létrehozva, kattints ide a böngészőben való megnyitáshoz: <yellow>{0}</yellow><br><red>Figyelmeztetés: <gray>Soha ne küldj paste-t olyan embereknek, akikben nem bízol meg.'
+paste-created-local: |-
+  <green>Paste létrehozva és mentve a helyi lemezre: {0}
+  <red>Figyelmeztetés: <gray>Soha ne küldj paste-t olyan embereknek, akikben nem bízol meg.
+paste-created-local-failed: <red>Nem sikerült menteni a paste-t a helyi lemezre, kérlek ellenőrizd a lemezt.
+paste-451: |-
+  <gray><bold>TIPP:</bold> Úgy tűnik, hogy az aktuális országod vagy régiód blokkolta a CloudFlare Workers szolgáltatást, és a QuickShop Paste lehet, hogy nem töltődik be megfelelően.
+  Ha a következő művelet sikertelen, próbáld meg hozzáadni a --file argumentumot a helyi paste létrehozásához: <dark_gray>/quickshop paste --file
+paste-upload-failed: <red>Nem sikerült feltölteni a paste-t a(z) {0}-ra, próbálkozás más pastebin szolgáltatóval...
+paste-upload-failed-local: <red>Nem sikerült feltölteni a paste-t, próbálkozás helyi paste létrehozásával...
+command-incorrect: '<red>Helytelen parancshasználat, írd be a /quickshop help parancsot a segítség megtekintéséhez. Használat: {0}.'
+successfully-set-player-group: <green>Sikeresen beállítottad {0} játékos csoportját <aqua>{1}</aqua>-ra.
+successfully-unset-player-group: <green>Sikeresen eltávolítottad a játékos csoportját ebben a boltban.
+successfully-set-player-permission: <green>Sikeresen beállítottad {0} játékos jogosultságát <aqua>{1}</aqua> ebben a boltban <aqua>{2}</aqua>.
+lookup-item-created: <green>Egy tárgy nevű <aqua>{0}</aqua> létrehozva a keresési táblában. Mostantól hivatkozhatsz erre a tárgyra a konfigurációkban.
+lookup-item-exists: <red>Egy tárgy nevű <yellow>{0}</yellow> már létezik a keresési táblában, töröld vagy válassz másik nevet.
+lookup-item-not-found: <red>Egy tárgy nevű <yellow>{0}</yellow> nem létezik.
+lookup-item-name-illegal: <red>Érvénytelen tárgynév. Csak alfanumerikus karakterek és aláhúzások engedélyezettek.
+lookup-item-name-regex: '<red>A névnek meg kell felelnie ennek a regexnek: <aqua>{0}</aqua>.'
+lookup-item-test-not-found: '<gold>Teszt: <yellow>A kezedben lévő tárgy nincs regisztrálva a keresési táblában.'
+lookup-item-test-found: '<gold>Teszt: <green>A kezedben lévő tárgy <aqua>{0}</aqua> néven van regisztrálva a keresési táblában.'
+lookup-item-removed: <green>A megadott tárgy <aqua>{0}</aqua> sikeresen eltávolítva a keresési táblából.
+internal-error: <red>Belső hiba történt, kérlek lépj kapcsolatba a szerver adminisztrátorával.
+argument-cannot-be: <red>Az argumentum <aqua>{0}</aqua> nem lehet <yellow>{1}</yellow>.
+argument-must-between: <red>Az argumentum <aqua>{0}</aqua> értékének <yellow>{1}</yellow> és <yellow>{2} között kell lennie.
+invalid-percentage: <red>Érvénytelen százalék, hozzá kell adnod '%' jelet a szám után.
+display-fallback: |-
+  <red>Belső hiba miatt egy helyettesítő üzenet jelenik meg.
+  Ennek a tárgynak az értéke lehet, hogy nincs helyesen lokalizálva vagy feldolgozva.
+  Kérlek lépj kapcsolatba a szerver adminisztrátorával.
+not-a-valid-time: |-
+  <red>A szöveg <yellow>{0}</yellow> nem érvényes időbélyeg, kérlek adj meg egy <aqua>Zulu idő (ISO 8601)</aqua> vagy <aqua>Unix Epoch időt másodpercben</aqua>.
+  <gold>Érvényes időbélyeg példa: (szombat, 2022. dec. 17, 10:31:37 GMT)</gold><br><aqua>- <yellow>2022-12-17T10:31:37Z</yellow> <gray>(Zulu idő)</gray>
+  - <yellow>1671273097</yellow> <gray>(Unix Epoch idő másodpercben)</gray><br>
+invalid-past-time: <red>Nem adhatsz meg múltbeli időt.
+debug:
+  arguments-invalid: <red>A megadott argumentumok <yellow>{0}</yellow> érvénytelenek.
+  sign-located: '<green>Érvényes tábla: <yellow>{0}</yellow>.'
+  operation-missing: <red>Meg kell adnod egy műveletet.
+  operation-invalid: <red>Meg kell adnod egy érvényes műveletet.
+  invalid-base64-encoded-sql: <red>Az SQL-nek base64 kódoltnak kell lennie.
+  warning-sql: |-
+    <bold><red>Figyelem:</red></bold> <yellow>SQL utasítást hajtasz végre. Ez tönkreteheti az adatbázisodat vagy elpusztíthatja az adatokat az adatbázisban, még akkor is, ha azok más pluginhez tartoznak.
+    <red>Ne erősítsd meg ezt, ha nem bízol meg abban, aki ezt küldte.
+  warning-sql-confirm: <yellow>A veszélyes művelet megerősítéséhez írd be a <aqua>/quickshop debug database sql confirm {0}</aqua> parancsot a következő 60 másodpercben.
+  warning-sql-confirm-hover: <yellow>Kattints a veszélyes művelet megerősítéséhez.
+  sql-confirm-not-found: <yellow>Nem találtuk a megadott műveletet, lehet, hogy érvénytelen vagy lejárt.
+  sql-executing: '<yellow>SQL utasítás végrehajtása: <aqua>{0}'
+  sql-completed: <green>Kész, {0} sor érintett.
+  sql-exception: <red>Hiba történt az SQL lekérdezés végrehajtása közben, ellenőrizd a konzolt a részletekért!
+  sql-disabled: '<red>Biztonsági okokból az SQL lekérdezések le vannak tiltva ezen a szerveren. Ha tényleg szükséged van erre a funkcióra, hozzáadhatod a következő zászlót az indítási argumentumokhoz: <aqua>{0}</aqua> true értékkel, hogy engedélyezd.'
+  force-shop-reload: <yellow>Minden betöltött bolt újratöltése kényszerítve...
+  force-shop-reload-complete: <green>Összesen <aqua>{0}</aqua> bolt újratöltve.
+  force-shop-loader-reload: <yellow>Bolt-betöltő újratöltésének kényszerítése...
+  force-shop-loader-reload-unloading-shops: <yellow><aqua>{0}</aqua> betöltött bolt eltávolítása...
+  force-shop-loader-reload-unloading-shops-from-memory: <yellow><aqua>{0}</aqua> bolt eltávolítása a memóriából...
+  force-shop-loader-reload-reloading-shop-loader: <yellow>Bolt-betöltő újrahívása minden bolt újratöltésére az adatbázisból...
+  force-shop-loader-reload-complete: <green>Bolt-betöltő újratöltött minden boltot!
+  toggle-shop-loaded-status: <aqua>A bolt betöltési állapotának váltása <gold>{0}
+  shop-internal-data: '<yellow>A bolt belső adatai: </yellow>{0}'
+  handler-list-not-valid-bukkit-event-class: <red>A megadott osztály <yellow>{0}</yellow> nem érvényes Bukkit eseményosztály.
+  update-player-shops-signs-no-username-given: <red>Érvényes játékos nevet kell megadnod.
+  update-player-shops-signs-create-async-task: <yellow>Aszinkron feladatok létrehozása a táblák frissítésére...
+  update-player-shops-player-selected: '<yellow>Kiválasztott játékos: <gold>{0}'
+  update-player-shops-player-shops: <yellow>Összesen <gold>{0}</gold> bolt vár frissítésre.
+  update-player-shops-per-tick-threshold: '<yellow>Maximálisan frissíthető boltok száma tickenként: <gold>{0}'
+  update-player-shops-complete: '<green>A feladat befejezve, frissítés ideje: <yellow>{0}ms</yellow>.'
+  update-player-shops-task-started: <gold>A feladat elindult, kérlek várj, amíg befejeződik.
+  item-info-store-as-string: "<green>A bolt, amit nézel: <gold>{0}</gold> Hash: <white>{1}</white>"
+  item-info-hand-as-string: "<green>A kezedben lévő tárgy: <gold>{0}</gold> Hash: <white>{1}</white>"
+  item-matching-result: "<green>Hand2Store: <aqua>{0}</aqua>, Store2Hand: <aqua>{1}</aqua>"
+  hikari-cp-size-tweak: "<green>HikariCP MaximumPoolSize és MinimumIdle beállítva <white>{0}</white> értékre"
+  hikari-cp-testing: "<green>Kérlek várj, HikariCP kapcsolat tesztelése..."
+  hikari-cp-working: "<green>Siker! HikariCP jól működik!"
+  hikari-cp-not-working: "<red>Sikertelen! A HikariCP által visszaadott kapcsolat halott! (Nem ment át a teszten 1 másodperc alatt)"
+  hikari-cp-timeout: "<red>A HikariCP időtúllépést ért el érvényes kapcsolat megszerzése közben, kérlek szüntesd meg az összes aktív lekérdezést a kapcsolati erőforrások felszabadításához."
+  queries-stopped: "<green>Leállítva <white>{0}</white> aktív lekérdezések."
+  queries-dumping: "<yellow>Aktív lekérdezések kiürítése..."
+  restart-database-manager: "<yellow>SQLManager újraindítása..."
+  restart-database-manager-clear-executors: "<yellow>Végrehajtók törlése..."
+  restart-database-manager-unfinished-task: "<yellow>Befejezetlen feladat: <white>{0}</white>"
+  restart-database-manager-unfinished-task-history-query: "<yellow>Befejezetlen feladat (Előzmény lekérdezés): <white>{0}</white>"
+  restart-database-manager-reconnect: "<yellow>SQLManager újraindítása kezdeti szekvencia szerint (aszinkron végrehajtóval)"
+  restart-database-manager-done: "<green>Kész!"
+  property-incorrect: "<yellow>Meg kell adnod egy (és csak egy) tulajdonság kulcs=érték készletet. Pl: aaa=bbb"
+  property-security-block: "<red>Kérelem elutasítva, biztonsági okokból csak a <aqua>com.ghostchu.quickshop</aqua> vagy <aqua>quickshop</aqua> kezdetű tulajdonságokat módosíthatod."
+  property-removed: "<green>Tulajdonság kulcs törölve <white>{0}</white>"
+  property-changed: "<green>Tulajdonság kulcs <white>{0}</white> megváltoztatva <white>{1}</white> értékről <white>{2}</white> értékre"
+  marked-as-dirty: "<green>Minden bolt piszkos állapotként megjelölve, a következő automatikus mentési feladat során kényszerített mentés történik. (Indítsd újra a szervert a bolt mentési feladat kényszerített végrehajtásához)"
+  display-removed: "<green>Sikeresen eltávolítva <yellow>{0}</yellow> QuickShop kijelző tárgyak/entitások a világokból."
+database:
+  scanning: <green>Izolált adatok vizsgálata a QuickShop adatbázisokban, az adatbázis terhelése növekedhet a vizsgálat során, ez eltarthat egy ideig...
+  scanning-async: <yellow>Izolált adatok vizsgálata a QuickShop adatbázisokban aszinkron feladat szálon, az adatbázis terhelése növekedhet a vizsgálat során, próbáld meg később újra.
+  already-scanning: <red>Egy vizsgálati feladat már elindult, kérlek várj, amíg befejeződik.
+  trim-warning: <red><bold>Figyelem:</bold> <yellow>Készíts biztonsági másolatot az adatbázisról, mielőtt folytatod az adatbázis vágását az adatvesztés elkerülése érdekében. Ha készen állsz, hajtsd végre a <aqua>/quickshop database trim confirm</aqua> parancsot a folytatáshoz.
+  status: '<yellow>Állapot: {0}'
+  status-good: <green>Jó
+  status-bad: <yellow>Karban tartás szükséges
+  isolated: '<yellow>Izolált adatok:'
+  isolated-data-ids: '<aqua>└<yellow> Adatrekordok: <gold>{0}'
+  isolated-shop-ids: '<aqua>└<yellow> Bolt indexek: <gold>{0}'
+  isolated-logs: '<aqua>└<yellow> Naplók: <gold>{0}'
+  isolated-external-caches: '<aqua>└<yellow> Külső gyorsítótárak: <gold>{0}'
+  last-purge-time: '<yellow>Utolsó tisztítás ideje: {0}'
+  report-time: '<yellow>Utolsó vizsgálat ideje: {0}'
+  auto-scan-alert: <yellow>A QuickShop adatbázis ezen a szerveren karbantartást igényel. Talált <gold>{0}</gold> izolált adatokat, amelyek vágásra várnak.
+  auto-trim: <green>Az automatikus vágás engedélyezve van ezen a szerveren, manuális vágás nem szükséges.
+  trim-complete: <green>Adatbázis vágása befejezve, <yellow>{0}</yellow> izolált adatok vágva.
+  auto-trim-started: <green>Az automatikus vágás elindult, kérlek várj...
+  trim-start: <green>Adatbázis vágása elkezdődött, kérlek várj...
+  trim-exception: <red>Adatbázis vágás sikertelen, hiba történt az adatbázis vágása közben, ellenőrizd a szerver konzolt.
+  generated-at: '<yellow>Generálva: <gold>{0}'
+  purge-date: <red>Meg kell adnod egy dátumot.
+  purge-warning: <yellow>Ez a művelet törölni fogja az adatbázisban tárolt előzményeket, beleértve a bolt létrehozásokat/módosításokat/törléseket, vásárlásokat, tranzakciókat és rendszer naplókat. Az adatok törlése felszabadíthatja a lemezterületet, de az összes előzmény metrika elveszik, és más, a metrikákra támaszkodó pluginok működése leállhat. A folytatáshoz hajtsd végre a `/quickshop database purgelogs \<before-days> confirm` parancsot.
+  purge-task-created: <green>Feladat létrehozva! Az adatbázis csendben tisztítja az előzmény rekordokat a háttérben.
+  purge-done-with-line: <green>Tisztítási feladat befejezve, összesen <gold>{0}</gold> sor törölve az adatbázisból.
+  purge-done-with-error: <red>Tisztítási feladat sikertelen, ellenőrizd a szerver konzolt a részletekért.
+  purge-players-cache: <yellow>Kérlek várj, játékos gyorsítótárak törlése...
+  purge-players-completed: |-
+    <green>Sikeresen törölted {0} játékos gyorsítótárát mind a memóriából, mind az adatbázisból.
+    <aqua>Megjegyzés: A szerver teljesítménye befolyásolható lehet ezzel a művelettel.
+  purge-players-error: <red>Nem sikerült törölni a játékos gyorsítótárakat, ellenőrizd a szerver konzolt.
+  suggestion:
+    trim: <yellow>Ez az adatbázis izolált adatok vágását igényli. Hajtsd végre a <aqua>/quickshop database trim</aqua> parancsot az adatbázis vágásához.
+always-counting-removal-early-warning: <red>A Mindig Számlálás funkció eltávolításra van ütemezve, ne használd többé, mert a jövőben leáll.
+exporting-database: <green>Adatbázis exportálása, kérlek várj...
+exporting-failed: <red>Nem sikerült exportálni az adatbázist, ellenőrizd a szerver konzolt.
+exported-database: '<green>Adatbázis exportálva ide: <yellow>{0}</yellow>.'
+importing-not-found: <red>A(z) <yellow>{0}</yellow> fájl nem található, ellenőrizd a fájl elérési útját.
+importing-early-warning: |-
+  <red><bold>Figyelem:</bold> <yellow>A biztonsági mentés importálva lesz a jelenlegi adatbázisba. Minden meglévő adat törlődik és örökre elveszik, hacsak nincs biztonsági mentésed.
+  <red>Biztosan folytatni szeretnéd az importálási eljárást?</red> Írd be a <aqua>/quickshop recovery confirm</aqua> parancsot a folytatáshoz.
+importing-database: <green>Adatbázis importálása biztonsági mentésből, kérlek várj...
+importing-failed: <red>Nem sikerült importálni az adatbázist, ellenőrizd a szerver konzolt.
+imported-database: '<green>Adatbázis importálva innen: <yellow>{0}</yellow>.'
+transfer-sent: '<green>Bolt átvitel kérelem elküldve ide: <yellow>{0}</yellow>.'
+transfer-request: <yellow>A játékos <aqua>{0}</aqua> szeretné átvinni boltjait hozzád. Elfogadod az átvitel kérelmét?
+transfer-single-request: <yellow>A játékos <aqua>{0}</aqua> szeretne átvinni egy boltot hozzád. Elfogadod az átvitel kérelmét?
+transfer-ask: |-
+  <gold>Írd be a <red>/quickshop transfer accept</red> parancsot az elfogadáshoz vagy a <red>/quickshop transfer deny</red> parancsot az elutasításhoz.
+  A kérelem lejár <red>{0}</red> másodperc múlva.
+transferall-ask: |-
+  <gold>Írd be a <red>/quickshop transferall accept</red> parancsot az elfogadáshoz vagy a <red>/quickshop transferall deny</red> parancsot az elutasításhoz.
+  A kérelem lejár <red>{0}</red> másodperc múlva.
+transfer-single-ask: |-
+  <gold>Írd be a <red>/quickshop transferownership accept</red> parancsot az elfogadáshoz vagy a <red>/quickshop transferownership deny</red> parancsot az elutasításhoz.
+  A kérelem lejár <red>{0}</red> másodperc múlva.
+transfer-accepted-fromside: <green>A játékos <aqua>{0}</aqua> elfogadta a bolt átvitel kérelmedet.
+transfer-accepted-toside: <green>Elfogadtad a(z) <aqua>{0}</aqua> átvitel kérelmét.
+transfer-rejected-fromside: <red>A játékos <aqua>{0}</aqua> elutasította a bolt átvitel kérelmedet.
+transfer-rejected-toside: <red>Elutasítottad a(z) <aqua>{0}</aqua> bolt átvitel kérelmét.
+transfer-no-pending-operation: <red>Nincs függőben lévő átvitel kérelmed.
+transfer-no-self: <red>Nem viheted át a boltjaidat magadhoz.
+benefit-overflow: <red>Az összes előny összege nem lehet nagyobb vagy egyenlő, mint 100%.
+benefit-exists: <red>A cél játékos már szerepel az előnyök listáján ebben a boltban.
+benefit-removed: <red>A cél játékos eltávolítva a bolt előnyei közül.
+benefit-added: <green>A játékos <aqua>{0}</aqua> hozzáadva a bolt előnyeihez!
+benefit-updated: <green>A játékos <aqua>{0}</aqua> előnyei frissítve lettek!
+benefit-query: <green>Ennek a boltnak <yellow>{0}</yellow> játékos van az előnyök listáján!
+benefit-query-list: <yellow> - </yellow><white>Játékos <gold>{0}</gold>, Előny <gold>{1}%
+tag-added: '<green>Sikeresen hozzáadva <aqua>#{0}</aqua> ehhez a bolthoz!'
+tag-add-duplicate: '<red>A címke <aqua>#{0}</aqua> már létezik ebben a boltban!'
+tag-removed: '<green>Sikeresen eltávolítva <aqua>#{0}</aqua> ebből a boltból!'
+tag-remove-not-exists: 'A címke <aqua>#{0}</aqua> nem létezik ebben a boltban!'
+tag-cleared: <green>Sikeresen törölve az összes címke ebből a boltból!
+tag-shops-cleared: '<green>Sikeresen törölve <aqua>#{0}</aqua> az összes címkézett boltból!'
+tag-query: '<green>Ennek a boltnak <yellow>{0}</yellow> címkéi vannak:'
+tag-query-listing: '<yellow> - <aqua>#{0}'
+tag-query-no-tag: <red>Ennek a boltnak nincsenek címkéi.
+tag-query-shops: '<green>Ez a címke <yellow>{0}</yellow> boltot tartalmaz:'
+tag-query-shops-listing: <yellow> - <aqua>{0}
+batch-operations-based-on-tags-no-failure: <green>Sikeresen feldolgozva <yellow>{0}</yellow> bolt kötegelt műveleteit.
+batch-operations-based-on-tags-have-failure: <yellow>Összesen {0} bolt kötegelt feldolgozása sikeresen befejeződött, de <red>{1}</red> kérés nem teljesült.
+batch-operations-based-on-tags-have-failure-with-reason: '<yellow>Összesen {0} bolt kötegelt feldolgozása sikeresen befejeződött, de <red>{1}</red> kérés nem teljesült. Indok: <gold>{2}'
+batch-operations-based-on-tags-have-failure-error-messages-may-appears-above: <gray>A hibaüzenetek a fenti üzenetben jelennek meg a chatben.
+addon:
+  towny:
+    commands:
+      town: <yellow>Beállít vagy eltávolít egy boltot városi boltként
+      nation: <yellow>Beállít vagy eltávolít egy boltot nemzeti boltként
+    make-shop-owned-by-town: <green>Te állítottad be a boltot város tulajdonaként <yellow>{0}</yellow>.
+    make-shop-no-longer-owned-by-town: <green>Visszaállítottad a bolt tulajdonjogát, most visszakerül az eredeti tulajdonoshoz.
+    make-shop-owned-by-nation: <green>Te állítottad be a boltot nemzet tulajdonaként <yellow>{0}</yellow>.
+    make-shop-no-longer-owned-by-nation: <green>Visszaállítottad a bolt tulajdonjogát, most visszakerül az eredeti tulajdonoshoz.
+    shop-owning-changing-notice: <gray>Ez a bolt most egy város/nemzet tulajdonában van, az eredeti tulajdonos automatikusan hozzáadva az adminisztrátor listához, módosítsd vagy adj hozzá új tulajdonost / személyzetet a /quickshop permission parancs használatával.
+    target-shop-already-is-town-shop: <red>A cél bolt már város tulajdonában van.
+    target-shop-already-is-nation-shop: <red>A cél bolt már nemzet tulajdonában van.
+    target-shop-not-in-town-region: <red>A cél bolt nincs a város területén.
+    target-shop-not-in-nation-region: <red>A cél bolt nincs a nemzet területén.
+    item-not-allowed: <red>Ennek a boltnak a tárgyai nem engedélyezettek városi/nemzeti boltként, válassz másikat!
+    operation-disabled-due-shop-status: <red>Ez a boltművelet le van tiltva, mert már városi/nemzeti bolt.
+    plot-type-disallowed: <red>Nem hozhatsz létre városi/nemzeti boltot ezen a parcella típuson.
+    flags:
+      own: <red>Csak a saját bolttípusú városi parcelládon hozhatsz létre boltot.
+      modify: <red>Nincs építési engedélyed ezen a városi parcellán.
+      shop-type: <red>Boltot kell létrehoznod egy bolttípusú városi parcellán.
+  residence:
+    creation-flag-denied: <red>Nincs engedélyed boltok létrehozására ebben a rezidenciában.
+    trade-flag-denied: <red>Nincs engedélyed boltok vásárlására ebben a rezidenciában.
+    you-cannot-create-shop-in-wildness: <red>Nem hozhatsz létre boltot a vadonban.
+  griefprevention:
+    creation-denied: <red>Nincs engedélyed boltok létrehozására ebben a birtokban.
+    trade-denied: <red>Nincs engedélyed boltok vásárlására ebben a birtokban.
+  lands:
+    world-not-enabled: <red>Nem hozhatsz létre vagy vásárolhatsz boltot ebben a világban.
+    creation-denied: <red>Nincs engedélyed boltok létrehozására ebben a Land területen.
+  plotsquared:
+    no-plot-whitelist-creation: <red>Nem hozhatsz létre boltot parcellán kívül.
+    no-plot-whitelist-trade: <red>Nem vásárolhatsz boltot parcellán kívül.
+    creation-denied: <red>Nincs engedélyed boltok létrehozására ezen a parcellán.
+    trade-denied: <red>Nincs engedélyed boltok vásárlására ezen a parcellán.
+    flag:
+      create: QuickShop-Hikari boltok létrehozása
+      trade: QuickShop-Hikari boltok vásárlása
+  superiorskyblock:
+    owner-create-only: <red>Csak a sziget tulajdonosa hozhat létre boltot itt.
+    owner-member-create-only: <red>Csak a sziget tulajdonosa vagy tagjai hozhatnak létre boltot itt.
+  worldguard:
+    creation-flag-test-failed: <red>Nincs engedélyed boltok létrehozására ezen a WorldGuard területen.
+    trade-flag-test-failed: <red>Nincs engedélyed boltok vásárlására ezen a WorldGuard területen.
+    reached-per-region-amount-limit: "<red>Elérted a maximális boltok számát ezen a területen."
+  discord:
+    __to_translators: 'To translators: `addon.discord.discord-messages` use a special variable in strings, %%LANG_KEY%% instead of QuickShop''s style {LANG_INDEX}, do not translate anything inside double ''%'' section. BUT for any other section texts, it respect the normal QuickShop Text System syntax ({0},{1} etc.) This may be difficult to understand because two different variable forms are used in the same program at the same time, but trust me, it is reasonable. (you don''t need translate this string, it''s a comment)'
+    __to_users: A QuickShop Szöveg Rendszerhez hasonlóan a Discord kiegészítő is automatikusan felismeri a felhasználó nyelvét és a felhasználó nyelvén küldi el a Discord üzenetet, követve a QuickShop-Hikari nyelvi rendszer beállításait.
+    __to_message_designer: 'Tervezd meg a Discord üzenetedet a GUI-val: https://glitchii.github.io/embedbuilder/, majd másold ki a JSON kódot és illeszd be a fordításba és kész is vagyunk!'
+    discord-enabled: <aqua>Sikeresen <green>engedélyezted</green> a QuickShop discord üzeneteidet, mostantól fogva fogadhatod a bolt üzeneteit a Discordon.
+    discord-disabled: <aqua>Sikeresen <red>letiltottad</red> a QuickShop discord üzeneteidet, mostantól nem fogsz bolt üzeneteket kapni a Discordon.
+    discord-not-integrated: <red>Még nem kapcsoltad össze a Discordodat! Kérlek, először csatlakoztasd a Discord fiókodat!
+    feature-enabled-for-user: <aqua><green>Engedélyezted</green> <gold>{0}</gold> értesítést.
+    feature-disabled-for-user: <aqua><red>Letiltottad</red> <gold>{0}</gold> értesítést.
+    link-help: <yellow>Ez a szerver <gold>{0}</gold>-t használ Discord meghajtóként, kérlek használd a <green>{0}</green>-t a Discord fiókod összekapcsolásához.
+    save-notifaction-exception: <red>Hiba történt a Discord értesítési beállítások mentése közben, kérlek lépj kapcsolatba a szerver adminisztrátorával.
+    feature-status-changed: <green>Sikeresen beállítottad az értesítés <aqua>{0}</aqua> állapotát <gold>{1}
+    commands:
+      discord:
+        description: <yellow>QuickShop Discord beállítások kezelése
+    discord-messages:
+      sold-to-your-shop: |
+        {
+         "embed":
+           {
+             "title": ":inbox_tray: Valaki eladott tárgyakat a boltodba",
+             "description": "A játékos %%purchase.name%% eladott x%%purchase.amount%% %%shop.item.name%% tárgyat a boltodba.",
+             "color": 52084,
+             "author": {
+               "name": "QuickShop-Hikari",
+               "icon_url": ""
+             },
+             "thumbnail": {
+               "url": ""
+             },
+             "image": {
+               "url": ""
+             },
+             "footer": {
+               "text": "QuickShop-Hikari Discord Értesítés",
+               "icon_url": ""
+             },
+             "fields": [
+               {
+                 "name": "Bolt",
+                 "value": "%%shop.display-name%%",
+                 "inline": false
+               },
+               {
+                 "name": "Vevő",
+                 "value": "%%purchase.name%%",
+                 "inline": true
+               },
+               {
+                 "name": "Tárgy",
+                 "value": "%%shop.item.name%%",
+                 "inline": true
+               },
+               {
+                 "name": "Mennyiség",
+                 "value": "%%purchase.amount%% (x%%shop.stacking-amount%%)",
+                 "inline": true
+               },
+               {
+                 "name": "Fizetett összeg",
+                 "value": "%%purchase.balance-formatted%%",
+                 "inline": true
+               },
+               {
+                 "name": "Adók",
+                 "value": "%%purchase.taxes-formatted%%",
+                 "inline": true
+               }
+             ]
+           }
+        }
+      bought-from-your-shop: |
+        {
+           "embed":
+             {
+               "title": ":outbox_tray: Valaki vásárolt a boltodból",
+               "description": "A játékos %%purchase.name%% vásárolt x%%purchase.amount%% %%shop.item.name%% tárgyat a boltodból.",
+               "color": 52084,
+               "author": {
+                   "name": "QuickShop-Hikari",
+                   "icon_url": ""
+               },
+               "thumbnail": {
+                   "url": ""
+               },
+               "image": {
+                   "url": ""
+               },
+               "footer": {
+                   "text": "QuickShop-Hikari Discord Értesítés",
+                   "icon_url": ""
+               },
+               "fields": [
+                   {
+                       "name": "Bolt",
+                       "value": "%%shop.display-name%%",
+                       "inline": false
+                   },
+                   {
+                       "name": "Vevő",
+                       "value": "%%purchase.name%%",
+                       "inline": true
+                   },
+                   {
+                       "name": "Tárgy",
+                       "value": "%%shop.item.name%%",
+                       "inline": true
+                   },
+                   {
+                       "name": "Mennyiség",
+                       "value": "%%purchase.amount%%(x%%shop.stacking-amount%%)",
+                       "inline": true
+                   },
+                   {
+                       "name": "Te keresel",
+                       "value": "%%purchase.balance-formatted%%",
+                       "inline": true
+                   },
+                   {
+                       "name": "Adók",
+                       "value": "%%purchase.taxes-formatted%%",
+                       "inline": true
+                   }
+               ]
+           }
+         }
+      mod-shop-purchase: |
+        {
+        "embed":
+          {
+              "title": ":dollar: Valaki vásárolt egy boltban",
+              "description": "A játékos %%purchase.name%% vásárolt x%%purchase.amount%% %%shop.item.name%% tárgyat a boltból.",
+              "color": 6061450,
+              "author": {
+                  "name": "QuickShop-Hikari",
+                  "icon_url": ""
+              },
+              "thumbnail": {
+                  "url": ""
+              },
+              "image": {
+                  "url": ""
+              },
+              "footer": {
+                  "text": "QuickShop-Hikari Discord Értesítés",
+                  "icon_url": ""
+              },
+              "fields": [
+                  {
+                      "name": "Bolt",
+                      "value": "%%shop.display-name%%",
+                      "inline": false
+                  },
+                  {
+                      "name": "Vevő",
+                      "value": "%%purchase.name%%",
+                      "inline": true
+                  },
+                  {
+                      "name": "Tárgy",
+                      "value": "%%shop.item.name%%",
+                      "inline": true
+                  },
+                  {
+                      "name": "Mennyiség",
+                      "value": "%%purchase.amount%% (x%%shop.stacking-amount%%)",
+                      "inline": true
+                  },
+                  {
+                      "name": "Egyenleg",
+                      "value": "%%purchase.balance-formatted%%",
+                      "inline": true
+                  },
+                  {
+                      "name": "Adók",
+                      "value": "%%purchase.taxes-formatted%%",
+                      "inline": true
+                  }
+              ]
+          }
+        }
+      out-of-space: |
+        {
+        "embed":
+          {
+              "title": ":mailbox_with_mail: A boltod megtelt",
+              "description": "A boltod készlete megtelt!\\nKi kell ürítened a bolt tárolóját, hogy folytathasd az új tárgyak elfogadását.",
+              "color": 16065893,
+              "author": {
+                  "name": "QuickShop-Hikari",
+                  "icon_url": ""
+              },
+              "thumbnail": {
+                  "url": ""
+              },
+              "image": {
+                  "url": ""
+              },
+              "footer": {
+                  "text": "QuickShop-Hikari Discord Értesítés",
+                  "icon_url": ""
+              },
+              "fields": [
+                  {
+                      "name": "Bolt",
+                      "value": "%%shop.display-name%%",
+                      "inline": false
+                  }
+              ]
+          }
+        }
+      out-of-stock: |
+        {
+            "embed":
+                {
+                    "title": ":mailbox_with_no_mail: A boltod kifogyott a készletből",
+                    "description": "A boltod készlete most üres!\\nFel kell töltened a bolt tárolóját tárgyakkal, hogy folytathasd az értékesítést!",
+                    "color": 16065893,
+                    "author": {
+                        "name": "QuickShop-Hikari",
+                        "icon_url": ""
+                    },
+                    "thumbnail": {
+                        "url": ""
+                    },
+                    "image": {
+                        "url": ""
+                    },
+                    "footer": {
+                        "text": "QuickShop-Hikari Discord Értesítés",
+                        "icon_url": ""
+                    },
+                    "fields": [
+                        {
+                            "name": "Bolt",
+                            "value": "%%shop.display-name%%",
+                            "inline": false
+                        }
+                    ]
+                }
+        }
+      mod-shop-created: |
+        {
+          "embed": {
+            "title": ":classical_building: Új bolt jött létre",
+            "description": "Egy játékos új boltot hozott létre a szervereden!",
+            "color": 6061450,
+            "author": {
+              "name": "QuickShop-Hikari",
+              "icon_url": ""
+            },
+            "thumbnail": {
+              "url": ""
+            },
+            "image": {
+              "url": ""
+            },
+            "footer": {
+              "text": "QuickShop-Hikari Discord Értesítés",
+              "icon_url": ""
+            },
+            "fields": [
+              {
+                "name": "Bolt",
+                "value": "%%shop.display-name%%",
+                "inline": false
+              },
+              {
+                "name": "Tulajdonos",
+                "value": "%%shop.owner.name%%",
+                "inline": true
+              },
+              {
+                "name": "Tárgy",
+                "value": "%%shop.item.name%%",
+                "inline": true
+              },
+              {
+                "name": "Mennyiség",
+                "value": "%%shop.stacking-amount%%",
+                "inline": true
+              },
+              {
+                "name": "Típus",
+                "value": "%%shop.type%%",
+                "inline": true
+              }
+            ]
+          }
+        }
+      mod-remove-shop: |
+        {
+            "embed": {
+                "title": ":recycle: Egy bolt eltávolítva a szerverről",
+                "description": "Egy bolt eltávolítva a szerverről.",
+                "color": 6061450,
+                "author": {
+                    "name": "QuickShop-Hikari",
+                    "icon_url": ""
+                },
+                "thumbnail": {
+                    "url": ""
+                },
+                "image": {
+                    "url": ""
+                },
+                "footer": {
+                    "text": "QuickShop-Hikari Discord Értesítés",
+                    "icon_url": ""
+                },
+                "fields": [
+                    {
+                        "name": "Bolt",
+                        "value": "%%shop.display-name%%",
+                        "inline": false
+                    },
+                    {
+                        "name": "Ok",
+                        "value": "%%delete.reason%%",
+                        "inline": false
+                    }
+                ]
+            }
+        }
+      shop-transfer-to-you: |
+        {
+            "embed": {
+                "title": ":placard: Egy bolt átkerült hozzád",
+                "description": "Egy bolt átkerült hozzád egy másik játékostól.",
+                "color": 16172079,
+                "author": {
+                    "name": "QuickShop-Hikari",
+                    "icon_url": ""
+                },
+                "thumbnail": {
+                    "url": ""
+                },
+                "image": {
+                    "url": ""
+                },
+                "footer": {
+                    "text": "QuickShop-Hikari Discord Értesítés",
+                    "icon_url": ""
+                },
+                "fields": [
+                    {
+                        "name": "Bolt",
+                        "value": "%%shop.display-name%%",
+                        "inline": false
+                    },
+                    {
+                        "name": "Kitől",
+                        "value": "%%transfer.from%%",
+                        "inline": false
+                    }
+                ]
+            }
+        }
+      mod-shop-transfer: |
+        {
+            "embed": {
+                "title": ":placard: Egy bolt átkerült",
+                "description": "Egy bolt átkerült egy játékostól egy másik játékoshoz.",
+                "color": 6061450,
+                "author": {
+                    "name": "QuickShop-Hikari",
+                    "icon_url": ""
+                },
+                "thumbnail": {
+                    "url": ""
+                },
+                "image": {
+                    "url": ""
+                },
+                "footer": {
+                    "text": "QuickShop-Hikari Discord Értesítés",
+                    "icon_url": ""
+                },
+                "fields": [
+                    {
+                        "name": "Bolt",
+                        "value": "%%shop.display-name%%",
+                        "inline": false
+                    },
+                    {
+                        "name": "Kitől",
+                        "value": "%%transfer.from%%",
+                        "inline": true
+                    },
+                    {
+                        "name": "Kinek",
+                        "value": "%%transfer.to%%",
+                        "inline": true
+                    }
+                ]
+            }
+        }
+      shop-price-changed: |
+        {
+            "embed": {
+                "title": ":money_with_wings: A boltod ára megváltozott",
+                "description": "Te vagy a boltod személyzete megváltoztatta a boltod árát.",
+                "color": 16172079,
+                "author": {
+                    "name": "QuickShop-Hikari",
+                    "icon_url": ""
+                },
+                "thumbnail": {
+                    "url": ""
+                },
+                "image": {
+                    "url": ""
+                },
+                "footer": {
+                    "text": "QuickShop-Hikari Discord Értesítés",
+                    "icon_url": ""
+                },
+                "fields": [
+                    {
+                        "name": "Bolt",
+                        "value": "%%shop.display-name%%",
+                        "inline": false
+                    },
+                    {
+                        "name": "Eredeti ár",
+                        "value": "%%change-price.from%%",
+                        "inline": true
+                    },
+                    {
+                        "name": "Új ár",
+                        "value": "%%change-price.to%%",
+                        "inline": true
+                    }
+                ]
+            }
+        }
+      mod-shop-price-changed: |
+        {
+            "embed": {
+                "title": ":money_with_wings: Egy bolt ára megváltozott",
+                "description": "Egy bolt megváltoztatta az ár beállításait.",
+                "color": 6061450,
+                "author": {
+                    "name": "QuickShop-Hikari",
+                    "icon_url": ""
+                },
+                "thumbnail": {
+                    "url": ""
+                },
+                "image": {
+                    "url": ""
+                },
+                "footer": {
+                    "text": "QuickShop-Hikari Discord Értesítés",
+                    "icon_url": ""
+                },
+                "fields": [
+                    {
+                        "name": "Bolt",
+                        "value": "%%shop.display-name%%",
+                        "inline": true
+                    },
+                    {
+                        "name": "Tulajdonos",
+                        "value": "%%shop.owner.name%%",
+                        "inline": true
+                    },
+                    {
+                        "name": "",
+                        "value": "",
+                        "inline": true
+                    },
+                    {
+                        "name": "Eredeti ár",
+                        "value": "%%change-price.from%%",
+                        "inline": true
+                    },
+                    {
+                        "name": "Új ár",
+                        "value": "%%change-price.to%%",
+                        "inline": true
+                    }
+                ]
+            }
+        }
+      shop-permission-changed: |
+        {
+            "embed": {
+                "title": ":closed_lock_with_key: A boltod jogosultsági beállításai megváltoztak",
+                "description": "Az egyik boltod jogosultsági beállítása megváltozott.",
+                "color": 15879747,
+                "author": {
+                    "name": "QuickShop-Hikari",
+                    "icon_url": ""
+                },
+                "thumbnail": {
+                    "url": ""
+                },
+                "image": {
+                    "url": ""
+                },
+                "footer": {
+                    "text": "QuickShop-Hikari Discord Értesítés",
+                    "icon_url": ""
+                },
+                "fields": [
+                    {
+                        "name": "Bolt",
+                        "value": "%%shop.display-name%%",
+                        "inline": false
+                    },
+                    {
+                        "name": "Játékos",
+                        "value": "%%change-permission.player%%",
+                        "inline": true
+                    },
+                    {
+                        "name": "Hozzárendelt csoport",
+                        "value": "%%change-permission.to-group%%",
+                        "inline": true
+                    },
+                    {
+                        "name": "",
+                        "value": "",
+                        "inline": true
+                    },
+                    {
+                        "name": "Megadott jogosultság (Örökölt csoportból)",
+                        "value": "```\\n%%change-permission.perms-list%%\\n```",
+                        "inline": false
+                    }
+                ]
+            }
+        }
+    field:
+      player: Játékos
+      item: Tárgy
+      amount: Mennyiség
+      balance: Egyenleg
+      balance-after-tax: Egyenleg (adó után)
+      account: Saját egyenleg
+      taxes: Adók
+      cost: Költség
+  discount:
+    commands:
+      discount:
+        description: <yellow>Apply a discount code or manage your discount codes.
+    tab-complete:
+      discount:
+        general:
+          code: \<code>
+        create:
+          rate: |
+            Command Hint:
+            Argument: \<rate>
+            Description: The actual percentage or money you will earn
+            Input `30%` = price * 0.3
+            Input `50` = price - 50
+          max-usage: |
+            Command Hint:
+            Argument: [max-usage]
+            Description: The times that code can be used
+            `-1` for unlimited.
+          threshold: |
+            Command Hint:
+            Argument: [threshold]
+            Description: The minimum price that code can be applied
+            `-1` for unlimited
+          expired: |
+            Command Hint
+            Argument: [expired]
+            Description: The code expired time.
+            `-1` for unlimited duration.
+            Accept both Zulu time and UNIX timestamp in seconds.
+            Zulu Example: 2022-12-17T10:31:37Z
+            UNIX Example: 1671273097
+    discount-code-already-exists: <red>Sorry, the name of your discount code already in use.
+    invalid-discount-code-regex: '<red>The discount code must matches the regex: <yellow>{0}'
+    invalid-discount-code: <red>This discount code are invalid.
+    discount-code-added: <green>Your discount code <yellow>{0}</yellow> has been added into shop <aqua>{1}
+    discount-code-removed: <green>Your discount code <yellow>{0}</yellow> has been removed from shop <aqua>{1}
+    invalid-code-type: <red>The code type <yellow>{0}</yellow> are invalid.
+    invalid-usage-restriction: <red>The usage restriction <yellow>{0}</yellow> are invalid.
+    invalid-threshold-restriction: <red>The threshold restriction <yellow>{0}</yellow> are invalid.
+    invalid-effect-scope: <red>The scope <yellow>{0}</yellow> are invalid.
+    invalid-expire-time: <red>Nem adhatsz meg múltbeli időt.
+    invalid-discount-rate: <red>The discount rate <yellow>{0}</yellow> are invalid, it can be a fixed number or percentage.
+    discount-code-expired: <red>Ouch! Your discount code <yellow>{0}</yellow> has been expired!
+    discount-code-installed: <green>You have installed discount code <gold>{0}</gold>, the discount code will be automatically applied to the available purchase in all the following purchases during this session. To uninstall discount code, execute <aqua>/quickshop discount uninstall {0}</aqua>.
+    discount-code-uninstalled: <green>You have uninstalled your discount code.
+    discount-code-query-nothing: <red>You hadn't install a discount code yet!
+    discount-code-query: '<green>You are using discount code: <yellow>{0}</yellow>.'
+    discount-code-applicable: '<#bcef26>Your discount code <bold><yellow>{0}</yellow></bold> are <bold>applicable</bold> in this shop!'
+    discount-code-applicable-with-threshold: '<#bcef26>Your discount code <bold><yellow>{0}</yellow></bold> are <bold>applicable</bold> in this shop, but only your purchase cost over <yellow>{1}</yellow> in single transaction.'
+    discount-code-not-applicable: <red>Your discount code <bold><yellow>{0}</yellow></bold> are <bold>not applicable</bold> in this shop!
+    discount-code-reach-the-limit: <red>You have reach the usage limit of discount code <bold><yellow>{0}</yellow></bold>, discount are not applied.
+    discount-code-no-permission: <red>You didn't have permission to use any discount code in this shop!
+    discount-code-has-been-expired: <red>Your discount has been expired!
+    discount-code-config-shop-added: <green>Successfully to add this shop into your discount code allow list.
+    discount-code-config-shop-add-failure: <red>This shop already in your discount code allow list.
+    discount-code-config-shop-removed: <green>Successfully to remove this shop from your discount code allow list.
+    discount-code-config-shop-remove-failure: <red>This shop not exists in your discount code allow list.
+    discount-code-config-expire: <green>Successfully changed your code expire time.
+    discount-code-config-applied: <green>Config the discount code successfully!
+    discount-code-created-successfully: |
+      <green>Your discount code <yellow>{0}</yellow> has been successfully created!
+      <gold>Scope: <aqua>{1}</aqua></gold>.
+      <gold>Share with others: <#bcef26>{2}</#bcef26></gold>.
+      <yellow>For <gray>Specific Shops</gray> scope only: To add shops to your discount code allow list, please looking an quickshop and execute <aqua>{3}</aqua> command.
+      You can use <aqua>/quickshop discount config {0}</aqua> to edit your discount code anytime.
+    discount-code-under-threshold: <red>The discount not applied to your purchase because the total value under the discount code threshold <yellow>{0}</yellow>.
+    percentage-off: '<bold><#bcef26>-{0}%'
+    fixed-off: '<bold><#bcef26>-{0}'
+    discount-code-list: '<gold>Listing your discount codes:'
+    discount-code-applied-in-purchase: '<#bcef26>Your discount code <yellow>{0}</yellow> has been applied to this purchase and you saved <gold>{1}</gold>!'
+    scope:
+      this-shop: '{0}'
+      your-shops-owned: all your shops (owned)
+      your-shops-managed: all your shops (managed)
+      server: whole server
+    code-type:
+      SERVER_ALL_SHOPS: All shops on this server
+      PLAYER_ALL_SHOPS: All shops that created by code owner
+      SPECIFIC_SHOPS: Specific shops
+    discount-code-details: |-
+      <gold>Code: <yellow>{0}</yellow>
+      Creator: <yellow>{1}</yellow>
+      Applied to: <yellow>{2}</yellow>
+      Remaining usage: <yellow>{3}</yellow>
+      Expired on: <yellow>{4}</yellow>
+      Threshold: <yellow>{5}</yellow>
+      Discount: <yellow>{6}</yellow><br>
+  list:
+    commands:
+      list: <yellow>Listing all shops owned by your or specific player
+    table-prefix: '<yellow><green>{0}</green>''s shops <gray>(Total {1})</gray>: '
+    table-prefix-pageable: '<yellow><green>{0}</green>''s shops <gray>(Page {1}/{2})</gray>: '
+    entry: <yellow><hover:show_text:'<yellow>{1}</yellow><br><gray>{2} {3},{4},{5}</gray><br><aqua>Price <yellow>{6}</yellow> - <light_purple>x{7}</light_purple> <yellow>{8}</yellow><br><green>{9}'>{0}. <aqua>{1}
+  shopitemonly:
+    message: <red>Nem tehetsz nem-bolt tárgyakat a bolt tárolójába, az összes nem-bolt tárgy ki lesz dobva a helyszínen.
+  limited:
+    commands:
+      limit: <yellow>Set a limit that restrict the purchase that player can make in period
+    titles:
+      title: <green>Sikeres vásárlás
+      subtitle: <aqua>You can also purchase <gold>{0}</gold> more in this shop
+    reach-the-limit: <red>You have reached the limit in this shop. You can also purchase <green>{0}</green> items, but you trying purchase <yellow>{1}</yellow> items.
+    success-reset: <green>Reset the restriction of this shop successfully
+    success-remove: <green>Successfully remove the all restriction of this shop
+    success-setup: <green>Restriction settings for this shop were saved successfully
+    trade-limit-reached-cancel-reason: <red>Reached the restriction of this shop
+    remains-limits: '<gold>Your remaining purchase quota in this shop: <yellow>{0}'
+    remains-limits-before-reset-period-note: '<gold>This shop will reset their purchase quota every: <yellow>{0}'
+  dynmap:
+    markerset-title: QuickShop-Hikari Shops
+    marker-name: '{0} @ {2} @ {3} for x{4} @ {5}'
+    marker-description: |
+      Name: {0}
+      Owner: {1}
+      Item: {2}
+      Price: {3} for x{4} item(s)
+      Type: {5}
+      Unlimited: {6}
+      Location: {7}
+  bluemap:
+    markerset-title: QuickShop-Hikari Shops
+    marker-name: '{0} @ {2} @ {3} for x{4} @ {5}'
+    marker-description: |
+      Name: {0}
+      Owner: {1}
+      Item: {2}
+      Price: {3} for x{4} item(s)
+      Type: {5}
+      Unlimited: {6}
+      Location: {7}
+  chestprotect:
+    protection-exists: <red>This region already protected by ChestProtect and you don't have permission to create shops at here.
+    shops-exsts: <red>The region that you want to protect contains other player's shops and you don't have permission to access them.
+  displaycontrol:
+    toggle: |-
+      <green>Successfully toggle your QuickShop display showcasing to <aqua>{0}</aqua>.
+      <yellow>You may need re-join to take effect.
+    toggle-exception: <red>Failed to toggle your display showcase settings due an internal error, please contact server administrator.
+    command:
+      displaycontrol: <yellow>Toggle your QuickShop display showcasing
+  reremake-migrator:
+    commands:
+      migratefromreremake: Migrate QuickShop-Reremake's data to QuickShop-Hikari
+    server-not-empty: "<red>No players are allowed to be online on the server during the conversion progress, please enable server whitelist or maintenance mode."
+    starting-convert-progress: "<gold>Starting the convert progress, <red>DO NOT SHUTDOWN YOUR SERVER!</red>"
+    executing: "<gold>Executing migrate component <aqua>{0}</aqua> <dark_gray>({1}/{2})</dark_gray>..."
+    completed: "<green>Done! Migrate completed, please restart your server and remove QuickShop-Reremake from plugins directory."
+    join_blocking_converting: "<red>[QuickShop-Hikari Migrator] This server is performing a data conversion and you cannot join the server at this time, try again later!"
+    join_blocking_finished: "<red>[QuickShop-Hikari Migrator] This server has just completed a data conversion and is waiting for a reboot to apply the changes, try again later!"
+    failed: "<red>Migration progress exited with error, please check the server console."
+    modules:
+      config:
+        copy-values: "<yellow>Copying values (total {0} entries)..."
+        copying-value: "<gray> - Copying <aqua>{0}</aqua> <dark_gray>({1}/{2})</dark_gray>..."
+        migrate-price-restriction: "<yellow>Migrating price-restriction related settings..."
+        migrate-price-restriction-entry: "<gray> - Migrating <aqua>{0}</aqua> <dark_gray>({1}/{2})</dark_gray>..."
+      shop:
+        start-migrate: "<yellow>Migrating shops (total {0} entries)..."
+        migrate-entry: "<gray> - Migrating <aqua>{0}</aqua> <dark_gray>({1}/{2})</dark_gray>..."
+        unloading-reremake: "<gold>Unloading Reremake to avoid data overwrite..."
+        register-entry: "<gray> - Registering <aqua>{0}</aqua> <dark_gray>({1}/{2})</dark_gray>..."
+        save-entry: "<gray> - Saving <aqua>{0}</aqua> <dark_gray>({1}/{2})</dark_gray>..."
+        saving-shops: "<yellow>Saving <gold>{0}</gold> shops, this may need a while™ (the time based on shops amounts)..."
+        conflict: "<gray> - CONFLICT > Detects a conflict between a Reremake store and an existing Hikari store location, taking a predefined behavior: <dark_gray>{0}</dark_gray>"
+      translation:
+        start-migrate: "<yellow>Migrating translation files...</yellow>"
+        copy-values: "<yellow>Copying values in locale <gold>{0}</gold> (total {1} entries)..."
+        migrate-entry: "<gray> - Migrating <aqua>{0}</aqua> <dark_gray>({1}/{2})</dark_gray>..."
+        copying-value: "<gray> - Copying <aqua>{0}</aqua> <dark_gray>({1}/{2})</dark_gray>..."
+      shop-logs:
+        start-migrate: "<yellow>Migrating shop logs (details in console), please wait...</yellow>"
+        extract-history-files: "<gray>Please wait for us to unzip and append the history logs..."
+        filter-history-files: "<gray>Please wait for us to filter the history log..."
+        filtered-history-files: "<gray>Filtered {0} lines out of queue."
+        import-entry: "<gray> - Migrating <aqua>{0}</aqua> <dark_gray>({1}/{2})</dark_gray>..."
+compat:
+  advancedchests:
+    created: <green>Sikeresen létrehoztál egy boltot az AdvancedChests tárolón!
+    permission-denied: <red>Sajnáljuk! Nincs engedélyed boltot létrehozni egy AdvancedChests tárolón!
+suite:
+  dynmap:
+    title: '{0} - {1} - {2}'
+    description: |-
+      Tárgy: {0}
+      Tulajdonos: {1}
+      Típus: {2} {3}
+      Ár: {4}
+      Helyszín: {5} {6}, {7}, {8}
+      Hely: {9}
+      Készlet: {10}
+  limited:
+    command-description: <yellow>Állíts be egy korlátot, amely korlátozza a játékos által vásárolható mennyiséget egy időszakban.
+    reach-the-quota-limit: <red>Elérted a vásárlási kvótát ebben a boltban ({0}/{1}).
+    quota-reset-countdown: <yellow>A kvóta ebben a boltban visszaáll {0} múlva.
+    quota-reset-player-successfully: <green>Sikeresen visszaállítottad a játékos {0} kvótáját ebben a boltban.
+    quota-reset-everybody-successfully: <green>Sikeresen visszaállítottad mindenki kvótáját ebben a boltban.
+    quota-setup: <green>A vásárlási korlátozás mostantól érvényes erre a boltra!
+    quota-remove: <green>A vásárlási korlátozás mostantól eltávolítva ebből a boltból!
+    subtitles:
+      title: <green>Sikeres vásárlás
+      subtitle: <aqua>Még vásárolhatsz <yellow>{0}</yellow> többet ebben a boltban
+  list:
+    command-description: <yellow>Felsorolja az összes boltot, amelyek a tiéd vagy egy adott játékosé.
+    table-prefix: <yellow>Összesen <aqua>{0}</aqua> boltod van ezen a szerveren.
+    entry-syntax: <aqua>- <yellow>{0}
+    entry-syntax-fallback-name: '<yellow>Tárgy:{0} X:{1}, Y:{2}, Z:{3}, Világ: {4}'
+    hover-text: |-
+      <yellow>{0}
+      <gray>{1} {2}, {3}, {4}
+      <aqua>{5} - <yellow>{6}
+      {7} tárgyak minden stackben.
+  shopitemonly:
+    message: <red>Nem tehetsz nem-bolt tárgyakat a bolt tárolójába, az összes nem-bolt tárgy ki lesz dobva a helyszínen.
+compatibility:
+  elitemobs:
+    soulbound-disallowed: Nem kereskedhetsz olyan tárggyal, amelyen az EliteMobs Soulbound varázslat van.
+internet-paste-forbidden-privacy-reason: "<red>Sikertelen! A személyes beállításaid alapján a QuickShop-Hikari nem töltheti fel a paste-t az internetre, kapcsold be a DIAGNOSTIC engedélyt a privacy beállításokban a config.yml fájlban, vagy használd a <aqua>/quickshop paste --file</aqua> parancsot."
+no-sign-type-given: "<red>Meg kell adnod egy tábla anyagot, az ezen a szerveren elérhető tábla anyagok: {0}"
+sign-type-invalid: "<red>A típus <yellow>{0}</yellow> nem érvényes tábla anyag."
+delete-controlpanel-button-confirm: "<red>Biztosan el akarod távolítani ezt a boltot? Kattints a <bold>[Remove Shop]</bold> gombra újra {0} másodpercen belül a megerősítéshez."
+cannot-suggest-price: "<red>Sajnáljuk, jelenleg nincs elegendő adat ahhoz, hogy javasolt árat generáljunk, mivel nem sokan kereskednek ugyanazzal a tárggyal, mint te."
+price-suggest: "<green>Az adatok alapján <aqua>{0}</aqua> boltból, a legmagasabb árú bolt ára <light_purple>{1}</light_purple>, a legalacsonyabb árú bolt ára <light_purple>{2}</light_purple>, az átlagár <light_purple>{3}</light_purple>, és a medián ár <light_purple>{4}</light_purple>. <newline><yellow>Ajánlott, hogy az áradat körülbelül <gold>{5}</gold> körül állítsd be.</yellow>"
+suggest-wait: "<green>Kérlek várj... Ajánlott ár kiszámítása."
+history:
+  shop:
+    gui-title: "Vásárlási előzmények megtekintése"
+    header-icon-multiple-shop: "<white>Az eredmény {0} bolt átlapozásával</white>"
+    header-icon-description:
+      - "<white>Típus: <yellow>{0}</yellow></white>"
+      - "<white>Tulajdonos: <yellow>{1}</yellow></white>"
+      - "<white>Tárgy: <yellow>{2}</yellow></white>"
+      - "<white>Ár: <yellow>{3} <aqua>x{4}</aqua></yellow></white>"
+      - "<white>Helyszín: <yellow>{5}</yellow></white>"
+    log-icon-title: "<reset><green>Idő: {0}</green>"
+    log-icon-description:
+      - "<white>Vásárló: <yellow>{0}</yellow></white>"
+      - "<white>Tárgy: <yellow>{1} <aqua>x{2}</aqua></yellow></white>"
+      - "<white>Egyenleg: <yellow>{3}</yellow></white>"
+      - "<white>Adó: <yellow>{4}</yellow></white>"
+    log-icon-description-with-store-name:
+      - "<white>Üzlet: <yellow>{0}</yellow></white>"
+      - "<white>Vásárló: <yellow>{1}</yellow></white>"
+      - "<white>Tárgy: <yellow>{2} <aqua>x{3}</aqua></yellow></white>"
+      - "<white>Egyenleg: <yellow>{4}</yellow></white>"
+      - "<white>Adó: <yellow>{5}</yellow></white>"
+    query-icon: "<gray>Kérlek várj, lekérdezés...</gray>"
+    previous-page: "<white><< Előző oldal</white>"
+    next-page: "<white>Következő oldal >></white>"
+    current-page: "<white>Oldal {0}</white>"
+    summary-icon-title: "<green>Bolt összefoglaló"
+    recent-purchases: "<white>Legutóbbi <aqua>{0}</aqua> vásárlások: <yellow>{1}</yellow></white>"
+    recent-purchase-balance: "<white>Legutóbbi <aqua>{0}</aqua> forgalom: <yellow>{1}</yellow></white>"
+    total-purchases: "<white>Összes vásárlás: <yellow>{0}</yellow></white>"
+    total-balances: "<white>Összes forgalom: <yellow>{0}</yellow></white>"
+    total-unique-purchasers: "<white>Összes egyedi vásárló: <yellow>{0}</yellow></white>"
+    top-n-valuable-customers-title: "<gold>Top {0} értékes vásárlók</gold>"
+    top-n-valuable-customers-entry: "<white>- <yellow>{0}</yellow> <aqua>{1}</aqua></white>"
+    no-result: "<white>Nincs eredmény</white>"
+about:
+  text:
+    - "<b><aqua>QuickShop <yellow>{0}</yellow></aqua></b>"
+    - "<aqua>Verzió <yellow>>></yellow> <green>{1}</green></aqua>"
+    - "<aqua>Kiadás <yellow>>></yellow> <green>{2}</green></aqua>"
+    - "<aqua>Fejlesztők <yellow>>></yellow> <color:#218bff><hover:show_text:'<yellow>Kattints a közreműködők megtekintéséhez'><click:open_url:'https://github.com/Ghost-chu/QuickShop-Hikari/graphs/contributors'>[Közreműködők megtekintése a GitHubon]</click></hover></color></aqua>"
+    - "<aqua>Fordítási tagok <gold>({4})</gold>: <yellow>>></yellow> <green>{5}</green></aqua>"
+    - "  <yellow>+ <color:#43A047><hover:show_text:'<yellow>Kattints a Crowdin fordítási oldal megnyitásához'><click:open_url:'https://crowdin.com/project/quickshop-hikari'>[Segíts a fordításban a Crowdinen]</click></hover></color></yellow>"
+    - "<aqua>Adománykulcs <yellow>>></yellow> <green>{6}</green></aqua>"
+    - "<gold>Közösség által működtetve</gold> <red>Készítve szeretettel ❤</red>"
+  valid-donation-key: "<color:#00AFF1>Hozzá van kötve <color:#F9C23C>{0}</color></color>"
+  invalid-donation-key: "<gray>Érvénytelen adománykulcs</gra>"
+  kofi-thanks: "<gold>Külön köszönet azoknak, akik támogatják a QuickShop-ot a Ko-fi-n :)</gold>"
+history-command-leave-blank: "<Hagyd üresen az üzlet megtekintéséhez>"
+shop-information-not-shown-due-an-internal-error: "<red>Belső hiba történt. Az üzlet információs panelje hiányosan jelenhet meg, kérlek lépj kapcsolatba a szerver adminisztrátorával."

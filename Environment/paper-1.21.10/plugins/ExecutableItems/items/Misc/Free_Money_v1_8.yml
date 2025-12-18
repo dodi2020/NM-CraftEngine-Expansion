@@ -1,0 +1,121 @@
+name: '&6$ &e&l5000 &6$'
+lore:
+- '&8&m-----------------------'
+- '&7'
+- '&6➤ &e&oClick + sneak to execute me !'
+- '&7'
+- '&7&oInfo:'
+- '&6» &eReceive 5000$'
+- '&7'
+- '&8&m-----------------------'
+material: RABBIT_FOOT
+glow: false
+disableStack: false
+keepItemOnDeath: false
+canBeUsedOnlyByTheOwner: false
+storeItemInfo: false
+unbreakable: false
+usage: 1
+usageLimit: -1
+cancelEventIfNoPerm: false
+cancelEventIfNotOwner: false
+disabledWorlds: []
+recognitions: []
+config_5: true
+onlyOwnerBlackListedActivators: []
+isDurabilityBasedOnUsage: false
+customModelData: 1
+config_update: true
+dropFeatures:
+  glowDrop: false
+  glowDropColor: WHITE
+  displayNameDrop: false
+hiders:
+  hideEnchantments: false
+  hideUnbreakable: false
+  hideAttributes: false
+  hidePotionEffects: false
+  hideUsage: true
+  hideDestroys: false
+  hidePlacedOn: false
+  hideDye: false
+  hideArmorTrim: false
+enchantments: {}
+giveFirstJoinFeatures:
+  giveFirstJoin: false
+  giveFirstJoinAmount: 1
+  giveFirstJoinSlot: 0
+restrictions:
+  cancel-item-place: true
+  cancel-item-craft: true
+  cancel-item-drop: true
+variables: {}
+displayConditions:
+  playerConditions: {}
+  worldConditions: {}
+  itemConditions: {}
+  placeholdersConditions: {}
+  enableFeature: false
+foodFeatures:
+  nutrition: 0
+  saturation: 0
+  isMeat: false
+  canAlwaysEat: false
+  eatSeconds: 0
+attributes: {}
+activators:
+  activator1:
+    name: '&eActivator'
+    option: PLAYER_ALL_CLICK
+    typeTarget: NO_TYPE_TARGET
+    usageModification: -1
+    cancelEvent: false
+    noActivatorRunIfTheEventIsCancelled: false
+    silenceOutput: true
+    autoUpdateItem: false
+    updateName: true
+    updateLore: true
+    updateDurability: false
+    updateAttributes: false
+    updateEnchants: false
+    updateCustomModelData: false
+    cooldownFeatures:
+      cooldown: 3
+      isCooldownInTicks: false
+      cooldownMsg: '&cYou are in cooldown ! &7(&e%time_H%&6H &e%time_M%&6M &e%time_S%&6S&7)'
+      displayCooldownMessage: true
+      cancelEventIfInCooldown: false
+      pauseWhenOffline: false
+      pausePlaceholdersConditions: {}
+    globalCooldownFeatures:
+      cooldown: 0
+      isCooldownInTicks: false
+      cooldownMsg: '&cYou are in cooldown ! &7(&e%time_H%&6H &e%time_M%&6M &e%time_S%&6S&7)'
+      displayCooldownMessage: true
+      cancelEventIfInCooldown: false
+      pauseWhenOffline: false
+      pausePlaceholdersConditions: {}
+    otherEICooldowns: {}
+    requiredItems: {}
+    requiredExecutableItems: {}
+    requiredMagics: {}
+    detailedSlots:
+    - -1
+    - 40
+    playerCommands:
+    - 'LOOP START: 5'
+    - execute at %player% run playsound minecraft:entity.experience_orb.pickup master @a
+    - PARTICLE DRAGON_BREATH 500 3 0.2
+    - DELAYTICK 1
+    - LOOP END
+    - eco give %player% 5000
+    - SENDMESSAGE §a§l[ExecutableItems] §e%player% you have receive §a5000$
+    - execute at %player% run playsound minecraft:item.armor.equip_leather master @a
+    playerConditions:
+      ifSneaking: true
+      ifSneakingMsg: "&4[INVALID CONDITION] &cYou must sneak to redeem the &65000$ &c!"
+    worldConditions: {}
+    itemConditions: {}
+    customConditions: {}
+    placeholdersConditions: {}
+    variablesModification: {}

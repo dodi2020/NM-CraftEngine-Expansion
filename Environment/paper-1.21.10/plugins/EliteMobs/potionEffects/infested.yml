@@ -1,0 +1,4 @@
+isEnabled: true
+name: Infested
+onHitDuration: 3600
+value: 10.0

@@ -1,0 +1,6 @@
+isEnabled: true
+entityType: ENDER_DRAGON
+name: '&fLvl &2$level &fElite &5Ender Dragon'
+deathMessages:
+- $entity &chas ended $player!
+baseDamageV2: 7.0

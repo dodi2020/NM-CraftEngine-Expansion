@@ -1,0 +1,12 @@
+isEnabled: true
+entityType: ZOMBIE
+name: $normalLevel Mr. Oinkers Fan
+level: '16'
+healthMultiplier: 0.75
+damageMultiplier: 0.5
+powers:
+- corpse.yml
+followDistance: 60
+onSpawnBlockStates: []
+onRemoveBlockStates: []
+bossType: NORMAL

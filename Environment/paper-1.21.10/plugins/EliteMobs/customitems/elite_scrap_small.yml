@@ -1,0 +1,12 @@
+isEnabled: true
+material: GREEN_DYE
+name: '&9Small Elite Scrap'
+lore:
+- '&fUsed to repair Elite items!'
+- '&fRepairs a medium amount!'
+enchantments:
+- repair,2
+potionEffects: []
+scalability: FIXED
+itemType: UNIQUE
+soulbound: false

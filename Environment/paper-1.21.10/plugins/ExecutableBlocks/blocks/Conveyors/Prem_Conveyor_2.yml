@@ -1,0 +1,40 @@
+creationType: BASIC_CREATION
+name: '&eConveyor'
+lore:
+- '&b&oBlock that allows you to move items from one place to another.'
+material: DROPPER
+usage: -1
+cancelGravity: false
+onlyBreakableWithEI: []
+dropBlockIfItIsBroken: true
+dropBlockWhenItExplodes: true
+dropBlockWhenItBurns: true
+resetInternalDatasWhenBroken: false
+canBeMoved: true
+config_3: true
+config_update: true
+titleFeatures:
+  activeTitle: false
+  title: []
+  titleAdjustment: 0.5
+dropType: ON_THE_GROUND
+activators:
+  activator0:
+    name: '&eActivator'
+    option: LOOP
+    usageModification: 0
+    cancelEvent: false
+    silenceOutput: false
+    requiredItems: {}
+    requiredExecutableItems: {}
+    blockCommands:
+    - MOVE
+    blockConditions: {}
+    worldConditions: {}
+    placeholdersConditions: {}
+    variablesModification: {}
+    delay: 5
+    delayInTick: true
+    ownerCommands: []
+    ownerConditions: {}
+variables: {}

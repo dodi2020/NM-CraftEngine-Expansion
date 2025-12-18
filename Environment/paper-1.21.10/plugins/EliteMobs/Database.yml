@@ -1,0 +1,14 @@
+# Sets whether MySQL will be used. By default EliteMobs uses SQLite. If you wish to use MySQL you will need a valid MySQL configuration.
+useMySQL: false
+# The host of your MySQL database
+mysqlHost: localhost
+# The port of your MySQL database
+mysqlPort: '3306'
+# The name of the database
+mysqlDatabaseName: elitemobs
+# The username for MySQl
+mysqlUsername: your_username_mysql_here
+# The password for your MysSQL database
+mysqlPassword: your_mysql_password_here
+# Whether to use SSL
+useSSL: true

@@ -1,0 +1,6 @@
+type: yml
+info:
+  host: localhost
+  database: betterhud
+  name: root
+  password: write your password here!

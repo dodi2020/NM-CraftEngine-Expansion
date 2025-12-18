@@ -1,0 +1,66 @@
+name: "<gradient:#50c878:#98fb98><bold>Emerald Executioner</bold></gradient>"
+lore:
+  - "<dark_green><italic>Once wielded by druids who judged both beast and man.</italic></dark_green>"
+  - "<green><italic>Its edge gleams not with steel, but justice drawn from the earth.</italic></green>"
+  - ""
+  - "<gold>▶ <bold>Right-click</bold> to suspend foes and strike with judgment</gold>"
+  - "<gray>• Levitates nearby enemies briefly before a crushing slam</gray>"
+  - "<gray>• Unleashes waves of <green>emerald energy</green> in every direction</gray>"
+  - ""
+  - "<dark_gray><italic>“Nature remembers. Nature punishes.”</italic></dark_gray>"
+material: STICK
+config_5: true
+config_update: true
+itemModel: ei:emerald_greatcleaver
+hiders:
+  hideUsage: true
+activators:
+  activator0:
+    option: PLAYER_RIGHT_CLICK
+    typeTarget: NO_TYPE_TARGET
+    detailedSlots:
+      - -1
+    playerCommands:
+      - >
+        MOB_AROUND distance:6 displayMsgIfNoEntity:false throughBlocks:true safeDistance:0
+        effect give %around_target_uuid% minecraft:levitation 2 5 
+        <+> execute at %around_target_uuid% run playsound minecraft:entity.wind_charge.wind_burst master @a ~ ~ ~ 5 0.1
+        <+> DELAYTICK 10 
+        <+> execute at %around_target_uuid% run playsound minecraft:entity.wind_charge.wind_burst master @a ~ ~ ~ 5 0.1
+        <+> DELAYTICK 10
+        <+> execute at %around_target_uuid% run playsound minecraft:entity.wind_charge.wind_burst master @a ~ ~ ~ 5 0.1
+        <+> DELAYTICK 10
+        <+> execute at %around_target_uuid% run playsound minecraft:entity.wind_charge.wind_burst master @a ~ ~ ~ 5 0.1
+        <+> DELAYTICK 3
+        <+> execute at %around_target_uuid% run playsound minecraft:block.bell.use master @a
+        <+> DELAYTICK 2
+        <+> execute at %around_target_uuid% run playsound minecraft:block.bell.use master @a
+        <+> DELAYTICK 2
+        <+> execute at %around_target_uuid% run playsound minecraft:block.bell.use master @a
+        <+> DELAYTICK 2
+        <+> FRONTDASH 0 -5 
+        <+> DELAYTICK 5 
+        <+> DAMAGE 10
+      - score particles shape:circle target:%player_uuid% color:DARK_GREEN,GREEN radius:4
+        density:100 time:20 drawMode:clockwise fillMode:disk directionPitch:-90
+        offsetY:-1
+      - FOR [+20,-20,+40,-40,+60,-60,+80,-80,+100,-100] > for1
+      - score particles shape:square location:%player_world_initial%,%player_x_initial%,%player_y_initial%,%player_z_initial%
+        color:WHITE,GREEN height:1.2 length:10 time:40 density:4 offsetPitch:0
+        offsetYaw:%player_yaw_initial%%for1% directionYaw:%player_yaw_initial%%for1%
+        directionPitch:-45 verticalOrder:up horizontalOrder:near offsetDistance:3 drawMode:vertical
+      - END_FOR for1
+      - DELAYTICK 40
+      - FOR [+20,-20,+40,-40,+60,-60,+80,-80,+100,-100] > for2
+      - score particles shape:square location:%player_world_initial%,%player_x_initial%,%player_y_initial%,%player_z_initial%
+        color:WHITE,GREEN height:7 length:1 time:10 density:4 offsetPitch:0
+        offsetYaw:%player_yaw_initial%%for2% directionYaw:%player_yaw_initial%%for2%
+        verticalOrder:down horizontalOrder:near offsetDistance:8
+      - END_FOR for2
+      - DELAYTICK 10
+      - FOR [+20,-20,+40,-40,+60,-60,+80,-80,+100,-100] > for3
+      - score particles shape:circle location:%player_world_initial%,%player_x_initial%,%player_y_initial%,%player_z_initial%
+        color:GREEN,WHITE radius:3 density:100 timeToDisplay:10 drawMode:clockwise offsetDistance:8
+        offsetPitch:0 offsetYaw:%player_yaw_initial%%for3%  directionYaw:%player_yaw_initial%%for3%
+        fillMode:disk directionPitch:-90 offsetY:-1
+      - END_FOR for3

@@ -1,0 +1,27 @@
+name: '&3✦ &bTest &3✦'
+lore:
+- 'Test block for playerjump'
+material: EMERALD_BLOCK
+activators:
+  #activator1:
+   # activator: PLAYER_WALK_ON
+    #displayName: '&ean activator'
+   # commands:
+    #- "SENDMESSAGE &6Activator: &ePLAYER_WALK_ON"
+  activator2:
+    activator: PLAYER_JUMP_ON
+    displayName: '&ean activator'
+    ownerCommands:
+    - "SENDMESSAGE &6Hey the player: &e%player% &6JUMP on one of your block"
+    playerCommands:
+    - "SENDMESSAGE &6Activator: &ePLAYER_JUMP_ON"
+    - "JUMP 6"
+    globalPlayerCooldown: 0
+    displayGlobalPlayerCooldownMsg: true
+    inTickGlobalPlayerCooldown: false
+    cancelEventIfInGlobalPlayerCooldown: false
+    perPlayerCooldown: 10
+    inTickPerPlayerCooldown: false
+    displayPerPlayerCooldownMsg: true
+    perPlayerCooldownMsg: "&6Hey &e%player% &6you are in cooldown &e(&a%time% secs&e)"
+    cancelEventIfInPerPlayerCooldown: false

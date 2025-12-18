@@ -1,0 +1,41 @@
+name: "<gradient:#d8d8d8:#ffffff><bold>Lycanbane</bold></gradient>"
+lore:
+  - "<gray><italic>A sacred relic passed down by moonlit orders.</italic></gray>"
+  - "<white><italic>It rings twice for the doomed—once to warn, once to end.</italic></white>"
+  - ""
+  - "<gold>▶ <bold>Left-click</bold> to unleash twin silver strikes</gold>"
+  - "<gray>• Dashes forward in two silver-lined cuts</gray>"
+  - "<gray>• Each impact tolls with <silver>purifying resonance</silver></gray>"
+  - ""
+  - "<dark_gray><italic>“Even the night fears the sound it makes.”</italic></dark_gray>"
+material: STICK
+config_5: true
+config_update: true
+itemModel: ei:lycanbane
+hiders:
+  hideUsage: true
+activators:
+  activator0:
+    option: PLAYER_LEFT_CLICK
+    typeTarget: NO_TYPE_TARGET
+    detailedSlots:
+    - -1
+    playerCommands:
+    - score particles shape:square location:%player_world_initial%,%player_x_initial%,%player_y_initial%,%player_z_initial%
+      color:SILVER height:0 width:3 length:15 time:5 density:5 directionYaw:%player_yaw_initial%
+      directionPitch:%player_pitch_initial% verticalOrder:up horizontalOrder:near
+      offsetY:1 offsetYaw:%player_yaw_initial% offsetPitch:%player_pitch_initial%
+      offsetDistance:2.5
+    - execute at %player% run playsound minecraft:block.bell.use master @a
+    - HITSCAN_ENTITIES range:15 radius:2 pitch:0 yaw:0 leftRightShift:0 yShift:0 throughBlocks:true
+      throughEntities:true DAMAGE 5 <+> DASH pitch:%player_pitch% yaw:%player_yaw%
+      power:2
+    - DELAYTICK 5
+    - score particles shape:square location:%player_world%,%player_x%,%player_y%,%player_z%
+      color:SILVER height:3 width:0 length:15 time:5 density:5 directionYaw:%player_yaw%
+      directionPitch:%player_pitch% verticalOrder:up horizontalOrder:near offsetYaw:%player_yaw%
+      offsetPitch:%player_pitch% offsetDistance:2.5
+    - execute at %player% run playsound minecraft:block.bell.use master @a
+    - HITSCAN_ENTITIES range:15 radius:2 pitch:0 yaw:0 leftRightShift:0 yShift:0 throughBlocks:true
+      throughEntities:true DAMAGE 5 <+> DASH pitch:%player_pitch% yaw:%player_yaw%
+      power:2

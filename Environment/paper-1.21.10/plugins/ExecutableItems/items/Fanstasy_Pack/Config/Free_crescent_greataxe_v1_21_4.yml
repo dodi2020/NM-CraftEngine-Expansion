@@ -1,0 +1,42 @@
+name: "<gradient:#7fffd4:#00ff7f><bold>Crescent Vanguard</bold></gradient>"
+lore:
+  - "<gray><italic>Forged under a twin moon eclipse,</italic></gray>"
+  - "<gray><italic>this staff channels the call of ancient guardians.</italic></gray>"
+  - ""
+  - "<green>▶ <bold>Right-click</bold> to conjure a ring of iron defenders</green>"
+  - "<white>▶ <italic>Watch the sky swirl with celestial force...</italic></white>"
+  - ""
+  - "<dark_gray><italic>‘Let none breach the circle of the crescent.’</italic></dark_gray>"
+material: STICK
+config_5: true
+config_update: true
+itemModel: ei:crescent_greataxe
+hiders:
+  hideUsage: true
+activators:
+  activator0:
+    option: PLAYER_RIGHT_CLICK
+    typeTarget: NO_TYPE_TARGET
+    detailedSlots:
+      - -1
+    playerCommands:
+      - FOR [+20,-20] > for3
+      - score particles shape:cylinder location:%player_world_initial%,%player_x_initial%,%player_y_initial%,%player_z_initial%
+        color:GREEN,WHITE radius:1 density:100 time:5 drawMode:clockwise offsetDistance:8
+        offsetPitch:0 offsetYaw:%player_yaw_initial%%for3%  directionYaw:%player_yaw_initial%%for3%
+        directionPitch:-90 offsetY:-1 height:3
+      - END_FOR for3
+      - execute at %player_uuid% run playsound minecraft:block.note_block.iron_xylophone  master @a ~ ~ ~ 5 0.6
+      - DELAYTICK 2
+      - execute at %player_uuid% run playsound minecraft:block.note_block.iron_xylophone  master @a ~ ~ ~ 5 0.8
+      - DELAYTICK 2
+      - execute at %player_uuid% run playsound minecraft:block.note_block.iron_xylophone  master @a ~ ~ ~ 5 1.1
+      - DELAYTICK 1
+      - execute at %player_uuid% run playsound minecraft:block.note_block.iron_xylophone  master @a ~ ~ ~ 5 1.6
+      - FOR [+20,-20] > for4
+      - SPAWN_ENTITY entity:IRON_GOLEM offsetPitch:0 offsetYaw:%player_yaw_initial%%for4%
+        offsetDistance:8 x:%player_x_initial% y:%player_y_initial% z:%player_z_initial%
+        world:%player_world_initial%
+      - END_FOR for4
+      - DELAYTICK 2
+      - execute at %player_uuid% run playsound minecraft:entity.iron_golem.repair master @a ~ ~ ~

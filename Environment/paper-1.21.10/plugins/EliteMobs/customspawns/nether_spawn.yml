@@ -1,0 +1,7 @@
+isEnabled: true
+validWorlds: []
+validWorldEnvironments:
+- NETHER
+validBiomesV2: []
+canSpawnInLight: true
+isUndergroundSpawn: true

@@ -1,0 +1,36 @@
+isEnabled: true
+entityType: VINDICATOR
+name: $eventBossLevel &6Beast Master
+level: dynamic
+isPersistent: true
+healthMultiplier: 4.0
+damageMultiplier: 1.25
+deathMessages:
+- '&e&l---------------------------------------------'
+- '&eThe Beast Master has been savaged!'
+- '&c&l    1st Damager: $damager1name &cwith $damager1damage damage!'
+- '&6&l    2nd Damager: $damager2name &6with $damager2damage damage!'
+- '&e&l    3rd Damager: $damager3name &ewith $damager3damage damage!'
+- '&aSlayers: $players'
+- '&e&l---------------------------------------------'
+uniqueLootList:
+- summon_wolf_scroll.yml:1
+powers:
+- attack_poison.yml
+- ground_pound.yml
+- bonus_loot.yml
+- summonType: ON_HIT
+  inheritAggro: true
+  filename: wild_wolf.yml
+  chance: 0.2
+  inheritLevel: true
+  spawnNearby: true
+locationMessage: '&cBeast Master: $distance blocks away!'
+spawnMessage: '&cThe Beast Master has been sighted!'
+deathMessage: '&aThe Best Master has been slain by $players!'
+escapeMessage: '&4The Beast Master has returned to the wilds!'
+announcementPriority: 2
+followDistance: 100
+onSpawnBlockStates: []
+onRemoveBlockStates: []
+bossType: NORMAL

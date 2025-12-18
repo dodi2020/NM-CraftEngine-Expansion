@@ -1,0 +1,85 @@
+name: '&5֍ &d&lEPICSNOWBALL &5֍'
+lore:
+- '&8&m---------------------------'
+- '&7'
+- '&5➤ &d&oTarget a player and CLICKKKK !'
+- '&7'
+- '&7&oInfo:'
+- '&5» &dSlow your enemy during 15 sec'
+- '&7'
+- '&8&m---------------------------'
+material: SNOWBALL
+glow: true
+disableStack: false
+keepItemOnDeath: false
+canBeUsedOnlyByTheOwner: false
+storeItemInfo: false
+unbreakable: false
+usage: 0
+usageLimit: -1
+cancelEventIfNoPerm: false
+cancelEventIfNotOwner: false
+disabledWorlds: []
+recognitions: []
+config_5: true
+config_update: true
+dropFeatures:
+  glowDrop: false
+  glowDropColor: WHITE
+  displayNameDrop: false
+hiders:
+  hideEnchantments: false
+  hideUnbreakable: false
+  hideAttributes: false
+  hidePotionEffects: false
+  hideUsage: false
+enchantments: {}
+giveFirstJoinFeatures:
+  giveFirstJoin: false
+  giveFirstJoinAmount: 1
+  giveFirstJoinSlot: 0
+restrictions:
+  cancel-item-craft: true
+  cancel-item-place: true
+  cancel-item-drop: true
+variables: {}
+attributes: {}
+activators:
+  activator1:
+    name: '&eActivator'
+    option: PROJECTILE_HIT_PLAYER
+    usageModification: -1
+    cancelEvent: false
+    silenceOutput: false
+    autoUpdateItem: false
+    cooldownFeatures:
+      cooldown: 0
+      isCooldownInTicks: false
+      cooldownMsg: '&cYou are in cooldown ! &7(&e%time_H%&6H &e%time_M%&6M &e%time_S%&6S&7)'
+      displayCooldownMessage: true
+      cancelEventIfInCooldown: false
+    globalCooldownFeatures:
+      cooldown: 0
+      isCooldownInTicks: false
+      cooldownMsg: '&cYou are in cooldown ! &7(&e%time_H%&6H &e%time_M%&6M &e%time_S%&6S&7)'
+      displayCooldownMessage: true
+      cancelEventIfInCooldown: false
+    otherEICooldowns: {}
+    requiredItems: {}
+    requiredExecutableItems: {}
+    detailedSlots: []
+    playerCommands:
+    - DELAY 15
+    - SENDMESSAGE §cThe player §6%target% §cis no longer slowed
+    playerConditions: {}
+    worldConditions: {}
+    itemConditions: {}
+    customConditions: {}
+    placeholdersConditions: {}
+    mustBeAProjectileLaunchWithTheSameEI: true
+    targetCommands:
+    - SENDMESSAGE §5֍ §dYou are slow during 15 seconds !
+    - effect give %target% minecraft:slowness 15 3
+    - execute at %target% run particle crit ~ ~ ~ .5 .5 .5 0 20
+    targetConditions: {}
+    variablesModification: {}

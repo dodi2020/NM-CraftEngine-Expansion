@@ -1,0 +1,20 @@
+fooder:
+  itemname: fooder
+  material: PAPER
+  Components:
+    consumable:
+      sound: minecraft:entity.generic.eat
+      consume_particles: true
+      animation: EAT
+      consume_duration: 1.6s
+    food:
+      nutrition: 10
+      saturation: 10
+      can_always_eat: false
+    max_stack_size: 6969
+    equippable:
+      slot: HEAD
+  Pack:
+    texture: top-secret-nxm:item/food/fooder
+    parent_model: top-secret-nxm:item/food/fooder
+    custom_model_data: 1002
