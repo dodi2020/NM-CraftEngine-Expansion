@@ -6,6 +6,6 @@ module.exports = (nm) => {
     'create_tool': ['craftengine'],
     'create_food': ['craftengine'],
     'create_item': ['craftengine'],
-    'create_furniture': ['craftengine']
+    'create_furniture': ['craftengine'],
   }, { merge: true });
 };

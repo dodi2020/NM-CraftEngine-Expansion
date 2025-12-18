@@ -1,6 +1,8 @@
 module.exports = async (nm, api) => {
 
   const strengthicon = await api.nexomaker.loadAsset(__dirname + "/../assets/strength.png");
+  const componenticon = await api.nexomaker.loadAsset(__dirname + "/../assets/component.png");
+  const enchantmenticon = await api.nexomaker.loadAsset(__dirname + "/../assets/enchantment.png");
 
   // Data Components - Simple Value Components
   api.nexomaker.postEditorModule({
@@ -58,9 +60,14 @@ module.exports = async (nm, api) => {
     display: "Enchantment",
     plugins: ["craftengine"],
     compatibility: ["item", "tool", "weapon", "armor"],
-    description: "Enchantment data for the item",
-    type: "text",
+    description: "Enchantment data for the item. Click the button in the sidebar for a visual builder, then paste the generated YAML here.",
+    icon: enchantmenticon,
+    type: "loot",
     default: "",
+    placeholder: "Click the button in the sidebar for a visual builder, or paste YAML here.\n\nExample:\n- enchantment: sharpness\n  level: 5\n- enchantment: unbreaking\n  level: 3",
+    rows: 8,
+    resize: "vertical",
+    maxLength: 10000
   });
 
   api.nexomaker.postEditorModule({
@@ -88,11 +95,11 @@ module.exports = async (nm, api) => {
     display: "Attribute Modifiers",
     plugins: ["craftengine"],
     compatibility: ["item", "tool", "weapon", "armor"],
-    description: "Attribute modifiers for the item. Click the strength icon (⚡) in the sidebar to open the visual builder, or paste YAML directly here.",
+    description: "Attribute modifiers for the item. Click the button in the sidebar for a visual builder, then paste the generated YAML here.",
     icon: strengthicon,
     type: "loot",
     default: "",
-    placeholder: "Click the strength icon in sidebar for visual builder, or paste YAML here\n\nExample:\n- type: attack_damage\n  amount: 5.0\n  operation: add_value\n  slot: mainhand",
+    placeholder: "Click the button in the sidebar for a visual builder, then paste the generated YAML here.",
     rows: 8,
     resize: "vertical",
     maxLength: 10000
@@ -763,26 +770,9 @@ module.exports = async (nm, api) => {
     default: false,
   });
 
-  // Armor-specific modules
-  api.nexomaker.postEditorModule({
-    name: "craftengine_defense",
-    display: "Defense",
-    plugins: ["craftengine"],
-    compatibility: ["armor"],
-    description: "Armor defense value (minecraft:generic.armor)",
-    type: "number",
-    default: null,
-  });
-
-  api.nexomaker.postEditorModule({
-    name: "craftengine_toughness",
-    display: "Toughness",
-    plugins: ["craftengine"],
-    compatibility: ["armor"],
-    description: "Armor toughness value (minecraft:generic.armor_toughness)",
-    type: "number",
-    default: null,
-  });
+  // REMOVED: Armor-specific attribute modules - Use AttributeBuilder instead
+  // craftengine_defense - Replaced by AttributeBuilder (attribute: armor, slot: head/chest/legs/feet)
+  // craftengine_toughness - Replaced by AttributeBuilder (attribute: armor_toughness, slot: head/chest/legs/feet)
 
   api.nexomaker.postEditorModule({
     name: "craftengine_fireResistant",
@@ -834,9 +824,11 @@ module.exports = async (nm, api) => {
     display: "Custom Components (1.20.5+)",
     plugins: ["craftengine"],
     compatibility: ["item", "tool", "weapon", "armor", "food", "block"],
-    description: "Custom Minecraft components in YAML format (advanced users)",
+    description: "Custom Minecraft components in YAML format. Click the button in the sidebar for a visual builder, then paste the generated YAML here.",
+    icon: componenticon,
     type: "loot",
     default: "",
+    placeholder: "Click the button in the sidebar for a visual builder, then paste the generated YAML here.",
   });
 
   api.nexomaker.postEditorModule({
@@ -911,6 +903,16 @@ module.exports = async (nm, api) => {
     default: "",
   });
 
+  api.nexomaker.postEditorModule({
+    name: "craftengine_canAlwaysEat",
+    display: "Can Always Eat",
+    plugins: ["craftengine"],
+    compatibility: ["item", "food"],
+    description: "Toggle if the food can always be eaten regardless of hunger",
+    type: "checkbox",
+    default: "false",
+  });
+
   // Enable basic built-in modules for CraftEngine format (for learning)
   // Uncomment more modules as needed
   api.console.log("?? [CraftEngine] Applying basic module overrides...");
@@ -922,7 +924,6 @@ module.exports = async (nm, api) => {
     // Essential item modules  
     'customModelData': { plugins: ['nexo', 'itemsadder', 'craftengine'] },
     'baseMaterial': { plugins: ['nexo', 'itemsadder', 'craftengine'] },
-    'lore': { plugins: ['nexo', 'itemsadder', 'craftengine'] },
     
     // Item modules
     'displayTransform': { plugins: ['nexo', 'itemsadder', 'craftengine'] },
@@ -936,19 +937,12 @@ module.exports = async (nm, api) => {
     'recipe': { plugins: ['nexo', 'itemsadder', 'craftengine'] },
     'disableEnchanting': { plugins: ['nexo', 'itemsadder', 'craftengine'] },
     'enchantmentGlintOverride': { plugins: ['nexo', 'itemsadder', 'craftengine'] },
-    'equippable': { plugins: ['nexo', 'itemsadder', 'craftengine'] },
-    'gravity': { plugins: ['nexo', 'itemsadder', 'craftengine'] },
-    'jumpStrength': { plugins: ['nexo', 'itemsadder', 'craftengine'] },
-    'knockbackResistance': { plugins: ['nexo', 'itemsadder', 'craftengine'] },
-    'luck': { plugins: ['nexo', 'itemsadder', 'craftengine'] },
-    'max-health': { plugins: ['nexo', 'itemsadder', 'craftengine'] },
-    'maxAbsorption': { plugins: ['nexo', 'itemsadder', 'craftengine'] },
+    // REMOVED: Attribute modules - Use AttributeBuilder instead
+    // 'gravity', 'jumpStrength', 'knockbackResistance', 'luck', 'max-health', 'maxAbsorption', 'movementEfficiency'
     'maxStackSize': { plugins: ['nexo', 'itemsadder', 'craftengine'] },
-    'movementEfficiency': { plugins: ['nexo', 'itemsadder', 'craftengine'] },
     'unbreakable': { plugins: ['nexo', 'itemsadder', 'craftengine'] },
     'nutrition': { plugins: ['nexo', 'itemsadder', 'craftengine'] },
     'saturation': { plugins: ['nexo', 'itemsadder', 'craftengine'] },
-    'consumable': { plugins: ['nexo', 'itemsadder', 'craftengine'] },
     'equipment': { plugins: ['craftengine'] },
   
     // Block modules
