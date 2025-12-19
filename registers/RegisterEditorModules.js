@@ -770,10 +770,6 @@ module.exports = async (nm, api) => {
     default: false,
   });
 
-  // REMOVED: Armor-specific attribute modules - Use AttributeBuilder instead
-  // craftengine_defense - Replaced by AttributeBuilder (attribute: armor, slot: head/chest/legs/feet)
-  // craftengine_toughness - Replaced by AttributeBuilder (attribute: armor_toughness, slot: head/chest/legs/feet)
-
   api.nexomaker.postEditorModule({
     name: "craftengine_fireResistant",
     display: "Fire Resistant",
@@ -783,10 +779,6 @@ module.exports = async (nm, api) => {
     type: "checkbox",
     default: false,
   });
-
-  // ========================================
-  // NEW MISSING MODULES FROM CRAFTENGINE WIKI
-  // ========================================
 
   // Item Data - Advanced Components
   api.nexomaker.postEditorModule({
@@ -913,8 +905,7 @@ module.exports = async (nm, api) => {
     default: "false",
   });
 
-  // Enable basic built-in modules for CraftEngine format (for learning)
-  // Uncomment more modules as needed
+  // Built-In Modules
   api.console.log("?? [CraftEngine] Applying basic module overrides...");
   const overrideResult = nm.postEditorModuleOverrides({
     // Essential weapon/tool modules
