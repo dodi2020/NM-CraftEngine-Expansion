@@ -76,6 +76,20 @@ module.exports.transform = (item, context) => {
         return null;
     };
 
+    // Helper to parse entity culling (can be boolean or YAML object)
+    const getEntityCulling = () => {
+        const cullingModule = item.modules?.craftengine_furnitureVariantEntityCulling;
+        if (!cullingModule) return null;
+        if (typeof cullingModule === 'string') {
+            const trimmed = cullingModule.trim().toLowerCase();
+            if (trimmed === 'true') return true;
+            if (trimmed === 'false') return false;
+            // Return as string for YAML parsing by CraftEngine
+            return cullingModule;
+        }
+        return cullingModule;
+    };
+
     const transformer = {
         // Material for furniture items
         material: (item.modules?.baseMaterial || 'paper').toLowerCase(),
@@ -161,6 +175,18 @@ module.exports.transform = (item, context) => {
             'glow-color': item.modules?.craftengine_glowColor,
             'client-bound-data-components': item.modules?.craftengine_clientBoundDataComponents,
         }),
+
+        // Furniture variant settings
+        variants: cleanObject({
+            'default': cleanObject({
+                'loot-spawn-offset': item.modules?.craftengine_furnitureVariantLootSpawnOffset,
+                'elements': item.modules?.craftengine_furnitureVariantElements,
+                'hitboxes': item.modules?.craftengine_furnitureVariantHitboxes,
+                'entity-culling': getEntityCulling(),
+                'model-engine': item.modules?.craftengine_furnitureVariantModelEngine,
+                'better-model': item.modules?.craftengine_furnitureVariantBetterModel,
+            })
+        }),
     };
 
     // Clean up empty sections
@@ -172,6 +198,14 @@ module.exports.transform = (item, context) => {
     }
     if (transformer.settings['limited-placing'] && Object.keys(transformer.settings['limited-placing']).length === 0) {
         delete transformer.settings['limited-placing'];
+    }
+
+    // Clean up empty variant default section
+    if (transformer.variants && transformer.variants.default && Object.keys(transformer.variants.default).length === 0) {
+        delete transformer.variants.default;
+    }
+    if (transformer.variants && Object.keys(transformer.variants).length === 0) {
+        delete transformer.variants;
     }
 
     if (Object.keys(transformer.data).length === 0) {
