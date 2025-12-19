@@ -68,15 +68,40 @@ module.exports = (nm, itemTransformer) => {
 
     // Lifecycle hooks
     hooks: {
-      // Filter function - return false to skip items
       canExport: (item) => {
-        // Export all items by default
-        // You can add filtering logic here if needed
         return true;
       },
 
-      // beforeExport: can be used to modify data before writing
-      // afterExport: can be used for logging or post-processing
-    },
+      // This is what transforms the texture paths
+      modelProcessor: (modelData, item, context) => {
+        const { projectId, namespace } = context;
+        
+        // Update texture references in the model to match CraftEngine paths
+        if (modelData.textures && typeof modelData.textures === 'object') {
+          for (const [key, texturePath] of Object.entries(modelData.textures)) {
+            // Skip texture references (e.g., "#layer0")
+            if (typeof texturePath === 'string' && !texturePath.startsWith('#')) {
+              let textureName;
+              
+              // Check if this is a multi-texture reference (_texture_N suffix)
+              const multiTextureMatch = texturePath.match(/_texture_(\d+)$/);
+              
+              if (multiTextureMatch) {
+                // Multi-texture: preserve the _texture_N suffix
+                textureName = `${item.id}_texture_${multiTextureMatch[1]}`;
+              } else {
+                // Single texture: use the item ID
+                textureName = item.id;
+              }
+              
+              // Update to CraftEngine format: namespace:type/texture_name
+              modelData.textures[key] = `${namespace}:${item.type}/${textureName}`;
+            }
+          }
+        }
+        
+        return modelData;
+      }
+    }
   });
 };
