@@ -1,12 +1,56 @@
 module.exports = (nm, itemTransformer) => {
+  // Create a cache to accumulate items per namespace
+  const accumulators = new Map();
+
   nm.registerExportFormat({
     id: 'craftengine',
     name: 'CraftEngine Format',
+    includeAssets: true,
 
     // Transform function - handles all item types
     transform: (item, context) => {
-      // Let the transformer handle all types
-      return itemTransformer.transform(item, context);
+      // Get the namespace key for this export batch
+      const namespaceKey = `${context.projectId}-${item.namespace}`;
+
+      // Initialize accumulator for this namespace if it doesn't exist
+      if (!accumulators.has(namespaceKey)) {
+        accumulators.set(namespaceKey, {
+          items: {},
+          furniture: {},
+          blocks: {},
+          armor: {}
+        });
+      }
+
+      const accumulator = accumulators.get(namespaceKey);
+
+      // Transform the item
+      const transformed = itemTransformer.transform(item, context);
+
+      // Merge the transformed result into our accumulator
+      if (transformed.items) {
+        Object.assign(accumulator.items, transformed.items);
+      }
+      if (transformed.furniture) {
+        Object.assign(accumulator.furniture, transformed.furniture);
+      }
+      if (transformed.blocks) {
+        Object.assign(accumulator.blocks, transformed.blocks);
+      }
+      if (transformed.armor) {
+        Object.assign(accumulator.armor, transformed.armor);
+      }
+
+      // Return the accumulated result (this will be the final output)
+      const result = { ...accumulator };
+
+      // Remove empty categories
+      if (Object.keys(result.items).length === 0) delete result.items;
+      if (Object.keys(result.furniture).length === 0) delete result.furniture;
+      if (Object.keys(result.blocks).length === 0) delete result.blocks;
+      if (Object.keys(result.armor).length === 0) delete result.armor;
+
+      return result;
     },
 
     // File structure configuration

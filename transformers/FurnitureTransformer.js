@@ -90,21 +90,46 @@ module.exports.transform = (item, context) => {
         return cullingModule;
     };
 
+    // Helper to build model/texture configuration
+    const getModelConfig = () => {
+        const config = {};
+
+        // Check if user provided custom model(s)
+        const customModel = item.modules?.craftengine_model;
+        const customModels = item.modules?.craftengine_models;
+
+        if (customModels && Array.isArray(customModels) && customModels.length > 0) {
+            // Multiple models provided
+            config.models = customModels;
+        } else if (customModel && typeof customModel === 'string') {
+            // Single model provided
+            config.model = customModel;
+        }
+
+        // Check if user provided custom texture(s)
+        const customTexture = item.modules?.craftengine_texture;
+        const customTextures = item.modules?.craftengine_textures;
+
+        if (customTextures && Array.isArray(customTextures) && customTextures.length > 0) {
+            // Multiple textures provided
+            config.textures = customTextures;
+        } else if (customTexture && typeof customTexture === 'string') {
+            // Single texture provided
+            config.texture = customTexture;
+        } else if (!customModel && !customModels) {
+            // No custom model or texture, use simplified default texture
+            config.texture = `${item.namespace}:${item.type}/${item.id}`;
+        }
+
+        return config;
+    };
+
     const transformer = {
         // Material for furniture items
         material: (item.modules?.baseMaterial || 'paper').toLowerCase(),
 
-        // Model configuration
-        model: {
-            type: 'minecraft:model',
-            path: assetsPath,
-            generation: {
-                parent: 'item/handheld',
-                textures: {
-                    'layer0': assetsPath,
-                }
-            }
-        },
+        // Model configuration - use simplified texture format or custom model/texture
+        ...getModelConfig(),
 
         // Data components (for the item representation)
         data: cleanObject({

@@ -8,3 +8,5 @@ package-lock.json
 
 ./git
 
+scripts/
+docs-crawled/

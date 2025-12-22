@@ -60,14 +60,12 @@ module.exports = async (nm, api) => {
     display: "Enchantment",
     plugins: ["craftengine"],
     compatibility: ["item", "tool", "weapon", "armor"],
-    description: "Enchantment data for the item. Click the button in the sidebar for a visual builder, then paste the generated YAML here.",
+    description: "Enchantment data for the item. Use the builder button below for a visual builder.",
     icon: enchantmenticon,
-    type: "loot",
+    element: "EnchantmentBuilderButton",
     default: "",
-    placeholder: "Click the button in the sidebar for a visual builder, or paste YAML here.\n\nExample:\n- enchantment: sharpness\n  level: 5\n- enchantment: unbreaking\n  level: 3",
-    rows: 8,
-    resize: "vertical",
-    maxLength: 10000
+    placeholder: "Use the 'Open Enchantment Builder' button below, or paste YAML here manually.",
+    rows: 8
   });
 
   api.nexomaker.postEditorModule({
@@ -95,14 +93,12 @@ module.exports = async (nm, api) => {
     display: "Attribute Modifiers",
     plugins: ["craftengine"],
     compatibility: ["item", "tool", "weapon", "armor"],
-    description: "Attribute modifiers for the item. Click the button in the sidebar for a visual builder, then paste the generated YAML here.",
+    description: "Attribute modifiers for the item. Use the builder button below for a visual builder.",
     icon: strengthicon,
-    type: "loot",
+    element: "AttributeBuilderButton",
     default: "",
-    placeholder: "Click the button in the sidebar for a visual builder, then paste the generated YAML here.",
-    rows: 8,
-    resize: "vertical",
-    maxLength: 10000
+    placeholder: "Use the 'Open Attribute Builder' button below, or paste YAML here manually.",
+    rows: 8
   });
 
 
@@ -666,7 +662,7 @@ module.exports = async (nm, api) => {
     plugins: ["craftengine"],
     compatibility: ["block"],
     description: "Client-side tags",
-    type: "loot",
+    type: "textarea",
     default: "",
   });
 
@@ -816,11 +812,12 @@ module.exports = async (nm, api) => {
     display: "Custom Components (1.20.5+)",
     plugins: ["craftengine"],
     compatibility: ["item", "tool", "weapon", "armor", "food", "block"],
-    description: "Custom Minecraft components in YAML format. Click the button in the sidebar for a visual builder, then paste the generated YAML here.",
+    description: "Custom Minecraft components in YAML format. Use the builder button below for a visual builder.",
     icon: componenticon,
-    type: "loot",
+    element: "ComponentsBuilderButton",
     default: "",
-    placeholder: "Click the button in the sidebar for a visual builder, then paste the generated YAML here.",
+    placeholder: "Use the 'Open Components Builder' button below, or paste YAML here manually.",
+    rows: 8
   });
 
   api.nexomaker.postEditorModule({
@@ -860,7 +857,7 @@ module.exports = async (nm, api) => {
     plugins: ["craftengine"],
     compatibility: ["item", "tool", "weapon", "armor", "food", "block"],
     description: "Client-side only data components in YAML format (requires Premium)",
-    type: "loot",
+    type: "textarea",
     default: "",
   });
 
@@ -923,7 +920,7 @@ module.exports = async (nm, api) => {
     plugins: ["craftengine"],
     compatibility: ["furniture"],
     description: "Individual components that compose the furniture (YAML format). Supports item_display, text_display, item, and armor_stand types with properties like position, rotation, scale, display-transform, billboard, glow-color, brightness, apply-dyed-color, etc.",
-    type: "loot",
+    type: "textarea",
     default: "",
     placeholder: "# Item Display Example\n- type: item_display\n  item: minecraft:diamond\n  display-transform: NONE\n  billboard: FIXED\n  position: 0.5,0,0\n  translation: 0,0.5,0\n  scale: 1\n  rotation: 0,0,0\n  apply-dyed-color: true\n  glow-color: 255,255,255\n  brightness: 15,15\n  view-range: 64\n\n# Text Display Example\n- type: text_display\n  text: \"Hello World\"\n  position: 0,1,0\n  billboard: CENTER\n  alignment: center\n  line-width: 200\n  background-color: 0,0,0,0\n  has-shadow: false\n\n# Armor Stand Example\n- type: armor_stand\n  item: minecraft:diamond_chestplate\n  position: 0,0,0\n  small: false",
     rows: 15,
@@ -937,7 +934,7 @@ module.exports = async (nm, api) => {
     plugins: ["craftengine"],
     compatibility: ["furniture"],
     description: "Interactive volumes where players interact (YAML format). Supports interaction (non-collision), shulker (hard-collision), happy_ghast (semi-hard), and custom (soft-collision) types. Can include seats configuration.",
-    type: "loot",
+    type: "textarea",
     default: "",
     placeholder: "# Interaction (Non-Collision) Example\n- type: interaction\n  can-use-item-on: false\n  can-be-hit-by-projectile: false\n  blocks-building: false\n  position: 0,0,0\n  width: 1\n  height: 2\n  interactive: true\n  invisible: false\n  seats:\n    - 0,0,-0.1 0\n\n# Shulker (Hard-Collision) Example\n- type: shulker\n  position: 0,0,0\n  scale: 1\n  peek: 0\n  direction: up\n  interaction-entity: true\n  interactive: true\n\n# Happy Ghast (Semi-Hard) Example\n- type: happy_ghast\n  position: 0,0,0\n  scale: 1\n  hard-collision: true\n\n# Custom (Soft-Collision) Example\n- type: custom\n  position: 0,0,0\n  scale: 1\n  entity-type: slime",
     rows: 18,
@@ -979,6 +976,17 @@ module.exports = async (nm, api) => {
     placeholder: "my_better_model"
   });
 
+  // Shapeless Recipe Module (using custom crafting overlay)
+  api.nexomaker.postEditorModule({
+    name: "shapeless-recipe",
+    display: "Shapeless Recipe",
+    plugins: ["craftengine"],
+    compatibility: ["item", "tool", "weapon", "armor", "food", "block"],
+    description: "Shapeless crafting recipe (ingredient order doesn't matter)",
+    type: "CraftingOverlay",
+    default: null,
+  });
+
   // Built-In Modules
   api.console.log("?? [CraftEngine] Applying basic module overrides...");
   const overrideResult = nm.postEditorModuleOverrides({
@@ -999,13 +1007,11 @@ module.exports = async (nm, api) => {
     'exclude-from-inventory': { plugins: ['nexo', 'itemsadder', 'craftengine'], description: 'Prevents the item from appearing in the plugin GUI.' },
     'repairable': { plugins: ['nexo', 'itemsadder', 'craftengine'] },
     'hideTooltip': { plugins: ['nexo', 'itemsadder', 'craftengine'] },
-    //'recipe': { plugins: ['nexo', 'itemsadder', 'craftengine'] },
+    'recipe': { plugins: ['nexo', 'itemsadder', 'craftengine'], type: 'CraftingOverlay' },
     'disableEnchanting': { plugins: ['nexo', 'itemsadder', 'craftengine'] },
     'enchantmentGlintOverride': { plugins: ['nexo', 'itemsadder', 'craftengine'] },
     'maxStackSize': { plugins: ['nexo', 'itemsadder', 'craftengine'] },
     'unbreakable': { plugins: ['nexo', 'itemsadder', 'craftengine'] },
-    'nutrition': { plugins: ['nexo', 'itemsadder', 'craftengine'] },
-    'saturation': { plugins: ['nexo', 'itemsadder', 'craftengine'] },
     'equipment': { plugins: ['craftengine'] },
   
     // Block modules
