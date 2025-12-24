@@ -247,3 +247,132 @@ module.exports.transform = (item, context) => {
         }
     };
 };
+
+/**
+ * Untransform function - converts exported CraftEngine furniture YAML back to internal modules
+ */
+module.exports.untransform = (exportedData) => {
+    const modules = {};
+    
+    if (!exportedData) return modules;
+    
+    // Map material
+    if (exportedData.material) {
+        modules.baseMaterial = exportedData.material;
+    }
+    
+    // Map model/texture
+    if (exportedData.model) modules.craftengine_model = exportedData.model;
+    if (exportedData.models) modules.craftengine_models = exportedData.models;
+    if (exportedData.texture) modules.craftengine_texture = exportedData.texture;
+    if (exportedData.textures) modules.craftengine_textures = exportedData.textures;
+    
+    // Map furniture data
+    if (exportedData.data) {
+        const data = exportedData.data;
+        
+        if (data.external) {
+            if (data.external.plugin) modules.craftengine_externalPlugin = data.external.plugin;
+            if (data.external.id) modules.craftengine_externalId = data.external.id;
+        }
+        
+        if (data['item-name']) modules.craftengine_itemName = data['item-name'];
+        if (data['custom-name']) modules.craftengine_customName = data['custom-name'];
+        
+        if (data.lore) {
+            modules.craftengine_lore = Array.isArray(data.lore) ? data.lore.join('|') : data.lore;
+        }
+        
+        if (data['overwritable-lore'] !== undefined) modules.craftengine_overwritableLore = data['overwritable-lore'];
+        if (data['overwritable-item-name'] !== undefined) modules.craftengine_overwritableItemName = data['overwritable-item-name'];
+        if (data.unbreakable !== undefined) modules.unbreakable = data.unbreakable;
+        if (data['custom-model-data']) modules.craftengine_customModelData = data['custom-model-data'];
+        if (data.pdc) modules.craftengine_pdc = data.pdc;
+        if (data.nbt) modules.craftengine_nbt = data.nbt;
+        
+        // Custom components
+        if (data.components && typeof data.components === 'object') {
+            const compLines = [];
+            for (const [key, val] of Object.entries(data.components)) {
+                compLines.push(`${key}:`);
+                if (typeof val === 'object' && !Array.isArray(val)) {
+                    for (const [k, v] of Object.entries(val)) {
+                        compLines.push(`  ${k}: ${v}`);
+                    }
+                } else {
+                    compLines.push(`  ${val}`);
+                }
+            }
+            modules.craftengine_customComponents = compLines.join('\n');
+        }
+        
+        if (data['remove-components'] && Array.isArray(data['remove-components'])) {
+            modules.craftengine_removeComponents = data['remove-components'].join(', ');
+        }
+    }
+    
+    // Map furniture settings
+    if (exportedData.settings) {
+        const settings = exportedData.settings;
+        
+        if (settings.recipe) modules.recipe = settings.recipe;
+        if (settings['display-transform']) modules['furniture-display-transform'] = settings['display-transform'];
+        if (settings.rotatable !== undefined) modules['furniture-rotatable'] = settings.rotatable;
+        if (settings['restricted-rotation']) modules['furniture-restricted-rotation'] = settings['restricted-rotation'];
+        if (settings['block-light'] !== undefined) modules['furniture-block_light'] = settings['block-light'];
+        if (settings['sky-light'] !== undefined) modules['furniture-sky_light'] = settings['sky-light'];
+        
+        // Hitbox
+        if (settings.hitbox) {
+            const hb = settings.hitbox;
+            if (hb.barrier !== undefined) modules['furniture-hitbox-barrier'] = hb.barrier;
+            if (hb.interactions !== undefined) modules['furniture-hitbox-interactions'] = hb.interactions;
+            if (hb.shulkers !== undefined) modules['furniture-hitbox-shulkers'] = hb.shulkers;
+        }
+        
+        // Limited placing
+        if (settings['limited-placing']) {
+            const lp = settings['limited-placing'];
+            if (lp.floor !== undefined) modules['furniture-limited_placing-floor'] = lp.floor;
+            if (lp.roof !== undefined) modules['furniture-limited_placing-roof'] = lp.roof;
+            if (lp.wall !== undefined) modules['furniture-limited_placing-wall'] = lp.wall;
+            if (lp.type) modules['furniture-limited_placing-type'] = lp.type;
+        }
+        
+        // Drop settings
+        if (settings.drop) {
+            const drop = settings.drop;
+            if (drop.silktouch !== undefined) modules['furniture-drop-silktouch'] = drop.silktouch;
+        }
+        
+        // Loot
+        if (settings.loot) {
+            modules['furniture-loot'] = settings.loot;
+        }
+        
+        // Tracking
+        if (settings.tracking) {
+            const tr = settings.tracking;
+            if (tr.rotation !== undefined) modules['furniture-tracking-rotation'] = tr.rotation;
+        }
+        
+        // Block sounds
+        if (settings['block-sounds']) {
+            const snd = settings['block-sounds'];
+            if (snd['break-sound']) modules['furniture-block_sounds-break_sound'] = snd['break-sound'];
+            if (snd['place-sound']) modules['furniture-block_sounds-place_sound'] = snd['place-sound'];
+            if (snd['fall-sound']) modules['furniture-block_sounds-fall_sound'] = snd['fall-sound'];
+            if (snd['hit-sound']) modules['furniture-block_sounds-hit_sound'] = snd['hit-sound'];
+            if (snd['step-sound']) modules['furniture-block_sounds-step_sound'] = snd['step-sound'];
+        }
+    }
+    
+    // Map variants if present
+    if (exportedData.variants && typeof exportedData.variants === 'object') {
+        // Convert variants back to module format
+        // Furniture variants are complex - store as JSON for now
+        modules.craftengine_furnitureVariants = JSON.stringify(exportedData.variants);
+    }
+    
+    return modules;
+};

@@ -783,7 +783,7 @@ module.exports = async (nm, api) => {
     plugins: ["craftengine"],
     compatibility: ["item", "tool", "weapon", "armor", "food", "block", "furniture"],
     description: "Custom plugin data using Persistent Data Container (YAML format)",
-    type: "text",
+    type: "textarea",
     default: "",
   });
 
@@ -976,15 +976,16 @@ module.exports = async (nm, api) => {
     placeholder: "my_better_model"
   });
 
-  // Shapeless Recipe Module (using custom crafting overlay)
+  // Inline YAML Editor Module - Edit raw YAML for this specific item
   api.nexomaker.postEditorModule({
-    name: "shapeless-recipe",
-    display: "Shapeless Recipe",
+    name: "craftengine_yaml_editor",
+    display: "Raw YAML Editor",
+    element: "InlineYamlEditor",
     plugins: ["craftengine"],
-    compatibility: ["item", "tool", "weapon", "armor", "food", "block"],
-    description: "Shapeless crafting recipe (ingredient order doesn't matter)",
-    type: "CraftingOverlay",
-    default: null,
+    compatibility: ["item", "tool", "weapon", "armor", "food", "block", "furniture"],
+    description: "Edit this item's raw YAML directly. Expand to view and modify all modules.",
+    type: "custom",
+    default: "enabled"
   });
 
   // Built-In Modules

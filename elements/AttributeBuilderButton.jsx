@@ -3,6 +3,38 @@
  * Custom element for opening the Attribute Builder overlay
  */
 module.exports = ({ useState, useEffect, value, onChange, placeholder, rows }) => {
+  // Inject custom scrollbar styles
+  useEffect(() => {
+    const styleId = 'attribute-builder-scrollbar-styles';
+    if (!document.getElementById(styleId)) {
+      const style = document.createElement('style');
+      style.id = styleId;
+      style.textContent = `
+        /* Custom scrollbar for Attribute Builder */
+        .attribute-builder-scroll::-webkit-scrollbar {
+          width: 12px;
+          height: 12px;
+        }
+        .attribute-builder-scroll::-webkit-scrollbar-track {
+          background: var(--col-input-default);
+          border-radius: 6px;
+        }
+        .attribute-builder-scroll::-webkit-scrollbar-thumb {
+          background: #8b7bb8;
+          border-radius: 6px;
+          border: 2px solid var(--col-input-default);
+        }
+        .attribute-builder-scroll::-webkit-scrollbar-thumb:hover {
+          background: #9d8dc9;
+        }
+        .attribute-builder-scroll::-webkit-scrollbar-corner {
+          background: var(--col-input-default);
+        }
+      `;
+      document.head.appendChild(style);
+    }
+  }, []);
+
   const [showModal, setShowModal] = useState(false);
   const [localValue, setLocalValue] = useState(value || '');
 
@@ -234,6 +266,7 @@ module.exports = ({ useState, useEffect, value, onChange, placeholder, rows }) =
       }
     },
       React.createElement('div', {
+        className: 'attribute-builder-scroll',
         style: {
           backgroundColor: 'var(--col-primary)',
           borderRadius: 'var(--radius-sm)',
@@ -514,6 +547,7 @@ module.exports = ({ useState, useEffect, value, onChange, placeholder, rows }) =
               ),
 
               React.createElement('div', {
+                className: 'attribute-builder-scroll',
                 style: {
                   maxHeight: '400px',
                   overflowY: 'auto'

@@ -242,69 +242,6 @@ module.exports.transform = (item, context) => {
         return null;
     };
 
-    // Helper to transform shapeless recipe from Nexo Maker format to CraftEngine format
-    const getShapelessRecipe = () => {
-        const recipeModule = item.modules?.['shapeless-recipe'];
-        if (!recipeModule || !Array.isArray(recipeModule)) return null;
-
-        try {
-            console.log('[CraftEngine Shapeless Recipe Input]', JSON.stringify(recipeModule, null, 2));
-
-            // Flatten nested arrays - sometimes YAML parser creates nested structure
-            let flattenedRecipe = [];
-            for (let row of recipeModule) {
-                if (Array.isArray(row)) {
-                    let hasNestedArrays = row.some(item => Array.isArray(item));
-
-                    if (hasNestedArrays) {
-                        let currentRow = row.filter(item => !Array.isArray(item));
-                        if (currentRow.length > 0) {
-                            flattenedRecipe.push(currentRow);
-                        }
-
-                        for (let item of row) {
-                            if (Array.isArray(item)) {
-                                flattenedRecipe.push(item);
-                            }
-                        }
-                    } else {
-                        flattenedRecipe.push(row);
-                    }
-                }
-            }
-
-            // Collect all ingredients (ignoring position)
-            const ingredientsList = [];
-
-            for (let row of flattenedRecipe) {
-                if (Array.isArray(row)) {
-                    for (let ingredient of row) {
-                        if (ingredient && ingredient !== '' && ingredient !== null && ingredient !== undefined) {
-                            ingredientsList.push(ingredient);
-                        }
-                    }
-                }
-            }
-
-            // Return shapeless recipe format only if we have ingredients
-            if (ingredientsList.length === 0) {
-                console.warn('[CraftEngine Shapeless Recipe] No ingredients found');
-                return null;
-            }
-
-            const recipe = {
-                type: 'shapeless',
-                ingredients: ingredientsList
-            };
-
-            console.log('[CraftEngine Shapeless Recipe Transform]', JSON.stringify(recipe, null, 2));
-            return recipe;
-        } catch (e) {
-            console.error('Failed to parse shapeless recipe:', e);
-            return null;
-        }
-    };
-
     // Helper to transform recipe from Nexo Maker format to CraftEngine format
     const getRecipe = () => {
         const recipeModule = item.modules?.recipe;
@@ -477,9 +414,7 @@ module.exports.transform = (item, context) => {
 
         // Settings
         settings: (() => {
-            const shapelessRecipe = getShapelessRecipe();
-            const shapedRecipe = getRecipe();
-            const recipe = shapelessRecipe || shapedRecipe;
+            const recipe = getRecipe();
             console.log('[CraftEngine Item] Recipe result:', JSON.stringify(recipe, null, 2));
             return {
                 'recipe': recipe,
@@ -517,6 +452,13 @@ module.exports.transform = (item, context) => {
                     'nutrition': item.modules?.nutrition || item.modules?.craftengine_nutrition,
                     'saturation': item.modules?.saturation || item.modules?.craftengine_saturation,
                     'can-always-eat': item.modules?.craftengine_canAlwaysEat,
+                },
+                consumable: {
+                    'consume-seconds': item.modules?.craftengine_consumeSeconds,
+                    'animation': item.modules?.craftengine_consumeAnimation,
+                    'sound': item.modules?.craftengine_consumeSound,
+                    'has-consume-particles': item.modules?.craftengine_hasConsumeParticles,
+                    'on-consume-effects': item.modules?.craftengine_onConsumeEffects,
                 },
             };
         })(),
@@ -567,4 +509,162 @@ module.exports.transform = (item, context) => {
             [ItemKey]: transformer
         }
     };
+};
+
+/**
+ * Untransform function - converts exported CraftEngine YAML back to internal modules
+ */
+module.exports.untransform = (exportedData) => {
+    const modules = {};
+    
+    if (!exportedData) return modules;
+    
+    // Map material
+    if (exportedData.material) {
+        modules.baseMaterial = exportedData.material;
+    }
+    
+    // Map model/texture
+    if (exportedData.model) modules.craftengine_model = exportedData.model;
+    if (exportedData.models) modules.craftengine_models = exportedData.models;
+    if (exportedData.texture) modules.craftengine_texture = exportedData.texture;
+    if (exportedData.textures) modules.craftengine_textures = exportedData.textures;
+    
+    // Map data section
+    if (exportedData.data) {
+        const data = exportedData.data;
+        
+        if (data.external) {
+            if (data.external.plugin) modules.craftengine_externalPlugin = data.external.plugin;
+            if (data.external.id) modules.craftengine_externalId = data.external.id;
+        }
+        
+        if (data['item-name']) modules.craftengine_itemName = data['item-name'];
+        if (data['custom-name']) modules.craftengine_customName = data['custom-name'];
+        
+        if (data.lore) {
+            modules.craftengine_lore = Array.isArray(data.lore) ? data.lore.join('|') : data.lore;
+        }
+        
+        if (data['overwritable-lore'] !== undefined) modules.craftengine_overwritableLore = data['overwritable-lore'];
+        if (data['overwritable-item-name'] !== undefined) modules.craftengine_overwritableItemName = data['overwritable-item-name'];
+        if (data.unbreakable !== undefined) modules.unbreakable = data.unbreakable;
+        
+        // Enchantments - convert array back to YAML string
+        if (data.enchantment && Array.isArray(data.enchantment)) {
+            const enchLines = [];
+            data.enchantment.forEach(ench => {
+                enchLines.push(`- enchantment: ${ench.enchantment}`);
+                if (ench.level) enchLines.push(`  level: ${ench.level}`);
+            });
+            modules.craftengine_enchantment = enchLines.join('\n');
+        }
+        
+        if (data['dyed-color']) modules.craftengine_dyedColor = data['dyed-color'];
+        if (data['custom-model-data']) modules.craftengine_customModelData = data['custom-model-data'];
+        if (data['hide-tooltip'] !== undefined) modules.craftengine_hideTooltip = data['hide-tooltip'];
+        
+        // Attribute modifiers - convert array back to YAML string
+        if (data['attribute-modifiers'] && Array.isArray(data['attribute-modifiers'])) {
+            const attrLines = [];
+            data['attribute-modifiers'].forEach(attr => {
+                attrLines.push(`- type: ${attr.type}`);
+                if (attr.amount !== undefined) attrLines.push(`  amount: ${attr.amount}`);
+                if (attr.operation) attrLines.push(`  operation: ${attr.operation}`);
+                if (attr.slot) attrLines.push(`  slot: ${attr.slot}`);
+            });
+            modules.craftengine_attributeModifiers = attrLines.join('\n');
+        }
+        
+        if (data['max-damage']) modules.durability = data['max-damage'];
+        if (data['jukebox-playable']) modules.craftengine_jukeboxPlayable = data['jukebox-playable'];
+        if (data['item-model']) modules.craftengine_itemModel = data['item-model'];
+        if (data['tooltip-style']) modules.craftengine_tooltipStyle = data['tooltip-style'];
+        if (data.trim) modules.craftengine_trim = data.trim;
+        if (data.equippable) modules.equippable = data.equippable;
+        
+        if (data.pdc) modules.craftengine_pdc = data.pdc;
+        if (data.nbt) modules.craftengine_nbt = data.nbt;
+        
+        // Custom components - convert object back to YAML string
+        if (data.components && typeof data.components === 'object') {
+            const compLines = [];
+            for (const [key, val] of Object.entries(data.components)) {
+                compLines.push(`${key}:`);
+                if (typeof val === 'object' && !Array.isArray(val)) {
+                    for (const [k, v] of Object.entries(val)) {
+                        compLines.push(`  ${k}: ${v}`);
+                    }
+                } else {
+                    compLines.push(`  ${val}`);
+                }
+            }
+            modules.craftengine_customComponents = compLines.join('\n');
+        }
+        
+        // Remove components
+        if (data['remove-components'] && Array.isArray(data['remove-components'])) {
+            modules.craftengine_removeComponents = data['remove-components'].join(', ');
+        }
+    }
+    
+    // Map settings section
+    if (exportedData.settings) {
+        const settings = exportedData.settings;
+        
+        if (settings.recipe) modules.recipe = settings.recipe;
+        if (settings['fuel-time']) modules.craftengine_fuelTime = settings['fuel-time'];
+        if (settings.repairable) modules.repairable = settings.repairable;
+        if (settings['anvil-repair-item']) modules.craftengine_anvilRepairItem = settings['anvil-repair-item'];
+        if (settings.renameable !== undefined) modules.craftengine_renameable = settings.renameable;
+        if (settings.projectile) modules.craftengine_projectile = settings.projectile;
+        if (settings.dyeable !== undefined) modules.craftengine_dyeable = settings.dyeable;
+        if (settings['consume-replacement']) modules.craftengine_consumeReplacement = settings['consume-replacement'];
+        if (settings['craft-remainder']) modules.craftengine_craftRemainder = settings['craft-remainder'];
+        if (settings.invulnerable !== undefined) modules.craftengine_invulnerable = settings.invulnerable;
+        if (settings.enchantable) modules.enchantable = settings.enchantable;
+        if (settings['compost-probability']) modules.craftengine_compostProbability = settings['compost-probability'];
+        if (settings['respect-repairable-component'] !== undefined) modules.craftengine_respectRepairableComponent = settings['respect-repairable-component'];
+        if (settings['dye-color']) modules.craftengine_dyeColor = settings['dye-color'];
+        if (settings['firework-color']) modules.craftengine_fireworkColor = settings['firework-color'];
+        if (settings['ingredient-substitute']) modules.craftengine_ingredientSubstitute = settings['ingredient-substitute'];
+        if (settings['hat-height']) modules.craftengine_hatHeight = settings['hat-height'];
+        if (settings['keep-on-death-chance']) modules.craftengine_keepOnDeathChance = settings['keep-on-death-chance'];
+        if (settings['destroy-on-death-chance']) modules.craftengine_destroyOnDeathChance = settings['destroy-on-death-chance'];
+        if (settings['drop-display']) modules.craftengine_dropDisplay = settings['drop-display'];
+        if (settings['glow-color']) modules.craftengine_glowColor = settings['glow-color'];
+        
+        // Equipment sub-section
+        if (settings.equipment) {
+            const eq = settings.equipment;
+            if (eq['asset-id']) modules.craftengine_equipmentAssetId = eq['asset-id'];
+            if (eq['client-bound-model'] !== undefined) modules.craftengine_equipmentClientBoundModel = eq['client-bound-model'];
+            if (eq.slot) modules.craftengine_equipmentSlot = eq.slot;
+            if (eq['camera-overlay']) modules.craftengine_equipmentCameraOverlay = eq['camera-overlay'];
+            if (eq.dispensable !== undefined) modules.craftengine_equipmentDispensable = eq.dispensable;
+            if (eq['damage-on-hurt'] !== undefined) modules.craftengine_equipmentDamageOnHurt = eq['damage-on-hurt'];
+            if (eq.swappable !== undefined) modules.craftengine_equipmentSwappable = eq.swappable;
+            if (eq['equip-on-interact'] !== undefined) modules.craftengine_equipmentEquipOnInteract = eq['equip-on-interact'];
+        }
+        
+        // Food sub-section
+        if (settings.food) {
+            const food = settings.food;
+            if (food.nutrition) modules.nutrition = food.nutrition;
+            if (food.saturation) modules.saturation = food.saturation;
+            if (food['can-always-eat'] !== undefined) modules.craftengine_canAlwaysEat = food['can-always-eat'];
+        }
+        
+        // Consumable sub-section
+        if (settings.consumable) {
+            const cons = settings.consumable;
+            if (cons['consume-seconds']) modules.craftengine_consumeSeconds = cons['consume-seconds'];
+            if (cons.animation) modules.craftengine_consumeAnimation = cons.animation;
+            if (cons.sound) modules.craftengine_consumeSound = cons.sound;
+            if (cons['has-consume-particles'] !== undefined) modules.craftengine_hasConsumeParticles = cons['has-consume-particles'];
+            if (cons['on-consume-effects']) modules.craftengine_onConsumeEffects = cons['on-consume-effects'];
+        }
+    }
+    
+    return modules;
 };

@@ -18,15 +18,20 @@
 module.exports.init = async () => {
   const nm = api.nexomaker;
   const itemTransformer = require("./transformers/transformer.js");
-  const strengthicon = await api.nexomaker.loadAsset(__dirname + "/assets/strength.png");
-  const componenticon = await api.nexomaker.loadAsset(__dirname + "/assets/component.png");
-  const enchantmenticon = await api.nexomaker.loadAsset(__dirname + "/assets/enchantment.png");
+
+  // Make transformer globally available using globalThis (works in both Node and browser)
+  if (!globalThis.craftengine) {
+    globalThis.craftengine = {};
+  }
+  globalThis.craftengine.transformer = itemTransformer;
+  api.console.log('[CraftEngine] Transformer set on globalThis.craftengine');
 
   // Register builder button components for editor modules
   nm.registerModularPage("AttributeBuilderButton", __dirname + "/elements/AttributeBuilderButton.jsx");
   nm.registerModularPage("ComponentsBuilderButton", __dirname + "/elements/ComponentsBuilderButton.jsx");
   nm.registerModularPage("EnchantmentBuilderButton", __dirname + "/elements/EnchantmentBuilderButton.jsx");
   nm.registerModularPage("CraftingOverlay", __dirname + "/elements/CraftingOverlay.jsx");
+  nm.registerModularPage("InlineYamlEditor", __dirname + "/elements/InlineYamlEditor.jsx");
 
   // Register compatibility for built-in creators
   require('./registers/RegisterCreators.js')(nm);
@@ -37,21 +42,13 @@ module.exports.init = async () => {
   // Register export formats
   require('./registers/RegisterExportFormats.js')(nm, itemTransformer);
 
-  // Register builder pages as standalone routes
-  nm.registerModularPage("craftengine-attribute-builder", __dirname + "/pages/AttributeModifierBuilder.jsx");
-  nm.regRoute('AttributeBuilder', __dirname + '/pages/AttributeModifierBuilder.jsx');
 
-  nm.registerModularPage("craftengine-components-builder", __dirname + "/pages/ComponentsBuilder.jsx");
-  nm.regRoute('ComponentsBuilder', __dirname + '/pages/ComponentsBuilder.jsx');
-
-  nm.registerModularPage("craftengine-enchantment-builder", __dirname + "/pages/EnchantmentBuilder.jsx");
-  nm.regRoute('EnchantmentBuilder', __dirname + '/pages/EnchantmentBuilder.jsx');
 
   api.console.log('✓ CraftEngine expansion loaded.');
 }
 
 module.exports.metadata = {
   id: 'craftengine_expansion',
-  version: '1.0.0',
+  version: '1.8.0',
   author: 'dodi2020',
 };

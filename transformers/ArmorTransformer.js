@@ -433,3 +433,128 @@ module.exports.transform = (item, context) => {
         }
     };
 };
+
+/**
+ * Untransform function - converts exported CraftEngine armor YAML back to internal modules
+ */
+module.exports.untransform = (exportedData) => {
+    const modules = {};
+    
+    if (!exportedData) return modules;
+    
+    // Map material
+    if (exportedData.material) {
+        modules.baseMaterial = exportedData.material;
+    }
+    
+    // Map model/texture
+    if (exportedData.model) modules.craftengine_model = exportedData.model;
+    if (exportedData.models) modules.craftengine_models = exportedData.models;
+    if (exportedData.texture) modules.craftengine_texture = exportedData.texture;
+    if (exportedData.textures) modules.craftengine_textures = exportedData.textures;
+    
+    // Map data section (similar to items but includes armor-specific fields)
+    if (exportedData.data) {
+        const data = exportedData.data;
+        
+        if (data.external) {
+            if (data.external.plugin) modules.craftengine_externalPlugin = data.external.plugin;
+            if (data.external.id) modules.craftengine_externalId = data.external.id;
+        }
+        
+        if (data['item-name']) modules.craftengine_itemName = data['item-name'];
+        if (data['custom-name']) modules.craftengine_customName = data['custom-name'];
+        
+        if (data.lore) {
+            modules.craftengine_lore = Array.isArray(data.lore) ? data.lore.join('|') : data.lore;
+        }
+        
+        if (data['overwritable-lore'] !== undefined) modules.craftengine_overwritableLore = data['overwritable-lore'];
+        if (data['overwritable-item-name'] !== undefined) modules.craftengine_overwritableItemName = data['overwritable-item-name'];
+        if (data.unbreakable !== undefined) modules.unbreakable = data.unbreakable;
+        
+        // Enchantments
+        if (data.enchantment && Array.isArray(data.enchantment)) {
+            const enchLines = [];
+            data.enchantment.forEach(ench => {
+                enchLines.push(`- enchantment: ${ench.enchantment}`);
+                if (ench.level) enchLines.push(`  level: ${ench.level}`);
+            });
+            modules.craftengine_enchantment = enchLines.join('\n');
+        }
+        
+        if (data['dyed-color']) modules.craftengine_dyedColor = data['dyed-color'];
+        if (data['custom-model-data']) modules.craftengine_customModelData = data['custom-model-data'];
+        if (data['hide-tooltip'] !== undefined) modules.craftengine_hideTooltip = data['hide-tooltip'];
+        
+        // Attribute modifiers
+        if (data['attribute-modifiers'] && Array.isArray(data['attribute-modifiers'])) {
+            const attrLines = [];
+            data['attribute-modifiers'].forEach(attr => {
+                attrLines.push(`- type: ${attr.type}`);
+                if (attr.amount !== undefined) attrLines.push(`  amount: ${attr.amount}`);
+                if (attr.operation) attrLines.push(`  operation: ${attr.operation}`);
+                if (attr.slot) attrLines.push(`  slot: ${attr.slot}`);
+            });
+            modules.craftengine_attributeModifiers = attrLines.join('\n');
+        }
+        
+        if (data['max-damage']) modules.durability = data['max-damage'];
+        if (data.trim) modules.craftengine_trim = data.trim;
+        if (data.equippable) modules.equippable = data.equippable;
+        if (data.pdc) modules.craftengine_pdc = data.pdc;
+        if (data.nbt) modules.craftengine_nbt = data.nbt;
+        
+        // Custom components
+        if (data.components && typeof data.components === 'object') {
+            const compLines = [];
+            for (const [key, val] of Object.entries(data.components)) {
+                compLines.push(`${key}:`);
+                if (typeof val === 'object' && !Array.isArray(val)) {
+                    for (const [k, v] of Object.entries(val)) {
+                        compLines.push(`  ${k}: ${v}`);
+                    }
+                } else {
+                    compLines.push(`  ${val}`);
+                }
+            }
+            modules.craftengine_customComponents = compLines.join('\n');
+        }
+        
+        if (data['remove-components'] && Array.isArray(data['remove-components'])) {
+            modules.craftengine_removeComponents = data['remove-components'].join(', ');
+        }
+    }
+    
+    // Map settings section
+    if (exportedData.settings) {
+        const settings = exportedData.settings;
+        
+        if (settings.recipe) modules.recipe = settings.recipe;
+        if (settings.repairable) modules.repairable = settings.repairable;
+        if (settings['anvil-repair-item']) modules.craftengine_anvilRepairItem = settings['anvil-repair-item'];
+        if (settings.renameable !== undefined) modules.craftengine_renameable = settings.renameable;
+        if (settings.dyeable !== undefined) modules.craftengine_dyeable = settings.dyeable;
+        if (settings.invulnerable !== undefined) modules.craftengine_invulnerable = settings.invulnerable;
+        if (settings.enchantable) modules.enchantable = settings.enchantable;
+        if (settings['keep-on-death-chance']) modules.craftengine_keepOnDeathChance = settings['keep-on-death-chance'];
+        if (settings['destroy-on-death-chance']) modules.craftengine_destroyOnDeathChance = settings['destroy-on-death-chance'];
+        if (settings['drop-display']) modules.craftengine_dropDisplay = settings['drop-display'];
+        if (settings['glow-color']) modules.craftengine_glowColor = settings['glow-color'];
+        
+        // Equipment sub-section
+        if (settings.equipment) {
+            const eq = settings.equipment;
+            if (eq['asset-id']) modules.craftengine_equipmentAssetId = eq['asset-id'];
+            if (eq['client-bound-model'] !== undefined) modules.craftengine_equipmentClientBoundModel = eq['client-bound-model'];
+            if (eq.slot) modules.craftengine_equipmentSlot = eq.slot;
+            if (eq['camera-overlay']) modules.craftengine_equipmentCameraOverlay = eq['camera-overlay'];
+            if (eq.dispensable !== undefined) modules.craftengine_equipmentDispensable = eq.dispensable;
+            if (eq['damage-on-hurt'] !== undefined) modules.craftengine_equipmentDamageOnHurt = eq['damage-on-hurt'];
+            if (eq.swappable !== undefined) modules.craftengine_equipmentSwappable = eq.swappable;
+            if (eq['equip-on-interact'] !== undefined) modules.craftengine_equipmentEquipOnInteract = eq['equip-on-interact'];
+        }
+    }
+    
+    return modules;
+};

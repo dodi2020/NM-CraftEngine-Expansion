@@ -271,6 +271,101 @@ module.exports.transform = (item, context) => {
         return config;
     };
 
+    // Helper to build state configuration (single-state blocks)
+    const getStateConfig = () => {
+        const stateConfig = {};
+
+        // Auto-state or specific state
+        if (item.modules?.craftengine_stateAuto) {
+            stateConfig['auto-state'] = item.modules.craftengine_stateAuto;
+        } else if (item.modules?.craftengine_state) {
+            stateConfig['state'] = item.modules.craftengine_state;
+        }
+
+        // Handle craftengine_blockState as state properties
+        // This is for simple single-state blocks with properties like note_block
+        // The craftengine_blockState will be used in the model section, not here
+        // State configuration is for visual appearance, blockState in data is for the item
+
+        // Real block ID
+        if (item.modules?.craftengine_stateId !== undefined) {
+            stateConfig['id'] = item.modules.craftengine_stateId;
+        }
+
+        return Object.keys(stateConfig).length > 0 ? stateConfig : null;
+    };
+
+    // Helper to build states configuration (multi-state blocks)
+    const getStatesConfig = () => {
+        const statesConfig = {};
+
+        // Properties
+        if (item.modules?.craftengine_statesProperties) {
+            statesConfig['properties'] = item.modules.craftengine_statesProperties;
+        }
+
+        // Real block ID
+        if (item.modules?.craftengine_statesId !== undefined) {
+            statesConfig['id'] = item.modules.craftengine_statesId;
+        }
+
+        return Object.keys(statesConfig).length > 0 ? statesConfig : null;
+    };
+
+    // Helper to get appearances configuration
+    const getAppearances = () => {
+        if (item.modules?.craftengine_appearances) {
+            return item.modules.craftengine_appearances;
+        }
+        return null;
+    };
+
+    // Helper to get variants configuration
+    const getVariants = () => {
+        if (item.modules?.craftengine_variants) {
+            return item.modules.craftengine_variants;
+        }
+        return null;
+    };
+
+    // Helper to process block-state into proper format
+    const getBlockState = () => {
+        const blockState = item.modules?.craftengine_blockState;
+        if (!blockState) return null;
+
+        // If it's already an object, return it as-is
+        if (typeof blockState === 'object' && !Array.isArray(blockState)) {
+            return blockState;
+        }
+
+        // If it's a string, we need to parse it as YAML-like key-value pairs
+        if (typeof blockState === 'string') {
+            const lines = blockState.split('\n').map(l => l.trim()).filter(l => l);
+            const result = {};
+
+            for (const line of lines) {
+                // Parse "key: value" format
+                const colonIndex = line.indexOf(':');
+                if (colonIndex > 0) {
+                    const key = line.substring(0, colonIndex).trim();
+                    let value = line.substring(colonIndex + 1).trim();
+
+                    // Remove quotes if present
+                    if ((value.startsWith('"') && value.endsWith('"')) ||
+                        (value.startsWith("'") && value.endsWith("'"))) {
+                        value = value.slice(1, -1);
+                    }
+
+                    result[key] = value;
+                }
+            }
+
+            return Object.keys(result).length > 0 ? result : blockState;
+        }
+
+        return blockState;
+    };
+
     const transformer = {
         // Material for blocks (what vanilla block to use as base)
         material: (item.modules?.baseMaterial || 'note_block').toLowerCase(),
@@ -287,7 +382,7 @@ module.exports.transform = (item, context) => {
             'overwritable-item-name': item.modules?.craftengine_overwritableItemName,
             'custom-model-data': item.modules?.craftengine_customModelData || item.modules?.customModelData,
             'hide-tooltip': item.modules?.craftengine_hideTooltip,
-            'block-state': item.modules?.craftengine_blockState,
+            'block-state': getBlockState(),
             'pdc': getPdcData(),
             'nbt': item.modules?.craftengine_nbt,
             'components': getCustomComponents(),
@@ -357,10 +452,150 @@ module.exports.transform = (item, context) => {
         delete transformer.settings;
     }
 
+    // Add state configuration (single-state blocks)
+    const stateConfig = getStateConfig();
+    if (stateConfig) {
+        transformer.state = stateConfig;
+    }
+
+    // Add states configuration (multi-state blocks)
+    const statesConfig = getStatesConfig();
+    if (statesConfig) {
+        transformer.states = statesConfig;
+    }
+
+    // Add appearances (for multi-state blocks)
+    const appearances = getAppearances();
+    if (appearances) {
+        transformer.appearances = appearances;
+    }
+
+    // Add variants (for multi-state blocks)
+    const variants = getVariants();
+    if (variants) {
+        transformer.variants = variants;
+    }
+
     // Wrap in "blocks:" category
     return {
         blocks: {
             [BlockKey]: transformer
         }
     };
+};
+
+/**
+ * Untransform function - converts exported CraftEngine block YAML back to internal modules
+ */
+module.exports.untransform = (exportedData) => {
+    const modules = {};
+    
+    if (!exportedData) return modules;
+    
+    // Map material
+    if (exportedData.material) {
+        modules.baseMaterial = exportedData.material;
+    }
+    
+    // Map model/texture
+    if (exportedData.model) modules.craftengine_model = exportedData.model;
+    if (exportedData.models) modules.craftengine_models = exportedData.models;
+    if (exportedData.texture) modules.craftengine_texture = exportedData.texture;
+    if (exportedData.textures) modules.craftengine_textures = exportedData.textures;
+    
+    // Map block-specific data
+    if (exportedData.data) {
+        const data = exportedData.data;
+        
+        if (data.external) {
+            if (data.external.plugin) modules.craftengine_externalPlugin = data.external.plugin;
+            if (data.external.id) modules.craftengine_externalId = data.external.id;
+        }
+        
+        if (data['item-name']) modules.craftengine_itemName = data['item-name'];
+        if (data['custom-name']) modules.craftengine_customName = data['custom-name'];
+        
+        if (data.lore) {
+            modules.craftengine_lore = Array.isArray(data.lore) ? data.lore.join('|') : data.lore;
+        }
+        
+        if (data['overwritable-lore'] !== undefined) modules.craftengine_overwritableLore = data['overwritable-lore'];
+        if (data['overwritable-item-name'] !== undefined) modules.craftengine_overwritableItemName = data['overwritable-item-name'];
+        if (data.unbreakable !== undefined) modules.unbreakable = data.unbreakable;
+        if (data['custom-model-data']) modules.craftengine_customModelData = data['custom-model-data'];
+        if (data['block-state']) modules.craftengine_blockState = data['block-state'];
+        if (data.pdc) modules.craftengine_pdc = data.pdc;
+        if (data.nbt) modules.craftengine_nbt = data.nbt;
+        
+        // Custom components
+        if (data.components && typeof data.components === 'object') {
+            const compLines = [];
+            for (const [key, val] of Object.entries(data.components)) {
+                compLines.push(`${key}:`);
+                if (typeof val === 'object' && !Array.isArray(val)) {
+                    for (const [k, v] of Object.entries(val)) {
+                        compLines.push(`  ${k}: ${v}`);
+                    }
+                } else {
+                    compLines.push(`  ${val}`);
+                }
+            }
+            modules.craftengine_customComponents = compLines.join('\n');
+        }
+        
+        if (data['remove-components'] && Array.isArray(data['remove-components'])) {
+            modules.craftengine_removeComponents = data['remove-components'].join(', ');
+        }
+    }
+    
+    // Map block settings
+    if (exportedData.settings) {
+        const settings = exportedData.settings;
+        
+        if (settings.hardness !== undefined) modules['block-hardness'] = settings.hardness;
+        if (settings['explosion-resistance'] !== undefined) modules['block-explosion-resistance'] = settings['explosion-resistance'];
+        if (settings['mining-tool']) modules['block-mining-tool'] = settings['mining-tool'];
+        if (settings['mining-level'] !== undefined) modules['block-mining-level'] = settings['mining-level'];
+        if (settings['requires-correct-tool'] !== undefined) modules['block-requires-correct-tool'] = settings['requires-correct-tool'];
+        if (settings.flammable !== undefined) modules['block-flammable'] = settings.flammable;
+        if (settings.gravity !== undefined) modules['block-gravity'] = settings.gravity;
+        if (settings['light-emission'] !== undefined) modules['block-light-emission'] = settings['light-emission'];
+        if (settings.transparent !== undefined) modules['block-transparent'] = settings.transparent;
+        if (settings.waterloggable !== undefined) modules['block-waterloggable'] = settings.waterloggable;
+        if (settings.recipe) modules.recipe = settings.recipe;
+        
+        // Drops
+        if (settings.drops && Array.isArray(settings.drops)) {
+            modules['block-drops'] = settings.drops;
+        }
+        if (settings['silk-touch-drops'] && Array.isArray(settings['silk-touch-drops'])) {
+            modules['block-silk-touch-drops'] = settings['silk-touch-drops'];
+        }
+        
+        // Placement rules
+        if (settings['placement-rules']) {
+            const pr = settings['placement-rules'];
+            if (pr['can-place-on']) modules['block-placement-rules-can-place-on'] = pr['can-place-on'];
+            if (pr['cannot-place-on']) modules['block-placement-rules-cannot-place-on'] = pr['cannot-place-on'];
+            if (pr.restrictions) modules['block-placement-rules-restrictions'] = pr.restrictions;
+        }
+        
+        // Sounds
+        if (settings.sounds) {
+            const snd = settings.sounds;
+            if (snd.break) modules['block-sounds-break'] = snd.break;
+            if (snd.place) modules['block-sounds-place'] = snd.place;
+            if (snd.step) modules['block-sounds-step'] = snd.step;
+            if (snd.hit) modules['block-sounds-hit'] = snd.hit;
+            if (snd.fall) modules['block-sounds-fall'] = snd.fall;
+        }
+    }
+    
+    // Map variants if present (block variants system)
+    if (exportedData.variants && typeof exportedData.variants === 'object') {
+        // Store variants as JSON string or structured data based on module format
+        modules.craftengine_blockVariants = JSON.stringify(exportedData.variants);
+    }
+    
+    return modules;
 };
