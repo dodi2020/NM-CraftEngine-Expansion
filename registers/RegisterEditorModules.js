@@ -1008,7 +1008,7 @@ module.exports = async (nm, api) => {
     'exclude-from-inventory': { plugins: ['nexo', 'itemsadder', 'craftengine'], description: 'Prevents the item from appearing in the plugin GUI.' },
     'repairable': { plugins: ['nexo', 'itemsadder', 'craftengine'] },
     'hideTooltip': { plugins: ['nexo', 'itemsadder', 'craftengine'] },
-    'recipe': { plugins: ['nexo', 'itemsadder', 'craftengine'], type: 'CraftingOverlay' },
+    'recipe': { plugins: ['nexo', 'itemsadder', 'craftengine'] },
     'disableEnchanting': { plugins: ['nexo', 'itemsadder', 'craftengine'] },
     'enchantmentGlintOverride': { plugins: ['nexo', 'itemsadder', 'craftengine'] },
     'maxStackSize': { plugins: ['nexo', 'itemsadder', 'craftengine'] },

@@ -22,8 +22,8 @@ module.exports.transform = (item, context) => {
 
         const cleaned = {};
         for (const [key, value] of Object.entries(obj)) {
-            // Skip cleaning 'recipe' key - preserve it as-is if it exists
-            if (key === 'recipe' && value) {
+            // Skip cleaning for specific keys - preserve them as-is if they exist
+            if ((key === 'recipe' || key === 'food' || key === 'consumable' || key === 'equipment') && value) {
                 cleaned[key] = value;
                 continue;
             }
