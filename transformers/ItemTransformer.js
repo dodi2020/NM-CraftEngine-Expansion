@@ -66,14 +66,139 @@ module.exports.transform = (item, context) => {
         return null;
     };
 
-    // Helper to parse custom components (YAML string to object)
-    const getCustomComponents = () => {
+    // Helper to build all components (moving from data to components structure)
+    const getAllComponents = () => {
+        const components = {};
+        
+        // External plugin data
+        const external = getExternalData();
+        if (external) components['minecraft:external'] = external;
+        
+        // Item name
+        const itemName = item.modules?.craftengine_itemName || item.name;
+        if (itemName) components['minecraft:item_name'] = itemName;
+        
+        // Custom name
+        if (item.modules?.craftengine_customName) {
+            components['minecraft:custom_name'] = item.modules?.craftengine_customName;
+        }
+        
+        // Lore
+        const lore = getLore();
+        if (lore) components['minecraft:lore'] = lore;
+        
+        // Boolean flags
+        if (item.modules?.craftengine_overwritableLore !== undefined) {
+            components['minecraft:overwritable_lore'] = item.modules?.craftengine_overwritableLore;
+        }
+        if (item.modules?.craftengine_overwritableItemName !== undefined) {
+            components['minecraft:overwritable_item_name'] = item.modules?.craftengine_overwritableItemName;
+        }
+        if (item.modules?.craftengine_unbreakable !== undefined) {
+            components['minecraft:unbreakable'] = item.modules?.craftengine_unbreakable;
+        }
+        if (item.modules?.craftengine_hideTooltip !== undefined) {
+            components['minecraft:hide_tooltip'] = item.modules?.craftengine_hideTooltip;
+        }
+        
+        // Enchantments
+        const enchantments = getEnchantments();
+        if (enchantments) components['minecraft:enchantment'] = enchantments;
+        
+        // Dyed color
+        if (item.modules?.craftengine_dyedColor) {
+            components['minecraft:dyed_color'] = item.modules?.craftengine_dyedColor;
+        }
+        
+        // Custom model data
+        if (item.modules?.craftengine_customModelData || item.modules?.customModelData) {
+            components['minecraft:custom_model_data'] = item.modules?.craftengine_customModelData || item.modules?.customModelData;
+        }
+        
+        // Attribute modifiers
+        const attributeModifiers = getAttributeModifiers();
+        if (attributeModifiers) components['minecraft:attribute_modifiers'] = attributeModifiers;
+        
+        // Max damage/durability
+        if (item.modules?.craftengine_maxDamage || item.modules?.durability) {
+            components['minecraft:max_damage'] = item.modules?.craftengine_maxDamage || item.modules?.durability;
+        }
+        
+        // Jukebox playable
+        if (item.modules?.craftengine_jukeboxPlayable) {
+            components['minecraft:jukebox_playable'] = item.modules?.craftengine_jukeboxPlayable;
+        }
+        
+        // Item model
+        if (item.modules?.craftengine_itemModel) {
+            components['minecraft:item_model'] = item.modules?.craftengine_itemModel;
+        }
+        
+        // Tooltip style
+        if (item.modules?.craftengine_tooltipStyle) {
+            components['minecraft:tooltip_style'] = item.modules?.craftengine_tooltipStyle;
+        }
+        
+        // Trim
+        if (item.modules?.craftengine_trim) {
+            components['minecraft:trim'] = item.modules?.craftengine_trim;
+        }
+        
+        // Equippable
+        if (item.modules?.craftengine_equippable || item.modules?.equippable) {
+            components['minecraft:equippable'] = item.modules?.craftengine_equippable || item.modules?.equippable;
+        }
+        
+        // PDC
+        const pdc = getPdcData();
+        if (pdc) components['minecraft:pdc'] = pdc;
+        
+        // NBT (legacy)
+        if (item.modules?.craftengine_nbt) {
+            components['minecraft:nbt'] = item.modules?.craftengine_nbt;
+        }
+        
+        // Food component
+        const foodData = {};
+        if (item.modules?.nutrition || item.modules?.craftengine_nutrition) {
+            foodData.nutrition = item.modules?.nutrition || item.modules?.craftengine_nutrition;
+        }
+        if (item.modules?.saturation || item.modules?.craftengine_saturation) {
+            foodData.saturation = item.modules?.saturation || item.modules?.craftengine_saturation;
+        }
+        if (item.modules?.craftengine_canAlwaysEat !== undefined) {
+            foodData.can_always_eat = item.modules?.craftengine_canAlwaysEat;
+        }
+        if (Object.keys(foodData).length > 0) {
+            components['minecraft:food'] = foodData;
+        }
+        
+        // Consumable component
+        const consumableData = {};
+        if (item.modules?.craftengine_consumeSeconds) {
+            consumableData.consume_seconds = item.modules?.craftengine_consumeSeconds;
+        }
+        if (item.modules?.craftengine_consumeAnimation) {
+            consumableData.animation = item.modules?.craftengine_consumeAnimation;
+        }
+        if (item.modules?.craftengine_consumeSound) {
+            consumableData.sound = item.modules?.craftengine_consumeSound;
+        }
+        if (item.modules?.craftengine_hasConsumeParticles !== undefined) {
+            consumableData.has_consume_particles = item.modules?.craftengine_hasConsumeParticles;
+        }
+        if (item.modules?.craftengine_onConsumeEffects) {
+            consumableData.on_consume_effects = item.modules?.craftengine_onConsumeEffects;
+        }
+        if (Object.keys(consumableData).length > 0) {
+            components['minecraft:consumable'] = consumableData;
+        }
+        
+        // Parse custom components from craftengine_customComponents module
         const componentsModule = item.modules?.craftengine_customComponents;
         if (componentsModule && typeof componentsModule === 'string') {
             try {
-                // Parse YAML string to JavaScript object
                 const lines = componentsModule.split('\n');
-                const components = {};
                 let currentComponent = null;
                 let componentValue = '';
                 let isMultiline = false;
@@ -84,19 +209,14 @@ module.exports.transform = (item, context) => {
                     const indent = line.search(/\S/);
                     const trimmed = line.trim();
 
-                    // Check if this is a component key (at indent 0 and ends with :)
                     if (indent === 0 && trimmed.endsWith(':')) {
-                        // Save previous component if exists
                         if (currentComponent) {
                             components[currentComponent] = parseComponentValue(componentValue.trim(), isMultiline);
                         }
-
-                        // Start new component - keep full namespace:component format
-                        currentComponent = trimmed.slice(0, -1); // Remove trailing :
+                        currentComponent = trimmed.slice(0, -1);
                         componentValue = '';
                         isMultiline = false;
                     } else if (currentComponent && indent > 0) {
-                        // Multi-line component value
                         if (componentValue) {
                             componentValue += '\n' + trimmed;
                             isMultiline = true;
@@ -106,16 +226,12 @@ module.exports.transform = (item, context) => {
                     }
                 }
 
-                // Save last component
                 if (currentComponent) {
                     components[currentComponent] = parseComponentValue(componentValue.trim(), isMultiline);
                 }
 
-                // Helper to parse component values
                 function parseComponentValue(val, isMultiline) {
                     if (!val || val === '{}') return {};
-
-                    // If it's multiline, parse as YAML-like key: value pairs
                     if (isMultiline) {
                         const obj = {};
                         const subLines = val.split('\n');
@@ -129,27 +245,22 @@ module.exports.transform = (item, context) => {
                         }
                         return Object.keys(obj).length > 0 ? obj : val;
                     }
-
-                    // Single line value
                     return parseSimpleValue(val);
                 }
 
-                // Helper to parse simple values (numbers, booleans)
                 function parseSimpleValue(val) {
                     if (val === 'true') return true;
                     if (val === 'false') return false;
                     const num = Number(val);
                     if (!isNaN(num)) return num;
-                    return val; // Return as string if not a special type
+                    return val;
                 }
-
-                return Object.keys(components).length > 0 ? components : null;
             } catch (e) {
                 console.error('Failed to parse custom components:', e);
-                return null;
             }
         }
-        return null;
+        
+        return Object.keys(components).length > 0 ? components : null;
     };
 
     // Helper to parse remove-components list
@@ -388,27 +499,7 @@ module.exports.transform = (item, context) => {
 
         // Data components
         data: {
-            'external': getExternalData(),
-            'item-name': item.modules?.craftengine_itemName || item.name,
-            'custom-name': item.modules?.craftengine_customName,
-            'lore': getLore(),
-            'overwritable-lore': item.modules?.craftengine_overwritableLore,
-            'overwritable-item-name': item.modules?.craftengine_overwritableItemName,
-            'unbreakable': item.modules?.craftengine_unbreakable,
-            'enchantment': getEnchantments(),
-            'dyed-color': item.modules?.craftengine_dyedColor,
-            'custom-model-data': item.modules?.craftengine_customModelData || item.modules?.customModelData,
-            'hide-tooltip': item.modules?.craftengine_hideTooltip,
-            'attribute-modifiers': getAttributeModifiers(),
-            'max-damage': item.modules?.craftengine_maxDamage || item.modules?.durability,
-            'jukebox-playable': item.modules?.craftengine_jukeboxPlayable,
-            'item-model': item.modules?.craftengine_itemModel,
-            'tooltip-style': item.modules?.craftengine_tooltipStyle,
-            'trim': item.modules?.craftengine_trim,
-            'equippable': item.modules?.craftengine_equippable || item.modules?.equippable,
-            'pdc': getPdcData(),
-            'nbt': item.modules?.craftengine_nbt,
-            'components': getCustomComponents(),
+            'components': getAllComponents(),
             'remove-components': getRemoveComponents(),
         },
 
@@ -447,18 +538,6 @@ module.exports.transform = (item, context) => {
                     'damage-on-hurt': item.modules?.craftengine_equipmentDamageOnHurt,
                     'swappable': item.modules?.craftengine_equipmentSwappable,
                     'equip-on-interact': item.modules?.craftengine_equipmentEquipOnInteract,
-                },
-                food: {
-                    'nutrition': item.modules?.nutrition || item.modules?.craftengine_nutrition,
-                    'saturation': item.modules?.saturation || item.modules?.craftengine_saturation,
-                    'can-always-eat': item.modules?.craftengine_canAlwaysEat,
-                },
-                consumable: {
-                    'consume-seconds': item.modules?.craftengine_consumeSeconds,
-                    'animation': item.modules?.craftengine_consumeAnimation,
-                    'sound': item.modules?.craftengine_consumeSound,
-                    'has-consume-particles': item.modules?.craftengine_hasConsumeParticles,
-                    'on-consume-effects': item.modules?.craftengine_onConsumeEffects,
                 },
             };
         })(),
@@ -534,75 +613,144 @@ module.exports.untransform = (exportedData) => {
     if (exportedData.data) {
         const data = exportedData.data;
         
-        if (data.external) {
-            if (data.external.plugin) modules.craftengine_externalPlugin = data.external.plugin;
-            if (data.external.id) modules.craftengine_externalId = data.external.id;
-        }
-        
-        if (data['item-name']) modules.craftengine_itemName = data['item-name'];
-        if (data['custom-name']) modules.craftengine_customName = data['custom-name'];
-        
-        if (data.lore) {
-            modules.craftengine_lore = Array.isArray(data.lore) ? data.lore.join('|') : data.lore;
-        }
-        
-        if (data['overwritable-lore'] !== undefined) modules.craftengine_overwritableLore = data['overwritable-lore'];
-        if (data['overwritable-item-name'] !== undefined) modules.craftengine_overwritableItemName = data['overwritable-item-name'];
-        if (data.unbreakable !== undefined) modules.unbreakable = data.unbreakable;
-        
-        // Enchantments - convert array back to YAML string
-        if (data.enchantment && Array.isArray(data.enchantment)) {
-            const enchLines = [];
-            data.enchantment.forEach(ench => {
-                enchLines.push(`- enchantment: ${ench.enchantment}`);
-                if (ench.level) enchLines.push(`  level: ${ench.level}`);
-            });
-            modules.craftengine_enchantment = enchLines.join('\n');
-        }
-        
-        if (data['dyed-color']) modules.craftengine_dyedColor = data['dyed-color'];
-        if (data['custom-model-data']) modules.craftengine_customModelData = data['custom-model-data'];
-        if (data['hide-tooltip'] !== undefined) modules.craftengine_hideTooltip = data['hide-tooltip'];
-        
-        // Attribute modifiers - convert array back to YAML string
-        if (data['attribute-modifiers'] && Array.isArray(data['attribute-modifiers'])) {
-            const attrLines = [];
-            data['attribute-modifiers'].forEach(attr => {
-                attrLines.push(`- type: ${attr.type}`);
-                if (attr.amount !== undefined) attrLines.push(`  amount: ${attr.amount}`);
-                if (attr.operation) attrLines.push(`  operation: ${attr.operation}`);
-                if (attr.slot) attrLines.push(`  slot: ${attr.slot}`);
-            });
-            modules.craftengine_attributeModifiers = attrLines.join('\n');
-        }
-        
-        if (data['max-damage']) modules.durability = data['max-damage'];
-        if (data['jukebox-playable']) modules.craftengine_jukeboxPlayable = data['jukebox-playable'];
-        if (data['item-model']) modules.craftengine_itemModel = data['item-model'];
-        if (data['tooltip-style']) modules.craftengine_tooltipStyle = data['tooltip-style'];
-        if (data.trim) modules.craftengine_trim = data.trim;
-        if (data.equippable) modules.equippable = data.equippable;
-        
-        if (data.pdc) modules.craftengine_pdc = data.pdc;
-        if (data.nbt) modules.craftengine_nbt = data.nbt;
-        
-        // Custom components - convert object back to YAML string
+        // All components are now under data.components with minecraft: prefixes
         if (data.components && typeof data.components === 'object') {
-            const compLines = [];
-            for (const [key, val] of Object.entries(data.components)) {
-                compLines.push(`${key}:`);
-                if (typeof val === 'object' && !Array.isArray(val)) {
-                    for (const [k, v] of Object.entries(val)) {
-                        compLines.push(`  ${k}: ${v}`);
-                    }
-                } else {
-                    compLines.push(`  ${val}`);
+            for (const [key, value] of Object.entries(data.components)) {
+                // Handle each component type
+                switch (key) {
+                    case 'minecraft:external':
+                        if (value.plugin) modules.craftengine_externalPlugin = value.plugin;
+                        if (value.id) modules.craftengine_externalId = value.id;
+                        break;
+                    
+                    case 'minecraft:item_name':
+                        modules.craftengine_itemName = value;
+                        break;
+                    
+                    case 'minecraft:custom_name':
+                        modules.craftengine_customName = value;
+                        break;
+                    
+                    case 'minecraft:lore':
+                        modules.craftengine_lore = Array.isArray(value) ? value.join('|') : value;
+                        break;
+                    
+                    case 'minecraft:overwritable_lore':
+                        modules.craftengine_overwritableLore = value;
+                        break;
+                    
+                    case 'minecraft:overwritable_item_name':
+                        modules.craftengine_overwritableItemName = value;
+                        break;
+                    
+                    case 'minecraft:unbreakable':
+                        modules.unbreakable = value;
+                        break;
+                    
+                    case 'minecraft:hide_tooltip':
+                        modules.craftengine_hideTooltip = value;
+                        break;
+                    
+                    case 'minecraft:enchantment':
+                        if (Array.isArray(value)) {
+                            const enchLines = [];
+                            value.forEach(ench => {
+                                enchLines.push(`- enchantment: ${ench.enchantment}`);
+                                if (ench.level) enchLines.push(`  level: ${ench.level}`);
+                            });
+                            modules.craftengine_enchantment = enchLines.join('\n');
+                        }
+                        break;
+                    
+                    case 'minecraft:dyed_color':
+                        modules.craftengine_dyedColor = value;
+                        break;
+                    
+                    case 'minecraft:custom_model_data':
+                        modules.craftengine_customModelData = value;
+                        break;
+                    
+                    case 'minecraft:attribute_modifiers':
+                        if (Array.isArray(value)) {
+                            const attrLines = [];
+                            value.forEach(attr => {
+                                attrLines.push(`- type: ${attr.type}`);
+                                if (attr.amount !== undefined) attrLines.push(`  amount: ${attr.amount}`);
+                                if (attr.operation) attrLines.push(`  operation: ${attr.operation}`);
+                                if (attr.slot) attrLines.push(`  slot: ${attr.slot}`);
+                            });
+                            modules.craftengine_attributeModifiers = attrLines.join('\n');
+                        }
+                        break;
+                    
+                    case 'minecraft:max_damage':
+                        modules.durability = value;
+                        break;
+                    
+                    case 'minecraft:jukebox_playable':
+                        modules.craftengine_jukeboxPlayable = value;
+                        break;
+                    
+                    case 'minecraft:item_model':
+                        modules.craftengine_itemModel = value;
+                        break;
+                    
+                    case 'minecraft:tooltip_style':
+                        modules.craftengine_tooltipStyle = value;
+                        break;
+                    
+                    case 'minecraft:trim':
+                        modules.craftengine_trim = value;
+                        break;
+                    
+                    case 'minecraft:equippable':
+                        modules.equippable = value;
+                        break;
+                    
+                    case 'minecraft:pdc':
+                        modules.craftengine_pdc = value;
+                        break;
+                    
+                    case 'minecraft:nbt':
+                        modules.craftengine_nbt = value;
+                        break;
+                    
+                    case 'minecraft:food':
+                        if (value.nutrition) modules.nutrition = value.nutrition;
+                        if (value.saturation) modules.saturation = value.saturation;
+                        if (value.can_always_eat !== undefined) modules.craftengine_canAlwaysEat = value.can_always_eat;
+                        break;
+                    
+                    case 'minecraft:consumable':
+                        if (value.consume_seconds) modules.craftengine_consumeSeconds = value.consume_seconds;
+                        if (value.animation) modules.craftengine_consumeAnimation = value.animation;
+                        if (value.sound) modules.craftengine_consumeSound = value.sound;
+                        if (value.has_consume_particles !== undefined) modules.craftengine_hasConsumeParticles = value.has_consume_particles;
+                        if (value.on_consume_effects) modules.craftengine_onConsumeEffects = value.on_consume_effects;
+                        break;
+                    
+                    default:
+                        // For any other custom components, store as YAML
+                        if (!modules.craftengine_customComponents) {
+                            modules.craftengine_customComponents = '';
+                        }
+                        if (modules.craftengine_customComponents) {
+                            modules.craftengine_customComponents += '\n';
+                        }
+                        modules.craftengine_customComponents += `${key}:\n`;
+                        if (typeof value === 'object' && !Array.isArray(value)) {
+                            for (const [k, v] of Object.entries(value)) {
+                                modules.craftengine_customComponents += `  ${k}: ${v}\n`;
+                            }
+                        } else {
+                            modules.craftengine_customComponents += `  ${value}\n`;
+                        }
+                        break;
                 }
             }
-            modules.craftengine_customComponents = compLines.join('\n');
         }
         
-        // Remove components
+        // Remove components list
         if (data['remove-components'] && Array.isArray(data['remove-components'])) {
             modules.craftengine_removeComponents = data['remove-components'].join(', ');
         }
