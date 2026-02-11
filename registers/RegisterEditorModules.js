@@ -4,6 +4,17 @@ module.exports = async (nm, api) => {
   const componenticon = await api.nexomaker.loadAsset(__dirname + "/../assets/component.png");
   const enchantmenticon = await api.nexomaker.loadAsset(__dirname + "/../assets/enchantment.png");
 
+  // Events & Conditions Module
+  api.nexomaker.postEditorModule({
+    name: "craftengine_events",
+    display: "Events & Conditions",
+    plugins: ["craftengine"],
+    compatibility: ["item", "tool", "weapon", "armor", "food", "block", "furniture"],
+    description: "Define event handlers with conditions for items, blocks, and furniture",
+    element: "EventsConditionsBuilder",
+    default: ""
+  });
+
   // Data Components - Simple Value Components
   api.nexomaker.postEditorModule({
     name: "craftengine_itemName",
@@ -60,14 +71,12 @@ module.exports = async (nm, api) => {
     display: "Enchantment",
     plugins: ["craftengine"],
     compatibility: ["item", "tool", "weapon", "armor"],
-    description: "Enchantment data for the item. Click the button in the sidebar for a visual builder, then paste the generated YAML here.",
+    description: "Enchantment data for the item. Use the builder button below for a visual builder.",
     icon: enchantmenticon,
-    type: "loot",
+    element: "EnchantmentBuilderButton",
     default: "",
-    placeholder: "Click the button in the sidebar for a visual builder, or paste YAML here.\n\nExample:\n- enchantment: sharpness\n  level: 5\n- enchantment: unbreaking\n  level: 3",
-    rows: 8,
-    resize: "vertical",
-    maxLength: 10000
+    placeholder: "Use the 'Open Enchantment Builder' button below, or paste YAML here manually.",
+    rows: 8
   });
 
   api.nexomaker.postEditorModule({
@@ -85,24 +94,23 @@ module.exports = async (nm, api) => {
     display: "Block State",
     plugins: ["craftengine"],
     compatibility: ["block"],
-    description: "Block state properties",
-    type: "text",
+    description: "Edit block state YAML and auto-state type",
+    element: "BlockStateEditor",
     default: "",
   });
 
+  // NOTE: `craftengine_state*` fields are managed by the BlockStateEditor element (single module entry)
   api.nexomaker.postEditorModule({
     name: "craftengine_attributeModifiers",
     display: "Attribute Modifiers",
     plugins: ["craftengine"],
     compatibility: ["item", "tool", "weapon", "armor"],
-    description: "Attribute modifiers for the item. Click the button in the sidebar for a visual builder, then paste the generated YAML here.",
+    description: "Attribute modifiers for the item. Use the builder button below for a visual builder.",
     icon: strengthicon,
-    type: "loot",
+    element: "AttributeBuilderButton",
     default: "",
-    placeholder: "Click the button in the sidebar for a visual builder, then paste the generated YAML here.",
-    rows: 8,
-    resize: "vertical",
-    maxLength: 10000
+    placeholder: "Use the 'Open Attribute Builder' button below, or paste YAML here manually.",
+    rows: 8
   });
 
 
@@ -666,7 +674,7 @@ module.exports = async (nm, api) => {
     plugins: ["craftengine"],
     compatibility: ["block"],
     description: "Client-side tags",
-    type: "loot",
+    type: "textarea",
     default: "",
   });
 
@@ -770,10 +778,6 @@ module.exports = async (nm, api) => {
     default: false,
   });
 
-  // REMOVED: Armor-specific attribute modules - Use AttributeBuilder instead
-  // craftengine_defense - Replaced by AttributeBuilder (attribute: armor, slot: head/chest/legs/feet)
-  // craftengine_toughness - Replaced by AttributeBuilder (attribute: armor_toughness, slot: head/chest/legs/feet)
-
   api.nexomaker.postEditorModule({
     name: "craftengine_fireResistant",
     display: "Fire Resistant",
@@ -784,10 +788,6 @@ module.exports = async (nm, api) => {
     default: false,
   });
 
-  // ========================================
-  // NEW MISSING MODULES FROM CRAFTENGINE WIKI
-  // ========================================
-
   // Item Data - Advanced Components
   api.nexomaker.postEditorModule({
     name: "craftengine_pdc",
@@ -795,7 +795,7 @@ module.exports = async (nm, api) => {
     plugins: ["craftengine"],
     compatibility: ["item", "tool", "weapon", "armor", "food", "block", "furniture"],
     description: "Custom plugin data using Persistent Data Container (YAML format)",
-    type: "text",
+    type: "textarea",
     default: "",
   });
 
@@ -824,11 +824,12 @@ module.exports = async (nm, api) => {
     display: "Custom Components (1.20.5+)",
     plugins: ["craftengine"],
     compatibility: ["item", "tool", "weapon", "armor", "food", "block"],
-    description: "Custom Minecraft components in YAML format. Click the button in the sidebar for a visual builder, then paste the generated YAML here.",
+    description: "Custom Minecraft components in YAML format. Use the builder button below for a visual builder.",
     icon: componenticon,
-    type: "loot",
+    element: "ComponentsBuilderButton",
     default: "",
-    placeholder: "Click the button in the sidebar for a visual builder, then paste the generated YAML here.",
+    placeholder: "Use the 'Open Components Builder' button below, or paste YAML here manually.",
+    rows: 8
   });
 
   api.nexomaker.postEditorModule({
@@ -868,7 +869,7 @@ module.exports = async (nm, api) => {
     plugins: ["craftengine"],
     compatibility: ["item", "tool", "weapon", "armor", "food", "block"],
     description: "Client-side only data components in YAML format (requires Premium)",
-    type: "loot",
+    type: "textarea",
     default: "",
   });
 
@@ -913,8 +914,93 @@ module.exports = async (nm, api) => {
     default: "false",
   });
 
-  // Enable basic built-in modules for CraftEngine format (for learning)
-  // Uncomment more modules as needed
+  // Furniture Variant Settings
+  api.nexomaker.postEditorModule({
+    name: "craftengine_furnitureVariantLootSpawnOffset",
+    display: "Loot Spawn Offset",
+    plugins: ["craftengine"],
+    compatibility: ["furniture"],
+    description: "Offset for item drops to prevent spawning in blocks (format: X,Y,Z)",
+    type: "text",
+    default: "",
+    placeholder: "0,0.5,0"
+  });
+
+  api.nexomaker.postEditorModule({
+    name: "craftengine_furnitureVariantElements",
+    display: "Elements",
+    plugins: ["craftengine"],
+    compatibility: ["furniture"],
+    description: "Individual components that compose the furniture (YAML format). Supports item_display, text_display, item, and armor_stand types with properties like position, rotation, scale, display-transform, billboard, glow-color, brightness, apply-dyed-color, etc.",
+    type: "textarea",
+    default: "",
+    placeholder: "# Item Display Example\n- type: item_display\n  item: minecraft:diamond\n  display-transform: NONE\n  billboard: FIXED\n  position: 0.5,0,0\n  translation: 0,0.5,0\n  scale: 1\n  rotation: 0,0,0\n  apply-dyed-color: true\n  glow-color: 255,255,255\n  brightness: 15,15\n  view-range: 64\n\n# Text Display Example\n- type: text_display\n  text: \"Hello World\"\n  position: 0,1,0\n  billboard: CENTER\n  alignment: center\n  line-width: 200\n  background-color: 0,0,0,0\n  has-shadow: false\n\n# Armor Stand Example\n- type: armor_stand\n  item: minecraft:diamond_chestplate\n  position: 0,0,0\n  small: false",
+    rows: 15,
+    resize: "vertical",
+    maxLength: 50000
+  });
+
+  api.nexomaker.postEditorModule({
+    name: "craftengine_furnitureVariantHitboxes",
+    display: "Hitboxes",
+    plugins: ["craftengine"],
+    compatibility: ["furniture"],
+    description: "Interactive volumes where players interact (YAML format). Supports interaction (non-collision), shulker (hard-collision), happy_ghast (semi-hard), and custom (soft-collision) types. Can include seats configuration.",
+    type: "textarea",
+    default: "",
+    placeholder: "# Interaction (Non-Collision) Example\n- type: interaction\n  can-use-item-on: false\n  can-be-hit-by-projectile: false\n  blocks-building: false\n  position: 0,0,0\n  width: 1\n  height: 2\n  interactive: true\n  invisible: false\n  seats:\n    - 0,0,-0.1 0\n\n# Shulker (Hard-Collision) Example\n- type: shulker\n  position: 0,0,0\n  scale: 1\n  peek: 0\n  direction: up\n  interaction-entity: true\n  interactive: true\n\n# Happy Ghast (Semi-Hard) Example\n- type: happy_ghast\n  position: 0,0,0\n  scale: 1\n  hard-collision: true\n\n# Custom (Soft-Collision) Example\n- type: custom\n  position: 0,0,0\n  scale: 1\n  entity-type: slime",
+    rows: 18,
+    resize: "vertical",
+    maxLength: 20000
+  });
+
+  api.nexomaker.postEditorModule({
+    name: "craftengine_furnitureVariantEntityCulling",
+    display: "Entity Culling",
+    plugins: ["craftengine"],
+    compatibility: ["furniture"],
+    description: "Controls visibility culling for performance. Use 'true'/'false' for simple toggle, or YAML format for advanced config (aabb, view-distance, ray-tracing).",
+    type: "textarea",
+    default: "",
+    placeholder: "false\n\nOR for advanced:\naabb: -1,-1,-1,1,1,1\nview-distance: 64\nray-tracing: false",
+    rows: 5
+  });
+
+  api.nexomaker.postEditorModule({
+    name: "craftengine_furnitureVariantModelEngine",
+    display: "ModelEngine Blueprint",
+    plugins: ["craftengine"],
+    compatibility: ["furniture"],
+    description: "ModelEngine blueprint identifier (e.g., 'my_furniture_model')",
+    type: "text",
+    default: "",
+    placeholder: "my_furniture_model"
+  });
+
+  api.nexomaker.postEditorModule({
+    name: "craftengine_furnitureVariantBetterModel",
+    display: "BetterModel Blueprint",
+    plugins: ["craftengine"],
+    compatibility: ["furniture"],
+    description: "BetterModel blueprint identifier (e.g., 'my_better_model')",
+    type: "text",
+    default: "",
+    placeholder: "my_better_model"
+  });
+
+  // Inline YAML Editor Module - Edit raw YAML for this specific item
+  api.nexomaker.postEditorModule({
+    name: "craftengine_yaml_editor",
+    display: "Raw YAML Editor",
+    element: "InlineYamlEditor",
+    plugins: ["craftengine"],
+    compatibility: ["item", "tool", "weapon", "armor", "food", "block", "furniture"],
+    description: "Edit this item's raw YAML directly. Expand to view and modify all modules.",
+    type: "custom",
+    default: "enabled"
+  });
+
+  // Built-In Modules
   api.console.log("?? [CraftEngine] Applying basic module overrides...");
   const overrideResult = nm.postEditorModuleOverrides({
     // Essential weapon/tool modules
@@ -937,12 +1023,8 @@ module.exports = async (nm, api) => {
     'recipe': { plugins: ['nexo', 'itemsadder', 'craftengine'] },
     'disableEnchanting': { plugins: ['nexo', 'itemsadder', 'craftengine'] },
     'enchantmentGlintOverride': { plugins: ['nexo', 'itemsadder', 'craftengine'] },
-    // REMOVED: Attribute modules - Use AttributeBuilder instead
-    // 'gravity', 'jumpStrength', 'knockbackResistance', 'luck', 'max-health', 'maxAbsorption', 'movementEfficiency'
     'maxStackSize': { plugins: ['nexo', 'itemsadder', 'craftengine'] },
     'unbreakable': { plugins: ['nexo', 'itemsadder', 'craftengine'] },
-    'nutrition': { plugins: ['nexo', 'itemsadder', 'craftengine'] },
-    'saturation': { plugins: ['nexo', 'itemsadder', 'craftengine'] },
     'equipment': { plugins: ['craftengine'] },
   
     // Block modules

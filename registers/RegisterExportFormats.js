@@ -14,94 +14,61 @@ module.exports = (nm, itemTransformer) => {
       perNamespace: true,
       output: 'resources/{projectId}/configuration/{namespace}.yml',
 
-      // Assets organized by item type and subtype
-      assets: ({ item, assetType, assetName, projectId, namespace }) => {
+      // Assets organized by item type
+      assets: ({ item, assetType, assetName, projectId, namespace, folder }) => {
         // assetType is either 'texture' or 'model'
-        // Organize by item.type first, then by subtype for better structure
-
-        // Block assets
-        if (item.type === 'block' || item.subtype === 'block') {
-          if (assetType === 'texture') {
-            return `resources/${projectId}/resourcepack/assets/${namespace}/textures/${item.type}/${assetName}`;
-          } else if (assetType === 'model') {
-            return `resources/${projectId}/resourcepack/assets/${namespace}/models/${item.type}/${assetName}`;
-          }
-        }
-
-        // Furniture assets
-        if (item.type === 'furniture' || item.subtype === 'furniture') {
-          if (assetType === 'texture') {
-            return `resources/${projectId}/resourcepack/assets/${namespace}/textures/${item.type}/${assetName}`;
-          } else if (assetType === 'model') {
-            return `resources/${projectId}/resourcepack/assets/${namespace}/models/${item.type}/${assetName}`;
-          }
-        }
-
-        // Item assets organized by subtype
-        if (item.subtype === 'armor') {
-          if (assetType === 'texture') {
-            return `resources/${projectId}/resourcepack/assets/${namespace}/textures/${item.type}/${assetName}`;
-          } else if (assetType === 'model') {
-            return `resources/${projectId}/resourcepack/assets/${namespace}/models/${item.type}/${assetName}`;
-          }
-        }
-
-        if (item.subtype === 'food') {
-          if (assetType === 'texture') {
-            return `resources/${projectId}/resourcepack/assets/${namespace}/textures/${item.type}/${assetName}`;
-          } else if (assetType === 'model') {
-            return `resources/${projectId}/resourcepack/assets/${namespace}/models/${item.type}/${assetName}`;
-          }
-        }
-
-        // Default: general items
         if (assetType === 'texture') {
           return `resources/${projectId}/resourcepack/assets/${namespace}/textures/${item.type}/${assetName}`;
         } else if (assetType === 'model') {
           return `resources/${projectId}/resourcepack/assets/${namespace}/models/${item.type}/${assetName}`;
         }
 
-        // Fallback for any edge cases
-        return `resources/${projectId}/resourcepack/assets/${namespace}/${assetType}/${item.type}/${assetName}`;
+        // Fallback
+        return `resources/${projectId}/resourcepack/assets/${namespace}/${assetType}s/${item.type}/${assetName}`;
       },
     },
 
     // Lifecycle hooks
     hooks: {
-      canExport: (item) => {
-        return true;
-      },
+      // No filtering - export everything
+      canExport: () => true,
 
-      // This is what transforms the texture paths
-      modelProcessor: (modelData, item, context) => {
-        const { projectId, namespace } = context;
+      // Finalize hook - reorganize by category
+      finalize: (allTransformedItems) => {
+        const result = {};
         
-        // Update texture references in the model to match CraftEngine paths
-        if (modelData.textures && typeof modelData.textures === 'object') {
-          for (const [key, texturePath] of Object.entries(modelData.textures)) {
-            // Skip texture references (e.g., "#layer0")
-            if (typeof texturePath === 'string' && !texturePath.startsWith('#')) {
-              let textureName;
-              
-              // Check if this is a multi-texture reference (_texture_N suffix)
-              const multiTextureMatch = texturePath.match(/_texture_(\d+)$/);
-              
-              if (multiTextureMatch) {
-                // Multi-texture: preserve the _texture_N suffix
-                textureName = `${item.id}_texture_${multiTextureMatch[1]}`;
-              } else {
-                // Single texture: use the item ID
-                textureName = item.id;
-              }
-              
-              // Update to CraftEngine format: namespace:type/texture_name
-              modelData.textures[key] = `${namespace}:${item.type}/${textureName}`;
+        // allTransformedItems is a flat object with item ids as keys
+        // Each item has _category, _namespace, _id metadata
+        if (allTransformedItems && typeof allTransformedItems === 'object') {
+          for (const [itemId, itemData] of Object.entries(allTransformedItems)) {
+            if (!itemData || typeof itemData !== 'object') continue;
+            
+            // Get metadata
+            const category = itemData._category || 'items';
+            const namespace = itemData._namespace || 'unknown';
+            const id = itemData._id || itemId;
+            
+            // Remove all metadata before writing
+            const cleanData = { ...itemData };
+            delete cleanData._category;
+            delete cleanData._namespace;
+            delete cleanData._id;
+            delete cleanData._type;
+            delete cleanData._subtype;
+            
+            // Initialize category if needed
+            if (!result[category]) {
+              result[category] = {};
             }
+            
+            // Add item with namespace:id key
+            const fullKey = `${namespace}:${id}`;
+            result[category][fullKey] = cleanData;
           }
         }
         
-        return modelData;
-      }
-    }
+        return result;
+      },
+    },
   });
 };
